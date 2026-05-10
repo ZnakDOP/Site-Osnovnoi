@@ -199,7 +199,8 @@ body.site-nav-open {
 .stat-board--genres .stat-board__item:focus-visible,
 .contact-pill:focus-visible,
 .rental-cta a:focus-visible,
-.site-footer a:focus-visible {
+.site-footer a:focus-visible,
+.visit-profile-card__link:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }

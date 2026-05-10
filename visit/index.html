@@ -25,95 +25,197 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500&family=Syne:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500&600&family=Syne:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../home.css?v=38" />
-    <link rel="stylesheet" href="visit.css?v=1" />
+    <link rel="stylesheet" href="visit.css?v=2" />
+    <script src="../site.js?v=2" defer></script>
   </head>
   <body>
+    <div id="site-loader" class="site-loader" aria-live="polite" aria-busy="true">
+      <span class="site-loader__mark">gorushkindop.com</span>
+      <div class="site-loader__bar" aria-hidden="true"></div>
+    </div>
+
     <div class="site-bg" aria-hidden="true"></div>
 
-    <div class="visit">
-      <div class="visit__top">
-        <a class="visit__site-link" href="../index.html">Полный сайт →</a>
-      </div>
+    <header class="site-header">
+      <nav class="site-header__nav" aria-label="Разделы основного сайта">
+        <a href="../index.html#showreel">Showreel</a>
+        <a href="../index.html#bio">Bio</a>
+        <a href="../index.html#cv">CV</a>
+        <a href="../index.html#work">Work</a>
+        <a href="../index.html#links">Links</a>
+        <a href="../index.html#contact">Contact</a>
+        <a href="../index.html#rental">Rental</a>
+      </nav>
+      <button
+        type="button"
+        class="site-header__menu-btn"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+      </button>
+    </header>
 
-      <header class="visit__profile">
-        <div class="visit__avatar">
-          <img
-            src="../images/arsenii-camera.jpg"
-            width="192"
-            height="192"
-            alt=""
-            decoding="async"
-          />
+    <main class="site-main" id="top">
+      <section class="hero wrap" aria-label="Краткая страница">
+        <div class="hero__grid">
+          <div>
+            <p class="hero__kicker">Moscow · on location · worldwide</p>
+            <h1 class="hero__title">Arsenii Gorushkin</h1>
+            <p class="hero__role">Director of Photography</p>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="../index.html#showreel">Showreel</a>
+              <a class="btn btn--ghost" href="../booking.html">Рентал техники</a>
+            </div>
+          </div>
+          <div class="hero__strip hero__strip--mobile" aria-hidden="true">
+            <div class="hero__strip-inner">
+              <div class="hero__strip-track">
+                <span>Commercial</span>
+                <span>Music Video</span>
+                <span>Documentary</span>
+                <span>Interview</span>
+                <span>Narrative</span>
+                <span>Color · Light · Motion</span>
+                <span>Znak DOP</span>
+              </div>
+              <div class="hero__strip-track">
+                <span>Commercial</span>
+                <span>Music Video</span>
+                <span>Documentary</span>
+                <span>Interview</span>
+                <span>Narrative</span>
+                <span>Color · Light · Motion</span>
+                <span>Znak DOP</span>
+              </div>
+            </div>
+          </div>
+          <aside class="hero__aside">
+            <div class="visit-profile-card reveal">
+              <div class="visit-profile-card__media">
+                <img
+                  src="../images/arsenii-camera.jpg"
+                  width="640"
+                  height="800"
+                  alt=""
+                  decoding="async"
+                />
+              </div>
+              <p class="visit-profile-card__meta">Znak DOP · DP</p>
+              <a class="visit-profile-card__link" href="../index.html">Полный сайт →</a>
+            </div>
+          </aside>
         </div>
-        <h1 class="visit__name">Arsenii Gorushkin</h1>
-        <p class="visit__role">Director of Photography</p>
-        <p class="visit__kicker">Moscow · on location · worldwide</p>
-        <div class="visit__actions">
-          <a class="visit__btn visit__btn--primary" href="../index.html#showreel">Showreel</a>
-          <a class="visit__btn" href="../booking.html">Рентал техники</a>
+
+        <div class="hero__strip hero__strip--desktop" aria-hidden="true">
+          <div class="hero__strip-inner">
+            <div class="hero__strip-track">
+              <span>Commercial</span>
+              <span>Music Video</span>
+              <span>Documentary</span>
+              <span>Interview</span>
+              <span>Narrative</span>
+              <span>Color · Light · Motion</span>
+              <span>Znak DOP</span>
+            </div>
+            <div class="hero__strip-track">
+              <span>Commercial</span>
+              <span>Music Video</span>
+              <span>Documentary</span>
+              <span>Interview</span>
+              <span>Narrative</span>
+              <span>Color · Light · Motion</span>
+              <span>Znak DOP</span>
+            </div>
+          </div>
         </div>
-      </header>
+      </section>
 
-      <p class="visit__section-label">Соцсети и каналы</p>
-      <div class="link-deck">
-        <a class="link-card" href="https://t.me/znak_dop" target="_blank" rel="noreferrer">
-          <span class="link-card__k">Telegram</span>
-          <span class="link-card__t">Канал Znak DOP</span>
-          <span class="link-card__m">@znak_dop — разборы и бэкстейдж</span>
-        </a>
-        <a
-          class="link-card"
-          href="https://www.instagram.com/znak_dop?igsh=cGU3NDMxZWQzMGg3&utm_source=qr"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <span class="link-card__k">Instagram</span>
-          <span class="link-card__t">Reels / backstage</span>
-          <span class="link-card__m">@znak_dop</span>
-        </a>
-        <a class="link-card" href="https://t.me/gorushkin_ars" target="_blank" rel="noreferrer">
-          <span class="link-card__k">Личный Telegram</span>
-          <span class="link-card__t">Связь по проектам</span>
-          <span class="link-card__m">@gorushkin_ars</span>
-        </a>
+      <section id="visit-links" class="section wrap reveal" aria-label="Ссылки">
+        <div class="section__head">
+          <span class="section__idx">05</span>
+          <h2 class="section__title">Links</h2>
+          <span class="section__meta">social · channel</span>
+        </div>
+        <div class="link-deck">
+          <a class="link-card" href="https://t.me/znak_dop" target="_blank" rel="noreferrer">
+            <span class="link-card__k">Telegram</span>
+            <span class="link-card__t">Канал Znak DOP</span>
+            <span class="link-card__m">@znak_dop — разборы и бэкстейдж</span>
+          </a>
+          <a
+            class="link-card"
+            href="https://www.instagram.com/znak_dop?igsh=cGU3NDMxZWQzMGg3&utm_source=qr"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span class="link-card__k">Instagram</span>
+            <span class="link-card__t">Reels / backstage</span>
+            <span class="link-card__m">@znak_dop</span>
+          </a>
+          <a class="link-card" href="https://t.me/gorushkin_ars" target="_blank" rel="noreferrer">
+            <span class="link-card__k">Личный Telegram</span>
+            <span class="link-card__t">Связь по проектам</span>
+            <span class="link-card__m">@gorushkin_ars</span>
+          </a>
+        </div>
+      </section>
+
+      <section id="visit-contact" class="section wrap reveal" aria-label="Контакт">
+        <div class="section__head">
+          <span class="section__idx">06</span>
+          <h2 class="section__title">Contact</h2>
+          <span class="section__meta">direct</span>
+        </div>
+        <div class="contact-grid">
+          <a
+            class="contact-pill"
+            href="https://t.me/gorushkin_ars"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Telegram"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path
+                d="M21.1 4.2c.3-.1.6.2.5.5l-2.9 13.6c-.1.4-.5.6-.9.4l-4.1-2.9-2.1 2c-.2.2-.5.3-.8.2-.3-.1-.5-.4-.5-.7v-3.5l7.1-6.5c.2-.2 0-.5-.2-.4l-9.1 5.6-3.8-1.2c-.7-.2-.7-1.2 0-1.5l16.8-6z"
+              />
+            </svg>
+          </a>
+          <a class="contact-pill" href="tel:+79998571962" aria-label="Телефон">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path
+                d="M7.2 3.5h3.1c.4 0 .7.2.8.6l1.1 4c.1.3 0 .6-.3.8l-1.8 1.5c1 2.1 2.7 3.8 4.8 4.8l1.5-1.8c.2-.3.5-.4.8-.3l4 1.1c.4.1.6.4.6.8v3.1c0 .5-.4.9-.9.9C11.1 21.9 2.1 12.9 2.1 4.4c0-.5.4-.9.9-.9z"
+              />
+            </svg>
+          </a>
+          <a class="contact-pill" href="mailto:a@gorushkindop.ru" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+              <path
+                d="M4 5.5h16c1.1 0 2 .9 2 2v9c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-9c0-1.1.9-2 2-2zm0 2v.2l8 5.3 8-5.3v-.2H4zm16 9v-6.4l-7.4 4.9c-.4.2-.8.2-1.1 0L4 10.1v6.4h16z"
+              />
+            </svg>
+          </a>
+        </div>
+        <p class="prose visit-contact-prose">
+          Почта для брифов: <strong>a@gorushkindop.ru</strong>
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner wrap">
+        <div class="site-footer__meta">
+          <span>© Arsenii Gorushkin · gorushkindop.com</span>
+          <span>Индивидуальный предприниматель Горушкин Арсений Вячеславович</span>
+          <span>ИНН 352810183370 · ОГРНИП 325350000036850</span>
+        </div>
+        <a href="#top">Наверх</a>
       </div>
-
-      <p class="visit__section-label">Контакт</p>
-      <div class="contact-grid">
-        <a class="contact-pill" href="https://t.me/gorushkin_ars" target="_blank" rel="noreferrer" aria-label="Telegram">
-          <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
-            <path
-              d="M21.1 4.2c.3-.1.6.2.5.5l-2.9 13.6c-.1.4-.5.6-.9.4l-4.1-2.9-2.1 2c-.2.2-.5.3-.8.2-.3-.1-.5-.4-.5-.7v-3.5l7.1-6.5c.2-.2 0-.5-.2-.4l-9.1 5.6-3.8-1.2c-.7-.2-.7-1.2 0-1.5l16.8-6z"
-            />
-          </svg>
-        </a>
-        <a class="contact-pill" href="tel:+79998571962" aria-label="Телефон">
-          <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
-            <path
-              d="M7.2 3.5h3.1c.4 0 .7.2.8.6l1.1 4c.1.3 0 .6-.3.8l-1.8 1.5c1 2.1 2.7 3.8 4.8 4.8l1.5-1.8c.2-.3.5-.4.8-.3l4 1.1c.4.1.6.4.6.8v3.1c0 .5-.4.9-.9.9C11.1 21.9 2.1 12.9 2.1 4.4c0-.5.4-.9.9-.9z"
-            />
-          </svg>
-        </a>
-        <a class="contact-pill" href="mailto:a@gorushkindop.ru" aria-label="Email">
-          <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
-            <path
-              d="M4 5.5h16c1.1 0 2 .9 2 2v9c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2v-9c0-1.1.9-2 2-2zm0 2v.2l8 5.3 8-5.3v-.2H4zm16 9v-6.4l-7.4 4.9c-.4.2-.8.2-1.1 0L4 10.1v6.4h16z"
-            />
-          </svg>
-        </a>
-      </div>
-      <p class="prose" style="margin-top: 1rem; font-size: 14px; text-align: center; color: var(--muted)">
-        Брифы: <strong>a@gorushkindop.ru</strong>
-      </p>
-
-      <footer class="visit__footer">
-        <span>© Arsenii Gorushkin · </span>
-        <a href="../index.html">gorushkindop.com</a>
-      </footer>
-    </div>
+    </footer>
   </body>
 </html>
