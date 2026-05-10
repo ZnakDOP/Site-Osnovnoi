@@ -200,7 +200,7 @@ body.site-nav-open {
 .contact-pill:focus-visible,
 .rental-cta a:focus-visible,
 .site-footer a:focus-visible,
-.visit-profile-card__link:focus-visible {
+.visit-link-tile:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
@@ -429,6 +429,7 @@ body.site-nav-open {
 .site-header__menu-btn:active,
 .site-header__nav a:active,
 .link-card:active,
+.visit-link-tile:active,
 .work-tile:active,
 .contact-pill:active,
 .stat-board--genres .stat-board__item:active,
