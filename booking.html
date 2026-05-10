@@ -3,9 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="images/favicon.jpg" type="image/jpeg" sizes="any" />
-    <link rel="apple-touch-icon" href="images/favicon.jpg" />
-    <title>Бронирование техники — Arsenii Gorushkin</title>
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' blob:; base-uri 'self'; object-src 'none'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; frame-src 'none'; worker-src 'self' blob:; connect-src 'self' https://litterbox.catbox.moe https://0x0.st https://view.officeapps.live.com; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+    />
+    <meta
+      http-equiv="Permissions-Policy"
+      content="camera=(), microphone=(), usb=(), payment=()"
+    />
+    <link rel="icon" href="favicon.ico?v=3" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/dp-32.png?v=3" />
+    <link rel="icon" type="image/svg+xml" href="icons/dp.svg?v=3" />
+    <link rel="apple-touch-icon" href="icons/dp-180.png?v=3" />
+    <title>Рентал техники — Arsenii Gorushkin DOP</title>
     <meta
       name="description"
       content="Корзина и бронирование съёмочного оборудования на одну или несколько смен."
@@ -114,12 +125,12 @@
         </aside>
       </div>
     </div>
-    <!-- ExcelJS (собран под Node): в браузере нужны глобалы, иначе load/writeBuffer падают молча или с неочевидной ошибкой -->
-    <script>
-      window.global = window;
-      window.process = window.process || { browser: true, env: { NODE_ENV: "production" } };
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js"></script>
+    <script src="booking-boot.js?v=1"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js"
+      integrity="sha384-Pqp51FUN2/qzfxZxBCtF0stpc9ONI6MYZpVqmo8m20SoaQCzf+arZvACkLkirlPz"
+      crossorigin="anonymous"
+    ></script>
     <script src="booking.js?v=xl-20260509d" defer></script>
   </body>
 </html>
