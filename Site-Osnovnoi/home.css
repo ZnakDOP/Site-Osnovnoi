@@ -884,7 +884,7 @@ button.work-tile {
 }
 
 .work-tile--cinema-nesezon::before {
-  background-image: url("images/work-cinema-nesezon.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/work-cinema-nesezon.png?v=2"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
