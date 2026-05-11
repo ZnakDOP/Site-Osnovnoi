@@ -900,6 +900,21 @@ button.work-tile {
   background-position: center center;
 }
 
+.work-tile--doc-avito::before {
+  background-image: url("images/work-doc-avito.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center center;
+}
+
+.work-tile--doc-vk-ingushetia::before {
+  background-image: url("images/work-doc-vk-ingushetia.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center center;
+}
+
+.work-tile--doc-vk-hp::before {
+  background-image: url("images/work-doc-vk-hp.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center center;
+}
+
 .kinescope-lightbox {
   position: fixed;
   inset: 0;
