@@ -39,8 +39,8 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600&family=Syne:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="home.css?v=38" />
-    <script src="site.js?v=2" defer></script>
+    <link rel="stylesheet" href="home.css?v=39" />
+    <script src="site.js?v=3" defer></script>
   </head>
   <body>
     <div id="site-loader" class="site-loader" aria-live="polite" aria-busy="true">
@@ -240,38 +240,26 @@
         <div class="cat" id="work-narrative">
           <div class="cat__label">Кино · нарратив</div>
           <div class="work-grid">
-            <article class="work-tile work-tile--embed">
-              <div class="work-tile__embed-frame">
-                <iframe
-                  src="https://kinescope.io/embed/oAkpDXygo6WAXB1KPT7xPs"
-                  title="8 Woman"
-                  allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;"
-                  allowfullscreen
-                  loading="lazy"
-                ></iframe>
-                <div class="work-tile__embed-gradient" aria-hidden="true"></div>
-                <div class="work-tile__embed-meta">
-                  <span class="work-tile__tag">К/М фильм</span>
-                  <span class="work-tile__name">8 Woman</span>
-                </div>
-              </div>
-            </article>
-            <article class="work-tile work-tile--embed">
-              <div class="work-tile__embed-frame">
-                <iframe
-                  src="https://kinescope.io/embed/8SK5n7UfUv5FhJ92c4wBoB"
-                  title="Несезон"
-                  allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;"
-                  allowfullscreen
-                  loading="lazy"
-                ></iframe>
-                <div class="work-tile__embed-gradient" aria-hidden="true"></div>
-                <div class="work-tile__embed-meta">
-                  <span class="work-tile__tag">К/М фильм</span>
-                  <span class="work-tile__name">Несезон</span>
-                </div>
-              </div>
-            </article>
+            <button
+              type="button"
+              class="work-tile work-tile--4 work-tile--cinema-8woman js-open-kinescope"
+              data-kinescope-src="https://kinescope.io/embed/oAkpDXygo6WAXB1KPT7xPs"
+              data-kinescope-title="8 Woman"
+            >
+              <span class="work-tile__tag">К/М фильм</span>
+              <span class="work-tile__name">8 Woman</span>
+              <span class="work-tile__hint">Никита Белых</span>
+            </button>
+            <button
+              type="button"
+              class="work-tile work-tile--2 work-tile--cinema-nesezon js-open-kinescope"
+              data-kinescope-src="https://kinescope.io/embed/8SK5n7UfUv5FhJ92c4wBoB"
+              data-kinescope-title="Несезон"
+            >
+              <span class="work-tile__tag">К/М фильм</span>
+              <span class="work-tile__name">Несезон</span>
+              <span class="work-tile__hint">Борис Резак</span>
+            </button>
             <a
               class="work-tile work-tile--2"
               href="https://gorushkindop.com"
@@ -502,5 +490,34 @@
         <a href="#top">Наверх</a>
       </div>
     </footer>
+
+    <div
+      id="kinescope-lightbox"
+      class="kinescope-lightbox"
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-label="Просмотр работы"
+    >
+      <button
+        type="button"
+        class="kinescope-lightbox__backdrop"
+        data-kinescope-close
+        aria-label="Закрыть просмотр"
+      ></button>
+      <div class="kinescope-lightbox__panel">
+        <button type="button" class="kinescope-lightbox__close" data-kinescope-close aria-label="Закрыть">
+          ×
+        </button>
+        <div class="kinescope-lightbox__ratio">
+          <iframe
+            class="kinescope-lightbox__iframe"
+            title=""
+            allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

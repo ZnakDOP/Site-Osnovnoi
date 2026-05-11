@@ -34,9 +34,6 @@
     nav.querySelectorAll("a").forEach((a) => {
       a.addEventListener("click", closeNav)
     })
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeNav()
-    })
     document.addEventListener("click", (e) => {
       if (!nav.classList.contains("site-header__nav--open")) return
       const t = e.target
@@ -82,5 +79,54 @@
   } else {
     document.querySelectorAll(".reveal").forEach((el) => el.classList.add("reveal--visible"))
   }
+
+  const kinescopeLb = document.getElementById("kinescope-lightbox")
+  const kinescopeIframe = kinescopeLb?.querySelector(".kinescope-lightbox__iframe")
+  let kinescopeFocusReturn = null
+
+  function closeKinescope() {
+    if (!kinescopeLb || !kinescopeIframe) return
+    kinescopeLb.hidden = true
+    kinescopeIframe.removeAttribute("src")
+    kinescopeIframe.setAttribute("title", "")
+    document.documentElement.classList.remove("kinescope-open")
+    if (kinescopeFocusReturn && typeof kinescopeFocusReturn.focus === "function") {
+      kinescopeFocusReturn.focus()
+    }
+    kinescopeFocusReturn = null
+  }
+
+  function openKinescope(src, title) {
+    if (!kinescopeLb || !kinescopeIframe) return
+    kinescopeFocusReturn = document.activeElement
+    kinescopeIframe.src = src
+    kinescopeIframe.title = title
+    kinescopeLb.hidden = false
+    document.documentElement.classList.add("kinescope-open")
+    window.setTimeout(() => {
+      kinescopeLb.querySelector(".kinescope-lightbox__close")?.focus()
+    }, 0)
+  }
+
+  document.querySelectorAll(".js-open-kinescope").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const src = btn.getAttribute("data-kinescope-src")
+      const title = btn.getAttribute("data-kinescope-title") || "Просмотр"
+      if (src) openKinescope(src, title)
+    })
+  })
+
+  kinescopeLb?.querySelectorAll("[data-kinescope-close]").forEach((el) => {
+    el.addEventListener("click", () => closeKinescope())
+  })
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return
+    if (kinescopeLb && !kinescopeLb.hidden) {
+      closeKinescope()
+      return
+    }
+    closeNav()
+  })
 
 })()
