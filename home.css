@@ -896,7 +896,7 @@ button.work-tile {
 }
 
 .work-tile--cinema-pochemu::before {
-  background-image: url("images/work-cinema-pochemu.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/work-cinema-pochemu.png?v=2"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
