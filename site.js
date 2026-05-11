@@ -82,6 +82,7 @@
 
   const kinescopeLb = document.getElementById("kinescope-lightbox")
   const kinescopeIframe = kinescopeLb?.querySelector(".kinescope-lightbox__iframe")
+  const kinescopeRatio = kinescopeLb?.querySelector(".kinescope-lightbox__ratio")
   let kinescopeFocusReturn = null
 
   function closeKinescope() {
@@ -89,6 +90,7 @@
     kinescopeLb.hidden = true
     kinescopeIframe.removeAttribute("src")
     kinescopeIframe.setAttribute("title", "")
+    if (kinescopeRatio) kinescopeRatio.style.removeProperty("padding-top")
     document.documentElement.classList.remove("kinescope-open")
     if (kinescopeFocusReturn && typeof kinescopeFocusReturn.focus === "function") {
       kinescopeFocusReturn.focus()
@@ -96,9 +98,17 @@
     kinescopeFocusReturn = null
   }
 
-  function openKinescope(src, title) {
+  function openKinescope(src, title, aspectAttr) {
     if (!kinescopeLb || !kinescopeIframe) return
     kinescopeFocusReturn = document.activeElement
+    if (kinescopeRatio) {
+      const n = aspectAttr != null && String(aspectAttr).trim() !== "" ? Number(aspectAttr) : NaN
+      if (Number.isFinite(n) && n > 0 && n < 100) {
+        kinescopeRatio.style.paddingTop = n + "%"
+      } else {
+        kinescopeRatio.style.removeProperty("padding-top")
+      }
+    }
     kinescopeIframe.src = src
     kinescopeIframe.title = title
     kinescopeLb.hidden = false
@@ -112,7 +122,8 @@
     btn.addEventListener("click", () => {
       const src = btn.getAttribute("data-kinescope-src")
       const title = btn.getAttribute("data-kinescope-title") || "Просмотр"
-      if (src) openKinescope(src, title)
+      const aspect = btn.getAttribute("data-kinescope-aspect")
+      if (src) openKinescope(src, title, aspect)
     })
   })
 

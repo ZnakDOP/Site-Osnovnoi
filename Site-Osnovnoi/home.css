@@ -888,6 +888,11 @@ button.work-tile {
   background-position: center center;
 }
 
+.work-tile--cinema-fillip::before {
+  background-image: url("images/work-cinema-fillip.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center center;
+}
+
 .kinescope-lightbox {
   position: fixed;
   inset: 0;
