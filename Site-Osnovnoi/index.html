@@ -41,8 +41,9 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600&family=Syne:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="home.css?v=52" />
-    <script src="site.js?v=7" defer></script>
+    <link rel="stylesheet" href="home.css?v=53" />
+    <script src="vendor/lenis.min.js" defer></script>
+    <script src="site.js?v=8" defer></script>
   </head>
   <body>
     <div id="site-loader" class="site-loader" aria-live="polite" aria-busy="true">
@@ -54,7 +55,7 @@
 
     <header class="site-header">
       <div
-        class="site-header__lang"
+        class="site-header__lang site-header__lang--bar"
         role="group"
         aria-label="Язык"
         data-i18n-aria="lang_group_aria"
@@ -64,6 +65,16 @@
         <button type="button" class="site-header__lang-btn" data-set-lang="en" aria-pressed="false">EN</button>
       </div>
       <nav class="site-header__nav" aria-label="Разделы сайта" data-i18n-aria="nav_aria">
+        <div
+          class="site-header__lang site-header__lang--drawer"
+          role="group"
+          aria-label="Язык"
+          data-i18n-aria="lang_group_aria"
+        >
+          <span class="site-header__lang-pill" aria-hidden="true"></span>
+          <button type="button" class="site-header__lang-btn" data-set-lang="ru" aria-pressed="true">RU</button>
+          <button type="button" class="site-header__lang-btn" data-set-lang="en" aria-pressed="false">EN</button>
+        </div>
         <a href="#showreel" data-i18n="nav_showreel">Шоурил</a>
         <a href="#bio" data-i18n="nav_bio">Био</a>
         <a href="#cv">CV</a>
@@ -264,7 +275,7 @@
             >
               ‹
             </button>
-            <div class="work-carousel__viewport">
+            <div class="work-carousel__viewport" data-lenis-prevent-wheel>
             <div class="work-carousel__track work-grid" data-carousel-track>
             <button
               type="button"
@@ -334,7 +345,7 @@
             >
               ‹
             </button>
-            <div class="work-carousel__viewport">
+            <div class="work-carousel__viewport" data-lenis-prevent-wheel>
             <div class="work-carousel__track work-grid" data-carousel-track>
               <button
                 type="button"
@@ -439,7 +450,7 @@
             >
               ‹
             </button>
-            <div class="work-carousel__viewport">
+            <div class="work-carousel__viewport" data-lenis-prevent-wheel>
             <div class="work-carousel__track work-grid" data-carousel-track>
             <a
               class="work-tile work-tile--1"
@@ -497,7 +508,7 @@
             >
               ‹
             </button>
-            <div class="work-carousel__viewport">
+            <div class="work-carousel__viewport" data-lenis-prevent-wheel>
             <div class="work-carousel__track work-grid" data-carousel-track>
             <a
               class="work-tile work-tile--2"

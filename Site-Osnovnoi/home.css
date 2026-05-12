@@ -36,6 +36,11 @@ html {
   min-height: 100%;
 }
 
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -327,6 +332,12 @@ body.site-nav-open {
   transform: translateY(-4px) rotate(-45deg);
 }
 
+@media (min-width: 1025px) {
+  .site-header__lang--drawer {
+    display: none !important;
+  }
+}
+
 @media (max-width: 1024px) {
   :root {
     --header-h: 56px;
@@ -335,10 +346,23 @@ body.site-nav-open {
     --space: max(var(--space-floor), min(7vw, 2.75rem));
   }
 
-  .site-header__lang {
+  .site-header__lang--bar {
+    display: none !important;
+  }
+
+  .site-header__lang--drawer {
+    position: relative;
     left: auto;
-    right: calc(48px + 12px + env(safe-area-inset-right, 0px));
-    top: calc(env(safe-area-inset-top, 0px) + var(--header-h) / 2);
+    right: auto;
+    top: auto;
+    transform: none;
+    align-self: center;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto 1rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--stroke);
+    box-sizing: border-box;
   }
 
   .site-header__menu-btn {
@@ -1071,15 +1095,6 @@ button.work-tile {
   box-sizing: border-box;
 }
 
-@container work-carousel (min-width: 960px) {
-  .work-carousel__track .work-tile {
-    flex: 0 0 calc((100cqi - 3 * var(--carousel-tile-gap)) / 4);
-    min-width: calc((100cqi - 3 * var(--carousel-tile-gap)) / 4);
-    max-width: calc((100cqi - 3 * var(--carousel-tile-gap)) / 4);
-    width: calc((100cqi - 3 * var(--carousel-tile-gap)) / 4);
-  }
-}
-
 .work-carousel__track .work-tile .work-tile__tag {
   font-size: 10px;
   letter-spacing: 0.15em;
@@ -1131,6 +1146,57 @@ button.work-tile {
 .work-carousel__btn[disabled] {
   opacity: 0.28;
   pointer-events: none;
+}
+
+/* Портфолио на ширине ≥769px: три колонки, две строки в окне, вертикальная прокрутка */
+@media (min-width: 769px) {
+  .work-carousel__btn {
+    display: none;
+  }
+
+  .work-carousel {
+    gap: 0;
+    align-items: stretch;
+  }
+
+  .work-carousel__viewport {
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-color: var(--stroke2) transparent;
+    scroll-behavior: smooth;
+    max-height: min(
+      720px,
+      calc(((100cqi - 28px) / 3) * (10 / 16) * 2 + 14px + 28px)
+    );
+  }
+
+  .work-carousel__track.work-grid,
+  .work-carousel .work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    overflow: visible;
+    flex-wrap: wrap;
+    scroll-snap-type: none;
+    padding: 4px 4px 14px 0;
+  }
+
+  .work-carousel .work-carousel__track .work-tile {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    flex: none;
+    aspect-ratio: 16 / 10;
+    min-height: unset;
+    align-self: stretch;
+    padding: 1.45rem 1.25rem;
+    scroll-snap-align: none;
+  }
+
+  .work-carousel .work-carousel__track .work-tile .work-tile__name {
+    font-size: 1.32rem;
+  }
 }
 
 .kinescope-lightbox {
@@ -1425,13 +1491,31 @@ body.scroll-down .reveal {
   transform: none;
 }
 
-/* ——— Showreel placeholder block ——— */
+/* ——— Showreel ——— */
 .showreel-box {
-  border: 1px dashed var(--stroke2);
+  border: none;
   border-radius: 20px;
-  padding: clamp(2rem, 6vw, 3.5rem);
+  padding: clamp(1.35rem, 4.2vw, 2.75rem);
   text-align: center;
-  background: linear-gradient(180deg, var(--surface) 0%, transparent 100%);
+  background:
+    radial-gradient(ellipse 88% 125% at 50% 58%, rgba(94, 234, 212, 0.09) 0%, transparent 58%),
+    linear-gradient(165deg, rgba(255, 255, 255, 0.05) 0%, rgba(10, 12, 18, 0.72) 48%, rgba(6, 6, 8, 0.92) 100%);
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.38),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  transition:
+    background 0.55s ease,
+    box-shadow 0.55s ease;
+}
+
+.showreel-box:hover {
+  background:
+    radial-gradient(ellipse 95% 130% at 50% 42%, rgba(94, 234, 212, 0.2) 0%, transparent 54%),
+    linear-gradient(165deg, rgba(255, 255, 255, 0.09) 0%, rgba(18, 26, 32, 0.58) 46%, rgba(6, 6, 8, 0.9) 100%);
+  box-shadow:
+    0 28px 78px rgba(0, 0, 0, 0.44),
+    inset 0 0 0 1px rgba(94, 234, 212, 0.15),
+    0 0 52px rgba(94, 234, 212, 0.09);
 }
 
 .showreel-box p {
@@ -1728,7 +1812,7 @@ body.scroll-down .reveal {
     max-width: none;
     flex: none;
     min-height: unset;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 16 / 9;
     align-self: stretch;
     padding: 1rem 0.85rem;
     scroll-snap-align: none;

@@ -225,8 +225,8 @@
     const srIframe = document.querySelector(".showreel-embed__iframe")
     if (srIframe) srIframe.setAttribute("title", isEn ? "Showreel" : "Шоурил")
 
-    const langRoot = document.querySelector(".site-header__lang")
-    if (langRoot) langRoot.classList.toggle("site-header__lang--en", isEn)
+    const langRoots = document.querySelectorAll(".site-header__lang")
+    langRoots.forEach((langRoot) => langRoot.classList.toggle("site-header__lang--en", isEn))
 
     document.querySelectorAll("[data-set-lang]").forEach((btn) => {
       const bLang = btn.getAttribute("data-set-lang")
@@ -341,6 +341,7 @@
       const prev = root.querySelector("[data-carousel-prev]")
       const next = root.querySelector("[data-carousel-next]")
       if (!track || !prev || !next) return
+      if (window.getComputedStyle(prev).display === "none") return
 
       function stepSize() {
         const tile = track.querySelector(".work-tile")
@@ -429,6 +430,15 @@
     }
     closeNav()
   })
+
+  if (!prefersReduced && typeof globalThis.Lenis === "function") {
+    const lenis = new globalThis.Lenis({ smoothWheel: true, lerp: 0.11 })
+    function onLenisFrame(t) {
+      lenis.raf(t)
+      requestAnimationFrame(onLenisFrame)
+    }
+    requestAnimationFrame(onLenisFrame)
+  }
 
   initLang()
   initWorkCarousel()
