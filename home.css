@@ -1926,27 +1926,33 @@ body.scroll-down .reveal {
     overflow: visible;
   }
 
+  #work-vertical .work-carousel--vertical {
+    width: calc(100% + 2 * clamp(0px, 5vw, 18px));
+    margin-inline: calc(-1 * clamp(0px, 5vw, 18px));
+    max-width: none;
+    box-sizing: border-box;
+  }
+
   .work-carousel--vertical .work-carousel__viewport {
     width: 100%;
     min-width: 0;
     max-width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
-    max-height: calc(
-      3 * ((100cqi - 14px) / 2 - 1px) * (16 / 9) + 2 * 10px + 18px
-    );
+    max-height: calc(2 * ((100cqi - 10px) / 2) * (16 / 9) + 12px + 20px);
     -webkit-overflow-scrolling: touch;
     scrollbar-color: var(--stroke2) transparent;
     scroll-behavior: smooth;
   }
 
+  /* 2 колонки × 2 ряда; колонки шире (минимальные поля), текст и отступы ~×1.5 */
   .work-carousel--vertical .work-carousel__track {
     display: grid;
-    grid-template-rows: repeat(3, minmax(0, auto));
+    grid-template-rows: repeat(2, minmax(0, auto));
     grid-auto-flow: column;
-    grid-auto-columns: minmax(0, calc((100cqi - 14px) / 2 - 1px));
-    column-gap: 14px;
-    row-gap: 10px;
+    grid-auto-columns: minmax(0, calc((100cqi - 10px) / 2));
+    column-gap: 10px;
+    row-gap: 12px;
     width: max-content;
     box-sizing: border-box;
     padding: 4px 0 10px;
@@ -1959,21 +1965,21 @@ body.scroll-down .reveal {
     max-width: none;
     aspect-ratio: 9 / 16;
     height: auto;
-    padding: 0.45rem 0.38rem 0.42rem;
+    padding: 0.68rem 0.56rem 0.62rem;
     justify-content: flex-end;
     text-align: left;
   }
 
   .work-carousel--vertical .work-carousel__track .work-tile .work-tile__tag {
-    font-size: 6px;
-    letter-spacing: 0.08em;
-    margin-bottom: 2px;
-    line-height: 1.1;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    margin-bottom: 3px;
+    line-height: 1.12;
   }
 
   .work-carousel--vertical .work-carousel__track .work-tile .work-tile__name {
-    font-size: clamp(0.58rem, 2.4vw, 0.72rem);
-    line-height: 1.05;
+    font-size: clamp(0.87rem, 3.6vw, 1.08rem);
+    line-height: 1.08;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
@@ -1981,9 +1987,9 @@ body.scroll-down .reveal {
   }
 
   .work-carousel--vertical .work-carousel__track .work-tile .work-tile__hint {
-    font-size: 7px;
-    line-height: 1.08;
-    margin-top: 2px;
+    font-size: 10.5px;
+    line-height: 1.1;
+    margin-top: 3px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
