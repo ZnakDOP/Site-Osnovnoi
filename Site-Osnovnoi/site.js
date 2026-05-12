@@ -55,6 +55,7 @@
     stat_music: "Music videos",
     stat_commercial: "Commercial",
     stat_doc: "Documentary",
+    stat_vertical: "Vertical content",
     sec_showreel_title: "Showreel",
     sec_showreel_meta: "edit · grade · sound",
     sec_bio_title: "Bio",
