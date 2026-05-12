@@ -43,6 +43,7 @@
     hero_kicker: "Moscow · on location · worldwide",
     hero_role: "Director of Photography",
     hero_rental: "Equipment rental",
+    hero_showreel_btn: "Showreel",
     strip_commercial: "Commercial",
     strip_music: "Music video",
     strip_doc: "Documentary",
