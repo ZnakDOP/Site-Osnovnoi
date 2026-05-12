@@ -1,6 +1,258 @@
 ;(function () {
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
+  const I18N_ARIA_RU = {
+    lang_group_aria: "Язык",
+    nav_aria: "Разделы сайта",
+    menu_open: "Открыть меню",
+    hero_aria: "Введение",
+    bio_media_aria: "Бэкстейдж",
+    carousel_prev: "Предыдущие работы",
+    carousel_next: "Следующие работы",
+    aria_telegram: "Telegram",
+    aria_phone: "Телефон",
+    aria_email: "Почта",
+    lb_dialog: "Просмотр работы",
+    lb_close_backdrop: "Закрыть просмотр",
+    lb_close_btn: "Закрыть",
+  }
+
+  const I18N_ARIA_EN = {
+    lang_group_aria: "Language",
+    nav_aria: "Site sections",
+    menu_open: "Open menu",
+    hero_aria: "Introduction",
+    bio_media_aria: "Behind the scenes",
+    carousel_prev: "Previous projects",
+    carousel_next: "Next projects",
+    aria_telegram: "Telegram",
+    aria_phone: "Phone",
+    aria_email: "Email",
+    lb_dialog: "Project viewer",
+    lb_close_backdrop: "Close viewer",
+    lb_close_btn: "Close",
+  }
+
+  const I18N_EN = {
+    nav_showreel: "Showreel",
+    nav_bio: "Bio",
+    nav_work: "Work",
+    nav_links: "Links",
+    nav_contact: "Contact",
+    nav_rental: "Rental",
+    hero_kicker: "Moscow · on location · worldwide",
+    hero_role: "Director of Photography",
+    hero_rental: "Equipment rental",
+    strip_commercial: "Commercial",
+    strip_music: "Music video",
+    strip_doc: "Documentary",
+    strip_interview: "Interview",
+    strip_narrative: "Narrative",
+    strip_clm: "Color · light · motion",
+    stat_genres: "Genres",
+    stat_narrative: "Narrative film",
+    stat_music: "Music videos",
+    stat_commercial: "Commercial",
+    stat_doc: "Documentary",
+    sec_showreel_title: "Showreel",
+    sec_showreel_meta: "edit · grade · sound",
+    sec_bio_title: "Bio",
+    sec_bio_meta: "about",
+    bio_p1:
+      "<strong>Arsenii Gorushkin</strong> is a cinematographer from Cherepovets and a graduate of the cinematography department at GITR.",
+    bio_p2:
+      "For me, the priority is atmosphere and a sense of presence inside the story. I look for imagery that does not merely accompany a scene but shapes its mood, rhythm, and inner tension. I want the frame to feel alive and emotionally precise, regardless of genre or scale.",
+    bio_p3:
+      "I invest in prep: reading the script, building visual references, and working with space and light. Strong images come from attention to detail and close collaboration with the whole team.",
+    bio_p4:
+      "On set I balance precision with freedom — ready for planned choices while leaving room for moments that cannot be invented in advance. Those moments often make a scene feel real.",
+    bio_p5:
+      "I am drawn to projects with a strong visual world, a clear authorial voice, and care for the emotional state of the frame.",
+    bio_alt1: "Arsenii on set",
+    bio_alt2: "Arsenii with a camera on location",
+    bio_alt3: "Library shoot, behind the scenes",
+    bio_alt4: "Working with a cinema camera on set",
+    sec_cv_title: "CV",
+    sec_cv_meta: "filmography",
+    cv_p1:
+      "Full credits, roles, and technical details are available on request. Email or Telegram me and I will send a PDF and links to selected work.",
+    cv_btn: "Request CV",
+    sec_work_title: "Selected work",
+    sec_work_meta: "portfolio",
+    cat_narrative: "Narrative · cinema",
+    w_tag_narrative: "Narrative / short",
+    w_8w_hint: "Nikita Belykh",
+    w_nesezon_hint: "Boris Rezak",
+    w_fillip_hint: "Sergey Shteps",
+    w_pochemu_hint: "Nikita Belykh",
+    cat_doc: "Interview · doc",
+    w_doc_nto_tag: "Documentary",
+    w_doc_nto_name: "National Tech Olympiad",
+    w_doc_nto_hint: "Sber",
+    w_doc_ing_tag: "Documentary",
+    w_doc_ing_name: "VK Places · Republic of Ingushetia",
+    w_doc_ing_hint: "VKontakte",
+    w_doc_avito_tag: "Documentary",
+    w_doc_avito_name: "Avito server hideout",
+    w_doc_avito_hint: "Avito",
+    w_doc_tochka_tag: "Documentary",
+    w_doc_tochka_name: "Four growth levers for business",
+    w_doc_tochka_hint: "Tochka Bank",
+    w_doc_hp_tag: "Interview",
+    w_doc_hp_name: "Testing HP communities",
+    w_doc_hp_hint: "VKontakte",
+    w_doc_bft_tag: "Multicam",
+    w_doc_bft_name: "Business Fail Talks",
+    w_doc_bft_hint: "BFT",
+    w_doc_sv_tag: "Interview",
+    w_doc_sv_name: "Irina Gorbacheva on choosing wine",
+    w_doc_sv_hint: "Simple Vine",
+    cat_commercial: "Commercial · advertising",
+    w_tag_commercial: "Commercial",
+    cat_music: "Music videos",
+    w_tag_music: "Music video",
+    sec_links_title: "Links",
+    sec_links_meta: "social · channel",
+    link_tg_t: "Znak DOP channel",
+    link_tg_m: "@znak_dop — breakdowns and backstage",
+    link_ig_t: "Reels / backstage",
+    link_personal_k: "Personal Telegram",
+    link_personal_t: "Project inquiries",
+    sec_contact_title: "Contact",
+    sec_contact_meta: "direct",
+    contact_briefs: "Briefs: <strong>a@gorushkindop.ru</strong>",
+    sec_rental_title: "Equipment rental",
+    rental_intro: "Quick day rates. Full gear list and date booking are in the cart.",
+    rental_cam_h: "Camera",
+    rental_light_h: "Light & sound",
+    rental_full_h: "Full list",
+    rental_full_p:
+      "Cameras, power, optics, stabilizers, monitors, routing, and media — in the calculator on the booking page.",
+    rental_cta: "Book gear →",
+    footer_ip: "Sole proprietor Arsenii Viacheslavovich Gorushkin",
+    footer_top: "Back to top",
+  }
+
+  const ruHtml = new Map()
+  const ruAria = new Map()
+
+  function captureRuStrings() {
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const k = el.getAttribute("data-i18n")
+      if (k) ruHtml.set(k, el.innerHTML)
+    })
+    document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+      const k = el.getAttribute("data-i18n-alt")
+      if (k && el instanceof HTMLImageElement) ruHtml.set(k, el.alt)
+    })
+    document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+      const k = el.getAttribute("data-i18n-aria")
+      if (k) ruAria.set(el, el.getAttribute("aria-label") || "")
+    })
+  }
+
+  function applyAriaLang(lang) {
+    const t = lang === "en" ? I18N_ARIA_EN : I18N_ARIA_RU
+    document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+      const k = el.getAttribute("data-i18n-aria")
+      if (!k) return
+      const label = lang === "en" ? I18N_ARIA_EN[k] || ruAria.get(el) : ruAria.get(el) || I18N_ARIA_RU[k]
+      if (label) el.setAttribute("aria-label", label)
+    })
+  }
+
+  function applyLang(lang) {
+    const isEn = lang === "en"
+    document.documentElement.lang = isEn ? "en" : "ru"
+    try {
+      localStorage.setItem("siteLang", lang)
+    } catch (_) {}
+
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const k = el.getAttribute("data-i18n")
+      if (!k) return
+      if (isEn) {
+        const t = I18N_EN[k]
+        if (t != null) el.innerHTML = t
+      } else {
+        const ru = ruHtml.get(k)
+        if (ru != null) el.innerHTML = ru
+      }
+    })
+
+    document.querySelectorAll("[data-i18n-alt]").forEach((el) => {
+      const k = el.getAttribute("data-i18n-alt")
+      if (!k || !(el instanceof HTMLImageElement)) return
+      if (isEn) {
+        const t = I18N_EN[k]
+        if (t != null) el.alt = t
+      } else {
+        const ru = ruHtml.get(k)
+        if (ru != null) el.alt = ru
+      }
+    })
+
+    applyAriaLang(lang)
+
+    const titleEl = document.getElementById("meta-page-title")
+    if (titleEl) {
+      titleEl.textContent = isEn ? "Arsenii Gorushkin · Cinematographer" : "Arsenii Gorushkin DOP"
+    }
+    const descEl = document.getElementById("meta-description")
+    if (descEl) {
+      descEl.setAttribute(
+        "content",
+        isEn
+          ? "Cinematographer: commercial, music videos, documentary. Based in Moscow, shooting across Russia and worldwide. Showreel, CV, ZNAK RENT."
+          : "Director of Photography: реклама, клипы, документалистика. База в Москве, съёмки по России и worldwide. Шоурил, CV, рентал ZNAK RENT."
+      )
+    }
+    const ogT = document.getElementById("meta-og-title")
+    if (ogT) {
+      ogT.setAttribute("content", isEn ? "Arsenii Gorushkin · Cinematographer" : "Arsenii Gorushkin DOP")
+    }
+    const ogD = document.getElementById("meta-og-desc")
+    if (ogD) {
+      ogD.setAttribute(
+        "content",
+        isEn
+          ? "DP / cinematographer. Moscow · on location · worldwide — commercial, music videos, documentary."
+          : "DP / оператор-постановщик. Москва · on location · worldwide — коммерция, клипы, документалистика."
+      )
+    }
+
+    const srIframe = document.querySelector(".showreel-embed__iframe")
+    if (srIframe) srIframe.setAttribute("title", isEn ? "Showreel" : "Шоурил")
+
+    document.querySelectorAll("[data-set-lang]").forEach((btn) => {
+      const bLang = btn.getAttribute("data-set-lang")
+      const active = (isEn && bLang === "en") || (!isEn && bLang === "ru")
+      btn.classList.toggle("site-header__lang-btn--active", active)
+      btn.setAttribute("aria-pressed", active ? "true" : "false")
+    })
+  }
+
+  function initLang() {
+    captureRuStrings()
+    document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+      const k = el.getAttribute("data-i18n-aria")
+      if (k && !ruAria.has(el)) ruAria.set(el, el.getAttribute("aria-label") || "")
+    })
+    let pref = "ru"
+    try {
+      pref = localStorage.getItem("siteLang") || "ru"
+    } catch (_) {}
+    if (pref !== "en" && pref !== "ru") pref = "ru"
+    applyLang(pref)
+
+    document.querySelectorAll("[data-set-lang]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const lang = btn.getAttribute("data-set-lang")
+        if (lang === "en" || lang === "ru") applyLang(lang)
+      })
+    })
+  }
+
   const loader = document.getElementById("site-loader")
   if (loader && !prefersReduced) {
     const done = () => {
@@ -80,6 +332,38 @@
     document.querySelectorAll(".reveal").forEach((el) => el.classList.add("reveal--visible"))
   }
 
+  function initWorkCarousel() {
+    const root = document.querySelector(".work-carousel")
+    if (!root) return
+    const track = root.querySelector("[data-carousel-track]")
+    const prev = root.querySelector("[data-carousel-prev]")
+    const next = root.querySelector("[data-carousel-next]")
+    if (!track || !prev || !next) return
+
+    function stepSize() {
+      const tile = track.querySelector(".work-tile")
+      if (!tile) return Math.min(292, track.clientWidth * 0.82)
+      const gap = 12
+      return tile.getBoundingClientRect().width + gap
+    }
+
+    function updateDisabled() {
+      const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth - 2)
+      prev.disabled = track.scrollLeft <= 2
+      next.disabled = track.scrollLeft >= maxScroll
+    }
+
+    prev.addEventListener("click", () => {
+      track.scrollBy({ left: -stepSize(), behavior: prefersReduced ? "auto" : "smooth" })
+    })
+    next.addEventListener("click", () => {
+      track.scrollBy({ left: stepSize(), behavior: prefersReduced ? "auto" : "smooth" })
+    })
+    track.addEventListener("scroll", () => window.requestAnimationFrame(updateDisabled), { passive: true })
+    window.addEventListener("resize", () => window.requestAnimationFrame(updateDisabled), { passive: true })
+    window.setTimeout(updateDisabled, 0)
+  }
+
   const kinescopeLb = document.getElementById("kinescope-lightbox")
   const kinescopeIframe = kinescopeLb?.querySelector(".kinescope-lightbox__iframe")
   const kinescopeRatio = kinescopeLb?.querySelector(".kinescope-lightbox__ratio")
@@ -121,7 +405,10 @@
   document.querySelectorAll(".js-open-kinescope").forEach((btn) => {
     btn.addEventListener("click", () => {
       const src = btn.getAttribute("data-kinescope-src")
-      const title = btn.getAttribute("data-kinescope-title") || "Просмотр"
+      const isEn = document.documentElement.lang === "en"
+      const titleEn = btn.getAttribute("data-kinescope-title-en")
+      const titleRu = btn.getAttribute("data-kinescope-title") || (isEn ? "Viewing" : "Просмотр")
+      const title = isEn && titleEn ? titleEn : titleRu
       const aspect = btn.getAttribute("data-kinescope-aspect")
       if (src) openKinescope(src, title, aspect)
     })
@@ -140,4 +427,6 @@
     closeNav()
   })
 
+  initLang()
+  initWorkCarousel()
 })()
