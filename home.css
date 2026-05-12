@@ -1133,22 +1133,6 @@ button.work-tile {
   pointer-events: none;
 }
 
-@media (max-width: 768px) {
-  .work-carousel {
-    gap: 8px;
-  }
-
-  .work-carousel__track .work-tile {
-    --carousel-tile-gap: 12px;
-  }
-
-  .work-carousel__btn {
-    width: 36px;
-    height: 36px;
-    font-size: 1.1rem;
-  }
-}
-
 .kinescope-lightbox {
   position: fixed;
   inset: 0;
@@ -1708,10 +1692,61 @@ body.scroll-down .reveal {
     gap: 14px;
   }
 
+  /* Портфолио: на телефоне — сетка из двух колонок (несколько рядов), без стрелок и горизонтального скролла */
+  .work-carousel {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .work-carousel__btn {
+    display: none;
+  }
+
+  .work-carousel__viewport {
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+    overflow: visible;
+  }
+
+  .work-carousel__track.work-grid,
   .work-carousel .work-grid {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    overflow: visible;
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+    padding: 2px 0 10px;
+    margin: 0;
+  }
+
+  .work-carousel .work-carousel__track .work-tile {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    flex: none;
+    min-height: unset;
+    aspect-ratio: 3 / 4;
+    align-self: stretch;
+    padding: 1rem 0.85rem;
+    scroll-snap-align: none;
+  }
+
+  .work-carousel .work-carousel__track .work-tile .work-tile__tag {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    margin-bottom: 6px;
+  }
+
+  .work-carousel .work-carousel__track .work-tile .work-tile__name {
+    font-size: clamp(0.92rem, 3.5vw, 1.08rem);
+  }
+
+  .work-carousel .work-carousel__track .work-tile .work-tile__hint {
+    font-size: 11px;
+    margin-top: 6px;
   }
 
   .work-tile {
@@ -1851,7 +1886,9 @@ body.scroll-down .reveal {
     border-radius: 16px;
   }
 
-  .link-card,
+  .work-carousel .work-carousel__track .work-tile {
+    min-height: 0;
+  }
   .rental-card,
   .stat-board {
     border-radius: 14px;
