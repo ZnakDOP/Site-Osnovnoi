@@ -1214,6 +1214,7 @@ button.work-tile {
   box-sizing: border-box;
   aspect-ratio: 9 / 16;
   height: auto;
+  min-height: 0;
   align-self: stretch;
   scroll-snap-align: none;
 }
@@ -1948,9 +1949,13 @@ body.scroll-down .reveal {
   /* 2×2: максимальная ширина колонок, узкий column-gap */
   .work-carousel--vertical .work-carousel__track {
     display: grid;
-    grid-template-rows: repeat(2, minmax(0, auto));
+    grid-template-rows: repeat(
+      2,
+      minmax(0, calc((100cqi - 6px) / 2 * 16 / 9))
+    );
     grid-auto-flow: column;
     grid-auto-columns: minmax(0, calc((100cqi - 6px) / 2));
+    align-items: stretch;
     column-gap: 6px;
     row-gap: 12px;
     width: max-content;
@@ -1963,8 +1968,9 @@ body.scroll-down .reveal {
     width: 100%;
     min-width: 0;
     max-width: none;
-    aspect-ratio: 9 / 16;
-    height: auto;
+    height: 100%;
+    min-height: 0;
+    aspect-ratio: unset;
     padding: 0.78rem 0.62rem 0.7rem;
     justify-content: flex-end;
     text-align: left;
