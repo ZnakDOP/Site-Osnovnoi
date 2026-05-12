@@ -1184,9 +1184,21 @@ button.work-tile {
   padding: 4px 0 10px;
 }
 
+/* Вертикальный контент: кнопки по краям, окно на всю ширину между ними — 4 плитки по cqi не зарезаются */
+.work-carousel--vertical {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+
 .work-carousel--vertical .work-carousel__viewport {
   overflow-x: auto;
   overflow-y: hidden;
+  width: 100%;
+  min-width: 0;
+  scrollbar-gutter: stable;
   -webkit-overflow-scrolling: touch;
   scrollbar-color: var(--stroke2) transparent;
   scroll-behavior: smooth;
@@ -1251,11 +1263,6 @@ button.work-tile {
   .work-carousel:not(.work-carousel--vertical) {
     gap: 0;
     align-items: stretch;
-  }
-
-  .work-carousel--vertical {
-    gap: 10px;
-    align-items: center;
   }
 
   .work-carousel:not(.work-carousel--vertical) .work-carousel__viewport {
@@ -1904,12 +1911,6 @@ body.scroll-down .reveal {
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-  }
-
-  .work-carousel--vertical {
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
   }
 
   .work-carousel:not(.work-carousel--vertical) .work-carousel__btn {
