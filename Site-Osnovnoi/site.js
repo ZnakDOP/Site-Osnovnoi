@@ -225,10 +225,12 @@
     const srIframe = document.querySelector(".showreel-embed__iframe")
     if (srIframe) srIframe.setAttribute("title", isEn ? "Showreel" : "Шоурил")
 
+    const langRoot = document.querySelector(".site-header__lang")
+    if (langRoot) langRoot.classList.toggle("site-header__lang--en", isEn)
+
     document.querySelectorAll("[data-set-lang]").forEach((btn) => {
       const bLang = btn.getAttribute("data-set-lang")
       const active = (isEn && bLang === "en") || (!isEn && bLang === "ru")
-      btn.classList.toggle("site-header__lang-btn--active", active)
       btn.setAttribute("aria-pressed", active ? "true" : "false")
     })
   }

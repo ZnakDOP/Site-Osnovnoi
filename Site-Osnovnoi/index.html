@@ -41,7 +41,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600&family=Syne:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="home.css?v=47" />
+    <link rel="stylesheet" href="home.css?v=48" />
     <script src="site.js?v=6" defer></script>
   </head>
   <body>
@@ -59,9 +59,8 @@
         aria-label="Язык"
         data-i18n-aria="lang_group_aria"
       >
-        <button type="button" class="site-header__lang-btn site-header__lang-btn--active" data-set-lang="ru" aria-pressed="true">
-          RU
-        </button>
+        <span class="site-header__lang-pill" aria-hidden="true"></span>
+        <button type="button" class="site-header__lang-btn" data-set-lang="ru" aria-pressed="true">RU</button>
         <button type="button" class="site-header__lang-btn" data-set-lang="en" aria-pressed="false">EN</button>
       </div>
       <nav class="site-header__nav" aria-label="Разделы сайта" data-i18n-aria="nav_aria">
@@ -313,15 +312,7 @@
             >
               ‹
             </button>
-            <button
-              type="button"
-              class="work-carousel__btn work-carousel__btn--next"
-              data-carousel-next
-              aria-label="Следующие работы"
-              data-i18n-aria="carousel_next"
-            >
-              ›
-            </button>
+            <div class="work-carousel__viewport">
             <div class="work-carousel__track work-grid" data-carousel-track>
               <button
                 type="button"
@@ -401,6 +392,16 @@
                 <span class="work-tile__hint" data-i18n="w_doc_sv_hint">Simple Vine</span>
               </button>
             </div>
+            </div>
+            <button
+              type="button"
+              class="work-carousel__btn work-carousel__btn--next"
+              data-carousel-next
+              aria-label="Следующие работы"
+              data-i18n-aria="carousel_next"
+            >
+              ›
+            </button>
           </div>
         </div>
 
