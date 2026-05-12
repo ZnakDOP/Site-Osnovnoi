@@ -870,9 +870,9 @@ body.site-nav-open {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  min-height: 200px;
+  min-height: 400px;
   padding: 1.25rem;
-  border-radius: 16px;
+  border-radius: 20px;
   border: 1px solid var(--stroke);
   text-decoration: none;
   color: var(--text);
@@ -1056,15 +1056,32 @@ button.work-tile {
   scrollbar-color: var(--stroke2) transparent;
 }
 
-/* Ровно 4 плитки целиком в видимой зоне между стрелками (3 промежутка по 12px) */
+/* Две плитки целиком между стрелками (в ~2× шире прежних «четвёрок») */
 .work-carousel__track .work-tile {
   --carousel-tile-gap: 12px;
-  flex: 0 0 calc((100cqi - 3 * var(--carousel-tile-gap)) / 4);
-  min-width: calc((100cqi - 3 * var(--carousel-tile-gap)) / 4);
-  max-width: calc((100cqi - 3 * var(--carousel-tile-gap)) / 4);
-  width: calc((100cqi - 3 * var(--carousel-tile-gap)) / 4);
+  flex: 0 0 calc((100cqi - 1 * var(--carousel-tile-gap)) / 2);
+  min-width: calc((100cqi - 1 * var(--carousel-tile-gap)) / 2);
+  max-width: calc((100cqi - 1 * var(--carousel-tile-gap)) / 2);
+  width: calc((100cqi - 1 * var(--carousel-tile-gap)) / 2);
+  min-height: 400px;
+  padding: 2rem 1.75rem;
   scroll-snap-align: start;
   box-sizing: border-box;
+}
+
+.work-carousel__track .work-tile .work-tile__tag {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  margin-bottom: 10px;
+}
+
+.work-carousel__track .work-tile .work-tile__name {
+  font-size: 1.5rem;
+}
+
+.work-carousel__track .work-tile .work-tile__hint {
+  font-size: 15px;
+  margin-top: 12px;
 }
 
 .work-carousel__btn {
@@ -1687,8 +1704,8 @@ body.scroll-down .reveal {
   }
 
   .work-tile {
-    min-height: 168px;
-    padding: 1.25rem 1.3rem;
+    min-height: 320px;
+    padding: 1.5rem 1.35rem;
   }
 
   .work-tile:active {
@@ -1819,8 +1836,12 @@ body.scroll-down .reveal {
   }
 
   .work-tile {
-    min-height: 152px;
-    border-radius: 14px;
+    min-height: 280px;
+    border-radius: 18px;
+  }
+
+  .work-carousel__track .work-tile {
+    min-height: min(400px, 72vw);
   }
 
   .link-card,
