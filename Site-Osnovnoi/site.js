@@ -374,14 +374,48 @@
       const isVertical = root.classList.contains("work-carousel--vertical")
       const scroller = isVertical && viewport ? viewport : track
 
+      function gapPx(el) {
+        const cs = window.getComputedStyle(el)
+        const g = parseFloat(cs.columnGap)
+        if (Number.isFinite(g) && g >= 0) return g
+        const g2 = parseFloat(cs.gap)
+        return Number.isFinite(g2) && g2 >= 0 ? g2 : 14
+      }
+
+      /** Одна «страница» горизонтального скролла: 4 плитки (десктоп) или 2 колонки × 3 ряда (мобилка) */
+      function verticalPageStep() {
+        const tile = track.querySelector(".work-tile")
+        if (!tile || !viewport) return Math.max(1, Math.round(viewport.clientWidth))
+        const tw = tile.getBoundingClientRect().width
+        const g = gapPx(track)
+        const narrow = window.matchMedia("(max-width: 768px)").matches
+        if (narrow) return Math.round(2 * tw + g)
+        return Math.round(4 * tw + 3 * g)
+      }
+
       function stepSize() {
-        if (isVertical && viewport) {
-          return Math.max(1, Math.round(viewport.clientWidth * 0.92))
-        }
+        if (isVertical && viewport) return verticalPageStep()
         const tile = track.querySelector(".work-tile")
         if (!tile) return Math.min(292, track.clientWidth * 0.82)
         const gap = 12
         return tile.getBoundingClientRect().width + gap
+      }
+
+      function verticalScrollToPage(goPrev) {
+        const step = verticalPageStep()
+        const maxL = Math.max(0, scroller.scrollWidth - scroller.clientWidth)
+        if (step < 4) return
+        let p = Math.floor((scroller.scrollLeft + step * 0.15) / step)
+        if (goPrev) p -= 1
+        else p += 1
+        const maxP = Math.max(0, Math.ceil(maxL / step - 1e-9))
+        p = Math.max(0, Math.min(maxP, p))
+        const left = Math.min(p * step, maxL)
+        scroller.scrollTo({ left, behavior: prefersReduced ? "auto" : "smooth" })
+        window.setTimeout(() => {
+          const snap = Math.min(Math.round(scroller.scrollLeft / step) * step, maxL)
+          if (Math.abs(scroller.scrollLeft - snap) > 1.5) scroller.scrollLeft = snap
+        }, prefersReduced ? 0 : 420)
       }
 
       function updateDisabled() {
@@ -391,10 +425,12 @@
       }
 
       prev.addEventListener("click", () => {
-        scroller.scrollBy({ left: -stepSize(), behavior: prefersReduced ? "auto" : "smooth" })
+        if (isVertical) verticalScrollToPage(true)
+        else scroller.scrollBy({ left: -stepSize(), behavior: prefersReduced ? "auto" : "smooth" })
       })
       next.addEventListener("click", () => {
-        scroller.scrollBy({ left: stepSize(), behavior: prefersReduced ? "auto" : "smooth" })
+        if (isVertical) verticalScrollToPage(false)
+        else scroller.scrollBy({ left: stepSize(), behavior: prefersReduced ? "auto" : "smooth" })
       })
       scroller.addEventListener("scroll", () => window.requestAnimationFrame(updateDisabled), { passive: true })
       window.addEventListener("resize", () => window.requestAnimationFrame(updateDisabled), { passive: true })

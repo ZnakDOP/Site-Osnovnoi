@@ -1932,14 +1932,62 @@ body.scroll-down .reveal {
     max-width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
-    max-height: calc(((100cqi - 42px) / 4 - 1px) * (16 / 9) + 20px);
+    max-height: calc(
+      3 * ((100cqi - 14px) / 2 - 1px) * (16 / 9) + 2 * 10px + 18px
+    );
     -webkit-overflow-scrolling: touch;
     scrollbar-color: var(--stroke2) transparent;
     scroll-behavior: smooth;
   }
 
+  .work-carousel--vertical .work-carousel__track {
+    display: grid;
+    grid-template-rows: repeat(3, minmax(0, auto));
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, calc((100cqi - 14px) / 2 - 1px));
+    column-gap: 14px;
+    row-gap: 10px;
+    width: max-content;
+    box-sizing: border-box;
+    padding: 4px 0 10px;
+    overflow: visible;
+  }
+
   .work-carousel--vertical .work-carousel__track .work-tile {
-    padding: 0.6rem 0.5rem 0.55rem;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    aspect-ratio: 9 / 16;
+    height: auto;
+    padding: 0.45rem 0.38rem 0.42rem;
+    justify-content: flex-end;
+    text-align: left;
+  }
+
+  .work-carousel--vertical .work-carousel__track .work-tile .work-tile__tag {
+    font-size: 6px;
+    letter-spacing: 0.08em;
+    margin-bottom: 2px;
+    line-height: 1.1;
+  }
+
+  .work-carousel--vertical .work-carousel__track .work-tile .work-tile__name {
+    font-size: clamp(0.58rem, 2.4vw, 0.72rem);
+    line-height: 1.05;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+
+  .work-carousel--vertical .work-carousel__track .work-tile .work-tile__hint {
+    font-size: 7px;
+    line-height: 1.08;
+    margin-top: 2px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
   }
 
   .work-carousel:not(.work-carousel--vertical) .work-carousel__track.work-grid,
