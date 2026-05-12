@@ -336,35 +336,35 @@
   }
 
   function initWorkCarousel() {
-    const root = document.querySelector(".work-carousel")
-    if (!root) return
-    const track = root.querySelector("[data-carousel-track]")
-    const prev = root.querySelector("[data-carousel-prev]")
-    const next = root.querySelector("[data-carousel-next]")
-    if (!track || !prev || !next) return
+    document.querySelectorAll(".work-carousel").forEach((root) => {
+      const track = root.querySelector("[data-carousel-track]")
+      const prev = root.querySelector("[data-carousel-prev]")
+      const next = root.querySelector("[data-carousel-next]")
+      if (!track || !prev || !next) return
 
-    function stepSize() {
-      const tile = track.querySelector(".work-tile")
-      if (!tile) return Math.min(292, track.clientWidth * 0.82)
-      const gap = 12
-      return tile.getBoundingClientRect().width + gap
-    }
+      function stepSize() {
+        const tile = track.querySelector(".work-tile")
+        if (!tile) return Math.min(292, track.clientWidth * 0.82)
+        const gap = 12
+        return tile.getBoundingClientRect().width + gap
+      }
 
-    function updateDisabled() {
-      const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth - 2)
-      prev.disabled = track.scrollLeft <= 2
-      next.disabled = track.scrollLeft >= maxScroll
-    }
+      function updateDisabled() {
+        const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth - 2)
+        prev.disabled = track.scrollLeft <= 2
+        next.disabled = track.scrollLeft >= maxScroll
+      }
 
-    prev.addEventListener("click", () => {
-      track.scrollBy({ left: -stepSize(), behavior: prefersReduced ? "auto" : "smooth" })
+      prev.addEventListener("click", () => {
+        track.scrollBy({ left: -stepSize(), behavior: prefersReduced ? "auto" : "smooth" })
+      })
+      next.addEventListener("click", () => {
+        track.scrollBy({ left: stepSize(), behavior: prefersReduced ? "auto" : "smooth" })
+      })
+      track.addEventListener("scroll", () => window.requestAnimationFrame(updateDisabled), { passive: true })
+      window.addEventListener("resize", () => window.requestAnimationFrame(updateDisabled), { passive: true })
+      window.setTimeout(updateDisabled, 0)
     })
-    next.addEventListener("click", () => {
-      track.scrollBy({ left: stepSize(), behavior: prefersReduced ? "auto" : "smooth" })
-    })
-    track.addEventListener("scroll", () => window.requestAnimationFrame(updateDisabled), { passive: true })
-    window.addEventListener("resize", () => window.requestAnimationFrame(updateDisabled), { passive: true })
-    window.setTimeout(updateDisabled, 0)
   }
 
   const kinescopeLb = document.getElementById("kinescope-lightbox")

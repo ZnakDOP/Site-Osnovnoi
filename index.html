@@ -42,7 +42,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="home.css?v=48" />
-    <script src="site.js?v=6" defer></script>
+    <script src="site.js?v=7" defer></script>
   </head>
   <body>
     <div id="site-loader" class="site-loader" aria-live="polite" aria-busy="true">
@@ -254,7 +254,18 @@
 
         <div class="cat" id="work-narrative">
           <div class="cat__label" data-i18n="cat_narrative">Кино · нарратив</div>
-          <div class="work-grid">
+          <div class="work-carousel">
+            <button
+              type="button"
+              class="work-carousel__btn work-carousel__btn--prev"
+              data-carousel-prev
+              aria-label="Предыдущие работы"
+              data-i18n-aria="carousel_prev"
+            >
+              ‹
+            </button>
+            <div class="work-carousel__viewport">
+            <div class="work-carousel__track work-grid" data-carousel-track>
             <button
               type="button"
               class="work-tile work-tile--4 work-tile--cinema-8woman js-open-kinescope"
@@ -296,6 +307,17 @@
               <span class="work-tile__tag" data-i18n="w_tag_narrative">К/М фильм</span>
               <span class="work-tile__name">Почему мужчины живут меньше</span>
               <span class="work-tile__hint" data-i18n="w_pochemu_hint">Никита Белых</span>
+            </button>
+            </div>
+            </div>
+            <button
+              type="button"
+              class="work-carousel__btn work-carousel__btn--next"
+              data-carousel-next
+              aria-label="Следующие работы"
+              data-i18n-aria="carousel_next"
+            >
+              ›
             </button>
           </div>
         </div>
@@ -407,7 +429,18 @@
 
         <div class="cat" id="work-commercial">
           <div class="cat__label" data-i18n="cat_commercial">Коммерция · реклама</div>
-          <div class="work-grid">
+          <div class="work-carousel">
+            <button
+              type="button"
+              class="work-carousel__btn work-carousel__btn--prev"
+              data-carousel-prev
+              aria-label="Предыдущие работы"
+              data-i18n-aria="carousel_prev"
+            >
+              ‹
+            </button>
+            <div class="work-carousel__viewport">
+            <div class="work-carousel__track work-grid" data-carousel-track>
             <a
               class="work-tile work-tile--1"
               href="https://gorushkindop.com"
@@ -438,12 +471,34 @@
               <span class="work-tile__name">Cold Start</span>
               <span class="work-tile__hint">Sber Devices</span>
             </a>
+            </div>
+            </div>
+            <button
+              type="button"
+              class="work-carousel__btn work-carousel__btn--next"
+              data-carousel-next
+              aria-label="Следующие работы"
+              data-i18n-aria="carousel_next"
+            >
+              ›
+            </button>
           </div>
         </div>
 
         <div class="cat" id="work-music">
           <div class="cat__label" data-i18n="cat_music">Клипы · музыка</div>
-          <div class="work-grid">
+          <div class="work-carousel">
+            <button
+              type="button"
+              class="work-carousel__btn work-carousel__btn--prev"
+              data-carousel-prev
+              aria-label="Предыдущие работы"
+              data-i18n-aria="carousel_prev"
+            >
+              ‹
+            </button>
+            <div class="work-carousel__viewport">
+            <div class="work-carousel__track work-grid" data-carousel-track>
             <a
               class="work-tile work-tile--2"
               href="https://gorushkindop.com"
@@ -474,6 +529,17 @@
               <span class="work-tile__name">Тени на стекле</span>
               <span class="work-tile__hint">L'One</span>
             </a>
+            </div>
+            </div>
+            <button
+              type="button"
+              class="work-carousel__btn work-carousel__btn--next"
+              data-carousel-next
+              aria-label="Следующие работы"
+              data-i18n-aria="carousel_next"
+            >
+              ›
+            </button>
           </div>
         </div>
       </section>
