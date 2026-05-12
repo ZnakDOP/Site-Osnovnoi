@@ -1037,6 +1037,8 @@ button.work-tile {
   flex: 1;
   min-width: 0;
   overflow: hidden;
+  container-type: inline-size;
+  container-name: work-carousel;
 }
 
 .work-carousel__track {
@@ -1048,17 +1050,21 @@ button.work-tile {
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  padding: 4px 2px 10px;
+  padding: 4px 0 10px;
   margin: 0;
   -webkit-overflow-scrolling: touch;
   scrollbar-color: var(--stroke2) transparent;
 }
 
+/* Ровно 4 плитки целиком в видимой зоне между стрелками (3 промежутка по 12px) */
 .work-carousel__track .work-tile {
-  flex: 0 0 min(280px, 72vw);
-  min-width: min(280px, 72vw);
-  max-width: 300px;
+  --carousel-tile-gap: 12px;
+  flex: 0 0 calc((100cqi - 3 * var(--carousel-tile-gap)) / 4);
+  min-width: calc((100cqi - 3 * var(--carousel-tile-gap)) / 4);
+  max-width: calc((100cqi - 3 * var(--carousel-tile-gap)) / 4);
+  width: calc((100cqi - 3 * var(--carousel-tile-gap)) / 4);
   scroll-snap-align: start;
+  box-sizing: border-box;
 }
 
 .work-carousel__btn {
@@ -1105,8 +1111,7 @@ button.work-tile {
   }
 
   .work-carousel__track .work-tile {
-    flex-basis: min(260px, 76vw);
-    min-width: min(260px, 76vw);
+    --carousel-tile-gap: 12px;
   }
 
   .work-carousel__btn {
