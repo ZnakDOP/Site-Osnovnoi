@@ -1169,28 +1169,27 @@ button.work-tile {
   margin-top: 10px;
 }
 
-/* Вертикальный контент: одна строка × 4 колонки в «окне», листание по горизонтали */
+/* Вертикальный контент: одна строка плиток, листание по горизонтали */
 .work-carousel--vertical .work-carousel__track {
-  display: grid;
-  grid-template-rows: minmax(0, auto);
-  grid-auto-flow: column;
-  column-gap: 14px;
-  row-gap: 0;
-  width: max-content;
-  min-width: 0;
-  overflow: visible;
+  display: flex;
+  flex-direction: row;
   flex-wrap: nowrap;
-  scroll-snap-type: none;
+  align-items: stretch;
+  gap: 14px;
+  width: max-content;
+  box-sizing: border-box;
   padding: 4px 0 10px;
+  overflow: visible;
 }
 
-/* Вертикальный контент: кнопки по краям, окно на всю ширину между ними — 4 плитки по cqi не зарезаются */
+/* Кнопки — фиксированные колонки, окно ровно между ними (без налезания на плитки) */
 .work-carousel--vertical {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: 40px minmax(0, 1fr) 40px;
   align-items: center;
-  gap: 14px;
+  column-gap: 12px;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .work-carousel--vertical .work-carousel__viewport {
@@ -1198,18 +1197,21 @@ button.work-tile {
   overflow-y: hidden;
   width: 100%;
   min-width: 0;
-  scrollbar-gutter: stable;
+  max-width: 100%;
+  box-sizing: border-box;
   -webkit-overflow-scrolling: touch;
   scrollbar-color: var(--stroke2) transparent;
   scroll-behavior: smooth;
   overscroll-behavior-x: contain;
 }
 
+/* Ширина плитки = четверть внутренней ширины окна минус три промежутка (14px), с небольшим запасом на субпиксели и рамку */
 .work-carousel--vertical .work-carousel__track .work-tile {
-  flex: none;
-  width: 100%;
+  flex: 0 0 auto;
+  width: calc((100cqi - 42px) / 4 - 1px);
   min-width: 0;
-  max-width: none;
+  max-width: calc((100cqi - 42px) / 4 - 1px);
+  box-sizing: border-box;
   aspect-ratio: 9 / 16;
   height: auto;
   align-self: stretch;
@@ -1254,6 +1256,10 @@ button.work-tile {
   pointer-events: none;
 }
 
+.work-carousel--vertical .work-carousel__btn {
+  justify-self: center;
+}
+
 /* Портфолио на ширине ≥769px: три колонки, две строки в окне, вертикальная прокрутка (кроме вертикального блока) */
 @media (min-width: 769px) {
   .work-carousel:not(.work-carousel--vertical) .work-carousel__btn {
@@ -1285,12 +1291,8 @@ button.work-tile {
     scroll-behavior: smooth;
     max-height: min(
       720px,
-      calc(((100cqi - 42px) / 4) * (16 / 9) + 28px)
+      calc(((100cqi - 42px) / 4 - 1px) * (16 / 9) + 28px)
     );
-  }
-
-  .work-carousel--vertical .work-carousel__track {
-    grid-auto-columns: calc((100cqi - 42px) / 4);
   }
 
   .work-carousel--vertical .work-carousel__track .work-tile {
@@ -1925,19 +1927,15 @@ body.scroll-down .reveal {
   }
 
   .work-carousel--vertical .work-carousel__viewport {
-    flex: 1 1 auto;
     width: 100%;
     min-width: 0;
+    max-width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
-    max-height: calc(((100cqi - 42px) / 4) * (16 / 9) + 20px);
+    max-height: calc(((100cqi - 42px) / 4 - 1px) * (16 / 9) + 20px);
     -webkit-overflow-scrolling: touch;
     scrollbar-color: var(--stroke2) transparent;
     scroll-behavior: smooth;
-  }
-
-  .work-carousel--vertical .work-carousel__track {
-    grid-auto-columns: calc((100cqi - 42px) / 4);
   }
 
   .work-carousel--vertical .work-carousel__track .work-tile {
