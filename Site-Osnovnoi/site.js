@@ -112,6 +112,32 @@
     w_tag_commercial: "Commercial",
     cat_music: "Music videos",
     w_tag_music: "Music video",
+    cat_vertical: "Vertical content",
+    w_tag_vertical: "Vertical",
+    w_vert_1_name: "Night floor",
+    w_vert_1_hint: "Shorts",
+    w_vert_2_name: "Light in the hall",
+    w_vert_2_hint: "Stories",
+    w_vert_3_name: "Stage 4×5",
+    w_vert_3_hint: "BTS",
+    w_vert_4_name: "Reflection in glass",
+    w_vert_4_hint: "Reels",
+    w_vert_5_name: "Color test",
+    w_vert_5_hint: "Commercial",
+    w_vert_6_name: "Elevator · day",
+    w_vert_6_hint: "Music video",
+    w_vert_7_name: "Rooftop · sunset",
+    w_vert_7_hint: "Shorts",
+    w_vert_8_name: "Interview in frame",
+    w_vert_8_hint: "Doc",
+    w_vert_9_name: "Camera move",
+    w_vert_9_hint: "Test",
+    w_vert_10_name: "Neon and rain",
+    w_vert_10_hint: "Reels",
+    w_vert_11_name: "Silhouette at window",
+    w_vert_11_hint: "Stories",
+    w_vert_12_name: "Final shot",
+    w_vert_12_hint: "Shorts",
     sec_links_title: "Links",
     sec_links_meta: "social · channel",
     link_tg_t: "Znak DOP channel",
@@ -338,12 +364,19 @@
   function initWorkCarousel() {
     document.querySelectorAll(".work-carousel").forEach((root) => {
       const track = root.querySelector("[data-carousel-track]")
+      const viewport = root.querySelector(".work-carousel__viewport")
       const prev = root.querySelector("[data-carousel-prev]")
       const next = root.querySelector("[data-carousel-next]")
       if (!track || !prev || !next) return
       if (window.getComputedStyle(prev).display === "none") return
 
+      const isVertical = root.classList.contains("work-carousel--vertical")
+      const scroller = isVertical && viewport ? viewport : track
+
       function stepSize() {
+        if (isVertical && viewport) {
+          return Math.max(1, Math.round(viewport.clientWidth * 0.92))
+        }
         const tile = track.querySelector(".work-tile")
         if (!tile) return Math.min(292, track.clientWidth * 0.82)
         const gap = 12
@@ -351,18 +384,18 @@
       }
 
       function updateDisabled() {
-        const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth - 2)
-        prev.disabled = track.scrollLeft <= 2
-        next.disabled = track.scrollLeft >= maxScroll
+        const maxScroll = Math.max(0, scroller.scrollWidth - scroller.clientWidth - 2)
+        prev.disabled = scroller.scrollLeft <= 2
+        next.disabled = scroller.scrollLeft >= maxScroll
       }
 
       prev.addEventListener("click", () => {
-        track.scrollBy({ left: -stepSize(), behavior: prefersReduced ? "auto" : "smooth" })
+        scroller.scrollBy({ left: -stepSize(), behavior: prefersReduced ? "auto" : "smooth" })
       })
       next.addEventListener("click", () => {
-        track.scrollBy({ left: stepSize(), behavior: prefersReduced ? "auto" : "smooth" })
+        scroller.scrollBy({ left: stepSize(), behavior: prefersReduced ? "auto" : "smooth" })
       })
-      track.addEventListener("scroll", () => window.requestAnimationFrame(updateDisabled), { passive: true })
+      scroller.addEventListener("scroll", () => window.requestAnimationFrame(updateDisabled), { passive: true })
       window.addEventListener("resize", () => window.requestAnimationFrame(updateDisabled), { passive: true })
       window.setTimeout(updateDisabled, 0)
     })

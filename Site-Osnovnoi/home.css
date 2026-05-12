@@ -1046,6 +1046,66 @@ button.work-tile {
   background-position: center center;
 }
 
+.work-tile--vert-01::before {
+  background-image: url("images/work-1.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center top;
+}
+
+.work-tile--vert-02::before {
+  background-image: url("images/work-2.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center top;
+}
+
+.work-tile--vert-03::before {
+  background-image: url("images/work-doc-nto.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center top;
+}
+
+.work-tile--vert-04::before {
+  background-image: url("images/work-3.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center top;
+}
+
+.work-tile--vert-05::before {
+  background-image: url("images/work-doc-tochka.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center top;
+}
+
+.work-tile--vert-06::before {
+  background-image: url("images/work-4.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center top;
+}
+
+.work-tile--vert-07::before {
+  background-image: url("images/work-cinema-8woman.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center top;
+}
+
+.work-tile--vert-08::before {
+  background-image: url("images/work-doc-avito.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center top;
+}
+
+.work-tile--vert-09::before {
+  background-image: url("images/work-doc-vk-hp.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center top;
+}
+
+.work-tile--vert-10::before {
+  background-image: url("images/work-doc-simplevine.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center top;
+}
+
+.work-tile--vert-11::before {
+  background-image: url("images/work-doc-bft.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center top;
+}
+
+.work-tile--vert-12::before {
+  background-image: url("images/work-doc-vk-ingushetia.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center top;
+}
+
 /* ——— Interview / doc horizontal carousel ——— */
 .work-carousel {
   display: flex;
@@ -1108,6 +1168,59 @@ button.work-tile {
   margin-top: 10px;
 }
 
+/* Вертикальный контент: сетка 2 ряда × 3 колонки в «окне», листание по горизонтали */
+.work-carousel--vertical .work-carousel__track {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, auto));
+  grid-auto-flow: column;
+  column-gap: 14px;
+  row-gap: 12px;
+  width: max-content;
+  min-width: 0;
+  overflow: visible;
+  flex-wrap: nowrap;
+  scroll-snap-type: none;
+  padding: 4px 0 10px;
+}
+
+.work-carousel--vertical .work-carousel__viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-color: var(--stroke2) transparent;
+  scroll-behavior: smooth;
+  overscroll-behavior-x: contain;
+}
+
+.work-carousel--vertical .work-carousel__track .work-tile {
+  flex: none;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  aspect-ratio: 9 / 16;
+  height: auto;
+  align-self: stretch;
+  padding: 0.65rem 0.5rem;
+  scroll-snap-align: none;
+}
+
+.work-carousel--vertical .work-carousel__track .work-tile .work-tile__tag {
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  margin-bottom: 4px;
+}
+
+.work-carousel--vertical .work-carousel__track .work-tile .work-tile__name {
+  font-size: clamp(0.68rem, 2.8cqi, 0.92rem);
+  line-height: 1.08;
+}
+
+.work-carousel--vertical .work-carousel__track .work-tile .work-tile__hint {
+  font-size: 9px;
+  margin-top: 4px;
+  line-height: 1.12;
+}
+
 .work-carousel__btn {
   flex: 0 0 auto;
   align-self: center;
@@ -1146,18 +1259,23 @@ button.work-tile {
   pointer-events: none;
 }
 
-/* Портфолио на ширине ≥769px: три колонки, две строки в окне, вертикальная прокрутка */
+/* Портфолио на ширине ≥769px: три колонки, две строки в окне, вертикальная прокрутка (кроме вертикального блока) */
 @media (min-width: 769px) {
-  .work-carousel__btn {
+  .work-carousel:not(.work-carousel--vertical) .work-carousel__btn {
     display: none;
   }
 
-  .work-carousel {
+  .work-carousel:not(.work-carousel--vertical) {
     gap: 0;
     align-items: stretch;
   }
 
-  .work-carousel__viewport {
+  .work-carousel--vertical {
+    gap: 10px;
+    align-items: center;
+  }
+
+  .work-carousel:not(.work-carousel--vertical) .work-carousel__viewport {
     overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -1169,8 +1287,24 @@ button.work-tile {
     );
   }
 
-  .work-carousel__track.work-grid,
-  .work-carousel .work-grid {
+  .work-carousel--vertical .work-carousel__viewport {
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scrollbar-color: var(--stroke2) transparent;
+    scroll-behavior: smooth;
+    max-height: min(
+      900px,
+      calc(2 * ((100cqi - 28px) / 3) * (16 / 9) + 12px)
+    );
+  }
+
+  .work-carousel--vertical .work-carousel__track {
+    grid-auto-columns: calc((100cqi - 28px) / 3);
+  }
+
+  .work-carousel:not(.work-carousel--vertical) .work-carousel__track.work-grid,
+  .work-carousel:not(.work-carousel--vertical) .work-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
@@ -1180,7 +1314,7 @@ button.work-tile {
     padding: 4px 4px 14px 0;
   }
 
-  .work-carousel .work-carousel__track .work-tile {
+  .work-carousel:not(.work-carousel--vertical) .work-carousel__track .work-tile {
     width: 100%;
     min-width: 0;
     max-width: none;
@@ -1192,7 +1326,7 @@ button.work-tile {
     scroll-snap-align: none;
   }
 
-  .work-carousel .work-carousel__track .work-tile .work-tile__name {
+  .work-carousel:not(.work-carousel--vertical) .work-carousel__track .work-tile .work-tile__name {
     font-size: 1.32rem;
   }
 }
@@ -1774,26 +1908,48 @@ body.scroll-down .reveal {
     gap: 14px;
   }
 
-  /* Портфолио: на телефоне — сетка из двух колонок (несколько рядов), без стрелок и горизонтального скролла */
-  .work-carousel {
+  /* Портфолио: на телефоне — сетка из двух колонок (кроме вертикального блока со стрелками) */
+  .work-carousel:not(.work-carousel--vertical) {
     flex-direction: column;
     align-items: stretch;
     gap: 0;
   }
 
-  .work-carousel__btn {
+  .work-carousel--vertical {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .work-carousel:not(.work-carousel--vertical) .work-carousel__btn {
     display: none;
   }
 
-  .work-carousel__viewport {
+  .work-carousel:not(.work-carousel--vertical) .work-carousel__viewport {
     flex: 1 1 auto;
     width: 100%;
     min-width: 0;
     overflow: visible;
   }
 
-  .work-carousel__track.work-grid,
-  .work-carousel .work-grid {
+  .work-carousel--vertical .work-carousel__viewport {
+    flex: 1 1 auto;
+    width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-height: calc(2 * ((100cqi - 10px) / 2) * (16 / 9) + 12px);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-color: var(--stroke2) transparent;
+    scroll-behavior: smooth;
+  }
+
+  .work-carousel--vertical .work-carousel__track {
+    grid-auto-columns: calc((100cqi - 10px) / 2);
+  }
+
+  .work-carousel:not(.work-carousel--vertical) .work-carousel__track.work-grid,
+  .work-carousel:not(.work-carousel--vertical) .work-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
@@ -1804,7 +1960,7 @@ body.scroll-down .reveal {
     margin: 0;
   }
 
-  .work-carousel .work-carousel__track .work-tile {
+  .work-carousel:not(.work-carousel--vertical) .work-carousel__track .work-tile {
     width: 100%;
     min-width: 0;
     max-width: none;
