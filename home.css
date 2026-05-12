@@ -173,10 +173,6 @@ body.site-nav-open {
 }
 
 .site-header__lang {
-  position: absolute;
-  left: max(var(--space), var(--space-floor, 0px), env(safe-area-inset-left, 0px));
-  top: calc(env(safe-area-inset-top, 0px) + (var(--header-h) / 2));
-  transform: translateY(-50%);
   display: inline-flex;
   align-items: stretch;
   padding: 3px;
@@ -184,6 +180,14 @@ body.site-nav-open {
   border: 1px solid var(--stroke);
   background: rgba(6, 6, 8, 0.55);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Позиция только у панели в шапке; пилюля в drawer наследует тот же «хром», что и здесь */
+.site-header__lang--bar {
+  position: absolute;
+  left: max(var(--space), var(--space-floor, 0px), env(safe-area-inset-left, 0px));
+  top: calc(env(safe-area-inset-top, 0px) + (var(--header-h) / 2));
+  transform: translateY(-50%);
 }
 
 .site-header__lang-pill {
@@ -352,11 +356,10 @@ body.site-nav-open {
     top: auto;
     transform: none;
     align-self: center;
+    flex: 0 0 auto;
     width: fit-content;
     max-width: 100%;
-    margin: 0 auto 1rem;
-    padding-bottom: 0.9rem;
-    border-bottom: 1px solid var(--stroke);
+    margin: 0 auto 1.25rem;
     box-sizing: border-box;
   }
 
