@@ -30,15 +30,10 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   scroll-padding-top: calc(var(--header-offset) + 12px);
   background-color: var(--bg0);
   min-height: 100%;
-}
-
-html.lenis,
-html.lenis body {
-  height: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1812,25 +1807,44 @@ body.scroll-down .reveal {
     max-width: none;
     flex: none;
     min-height: unset;
-    aspect-ratio: 16 / 9;
+    /* Чуть выше 16:9 — больше места под длинные названия в двух колонках */
+    aspect-ratio: 3 / 2;
     align-self: stretch;
-    padding: 1rem 0.85rem;
+    padding: 0.6rem 0.5rem 0.55rem;
     scroll-snap-align: none;
+    justify-content: flex-end;
+    text-align: left;
+    gap: 0;
   }
 
   .work-carousel .work-carousel__track .work-tile .work-tile__tag {
-    font-size: 9px;
-    letter-spacing: 0.12em;
-    margin-bottom: 6px;
+    font-size: 8px;
+    letter-spacing: 0.1em;
+    margin-bottom: 3px;
+    line-height: 1.15;
   }
 
   .work-carousel .work-carousel__track .work-tile .work-tile__name {
-    font-size: clamp(0.92rem, 3.5vw, 1.08rem);
+    font-size: clamp(0.72rem, 2.65vw, 0.88rem);
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
   }
 
   .work-carousel .work-carousel__track .work-tile .work-tile__hint {
-    font-size: 11px;
-    margin-top: 6px;
+    font-size: 9px;
+    line-height: 1.12;
+    margin-top: 3px;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
   }
 
   .work-tile {
@@ -1840,6 +1854,11 @@ body.scroll-down .reveal {
 
   .work-tile:active {
     transform: scale(0.99);
+  }
+
+  /* Общий min-height не должен ломать aspect-ratio плиток в портфолио */
+  .work-carousel .work-carousel__track .work-tile {
+    min-height: 0;
   }
 
   .cat {

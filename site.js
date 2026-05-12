@@ -431,15 +431,6 @@
     closeNav()
   })
 
-  if (!prefersReduced && typeof globalThis.Lenis === "function") {
-    const lenis = new globalThis.Lenis({ smoothWheel: true, lerp: 0.11 })
-    function onLenisFrame(t) {
-      lenis.raf(t)
-      requestAnimationFrame(onLenisFrame)
-    }
-    requestAnimationFrame(onLenisFrame)
-  }
-
   initLang()
   initWorkCarousel()
 })()
