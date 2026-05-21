@@ -1529,6 +1529,11 @@ html.kinescope-open body {
   border-bottom-color: var(--accent);
 }
 
+.rental-cta .btn {
+  border-bottom: none;
+  text-decoration: none;
+}
+
 /* ——— Contact ——— */
 .contact-grid {
   display: grid;

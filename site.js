@@ -150,13 +150,7 @@
     sec_contact_meta: "direct",
     contact_briefs: "Briefs: <strong>a@gorushkindop.ru</strong>",
     sec_rental_title: "Equipment rental",
-    rental_intro: "Quick day rates. Full gear list and date booking are in the cart.",
-    rental_cam_h: "Camera",
-    rental_light_h: "Light & sound",
-    rental_full_h: "Full list",
-    rental_full_p:
-      "Cameras, power, optics, stabilizers, monitors, routing, and media — in the calculator on the booking page.",
-    rental_cta: "Book gear →",
+    rental_sheet_btn: "Equipment list & day rates →",
     footer_ip: "Sole proprietor Arsenii Viacheslavovich Gorushkin",
     footer_top: "Back to top",
   }
