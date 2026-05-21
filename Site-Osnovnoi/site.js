@@ -357,16 +357,16 @@
   }
 
   function initWorkCarousel() {
+    const narrowMq = window.matchMedia("(max-width: 768px)")
+
     document.querySelectorAll(".work-carousel").forEach((root) => {
       const track = root.querySelector("[data-carousel-track]")
       const viewport = root.querySelector(".work-carousel__viewport")
       const prev = root.querySelector("[data-carousel-prev]")
       const next = root.querySelector("[data-carousel-next]")
-      if (!track || !prev || !next) return
-      if (window.getComputedStyle(prev).display === "none") return
+      if (!track || !viewport || !prev || !next) return
 
       const isVertical = root.classList.contains("work-carousel--vertical")
-      const scroller = isVertical && viewport ? viewport : track
 
       function gapPx(el) {
         const cs = window.getComputedStyle(el)
@@ -376,57 +376,87 @@
         return Number.isFinite(g2) && g2 >= 0 ? g2 : 14
       }
 
-      /** Одна «страница» горизонтального скролла: 4 плитки (десктоп) или 2 колонки × 3 ряда (мобилка) */
-      function verticalPageStep() {
-        const tile = track.querySelector(".work-tile")
-        if (!tile || !viewport) return Math.max(1, Math.round(viewport.clientWidth))
-        const tw = tile.getBoundingClientRect().width
-        const g = gapPx(track)
-        const narrow = window.matchMedia("(max-width: 768px)").matches
-        if (narrow) return Math.round(2 * tw + g)
-        return Math.round(4 * tw + 3 * g)
+      function isHorizontalMode() {
+        return isVertical || narrowMq.matches
       }
 
-      function stepSize() {
-        if (isVertical && viewport) return verticalPageStep()
-        const tile = track.querySelector(".work-tile")
-        if (!tile) return Math.min(292, track.clientWidth * 0.82)
-        const gap = 12
-        return tile.getBoundingClientRect().width + gap
+      /** Шаг «страницы»: горизонтально на мобилке и в вертикальном блоке; по высоте на десктопе */
+      function pageStep() {
+        if (isVertical) {
+          const tile = track.querySelector(".work-tile")
+          if (!tile) return Math.max(1, Math.round(viewport.clientWidth))
+          const tw = tile.getBoundingClientRect().width
+          const g = gapPx(track)
+          if (narrowMq.matches) return Math.round(2 * tw + g)
+          return Math.round(4 * tw + 3 * g)
+        }
+        if (narrowMq.matches) {
+          const tile = track.querySelector(".work-tile")
+          if (!tile) return Math.max(1, Math.round(viewport.clientWidth))
+          const tw = tile.getBoundingClientRect().width
+          const g = gapPx(track)
+          return Math.round(2 * tw + g)
+        }
+        return Math.max(1, Math.round(viewport.clientHeight))
       }
 
-      function verticalScrollToPage(goPrev) {
-        const step = verticalPageStep()
-        const maxL = Math.max(0, scroller.scrollWidth - scroller.clientWidth)
+      function maxOffset() {
+        if (isHorizontalMode()) {
+          return Math.max(0, viewport.scrollWidth - viewport.clientWidth)
+        }
+        return Math.max(0, viewport.scrollHeight - viewport.clientHeight)
+      }
+
+      function currentOffset() {
+        return isHorizontalMode() ? viewport.scrollLeft : viewport.scrollTop
+      }
+
+      function scrollToOffset(offset) {
+        if (isHorizontalMode()) {
+          viewport.scrollTo({ left: offset, behavior: prefersReduced ? "auto" : "smooth" })
+        } else {
+          viewport.scrollTo({ top: offset, behavior: prefersReduced ? "auto" : "smooth" })
+        }
+      }
+
+      function scrollToPage(goPrev) {
+        const step = pageStep()
+        const max = maxOffset()
         if (step < 4) return
-        let p = Math.floor((scroller.scrollLeft + step * 0.15) / step)
+        const cur = currentOffset()
+        let p = Math.floor((cur + step * 0.15) / step)
         if (goPrev) p -= 1
         else p += 1
-        const maxP = Math.max(0, Math.ceil(maxL / step - 1e-9))
+        const maxP = Math.max(0, Math.ceil(max / step - 1e-9))
         p = Math.max(0, Math.min(maxP, p))
-        const left = Math.min(p * step, maxL)
-        scroller.scrollTo({ left, behavior: prefersReduced ? "auto" : "smooth" })
+        scrollToOffset(Math.min(p * step, max))
+        if (prefersReduced) return
         window.setTimeout(() => {
-          const snap = Math.min(Math.round(scroller.scrollLeft / step) * step, maxL)
-          if (Math.abs(scroller.scrollLeft - snap) > 1.5) scroller.scrollLeft = snap
-        }, prefersReduced ? 0 : 420)
+          const snap = Math.min(Math.round(currentOffset() / step) * step, max)
+          if (Math.abs(currentOffset() - snap) > 1.5) scrollToOffset(snap)
+        }, 420)
       }
 
       function updateDisabled() {
-        const maxScroll = Math.max(0, scroller.scrollWidth - scroller.clientWidth - 2)
-        prev.disabled = scroller.scrollLeft <= 2
-        next.disabled = scroller.scrollLeft >= maxScroll
+        const max = maxOffset()
+        const cur = currentOffset()
+        prev.disabled = cur <= 2
+        next.disabled = cur >= max - 2
       }
 
-      prev.addEventListener("click", () => {
-        if (isVertical) verticalScrollToPage(true)
-        else scroller.scrollBy({ left: -stepSize(), behavior: prefersReduced ? "auto" : "smooth" })
-      })
-      next.addEventListener("click", () => {
-        if (isVertical) verticalScrollToPage(false)
-        else scroller.scrollBy({ left: stepSize(), behavior: prefersReduced ? "auto" : "smooth" })
-      })
-      scroller.addEventListener("scroll", () => window.requestAnimationFrame(updateDisabled), { passive: true })
+      prev.addEventListener("click", () => scrollToPage(true))
+      next.addEventListener("click", () => scrollToPage(false))
+
+      viewport.addEventListener(
+        "wheel",
+        (e) => {
+          e.preventDefault()
+        },
+        { passive: false }
+      )
+
+      viewport.addEventListener("scroll", () => window.requestAnimationFrame(updateDisabled), { passive: true })
+      narrowMq.addEventListener("change", () => window.requestAnimationFrame(updateDisabled))
       window.addEventListener("resize", () => window.requestAnimationFrame(updateDisabled), { passive: true })
       window.setTimeout(updateDisabled, 0)
     })

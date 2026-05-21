@@ -127,7 +127,7 @@ body.site-nav-open {
   }
 }
 
-/* ——— Background mesh + grain ——— */
+/* ——— Background glow + film grain ——— */
 .site-bg {
   position: fixed;
   inset: 0;
@@ -136,19 +136,31 @@ body.site-nav-open {
   z-index: -2;
   pointer-events: none;
   background:
+    radial-gradient(ellipse 55% 45% at 12% 18%, rgba(94, 234, 212, 0.14), transparent 58%),
+    radial-gradient(ellipse 45% 40% at 88% 22%, rgba(244, 114, 182, 0.1), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 50% 100%, rgba(20, 40, 48, 0.45), transparent 60%),
     radial-gradient(ellipse 80% 60% at 20% -10%, var(--hero-glow), transparent 55%),
     radial-gradient(ellipse 60% 50% at 95% 30%, rgba(167, 139, 250, 0.09), transparent 50%),
-    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(94, 234, 212, 0.06), transparent 45%),
     linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 45%, var(--bg0) 100%);
+}
+
+.site-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.05' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  mix-blend-mode: overlay;
 }
 
 .site-bg::after {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.045;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: overlay;
+  opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
 }
 
 /* ——— Header ——— */
@@ -1120,6 +1132,7 @@ button.work-tile {
   flex: 1;
   min-width: 0;
   overflow: hidden;
+  overscroll-behavior: none;
   container-type: inline-size;
   container-name: work-carousel;
 }
@@ -1129,14 +1142,10 @@ button.work-tile {
   flex-direction: row;
   flex-wrap: nowrap;
   gap: 12px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
+  overflow: visible;
+  scroll-snap-type: none;
   padding: 4px 0 10px;
   margin: 0;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-color: var(--stroke2) transparent;
 }
 
 /* Плитки: плотнее чем «2 в ряд», крупнее чем старые «4»; высота от aspect-ratio — меньше громоздкости */
@@ -1193,16 +1202,12 @@ button.work-tile {
 }
 
 .work-carousel--vertical .work-carousel__viewport {
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: hidden;
   width: 100%;
   min-width: 0;
   max-width: 100%;
   box-sizing: border-box;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-color: var(--stroke2) transparent;
-  scroll-behavior: smooth;
-  overscroll-behavior-x: contain;
+  overscroll-behavior: none;
 }
 
 /* Ширина плитки = четверть внутренней ширины окна минус три промежутка (14px), с небольшим запасом на субпиксели и рамку */
@@ -1261,23 +1266,16 @@ button.work-tile {
   justify-self: center;
 }
 
-/* Портфолио на ширине ≥769px: три колонки, две строки в окне, вертикальная прокрутка (кроме вертикального блока) */
+/* Портфолио ≥769px: сетка в окне, листание только стрелками */
 @media (min-width: 769px) {
-  .work-carousel:not(.work-carousel--vertical) .work-carousel__btn {
-    display: none;
-  }
-
   .work-carousel:not(.work-carousel--vertical) {
-    gap: 0;
-    align-items: stretch;
+    gap: 10px;
+    align-items: center;
   }
 
   .work-carousel:not(.work-carousel--vertical) .work-carousel__viewport {
-    overflow-x: hidden;
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    scrollbar-color: var(--stroke2) transparent;
-    scroll-behavior: smooth;
+    overflow: hidden;
+    overscroll-behavior: none;
     max-height: min(
       720px,
       calc(((100cqi - 28px) / 3) * (10 / 16) * 2 + 14px + 28px)
@@ -1285,11 +1283,8 @@ button.work-tile {
   }
 
   .work-carousel--vertical .work-carousel__viewport {
-    overflow-x: auto;
-    overflow-y: hidden;
-    overscroll-behavior-x: contain;
-    scrollbar-color: var(--stroke2) transparent;
-    scroll-behavior: smooth;
+    overflow: hidden;
+    overscroll-behavior: none;
     max-height: min(
       720px,
       calc(((100cqi - 42px) / 4 - 1px) * (16 / 9) + 28px)
@@ -1924,22 +1919,19 @@ body.scroll-down .reveal {
     gap: 14px;
   }
 
-  /* Портфолио: на телефоне — сетка из двух колонок (кроме вертикального блока со стрелками) */
+  /* Портфолио на телефоне: горизонтальные страницы, только стрелки */
   .work-carousel:not(.work-carousel--vertical) {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-  }
-
-  .work-carousel:not(.work-carousel--vertical) .work-carousel__btn {
-    display: none;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
   }
 
   .work-carousel:not(.work-carousel--vertical) .work-carousel__viewport {
     flex: 1 1 auto;
     width: 100%;
     min-width: 0;
-    overflow: visible;
+    overflow: hidden;
+    overscroll-behavior: none;
   }
 
   #work-vertical .work-carousel--vertical {
@@ -1953,12 +1945,9 @@ body.scroll-down .reveal {
     width: 100%;
     min-width: 0;
     max-width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: hidden;
+    overscroll-behavior: none;
     max-height: calc(2 * ((100cqi - 6px) / 2) * (16 / 9) + 12px + 22px);
-    -webkit-overflow-scrolling: touch;
-    scrollbar-color: var(--stroke2) transparent;
-    scroll-behavior: smooth;
   }
 
   /* 2×2: мобильный .work-grid задаёт grid-template-columns: 1fr — сбрасываем, иначе первая колонка уже остальных */
@@ -2020,21 +2009,22 @@ body.scroll-down .reveal {
 
   .work-carousel:not(.work-carousel--vertical) .work-carousel__track.work-grid,
   .work-carousel:not(.work-carousel--vertical) .work-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     gap: 10px;
+    width: max-content;
     overflow: visible;
     scroll-snap-type: none;
-    scroll-behavior: auto;
     padding: 2px 0 10px;
     margin: 0;
   }
 
   .work-carousel:not(.work-carousel--vertical) .work-carousel__track .work-tile {
-    width: 100%;
-    min-width: 0;
-    max-width: none;
-    flex: none;
+    flex: 0 0 calc((100cqi - 10px) / 2);
+    min-width: calc((100cqi - 10px) / 2);
+    max-width: calc((100cqi - 10px) / 2);
+    width: calc((100cqi - 10px) / 2);
     min-height: unset;
     /* Чуть выше 16:9 — больше места под длинные названия в двух колонках */
     aspect-ratio: 3 / 2;
