@@ -127,7 +127,7 @@ body.site-nav-open {
   }
 }
 
-/* ——— Background glow + film grain ——— */
+/* ——— Background glow + organic textures + film grain ——— */
 .site-bg {
   position: fixed;
   inset: 0;
@@ -135,6 +135,7 @@ body.site-nav-open {
   min-height: 100lvh;
   z-index: -2;
   pointer-events: none;
+  overflow: hidden;
   background:
     radial-gradient(ellipse 55% 45% at 12% 18%, rgba(94, 234, 212, 0.14), transparent 58%),
     radial-gradient(ellipse 45% 40% at 88% 22%, rgba(244, 114, 182, 0.1), transparent 55%),
@@ -144,13 +145,84 @@ body.site-nav-open {
     linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 45%, var(--bg0) 100%);
 }
 
+.site-bg__textures {
+  position: absolute;
+  inset: 0;
+}
+
+.site-bg__tex {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.16;
+  filter: invert(1) grayscale(1) contrast(1.2) brightness(1.05);
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+/* SEM cells — верх справа */
+.site-bg__tex--cells {
+  width: min(58vw, 560px);
+  height: min(58vw, 560px);
+  top: -12%;
+  right: -14%;
+  background-image: url("images/textures/texture-xray-cells.png");
+  opacity: 0.2;
+}
+
+/* Волокна — центр слева */
+.site-bg__tex--fibers {
+  width: min(70vw, 680px);
+  height: min(50vw, 480px);
+  top: 28%;
+  left: -22%;
+  background-image: url("images/textures/texture-fibers.png");
+  opacity: 0.14;
+  filter: invert(1) grayscale(1) contrast(1.35) brightness(1.02);
+}
+
+/* Сетка-blobs — низ по центру */
+.site-bg__tex--mesh {
+  width: min(65vw, 620px);
+  height: min(45vw, 420px);
+  bottom: -8%;
+  left: 18%;
+  background-image: url("images/textures/texture-mesh-blobs.png");
+  opacity: 0.12;
+  mix-blend-mode: soft-light;
+}
+
+/* Зернистые капли — верх слева (герой) */
+.site-bg__tex--blobs {
+  width: min(48vw, 440px);
+  height: min(48vw, 440px);
+  top: 6%;
+  left: -10%;
+  background-image: url("images/textures/texture-grain-blobs.png");
+  opacity: 0.18;
+}
+
+/* Сферы в сетке — низ справа */
+.site-bg__tex--spheres {
+  width: min(52vw, 500px);
+  height: min(40vw, 380px);
+  bottom: 12%;
+  right: -12%;
+  background-image: url("images/textures/texture-mesh-spheres.png");
+  opacity: 0.11;
+  filter: invert(1) grayscale(0.85) contrast(1.15) brightness(1.08) hue-rotate(165deg);
+  mix-blend-mode: color-dodge;
+}
+
 .site-bg::before {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.1;
+  z-index: 1;
+  opacity: 0.14;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.05' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
+  background-size: 180px 180px;
   mix-blend-mode: overlay;
 }
 
@@ -158,9 +230,41 @@ body.site-nav-open {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.055;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: 2;
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   mix-blend-mode: soft-light;
+}
+
+@media (max-width: 768px) {
+  .site-bg__tex--mesh,
+  .site-bg__tex--fibers {
+    opacity: 0.08;
+  }
+
+  .site-bg__tex--cells {
+    width: 85vw;
+    height: 70vw;
+    top: -6%;
+    right: -30%;
+    opacity: 0.14;
+  }
+
+  .site-bg__tex--blobs {
+    width: 75vw;
+    height: 60vw;
+    opacity: 0.12;
+  }
+
+  .site-bg__tex--spheres {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-bg__tex {
+    will-change: auto;
+  }
 }
 
 /* ——— Header ——— */
