@@ -51,6 +51,7 @@ html {
 }
 
 body {
+  position: relative;
   margin: 0;
   min-height: 100vh;
   min-height: 100dvh;
@@ -127,15 +128,16 @@ body.site-nav-open {
   }
 }
 
-/* ——— Background glow + organic textures + film grain ——— */
+/* ——— Background glow + procedural textures (scroll with page) + film grain ——— */
 .site-bg {
-  position: fixed;
-  inset: 0;
-  min-height: 100dvh;
-  min-height: 100lvh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 0;
   pointer-events: none;
-  overflow: hidden;
+  overflow: visible;
   background:
     radial-gradient(ellipse 55% 45% at 12% 18%, rgba(94, 234, 212, 0.14), transparent 58%),
     radial-gradient(ellipse 45% 40% at 88% 22%, rgba(244, 114, 182, 0.1), transparent 55%),
@@ -152,62 +154,69 @@ body.site-nav-open {
 
 .site-bg__tex {
   position: absolute;
-  display: block;
-  object-fit: cover;
-  object-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
   pointer-events: none;
-  opacity: 0.45;
-  -webkit-filter: invert(1) grayscale(1) contrast(1.4) brightness(1.15);
-  filter: invert(1) grayscale(1) contrast(1.4) brightness(1.15);
   mix-blend-mode: screen;
+  opacity: 0.72;
+  filter: brightness(1.35) contrast(1.15);
+  -webkit-mask-image: radial-gradient(
+    ellipse 85% 80% at 50% 50%,
+    #000 8%,
+    transparent 88%
+  );
+  mask-image: radial-gradient(
+    ellipse 85% 80% at 50% 50%,
+    #000 8%,
+    transparent 88%
+  );
 }
 
-/* SEM cells — верх справа */
 .site-bg__tex--cells {
   width: min(62vw, 600px);
   height: min(62vw, 600px);
-  top: -14%;
-  right: -16%;
-  opacity: 0.5;
+  top: 4%;
+  right: -14%;
+  background-image: url("images/textures/texture-cells.svg");
+  opacity: 0.78;
 }
 
-/* Волокна — центр слева */
 .site-bg__tex--fibers {
   width: min(78vw, 740px);
   height: min(55vw, 520px);
-  top: 22%;
-  left: -24%;
-  opacity: 0.38;
+  top: 26%;
+  left: -22%;
+  background-image: url("images/textures/texture-fibers.svg");
+  opacity: 0.62;
 }
 
-/* Сетка-blobs — низ по центру */
 .site-bg__tex--mesh {
   width: min(72vw, 680px);
   height: min(50vw, 460px);
-  bottom: -10%;
-  left: 10%;
-  opacity: 0.34;
+  top: 48%;
+  left: 8%;
+  background-image: url("images/textures/texture-mesh.svg");
+  opacity: 0.58;
   mix-blend-mode: lighten;
 }
 
-/* Зернистые капли — верх слева (герой) */
 .site-bg__tex--blobs {
   width: min(52vw, 480px);
   height: min(52vw, 480px);
-  top: 2%;
-  left: -12%;
-  opacity: 0.48;
+  top: 14%;
+  left: -10%;
+  background-image: url("images/textures/texture-blobs.svg");
+  opacity: 0.7;
 }
 
-/* Сферы в сетке — низ справа */
 .site-bg__tex--spheres {
   width: min(56vw, 540px);
   height: min(44vw, 420px);
-  bottom: 8%;
-  right: -14%;
-  opacity: 0.32;
-  -webkit-filter: invert(1) grayscale(0.9) contrast(1.3) brightness(1.12) hue-rotate(160deg);
-  filter: invert(1) grayscale(0.9) contrast(1.3) brightness(1.12) hue-rotate(160deg);
+  top: 68%;
+  right: -12%;
+  background-image: url("images/textures/texture-spheres.svg");
+  opacity: 0.55;
   mix-blend-mode: lighten;
 }
 
@@ -241,19 +250,21 @@ body.site-nav-open {
   .site-bg__tex--cells {
     width: 90vw;
     height: 75vw;
-    top: -8%;
-    right: -32%;
-    opacity: 0.3;
+    top: 2%;
+    right: -30%;
+    opacity: 0.28;
   }
 
   .site-bg__tex--blobs {
     width: 80vw;
     height: 65vw;
-    opacity: 0.28;
+    top: 10%;
+    opacity: 0.24;
   }
 
   .site-bg__tex--spheres {
-    opacity: 0.18;
+    top: 62%;
+    opacity: 0.16;
     width: 70vw;
     height: 55vw;
   }
