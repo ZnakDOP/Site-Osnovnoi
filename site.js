@@ -150,7 +150,7 @@
     sec_contact_meta: "direct",
     contact_briefs: "Briefs: <strong>a@gorushkindop.ru</strong>",
     sec_rental_title: "Equipment rental",
-    rental_sheet_btn: "Equipment list & day rates →",
+    rental_sheet_btn: "Equipment list",
     footer_ip: "Sole proprietor Arsenii Viacheslavovich Gorushkin",
     footer_top: "Back to top",
   }

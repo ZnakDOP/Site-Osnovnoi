@@ -1529,9 +1529,19 @@ html.kinescope-open body {
   border-bottom-color: var(--accent);
 }
 
-.rental-cta .btn {
-  border-bottom: none;
-  text-decoration: none;
+.rental-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.rental-sheet-pill {
+  width: min(360px, 100%);
+  min-height: 100px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 /* ——— Contact ——— */
