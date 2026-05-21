@@ -155,64 +155,64 @@ body.site-nav-open {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  opacity: 0.16;
-  filter: invert(1) grayscale(1) contrast(1.2) brightness(1.05);
+  opacity: 0.38;
+  -webkit-filter: invert(1) grayscale(1) contrast(1.35) brightness(1.12);
+  filter: invert(1) grayscale(1) contrast(1.35) brightness(1.12);
   mix-blend-mode: screen;
-  will-change: transform;
 }
 
 /* SEM cells — верх справа */
 .site-bg__tex--cells {
-  width: min(58vw, 560px);
-  height: min(58vw, 560px);
-  top: -12%;
-  right: -14%;
+  width: min(62vw, 600px);
+  height: min(62vw, 600px);
+  top: -14%;
+  right: -16%;
   background-image: url("images/textures/texture-xray-cells.png");
-  opacity: 0.2;
+  opacity: 0.42;
 }
 
 /* Волокна — центр слева */
 .site-bg__tex--fibers {
-  width: min(70vw, 680px);
-  height: min(50vw, 480px);
-  top: 28%;
-  left: -22%;
+  width: min(78vw, 740px);
+  height: min(55vw, 520px);
+  top: 22%;
+  left: -24%;
   background-image: url("images/textures/texture-fibers.png");
-  opacity: 0.14;
-  filter: invert(1) grayscale(1) contrast(1.35) brightness(1.02);
+  opacity: 0.32;
 }
 
 /* Сетка-blobs — низ по центру */
 .site-bg__tex--mesh {
-  width: min(65vw, 620px);
-  height: min(45vw, 420px);
-  bottom: -8%;
-  left: 18%;
+  width: min(72vw, 680px);
+  height: min(50vw, 460px);
+  bottom: -10%;
+  left: 10%;
   background-image: url("images/textures/texture-mesh-blobs.png");
-  opacity: 0.12;
-  mix-blend-mode: soft-light;
+  opacity: 0.28;
+  mix-blend-mode: lighten;
 }
 
 /* Зернистые капли — верх слева (герой) */
 .site-bg__tex--blobs {
-  width: min(48vw, 440px);
-  height: min(48vw, 440px);
-  top: 6%;
-  left: -10%;
+  width: min(52vw, 480px);
+  height: min(52vw, 480px);
+  top: 2%;
+  left: -12%;
   background-image: url("images/textures/texture-grain-blobs.png");
-  opacity: 0.18;
+  opacity: 0.4;
 }
 
 /* Сферы в сетке — низ справа */
 .site-bg__tex--spheres {
-  width: min(52vw, 500px);
-  height: min(40vw, 380px);
-  bottom: 12%;
-  right: -12%;
+  width: min(56vw, 540px);
+  height: min(44vw, 420px);
+  bottom: 8%;
+  right: -14%;
   background-image: url("images/textures/texture-mesh-spheres.png");
-  opacity: 0.11;
-  filter: invert(1) grayscale(0.85) contrast(1.15) brightness(1.08) hue-rotate(165deg);
-  mix-blend-mode: color-dodge;
+  opacity: 0.26;
+  -webkit-filter: invert(1) grayscale(0.9) contrast(1.25) brightness(1.1) hue-rotate(160deg);
+  filter: invert(1) grayscale(0.9) contrast(1.25) brightness(1.1) hue-rotate(160deg);
+  mix-blend-mode: lighten;
 }
 
 .site-bg::before {
@@ -220,7 +220,7 @@ body.site-nav-open {
   position: absolute;
   inset: 0;
   z-index: 1;
-  opacity: 0.14;
+  opacity: 0.2;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.05' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 180px 180px;
   mix-blend-mode: overlay;
@@ -231,7 +231,7 @@ body.site-nav-open {
   position: absolute;
   inset: 0;
   z-index: 2;
-  opacity: 0.08;
+  opacity: 0.12;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   mix-blend-mode: soft-light;
 }
@@ -239,31 +239,27 @@ body.site-nav-open {
 @media (max-width: 768px) {
   .site-bg__tex--mesh,
   .site-bg__tex--fibers {
-    opacity: 0.08;
+    opacity: 0.22;
   }
 
   .site-bg__tex--cells {
-    width: 85vw;
-    height: 70vw;
-    top: -6%;
-    right: -30%;
-    opacity: 0.14;
+    width: 90vw;
+    height: 75vw;
+    top: -8%;
+    right: -32%;
+    opacity: 0.3;
   }
 
   .site-bg__tex--blobs {
-    width: 75vw;
-    height: 60vw;
-    opacity: 0.12;
+    width: 80vw;
+    height: 65vw;
+    opacity: 0.28;
   }
 
   .site-bg__tex--spheres {
-    display: none;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .site-bg__tex {
-    will-change: auto;
+    opacity: 0.18;
+    width: 70vw;
+    height: 55vw;
   }
 }
 
@@ -1236,9 +1232,16 @@ button.work-tile {
   flex: 1;
   min-width: 0;
   overflow: hidden;
+  overflow: clip;
   overscroll-behavior: none;
+  touch-action: pan-y;
   container-type: inline-size;
   container-name: work-carousel;
+}
+
+#work .work-carousel {
+  overscroll-behavior: none;
+  touch-action: pan-y;
 }
 
 .work-carousel__track {

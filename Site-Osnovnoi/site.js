@@ -447,19 +447,35 @@
       prev.addEventListener("click", () => scrollToPage(true))
       next.addEventListener("click", () => scrollToPage(false))
 
-      viewport.addEventListener(
-        "wheel",
-        (e) => {
-          e.preventDefault()
-        },
-        { passive: false }
-      )
-
       viewport.addEventListener("scroll", () => window.requestAnimationFrame(updateDisabled), { passive: true })
       narrowMq.addEventListener("change", () => window.requestAnimationFrame(updateDisabled))
       window.addEventListener("resize", () => window.requestAnimationFrame(updateDisabled), { passive: true })
       window.setTimeout(updateDisabled, 0)
     })
+  }
+
+  /** В блоке «Мои работы» колесо листает страницу, не карусель */
+  function initWorkSectionWheel() {
+    const work = document.getElementById("work")
+    if (!work) return
+
+    work.addEventListener(
+      "wheel",
+      (e) => {
+        const vert = Math.abs(e.deltaY) >= Math.abs(e.deltaX)
+        if (vert && e.deltaY !== 0) {
+          window.scrollBy({ top: e.deltaY, left: 0, behavior: "auto" })
+          e.preventDefault()
+          e.stopPropagation()
+          return
+        }
+        if (e.deltaX !== 0) {
+          e.preventDefault()
+          e.stopPropagation()
+        }
+      },
+      { passive: false, capture: true }
+    )
   }
 
   const kinescopeLb = document.getElementById("kinescope-lightbox")
@@ -527,4 +543,5 @@
 
   initLang()
   initWorkCarousel()
+  initWorkSectionWheel()
 })()
