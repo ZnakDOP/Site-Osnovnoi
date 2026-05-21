@@ -128,7 +128,7 @@ body.site-nav-open {
   }
 }
 
-/* ——— Background glow + procedural textures (scroll with page) + film grain ——— */
+/* ——— Background (pre-glow) + metaball textures (scroll with page) ——— */
 .site-bg {
   position: absolute;
   top: 0;
@@ -139,11 +139,9 @@ body.site-nav-open {
   pointer-events: none;
   overflow: visible;
   background:
-    radial-gradient(ellipse 55% 45% at 12% 18%, rgba(94, 234, 212, 0.14), transparent 58%),
-    radial-gradient(ellipse 45% 40% at 88% 22%, rgba(244, 114, 182, 0.1), transparent 55%),
-    radial-gradient(ellipse 70% 50% at 50% 100%, rgba(20, 40, 48, 0.45), transparent 60%),
     radial-gradient(ellipse 80% 60% at 20% -10%, var(--hero-glow), transparent 55%),
     radial-gradient(ellipse 60% 50% at 95% 30%, rgba(167, 139, 250, 0.09), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(94, 234, 212, 0.06), transparent 45%),
     linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 45%, var(--bg0) 100%);
 }
 
@@ -154,119 +152,69 @@ body.site-nav-open {
 
 .site-bg__tex {
   position: absolute;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: none;
+  object-fit: contain;
   pointer-events: none;
   mix-blend-mode: screen;
-  opacity: 0.72;
-  filter: brightness(1.35) contrast(1.15);
-  -webkit-mask-image: radial-gradient(
-    ellipse 85% 80% at 50% 50%,
-    #000 8%,
-    transparent 88%
-  );
-  mask-image: radial-gradient(
-    ellipse 85% 80% at 50% 50%,
-    #000 8%,
-    transparent 88%
-  );
+  opacity: 0.52;
 }
 
-.site-bg__tex--cells {
-  width: min(62vw, 600px);
-  height: min(62vw, 600px);
-  top: 4%;
-  right: -14%;
-  background-image: url("images/textures/texture-cells.svg");
-  opacity: 0.78;
+.site-bg__tex--left {
+  width: min(72vw, 480px);
+  top: 6%;
+  left: -18%;
 }
 
-.site-bg__tex--fibers {
-  width: min(78vw, 740px);
-  height: min(55vw, 520px);
-  top: 26%;
-  left: -22%;
-  background-image: url("images/textures/texture-fibers.svg");
-  opacity: 0.62;
+.site-bg__tex--right {
+  width: min(72vw, 480px);
+  top: 32%;
+  right: -20%;
+  opacity: 0.46;
 }
 
-.site-bg__tex--mesh {
-  width: min(72vw, 680px);
-  height: min(50vw, 460px);
-  top: 48%;
-  left: 8%;
-  background-image: url("images/textures/texture-mesh.svg");
-  opacity: 0.58;
-  mix-blend-mode: lighten;
-}
-
-.site-bg__tex--blobs {
-  width: min(52vw, 480px);
-  height: min(52vw, 480px);
-  top: 14%;
-  left: -10%;
-  background-image: url("images/textures/texture-blobs.svg");
-  opacity: 0.7;
-}
-
-.site-bg__tex--spheres {
-  width: min(56vw, 540px);
-  height: min(44vw, 420px);
-  top: 68%;
-  right: -12%;
-  background-image: url("images/textures/texture-spheres.svg");
-  opacity: 0.55;
-  mix-blend-mode: lighten;
-}
-
-.site-bg::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  opacity: 0.2;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.05' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 180px 180px;
-  mix-blend-mode: overlay;
+.site-bg__tex--mirror {
+  width: min(68vw, 440px);
+  top: 62%;
+  left: 6%;
+  opacity: 0.4;
 }
 
 .site-bg::after {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 2;
-  opacity: 0.12;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: soft-light;
+  z-index: 1;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
 }
 
 @media (max-width: 768px) {
-  .site-bg__tex--mesh,
-  .site-bg__tex--fibers {
-    opacity: 0.22;
+  .site-bg__tex {
+    opacity: 0.32;
   }
 
-  .site-bg__tex--cells {
-    width: 90vw;
-    height: 75vw;
-    top: 2%;
-    right: -30%;
-    opacity: 0.28;
+  .site-bg__tex--left {
+    width: 88vw;
+    left: -28%;
+    top: 4%;
   }
 
-  .site-bg__tex--blobs {
+  .site-bg__tex--right {
+    width: 85vw;
+    right: -32%;
+    top: 28%;
+    opacity: 0.26;
+  }
+
+  .site-bg__tex--mirror {
     width: 80vw;
-    height: 65vw;
-    top: 10%;
-    opacity: 0.24;
-  }
-
-  .site-bg__tex--spheres {
-    top: 62%;
-    opacity: 0.16;
-    width: 70vw;
-    height: 55vw;
+    left: -8%;
+    top: 58%;
+    opacity: 0.22;
   }
 }
 
