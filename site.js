@@ -40,7 +40,7 @@
     nav_links: "Links",
     nav_contact: "Contact",
     nav_rental: "Rental",
-    hero_kicker: "Moscow · on location · worldwide",
+    hero_kicker: "Moscow · worldwide",
     hero_role: "Director of Photography",
     hero_rental: "Equipment rental",
     hero_showreel_btn: "Showreel",
@@ -57,7 +57,7 @@
     stat_doc: "Documentary",
     stat_vertical: "Vertical content",
     sec_showreel_title: "Showreel",
-    sec_showreel_meta: "edit · grade · sound",
+    sec_showreel_meta: "frame · light · motion",
     sec_bio_title: "Bio",
     sec_bio_meta: "about",
     bio_p1:
@@ -238,8 +238,8 @@
       ogD.setAttribute(
         "content",
         isEn
-          ? "DP / cinematographer. Moscow · on location · worldwide — commercial, music videos, documentary."
-          : "DP / оператор-постановщик. Москва · on location · worldwide — коммерция, клипы, документалистика."
+          ? "DP / cinematographer. Moscow · worldwide — commercial, music videos, documentary."
+          : "DP / оператор-постановщик. Moscow · worldwide — коммерция, клипы, документалистика."
       )
     }
 
@@ -387,15 +387,11 @@
           if (!tile) return Math.max(1, Math.round(viewport.clientWidth))
           const tw = tile.getBoundingClientRect().width
           const g = gapPx(track)
-          if (narrowMq.matches) return Math.round(2 * tw + g)
+          if (narrowMq.matches) return Math.max(1, Math.round(viewport.clientWidth))
           return Math.round(4 * tw + 3 * g)
         }
         if (narrowMq.matches) {
-          const tile = track.querySelector(".work-tile")
-          if (!tile) return Math.max(1, Math.round(viewport.clientWidth))
-          const tw = tile.getBoundingClientRect().width
-          const g = gapPx(track)
-          return Math.round(2 * tw + g)
+          return Math.max(1, Math.round(viewport.clientWidth))
         }
         return Math.max(1, Math.round(viewport.clientHeight))
       }

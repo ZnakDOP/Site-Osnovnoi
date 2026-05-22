@@ -1937,6 +1937,7 @@ body.scroll-down .reveal {
     min-width: 0;
     overflow: hidden;
     overscroll-behavior: none;
+    max-height: calc(3 * (((100cqi - 10px) / 2) * (3 / 2)) + 2 * 10px + 14px);
   }
 
   #work-vertical .work-carousel--vertical {
@@ -1952,22 +1953,22 @@ body.scroll-down .reveal {
     max-width: 100%;
     overflow: hidden;
     overscroll-behavior: none;
-    max-height: calc(2 * ((100cqi - 6px) / 2) * (16 / 9) + 12px + 22px);
+    max-height: calc(3 * ((100cqi - 8px) / 2) * (16 / 9) + 2 * 10px + 24px);
   }
 
-  /* 2×2: мобильный .work-grid задаёт grid-template-columns: 1fr — сбрасываем, иначе первая колонка уже остальных */
+  /* 2×3: мобильный .work-grid задаёт grid-template-columns: 1fr — сбрасываем */
   .work-carousel--vertical .work-carousel__track {
     display: grid;
     grid-template-columns: none;
     grid-template-rows: repeat(
-      2,
-      minmax(0, calc((100cqi - 6px) / 2 * 16 / 9))
+      3,
+      minmax(0, calc((100cqi - 8px) / 2 * 16 / 9))
     );
     grid-auto-flow: column;
-    grid-auto-columns: calc((100cqi - 6px) / 2);
+    grid-auto-columns: calc((100cqi - 8px) / 2);
     align-items: stretch;
-    column-gap: 6px;
-    row-gap: 12px;
+    column-gap: 8px;
+    row-gap: 10px;
     width: max-content;
     box-sizing: border-box;
     padding: 4px 0 10px;
@@ -1981,20 +1982,20 @@ body.scroll-down .reveal {
     height: 100%;
     min-height: 0;
     aspect-ratio: unset;
-    padding: 0.78rem 0.62rem 0.7rem;
+    padding: 0.92rem 0.72rem 0.82rem;
     justify-content: flex-end;
     text-align: left;
   }
 
   .work-carousel--vertical .work-carousel__track .work-tile .work-tile__tag {
-    font-size: 10px;
+    font-size: 10.5px;
     letter-spacing: 0.11em;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
     line-height: 1.12;
   }
 
   .work-carousel--vertical .work-carousel__track .work-tile .work-tile__name {
-    font-size: clamp(0.95rem, 4.1vw, 1.18rem);
+    font-size: clamp(1.02rem, 4.4vw, 1.28rem);
     line-height: 1.07;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -2014,27 +2015,30 @@ body.scroll-down .reveal {
 
   .work-carousel:not(.work-carousel--vertical) .work-carousel__track.work-grid,
   .work-carousel:not(.work-carousel--vertical) .work-grid {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: none;
+    grid-template-rows: repeat(3, minmax(0, calc(((100cqi - 10px) / 2) * (3 / 2))));
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100cqi - 10px) / 2);
+    column-gap: 10px;
+    row-gap: 10px;
     width: max-content;
     overflow: visible;
     scroll-snap-type: none;
     padding: 2px 0 10px;
     margin: 0;
+    align-items: stretch;
   }
 
   .work-carousel:not(.work-carousel--vertical) .work-carousel__track .work-tile {
-    flex: 0 0 calc((100cqi - 10px) / 2);
-    min-width: calc((100cqi - 10px) / 2);
-    max-width: calc((100cqi - 10px) / 2);
-    width: calc((100cqi - 10px) / 2);
-    min-height: unset;
-    /* Чуть выше 16:9 — больше места под длинные названия в двух колонках */
+    flex: none;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    min-height: 0;
     aspect-ratio: 3 / 2;
     align-self: stretch;
-    padding: 0.6rem 0.5rem 0.55rem;
+    padding: 0.82rem 0.68rem 0.72rem;
     scroll-snap-align: none;
     justify-content: flex-end;
     text-align: left;
@@ -2042,14 +2046,18 @@ body.scroll-down .reveal {
   }
 
   .work-carousel .work-carousel__track .work-tile .work-tile__tag {
-    font-size: 8px;
+    font-size: 9px;
     letter-spacing: 0.1em;
-    margin-bottom: 3px;
+    margin-bottom: 4px;
     line-height: 1.15;
   }
 
+  .work-carousel:not(.work-carousel--vertical) .work-carousel__track .work-tile .work-tile__name {
+    font-size: clamp(0.9rem, 3.5vw, 1.08rem);
+  }
+
   .work-carousel .work-carousel__track .work-tile .work-tile__name {
-    font-size: clamp(0.72rem, 2.65vw, 0.88rem);
+    font-size: clamp(0.82rem, 3vw, 0.98rem);
     line-height: 1.1;
     overflow-wrap: anywhere;
     word-break: break-word;
