@@ -1689,9 +1689,31 @@ body.scroll-down .reveal {
   isolation: isolate;
 }
 
+/* Скрываем белые pillarbox-полосы Kinescope, не обрезая плеер */
+.showreel-embed::before,
+.showreel-embed::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(10px, 2.5%, 22px);
+  z-index: 1;
+  background: #060608;
+  pointer-events: none;
+}
+
+.showreel-embed::before {
+  left: 0;
+}
+
+.showreel-embed::after {
+  right: 0;
+}
+
 .showreel-embed__iframe {
   position: absolute;
   inset: 0;
+  z-index: 0;
   width: 100%;
   height: 100%;
   border: 0;
