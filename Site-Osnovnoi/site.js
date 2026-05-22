@@ -450,7 +450,7 @@
     })
   }
 
-  /** В блоке «Мои работы» колесо листает страницу, не карусель */
+  /** В #work вертикальное колесо листает страницу; горизонтальное — карусель вертикального блока */
   function initWorkSectionWheel() {
     const work = document.getElementById("work")
     if (!work) return
@@ -458,13 +458,23 @@
     work.addEventListener(
       "wheel",
       (e) => {
+        const vertVp = e.target.closest(".work-carousel--vertical .work-carousel__viewport")
         const vert = Math.abs(e.deltaY) >= Math.abs(e.deltaX)
+
         if (vert && e.deltaY !== 0) {
           window.scrollBy({ top: e.deltaY, left: 0, behavior: "auto" })
           e.preventDefault()
           e.stopPropagation()
           return
         }
+
+        if (e.deltaX !== 0 && vertVp) {
+          vertVp.scrollLeft += e.deltaX
+          e.preventDefault()
+          e.stopPropagation()
+          return
+        }
+
         if (e.deltaX !== 0) {
           e.preventDefault()
           e.stopPropagation()
