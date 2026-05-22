@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 132" fill="none" role="img" aria-label="Arsenii Gorushkin">
+  <title>Arsenii Gorushkin</title>
+  <defs>
+    <linearGradient id="ag-wordmark" x1="0" y1="0" x2="720" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f0fffe"/>
+      <stop offset="0.18" stop-color="#d8faf4"/>
+      <stop offset="0.38" stop-color="#a8f0e8"/>
+      <stop offset="0.62" stop-color="#5eead4"/>
+      <stop offset="0.82" stop-color="#3ecfb8"/>
+      <stop offset="1" stop-color="#2a9d8c"/>
+    </linearGradient>
+  </defs>
+  <text
+    x="0"
+    y="54"
+    fill="url(#ag-wordmark)"
+    font-family="Syne, system-ui, sans-serif"
+    font-weight="800"
+    font-size="72"
+    letter-spacing="-2.5"
+  >Arsenii</text>
+  <text
+    x="0"
+    y="124"
+    fill="url(#ag-wordmark)"
+    font-family="Syne, system-ui, sans-serif"
+    font-weight="800"
+    font-size="72"
+    letter-spacing="-2.5"
+  >Gorushkin</text>
+</svg>

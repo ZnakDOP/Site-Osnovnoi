@@ -471,27 +471,17 @@ body.site-nav-open {
   margin-bottom: 1rem;
 }
 
-.hero__title {
+.hero__logo {
   margin: 0;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(2.25rem, 8vw, 4.75rem);
-  line-height: 0.98;
-  letter-spacing: -0.03em;
-  max-width: 18ch;
-  background: linear-gradient(
-    90deg,
-    #f0fffe 0%,
-    #d8faf4 18%,
-    #a8f0e8 38%,
-    var(--accent) 62%,
-    #3ecfb8 82%,
-    #2a9d8c 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  max-width: min(100%, 720px);
+  line-height: 0;
+}
+
+.hero__logo-svg {
+  display: block;
+  width: min(100%, 640px);
+  height: auto;
+  overflow: visible;
 }
 
 .hero__role {
@@ -1802,10 +1792,8 @@ body.scroll-down .reveal {
     margin-bottom: 1.1rem;
   }
 
-  .hero__title {
-    font-size: clamp(1.85rem, 10vw, 2.75rem);
-    max-width: none;
-    line-height: 1.02;
+  .hero__logo-svg {
+    width: min(100%, 92vw);
   }
 
   .hero__actions {
@@ -2235,9 +2223,8 @@ body.scroll-down .reveal {
     padding-bottom: clamp(28px, 7vw, 40px);
   }
 
-  .hero__title {
-    font-size: clamp(1.65rem, 9.5vw, 2.35rem);
-    line-height: 1.05;
+  .hero__logo-svg {
+    width: min(100%, 94vw);
   }
 
   .section {
@@ -2282,8 +2269,8 @@ body.scroll-down .reveal {
     align-items: start;
   }
 
-  .hero__title {
-    font-size: clamp(1.45rem, 5.5vw, 2rem);
+  .hero__logo-svg {
+    width: min(100%, 72vw);
   }
 
   .hero__actions {
