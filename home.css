@@ -1924,113 +1924,151 @@ body.scroll-down .reveal {
     gap: 14px;
   }
 
-  /* Портфолио на телефоне: крупные горизонтальные плитки, свайп + snap */
-  .work-carousel {
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
+  /* Портфолио: обычные блоки — вся сетка сразу; вертикальный — карусель 2×3 как раньше */
+  .work-carousel:not(.work-carousel--vertical) {
+    display: block;
   }
 
-  .work-carousel--vertical {
+  .work-carousel:not(.work-carousel--vertical) .work-carousel__btn {
+    display: none;
+  }
+
+  .work-carousel:not(.work-carousel--vertical) .work-carousel__viewport {
+    overflow: visible;
+    touch-action: auto;
+    max-height: none;
+    scroll-snap-type: none;
+  }
+
+  .work-carousel:not(.work-carousel--vertical) .work-carousel__track,
+  .work-carousel:not(.work-carousel--vertical) .work-carousel__track.work-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+  }
+
+  .work-carousel:not(.work-carousel--vertical) .work-carousel__track .work-tile {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    flex: none;
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+    padding: 1rem 0.95rem 0.92rem;
+    scroll-snap-align: none;
+    justify-content: flex-end;
+    text-align: left;
+    box-sizing: border-box;
+  }
+
+  .work-carousel:not(.work-carousel--vertical) .work-carousel__track .work-tile .work-tile__tag {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    margin-bottom: 6px;
+  }
+
+  .work-carousel:not(.work-carousel--vertical) .work-carousel__track .work-tile .work-tile__name {
+    font-size: clamp(1.08rem, 4.6vw, 1.28rem);
+    line-height: 1.08;
+    -webkit-line-clamp: 3;
+  }
+
+  .work-carousel:not(.work-carousel--vertical) .work-carousel__track .work-tile .work-tile__hint {
+    font-size: clamp(0.82rem, 3.2vw, 0.95rem);
+    margin-top: 6px;
+    -webkit-line-clamp: 2;
+  }
+
+  .work-carousel.work-carousel--vertical {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  #work-vertical .work-carousel--vertical {
     width: calc(100% + 2 * clamp(12px, 8vw, 36px));
     margin-inline: calc(-1 * clamp(12px, 8vw, 36px));
     max-width: none;
     box-sizing: border-box;
   }
 
-  #work-vertical .work-carousel--vertical {
-    width: calc(100% + 2 * clamp(12px, 8vw, 36px));
-    margin-inline: calc(-1 * clamp(12px, 8vw, 36px));
-  }
-
-  .work-carousel__viewport {
+  .work-carousel--vertical .work-carousel__viewport {
     flex: 1 1 auto;
     width: 100%;
     min-width: 0;
-    max-height: none;
-    overflow-x: auto;
-    overflow-y: hidden;
-    overscroll-behavior-x: contain;
-    overscroll-behavior-y: none;
-    scroll-snap-type: x mandatory;
-    scroll-padding-inline: max(var(--space), var(--space-floor, 0px));
-    touch-action: pan-x;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  #work .work-carousel__viewport {
+    overflow: hidden;
+    overscroll-behavior: none;
+    max-height: calc(3 * ((100cqi - 8px) / 2 * 16 / 9) + 2 * 10px + 24px);
     touch-action: pan-x;
   }
 
-  .work-carousel__track,
-  .work-carousel__track.work-grid,
-  .work-carousel .work-grid {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+  #work .work-carousel--vertical .work-carousel__viewport {
+    touch-action: pan-x;
+  }
+
+  .work-carousel--vertical .work-carousel__track {
+    display: grid;
+    grid-template-columns: none;
+    grid-template-rows: repeat(
+      3,
+      minmax(0, calc((100cqi - 8px) / 2 * 16 / 9))
+    );
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100cqi - 8px) / 2);
     align-items: stretch;
-    gap: 12px;
+    column-gap: 8px;
+    row-gap: 10px;
     width: max-content;
-    padding: 4px max(var(--space), var(--space-floor, 0px)) 14px;
-    margin: 0;
-    overflow: visible;
-    scroll-snap-type: none;
-  }
-
-  .work-carousel__track .work-tile {
-    --mob-tile-w: clamp(272px, 86cqi, 400px);
-    flex: 0 0 var(--mob-tile-w);
-    width: var(--mob-tile-w);
-    min-width: var(--mob-tile-w);
-    max-width: var(--mob-tile-w);
-    height: auto;
-    min-height: 0;
-    aspect-ratio: 16 / 10;
-    align-self: auto;
-    padding: 1rem 0.92rem 0.9rem;
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
-    justify-content: flex-end;
-    text-align: left;
     box-sizing: border-box;
+    padding: 4px 0 10px;
+    overflow: visible;
   }
 
   .work-carousel--vertical .work-carousel__track .work-tile {
-    aspect-ratio: 16 / 10;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    height: 100%;
+    min-height: 0;
+    aspect-ratio: unset;
+    padding: 0.92rem 0.72rem 0.82rem;
+    justify-content: flex-end;
+    text-align: left;
   }
 
-  .work-carousel__track .work-tile .work-tile__tag {
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    margin-bottom: 6px;
-    line-height: 1.15;
+  .work-carousel--vertical .work-carousel__track .work-tile .work-tile__tag {
+    font-size: 10.5px;
+    letter-spacing: 0.11em;
+    margin-bottom: 5px;
+    line-height: 1.12;
   }
 
-  .work-carousel__track .work-tile .work-tile__name {
-    font-size: clamp(1.02rem, 4.2vw, 1.22rem);
-    line-height: 1.08;
-    overflow-wrap: anywhere;
-    word-break: break-word;
+  .work-carousel--vertical .work-carousel__track .work-tile .work-tile__name {
+    font-size: clamp(1.02rem, 4.4vw, 1.28rem);
+    line-height: 1.07;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
     overflow: hidden;
   }
 
-  .work-carousel__track .work-tile .work-tile__hint {
-    font-size: clamp(0.78rem, 3vw, 0.92rem);
-    line-height: 1.15;
-    margin-top: 6px;
-    overflow-wrap: anywhere;
-    word-break: break-word;
+  .work-carousel--vertical .work-carousel__track .work-tile .work-tile__hint {
+    font-size: 11.5px;
+    line-height: 1.1;
+    margin-top: 4px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     overflow: hidden;
   }
 
-  .work-carousel__btn {
+  .work-carousel--vertical .work-carousel__btn {
     width: 34px;
     height: 34px;
     font-size: 1.15rem;
@@ -2039,7 +2077,11 @@ body.scroll-down .reveal {
   }
 
   .work-tile:active {
-    transform: scale(0.985);
+    transform: scale(0.99);
+  }
+
+  .work-carousel .work-carousel__track .work-tile {
+    min-height: 0;
   }
 
   .cat {

@@ -377,18 +377,14 @@
       }
 
       function isHorizontalMode() {
-        if (narrowMq.matches) return true
+        if (narrowMq.matches) return isVertical
         return isVertical
       }
 
-      /** Мобилка: одна плитка за свайп/стрелку; десктоп: сетка по высоте или 4 в ряд */
+      /** Мобилка: только вертикальный блок листается; остальное — вся сетка на экране */
       function pageStep() {
-        if (narrowMq.matches) {
-          const tile = track.querySelector(".work-tile")
-          if (!tile) return Math.max(1, Math.round(viewport.clientWidth))
-          const tw = tile.getBoundingClientRect().width
-          const g = gapPx(track)
-          return Math.round(tw + g)
+        if (narrowMq.matches && isVertical) {
+          return Math.max(1, Math.round(viewport.clientWidth))
         }
         if (isVertical) {
           const tile = track.querySelector(".work-tile")
