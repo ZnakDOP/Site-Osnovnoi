@@ -1685,15 +1685,29 @@ body.scroll-down .reveal {
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid var(--stroke);
-  background: #0a0a10;
+  background: #060608;
+  isolation: isolate;
 }
 
-.showreel-embed iframe {
+.showreel-embed__iframe {
   position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 50%;
   width: 100%;
   height: 100%;
+  min-width: 100%;
+  min-height: 100%;
   border: 0;
+  background: #060608;
+  transform: translate(-50%, -50%) scale(1.04);
+  transform-origin: center center;
+}
+
+@media (min-width: 769px) {
+  .showreel-embed__iframe {
+    /* Убираем белые pillarbox-полосы Kinescope на десктопе */
+    transform: translate(-50%, -50%) scale(1.07);
+  }
 }
 
 .showreel-box p {
