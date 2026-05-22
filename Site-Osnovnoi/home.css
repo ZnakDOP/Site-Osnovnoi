@@ -2012,7 +2012,7 @@ body.scroll-down .reveal {
     overscroll-behavior-x: contain;
     overscroll-behavior-y: auto;
     -webkit-overflow-scrolling: touch;
-    max-height: calc(3 * ((100cqi - 8px) / 2 * 16 / 9) + 2 * 10px + 24px);
+    max-height: calc(2 * ((100cqi - 8px) / 2 * 16 / 9) + 10px + 24px);
     /* Вертикальный свайп — страница; горизонтальный — карусель */
     touch-action: pan-x pan-y;
   }
@@ -2025,7 +2025,7 @@ body.scroll-down .reveal {
     display: grid;
     grid-template-columns: none;
     grid-template-rows: repeat(
-      3,
+      2,
       minmax(0, calc((100cqi - 8px) / 2 * 16 / 9))
     );
     grid-auto-flow: column;
