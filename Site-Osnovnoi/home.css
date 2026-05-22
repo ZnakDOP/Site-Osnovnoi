@@ -479,9 +479,18 @@ body.site-nav-open {
   line-height: 0.98;
   letter-spacing: -0.03em;
   max-width: 18ch;
-  background: linear-gradient(105deg, #fff 28%, rgba(255, 255, 255, 0.58) 88%);
+  background: linear-gradient(
+    90deg,
+    #f0fffe 0%,
+    #d8faf4 18%,
+    #a8f0e8 38%,
+    var(--accent) 62%,
+    #3ecfb8 82%,
+    #2a9d8c 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent;
 }
 
