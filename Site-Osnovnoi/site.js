@@ -377,21 +377,25 @@
       }
 
       function isHorizontalMode() {
-        return isVertical || narrowMq.matches
+        if (narrowMq.matches) return true
+        return isVertical
       }
 
-      /** Шаг «страницы»: горизонтально на мобилке и в вертикальном блоке; по высоте на десктопе */
+      /** Мобилка: одна плитка за свайп/стрелку; десктоп: сетка по высоте или 4 в ряд */
       function pageStep() {
+        if (narrowMq.matches) {
+          const tile = track.querySelector(".work-tile")
+          if (!tile) return Math.max(1, Math.round(viewport.clientWidth))
+          const tw = tile.getBoundingClientRect().width
+          const g = gapPx(track)
+          return Math.round(tw + g)
+        }
         if (isVertical) {
           const tile = track.querySelector(".work-tile")
           if (!tile) return Math.max(1, Math.round(viewport.clientWidth))
           const tw = tile.getBoundingClientRect().width
           const g = gapPx(track)
-          if (narrowMq.matches) return Math.max(1, Math.round(viewport.clientWidth))
           return Math.round(4 * tw + 3 * g)
-        }
-        if (narrowMq.matches) {
-          return Math.max(1, Math.round(viewport.clientWidth))
         }
         return Math.max(1, Math.round(viewport.clientHeight))
       }
