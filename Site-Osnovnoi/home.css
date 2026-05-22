@@ -1691,23 +1691,11 @@ body.scroll-down .reveal {
 
 .showreel-embed__iframe {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  inset: 0;
   width: 100%;
   height: 100%;
-  min-width: 100%;
-  min-height: 100%;
   border: 0;
   background: #060608;
-  transform: translate(-50%, -50%) scale(1.04);
-  transform-origin: center center;
-}
-
-@media (min-width: 769px) {
-  .showreel-embed__iframe {
-    /* Убираем белые pillarbox-полосы Kinescope на десктопе */
-    transform: translate(-50%, -50%) scale(1.07);
-  }
 }
 
 .showreel-box p {
