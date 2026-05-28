@@ -122,6 +122,8 @@
     w_vert_si_hint: "Giorgio Armani",
     w_vert_ggate_name: "GGATE MERCH",
     w_vert_ggate_hint: "1WIN",
+    w_vert_souvenir_name: "Souvenir",
+    w_vert_souvenir_hint: "Toma Polak",
     w_vert_1_name: "Night floor",
     w_vert_1_hint: "Shorts",
     w_vert_2_name: "Light in the hall",
