@@ -1081,6 +1081,11 @@ button.work-tile {
   background-position: center top;
 }
 
+.work-tile--vert-hydrabio::before {
+  background-image: url("images/work-vert-hydrabio.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center top;
+}
+
 .work-tile--vert-01::before {
   background-image: url("images/work-1.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
