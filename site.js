@@ -511,7 +511,11 @@
     kinescopeLb.hidden = true
     kinescopeIframe.removeAttribute("src")
     kinescopeIframe.setAttribute("title", "")
-    if (kinescopeRatio) kinescopeRatio.style.removeProperty("padding-top")
+    if (kinescopeRatio) {
+      kinescopeRatio.style.removeProperty("padding-top")
+      kinescopeRatio.style.removeProperty("aspect-ratio")
+    }
+    kinescopeLb.classList.remove("kinescope-lightbox--portrait")
     document.documentElement.classList.remove("kinescope-open")
     if (kinescopeFocusReturn && typeof kinescopeFocusReturn.focus === "function") {
       kinescopeFocusReturn.focus()
@@ -524,8 +528,16 @@
     kinescopeFocusReturn = document.activeElement
     if (kinescopeRatio) {
       const n = aspectAttr != null && String(aspectAttr).trim() !== "" ? Number(aspectAttr) : NaN
+      kinescopeLb.classList.remove("kinescope-lightbox--portrait")
+      kinescopeRatio.style.removeProperty("aspect-ratio")
       if (Number.isFinite(n) && n > 0) {
-        kinescopeRatio.style.paddingTop = n + "%"
+        if (n > 100) {
+          kinescopeLb.classList.add("kinescope-lightbox--portrait")
+          kinescopeRatio.style.removeProperty("padding-top")
+          kinescopeRatio.style.aspectRatio = `${100} / ${n}`
+        } else {
+          kinescopeRatio.style.paddingTop = n + "%"
+        }
       } else {
         kinescopeRatio.style.removeProperty("padding-top")
       }

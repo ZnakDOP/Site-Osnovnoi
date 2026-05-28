@@ -1447,6 +1447,23 @@ button.work-tile {
   padding-top: 56.25%;
 }
 
+.kinescope-lightbox--portrait .kinescope-lightbox__panel {
+  width: min(calc((100dvh - 80px) * 9 / 16), calc(100vw - 48px), 480px);
+  max-width: calc(100vw - 48px);
+}
+
+.kinescope-lightbox--portrait .kinescope-lightbox__ratio {
+  padding-top: 0 !important;
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 769px) {
+  .kinescope-lightbox--portrait .kinescope-lightbox__panel {
+    width: min(calc((100dvh - 96px) * 9 / 16), calc(100vw - 64px), 520px);
+  }
+}
+
 .kinescope-lightbox__iframe {
   position: absolute;
   inset: 0;
