@@ -1062,7 +1062,7 @@ button.work-tile {
 }
 
 .work-tile--vert-si::before {
-  background-image: url("images/work-vert-si.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/work-vert-si.jpg?v=2"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
