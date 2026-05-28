@@ -130,6 +130,8 @@
     w_vert_hydrabio_hint: "Bioderma",
     w_vert_tochka_team_name: "Team management",
     w_vert_tochka_team_hint: "Tochka Bank",
+    w_vert_artfruit_name: "Made by nature",
+    w_vert_artfruit_hint: "Artfruit",
     w_vert_1_name: "Night floor",
     w_vert_1_hint: "Shorts",
     w_vert_2_name: "Light in the hall",
