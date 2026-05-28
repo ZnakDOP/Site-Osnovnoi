@@ -128,6 +128,8 @@
     w_vert_luckyclub_hint: "1WIN",
     w_vert_hydrabio_name: "Hydrabio Tonique",
     w_vert_hydrabio_hint: "Bioderma",
+    w_vert_tochka_team_name: "Team management",
+    w_vert_tochka_team_hint: "Tochka Bank",
     w_vert_1_name: "Night floor",
     w_vert_1_hint: "Shorts",
     w_vert_2_name: "Light in the hall",
