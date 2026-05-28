@@ -1057,7 +1057,7 @@ button.work-tile {
 }
 
 .work-tile--vert-12players::before {
-  background-image: url("images/work-vert-12players.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/work-vert-12players.jpg?v=2"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
