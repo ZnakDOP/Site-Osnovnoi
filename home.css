@@ -1056,6 +1056,16 @@ button.work-tile {
   background-position: center center;
 }
 
+.work-tile--vert-12players::before {
+  background-image: url("images/work-doc-avito.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center top;
+}
+
+.work-tile--vert-si::before {
+  background-image: url("images/work-2.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center top;
+}
+
 .work-tile--vert-01::before {
   background-image: url("images/work-1.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;

@@ -114,7 +114,12 @@
     cat_music: "Music videos",
     w_tag_music: "Music video",
     cat_vertical: "Vertical content",
+    w_tag_show: "Show",
     w_tag_vertical: "Vertical",
+    w_vert_12players_name: "Show «12 Players»",
+    w_vert_12players_hint: "CSKA & Beeline",
+    w_vert_si_name: "Si",
+    w_vert_si_hint: "Giorgio Armani",
     w_vert_1_name: "Night floor",
     w_vert_1_hint: "Shorts",
     w_vert_2_name: "Light in the hall",
@@ -507,7 +512,7 @@
     kinescopeFocusReturn = document.activeElement
     if (kinescopeRatio) {
       const n = aspectAttr != null && String(aspectAttr).trim() !== "" ? Number(aspectAttr) : NaN
-      if (Number.isFinite(n) && n > 0 && n < 100) {
+      if (Number.isFinite(n) && n > 0) {
         kinescopeRatio.style.paddingTop = n + "%"
       } else {
         kinescopeRatio.style.removeProperty("padding-top")
