@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Предпросмотр D — рентген · зерно · смаз</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600&family=Syne:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="preview-ovyon.css?v=2" />
+  </head>
+  <body class="preview-page">
+    <header class="preview-toolbar wrap">
+      <div>
+        <p class="preview-toolbar__kicker">Предпросмотр v2 · gorushkindop.com</p>
+        <h1 class="preview-toolbar__title">Рентген · зерно · длинная выдержка</h1>
+        <p class="preview-toolbar__note">
+          По вашему фидбеку: фон как в <strong>C</strong>, плюс плотное зерно, смаз выдержки и инверсия «как
+          рентген». Референс:
+          <a href="https://www.instagram.com/ovyonlabs?igsh=OXg2YmozejZtYjBt" target="_blank" rel="noreferrer"
+            >@ovyonlabs</a
+          >.
+        </p>
+      </div>
+      <div class="preview-tabs" role="tablist" aria-label="Варианты">
+        <button type="button" class="preview-tabs__btn is-active" data-variant="d" role="tab" aria-selected="true">
+          D · Рентген (новый)
+        </button>
+        <button type="button" class="preview-tabs__btn" data-variant="c" role="tab" aria-selected="false">
+          C · только фон (было)
+        </button>
+      </div>
+    </header>
+
+    <p class="preview-hint wrap">
+      Вариант <strong>D</strong> — основной. Если близко к желаемому, напишите «D» или что усилить/убрать. После
+      подтверждения перенесу на сайт.
+    </p>
+
+    <!-- VARIANT D -->
+    <section class="preview-stage variant-d is-visible" data-variant-panel="d" aria-label="Вариант D">
+      <div class="preview-stage__label wrap">
+        <span class="ovy-tag">[XRAY·D]</span>
+        <span>Тёмная база · glow-фон · зерно · смаз · инверсионные панели</span>
+      </div>
+
+      <div class="mock-site mock-site--d">
+        <div class="mock-bg" aria-hidden="true"></div>
+        <div class="mock-glow mock-glow--teal" aria-hidden="true"></div>
+        <div class="mock-glow mock-glow--magenta" aria-hidden="true"></div>
+        <div class="mock-grain mock-grain--fine" aria-hidden="true"></div>
+        <div class="mock-grain mock-grain--coarse" aria-hidden="true"></div>
+        <div class="mock-smears" aria-hidden="true">
+          <span class="mock-smear mock-smear--1"></span>
+          <span class="mock-smear mock-smear--2"></span>
+          <span class="mock-smear mock-smear--3"></span>
+        </div>
+
+        <header class="mock-header">
+          <span class="ovy-meta">DOP·SCAN</span>
+          <nav class="mock-nav">
+            <a href="#">Шоурил</a>
+            <a href="#">Работы</a>
+            <a href="#">Контакты</a>
+            <a href="#">Рентал</a>
+          </nav>
+          <span class="ovy-meta">09°</span>
+        </header>
+
+        <section class="mock-hero wrap">
+          <div class="mock-hero__layout">
+            <div class="mock-hero__copy ovy-xray-panel">
+              <span class="ovy-scan-label">EXPOSURE · LONG</span>
+              <p class="mock-kicker">Москва · на площадке · по миру</p>
+              <h2 class="mock-title mock-title--xray">Arsenii Gorushkin</h2>
+              <p class="mock-role">Оператор-постановщик</p>
+              <div class="mock-actions">
+                <a class="mock-btn mock-btn--xray" href="#">Шоурил</a>
+                <a class="mock-btn mock-btn--xray-ghost" href="#">Рентал техники</a>
+              </div>
+            </div>
+
+            <div class="mock-hero__visual ovy-xray-frame" aria-hidden="true">
+              <div class="ovy-xray-plate">
+                <img
+                  class="mock-xray-photo"
+                  src="arsenii-camera.jpg"
+                  alt=""
+                  width="480"
+                  height="640"
+                  decoding="async"
+                />
+                <div class="ovy-xray-mesh"></div>
+                <span class="ovy-xray-mark">INV</span>
+              </div>
+              <span class="mock-smear mock-smear--hero"></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="mock-section wrap">
+          <div class="mock-section__head">
+            <span class="mock-idx">06</span>
+            <h3>Контакты</h3>
+            <span class="mock-meta">[CO]</span>
+          </div>
+          <div class="mock-contact-grid">
+            <a class="mock-pill ovy-xray-panel" href="#">Telegram</a>
+            <a class="mock-pill ovy-xray-panel" href="#">Телефон</a>
+            <a class="mock-pill ovy-xray-panel ovy-xray-panel--hot" href="#">Почта</a>
+          </div>
+        </section>
+
+        <section class="mock-section wrap">
+          <div class="mock-section__head">
+            <span class="mock-idx">07</span>
+            <h3>Рентал техники</h3>
+            <span class="mock-meta">ZNAK RENT</span>
+          </div>
+          <div class="mock-rental">
+            <a class="mock-pill mock-pill--wide ovy-xray-panel" href="#">Список оборудования</a>
+          </div>
+        </section>
+
+        <div class="mock-xray-strip" aria-hidden="true">
+          <span>MATERIAL</span><span>PERCEPTION</span><span>INVERSION</span><span>09</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- VARIANT C reference -->
+    <section class="preview-stage variant-c" data-variant-panel="c" aria-label="Вариант C" hidden>
+      <div class="preview-stage__label wrap">
+        <span class="ovy-tag">[REF·C]</span>
+        <span>Только фон из прошлого варианта — для сравнения</span>
+      </div>
+      <div class="mock-site mock-site--c">
+        <div class="mock-bg" aria-hidden="true"></div>
+        <div class="mock-grain" aria-hidden="true"></div>
+        <div class="mock-glow mock-glow--teal" aria-hidden="true"></div>
+        <div class="mock-glow mock-glow--magenta" aria-hidden="true"></div>
+        <header class="mock-header">
+          <span class="ovy-meta">DOP·09°</span>
+          <nav class="mock-nav">
+            <a href="#">Шоурил</a>
+            <a href="#">Работы</a>
+          </nav>
+        </header>
+        <section class="mock-hero wrap">
+          <div class="mock-hero__inner" style="padding: 2rem; max-width: 520px">
+            <p class="mock-kicker">Москва · на площадке · по миру</p>
+            <h2 class="mock-title">Arsenii Gorushkin</h2>
+            <p class="mock-role">Оператор-постановщик</p>
+          </div>
+        </section>
+        <p class="wrap" style="padding: 2rem; color: var(--muted); font-size: 0.9rem">
+          Здесь только glow-фон без рентгена и смаза.
+        </p>
+      </div>
+    </section>
+
+    <footer class="preview-footer wrap">
+      <p><code>preview-ovyon.html</code> — обновите страницу (⌘R), если уже была открыта.</p>
+    </footer>
+
+    <script src="preview-ovyon.js"></script>
+  </body>
+</html>

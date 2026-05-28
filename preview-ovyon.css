@@ -1,0 +1,950 @@
+/* Preview: Ovyon Labs visual accents for gorushkindop.com */
+
+:root {
+  --font-display: "Syne", system-ui, sans-serif;
+  --font-body: "Outfit", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --max: 1180px;
+  --space: clamp(16px, 3vw, 32px);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body.preview-page {
+  margin: 0;
+  font-family: var(--font-body);
+  background: #0a0a0c;
+  color: #e4e4e7;
+  line-height: 1.5;
+}
+
+.wrap {
+  width: min(var(--max), 100% - 2 * var(--space));
+  margin-inline: auto;
+}
+
+a {
+  color: inherit;
+}
+
+/* ——— Toolbar ——— */
+.preview-toolbar {
+  padding: 2rem var(--space) 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.preview-toolbar__kicker {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #71717a;
+}
+
+.preview-toolbar__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+}
+
+.preview-toolbar__note {
+  margin: 0.75rem 0 1.25rem;
+  max-width: 52ch;
+  font-size: 0.95rem;
+  color: #a1a1aa;
+}
+
+.preview-toolbar__note a {
+  color: #5eead4;
+}
+
+.preview-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.preview-tabs__btn {
+  padding: 12px 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #a1a1aa;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.preview-tabs__btn:hover {
+  border-color: #5eead4;
+  color: #f4f4f5;
+}
+
+.preview-tabs__btn.is-active {
+  background: #f4f4f5;
+  color: #060608;
+  border-color: #f4f4f5;
+}
+
+.preview-hint {
+  margin: 1rem auto 2rem;
+  padding: 0 var(--space);
+  font-size: 0.9rem;
+  color: #71717a;
+}
+
+.preview-stage {
+  display: none;
+  padding-bottom: 3rem;
+}
+
+.preview-stage.is-visible {
+  display: block;
+}
+
+.preview-stage__label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+  padding: 0 var(--space);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: #a1a1aa;
+}
+
+.ovy-tag {
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  color: #f4f4f5;
+}
+
+.preview-footer {
+  padding: 2rem var(--space) 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.9rem;
+  color: #71717a;
+}
+
+.preview-footer code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: #5eead4;
+}
+
+/* ——— Mock site shell ——— */
+.mock-site {
+  position: relative;
+  margin: 0 var(--space);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 720px;
+}
+
+.mock-bg,
+.mock-grain,
+.mock-grid,
+.mock-scan,
+.mock-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.mock-grain {
+  opacity: 0.12;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.mock-grain--light {
+  opacity: 0.08;
+  mix-blend-mode: multiply;
+}
+
+.mock-grid {
+  opacity: 0.35;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.mock-scan {
+  opacity: 0.06;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+}
+
+.mock-glow--teal {
+  background: radial-gradient(ellipse 50% 40% at 15% 20%, rgba(94, 234, 212, 0.15), transparent 60%);
+}
+
+.mock-glow--magenta {
+  background: radial-gradient(ellipse 40% 35% at 85% 25%, rgba(236, 72, 153, 0.12), transparent 55%);
+}
+
+/* Variant A — dark */
+.mock-site--a {
+  --bg: #060608;
+  --text: #f4f4f5;
+  --muted: #a1a1aa;
+  --stroke: rgba(255, 255, 255, 0.1);
+  --surface: rgba(255, 255, 255, 0.04);
+  --accent: #f4f4f5;
+}
+
+.mock-site--a .mock-bg {
+  background: linear-gradient(180deg, #060608 0%, #0c0c10 50%, #060608 100%);
+}
+
+/* Variant B — light lab */
+.mock-site--b {
+  --bg: #e8ecef;
+  --text: #0f1419;
+  --muted: #5c6670;
+  --stroke: rgba(15, 20, 25, 0.12);
+  --surface: rgba(255, 255, 255, 0.55);
+  --accent: #1a6b6b;
+}
+
+.mock-site--b .mock-bg {
+  background: linear-gradient(165deg, #f2f4f6 0%, #dce4e8 45%, #e8ecef 100%);
+}
+
+/* Variant C — hybrid dark + accents */
+.mock-site--c {
+  --bg: #060608;
+  --text: #f4f4f5;
+  --muted: #a1a1aa;
+  --stroke: rgba(255, 255, 255, 0.1);
+  --surface: rgba(255, 255, 255, 0.04);
+  --accent: #5eead4;
+  --hot: #f472b6;
+}
+
+.mock-site--c .mock-bg {
+  background:
+    radial-gradient(ellipse 60% 50% at 90% 10%, rgba(244, 114, 182, 0.08), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 10% 30%, rgba(94, 234, 212, 0.1), transparent 50%),
+    linear-gradient(180deg, #060608, #0a0a0e);
+}
+
+.mock-site > *:not(.mock-bg):not(.mock-grain):not(.mock-grid):not(.mock-scan):not(.mock-glow) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ——— Shared mock components ——— */
+.mock-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem var(--space);
+  border-bottom: 1px solid var(--stroke);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.mock-nav {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.mock-nav a {
+  text-decoration: none;
+  color: var(--muted);
+}
+
+.mock-nav a:hover {
+  color: var(--text);
+}
+
+.ovy-meta--tr {
+  opacity: 0.7;
+}
+
+.mock-hero {
+  padding: 2.5rem var(--space) 2rem;
+}
+
+.mock-hero__inner {
+  position: relative;
+  padding: 2rem;
+  max-width: 520px;
+}
+
+.mock-kicker {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.mock-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--text);
+}
+
+.mock-role {
+  margin: 0.5rem 0 1.5rem;
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+
+.mock-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.mock-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 14px 22px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 12px;
+  border: 1px solid var(--stroke);
+  transition: 0.2s ease;
+}
+
+.mock-section {
+  padding: 2rem var(--space) 2.5rem;
+}
+
+.mock-section__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 1.25rem;
+}
+
+.mock-idx {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.mock-section__head h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.mock-meta {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+.mock-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.mock-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  border-radius: 16px;
+  border: 1px solid var(--stroke);
+  background: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.2s;
+}
+
+.mock-pill:hover {
+  border-color: var(--accent);
+}
+
+.mock-pill--wide {
+  width: min(360px, 100%);
+  margin-inline: auto;
+}
+
+.mock-rental {
+  display: flex;
+  justify-content: center;
+}
+
+/* ——— Ovyon frame (corners + ruler) ——— */
+.ovy-frame {
+  border: 1px solid var(--stroke);
+  background: var(--surface);
+}
+
+.ovy-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--text);
+  border-style: solid;
+  opacity: 0.85;
+}
+
+.ovy-corner--tl {
+  top: 10px;
+  left: 10px;
+  border-width: 2px 0 0 2px;
+}
+
+.ovy-corner--tr {
+  top: 10px;
+  right: 10px;
+  border-width: 2px 2px 0 0;
+}
+
+.ovy-corner--bl {
+  bottom: 10px;
+  left: 10px;
+  border-width: 0 0 2px 2px;
+}
+
+.ovy-corner--br {
+  bottom: 10px;
+  right: 10px;
+  border-width: 0 2px 2px 0;
+}
+
+.ovy-ruler {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.ovy-ruler--v {
+  top: 50%;
+  right: -28px;
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/* ——— Variant A specifics ——— */
+.mock-invert-strip {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  padding: 1rem var(--space);
+  background: #f4f4f5;
+  color: #060608;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  overflow: hidden;
+}
+
+.mock-btn--inv {
+  background: #f4f4f5;
+  color: #060608;
+  border-color: #f4f4f5;
+}
+
+.mock-btn--inv:hover {
+  background: transparent;
+  color: #f4f4f5;
+}
+
+.mock-btn--ghost {
+  background: transparent;
+  color: var(--muted);
+}
+
+.mock-btn--ghost:hover {
+  color: var(--text);
+  border-color: var(--text);
+}
+
+/* ——— Variant B — glass / frost ——— */
+.mock-glass {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 8px 32px rgba(15, 20, 25, 0.06);
+}
+
+.mock-frost-panels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 1rem;
+}
+
+.mock-frost-panels div {
+  height: 72px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(180, 210, 210, 0.5), rgba(220, 230, 235, 0.35));
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence baseFrequency='0.04'/%3E%3C/filter%3E%3C/svg%3E");
+}
+
+.mock-btn--dark {
+  background: #0f1419;
+  color: #f2f4f6;
+  border-color: #0f1419;
+}
+
+.mock-btn--glass {
+  background: rgba(255, 255, 255, 0.35);
+  color: #0f1419;
+  backdrop-filter: blur(12px);
+}
+
+.mock-section--invert {
+  margin-top: 1rem;
+  padding-top: 2rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-top: 1px solid var(--stroke);
+}
+
+/* ——— Variant C — hybrid accents ——— */
+.ovy-frame--glow {
+  box-shadow:
+    0 0 0 1px rgba(94, 234, 212, 0.15),
+    0 0 40px rgba(94, 234, 212, 0.06);
+}
+
+.mock-invert-card {
+  margin-top: 1.25rem;
+  padding: 1.5rem 2rem;
+  max-width: 320px;
+  background: #f4f4f5;
+  color: #060608;
+  border-radius: 4px;
+}
+
+.ovy-big {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.mock-invert-card p {
+  margin: 0.5rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+}
+
+.mock-btn--primary {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+.mock-btn--accent {
+  background: transparent;
+  color: var(--hot);
+  border-color: rgba(244, 114, 182, 0.45);
+}
+
+.mock-btn--accent:hover {
+  background: rgba(244, 114, 182, 0.12);
+}
+
+.mock-pill--hot {
+  border-color: rgba(244, 114, 182, 0.35);
+  box-shadow: inset 0 0 24px rgba(244, 114, 182, 0.08);
+}
+
+@media (max-width: 640px) {
+  .mock-contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mock-frost-panels {
+    grid-template-columns: 1fr;
+  }
+
+  .mock-invert-strip {
+    gap: 1rem;
+    font-size: 9px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   VARIANT D — X-ray · grain · long-exposure smear
+   ═══════════════════════════════════════════════════════════ */
+
+.mock-site--d {
+  --bg: #060608;
+  --text: #e6fffb;
+  --muted: #6d8f8a;
+  --stroke: rgba(120, 220, 205, 0.28);
+  --surface: rgba(6, 14, 18, 0.82);
+  --xray-cyan: #8af0e4;
+  --xray-hot: #f0a8d0;
+}
+
+.mock-site--d .mock-bg {
+  background:
+    radial-gradient(ellipse 55% 45% at 12% 18%, rgba(94, 234, 212, 0.14), transparent 58%),
+    radial-gradient(ellipse 45% 40% at 88% 22%, rgba(244, 114, 182, 0.1), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 50% 100%, rgba(20, 40, 48, 0.5), transparent 60%),
+    linear-gradient(180deg, #050507 0%, #080a0e 45%, #050507 100%);
+}
+
+/* Heavier grain (two layers) */
+.mock-grain--fine {
+  opacity: 0.14;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+.mock-grain--coarse {
+  opacity: 0.07;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Long-exposure motion smears */
+.mock-smears {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.mock-smear {
+  position: absolute;
+  display: block;
+  border-radius: 999px;
+  filter: blur(32px);
+  opacity: 0.55;
+  mix-blend-mode: screen;
+  animation: ovy-smear-drift 14s ease-in-out infinite alternate;
+}
+
+.mock-smear--1 {
+  top: 18%;
+  left: -15%;
+  width: 55%;
+  height: 28px;
+  background: linear-gradient(90deg, transparent, rgba(138, 240, 228, 0.45), transparent);
+  transform: skewX(-18deg);
+  animation-duration: 16s;
+}
+
+.mock-smear--2 {
+  top: 42%;
+  right: -20%;
+  width: 60%;
+  height: 36px;
+  background: linear-gradient(90deg, transparent, rgba(240, 168, 208, 0.35), transparent);
+  transform: skewX(12deg);
+  animation-duration: 12s;
+  animation-delay: -4s;
+}
+
+.mock-smear--3 {
+  bottom: 28%;
+  left: 10%;
+  width: 70%;
+  height: 22px;
+  background: linear-gradient(90deg, transparent, rgba(200, 255, 248, 0.25), transparent);
+  filter: blur(48px);
+  animation-duration: 18s;
+  animation-delay: -8s;
+}
+
+.mock-smear--hero {
+  position: absolute;
+  bottom: 12%;
+  left: -10%;
+  width: 120%;
+  height: 48px;
+  background: linear-gradient(90deg, transparent, rgba(138, 240, 228, 0.5), rgba(240, 168, 208, 0.25), transparent);
+  filter: blur(40px);
+  opacity: 0.7;
+  animation: ovy-smear-drift 10s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes ovy-smear-drift {
+  0% {
+    transform: translateX(-6%) skewX(-14deg);
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateX(8%) skewX(-8deg);
+    opacity: 0.65;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mock-smear {
+    animation: none;
+  }
+}
+
+/* X-ray panels — inverted cyan clinical look */
+.ovy-xray-panel {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 90% 70% at 20% 0%, rgba(138, 240, 228, 0.12), transparent 50%),
+    radial-gradient(ellipse 60% 50% at 100% 100%, rgba(240, 168, 208, 0.06), transparent 45%),
+    linear-gradient(155deg, rgba(8, 16, 20, 0.92), rgba(3, 8, 12, 0.98));
+  border: 1px solid var(--stroke);
+  box-shadow:
+    inset 0 0 60px rgba(94, 234, 212, 0.08),
+    inset 0 -20px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+  color: var(--text);
+}
+
+.ovy-xray-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(138, 240, 228, 0.03) 3px,
+    rgba(138, 240, 228, 0.03) 4px
+  );
+}
+
+.ovy-xray-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+.ovy-xray-panel--hot {
+  box-shadow:
+    inset 0 0 50px rgba(244, 114, 182, 0.1),
+    inset 0 0 60px rgba(94, 234, 212, 0.06),
+    0 0 24px rgba(244, 114, 182, 0.08);
+}
+
+.ovy-scan-label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--xray-cyan);
+  opacity: 0.75;
+}
+
+/* Inverted title — x-ray negative read */
+.mock-title--xray {
+  background: linear-gradient(105deg, #f4fffe 0%, var(--xray-cyan) 45%, #c8b8d8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 24px rgba(138, 240, 228, 0.25));
+}
+
+/* Hero layout + x-ray photo */
+.mock-site--d .mock-hero {
+  padding: 2rem var(--space) 2.5rem;
+}
+
+.mock-hero__layout {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+@media (min-width: 800px) {
+  .mock-hero__layout {
+    grid-template-columns: 1fr 0.85fr;
+    gap: 2rem;
+  }
+}
+
+.mock-hero__copy {
+  padding: 1.75rem 2rem;
+  border-radius: 4px;
+}
+
+.ovy-xray-frame {
+  position: relative;
+  border-radius: 4px;
+  padding: 12px;
+  border: 1px solid var(--stroke);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.ovy-xray-plate {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  aspect-ratio: 4 / 5;
+  background: #0a1218;
+}
+
+.mock-xray-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  /* X-ray / inversion read */
+  filter: invert(1) grayscale(1) contrast(1.35) brightness(1.05) hue-rotate(165deg) saturate(0.35);
+  mix-blend-mode: screen;
+  opacity: 0.88;
+  transform: scale(1.02);
+}
+
+.ovy-xray-mesh {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(138, 240, 228, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(138, 240, 228, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mix-blend-mode: overlay;
+  opacity: 0.6;
+}
+
+.ovy-xray-mark {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--xray-cyan);
+  opacity: 0.8;
+}
+
+/* Buttons — x-ray inverted */
+.mock-btn--xray {
+  background: rgba(138, 240, 228, 0.12);
+  color: var(--xray-cyan);
+  border-color: rgba(138, 240, 228, 0.45);
+  box-shadow: inset 0 0 20px rgba(138, 240, 228, 0.08);
+}
+
+.mock-btn--xray:hover {
+  background: rgba(138, 240, 228, 0.22);
+  color: #f4fffe;
+}
+
+.mock-btn--xray-ghost {
+  background: transparent;
+  color: var(--muted);
+  border-color: var(--stroke);
+}
+
+.mock-btn--xray-ghost:hover {
+  color: var(--xray-cyan);
+  border-color: rgba(138, 240, 228, 0.5);
+  box-shadow: inset 0 0 30px rgba(138, 240, 228, 0.06);
+}
+
+.mock-site--d .mock-pill {
+  min-height: 100px;
+  border-radius: 4px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+}
+
+.mock-site--d .mock-pill:hover {
+  border-color: var(--xray-cyan);
+  box-shadow:
+    inset 0 0 40px rgba(94, 234, 212, 0.12),
+    0 0 20px rgba(94, 234, 212, 0.08);
+}
+
+/* Bottom inversion strip */
+.mock-xray-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  padding: 1rem var(--space);
+  border-top: 1px solid var(--stroke);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: linear-gradient(180deg, transparent, rgba(138, 240, 228, 0.04));
+}
+
+/* Variant C reference (background only) */
+.mock-site--c {
+  --bg: #060608;
+  --text: #f4f4f5;
+  --muted: #a1a1aa;
+  --stroke: rgba(255, 255, 255, 0.1);
+}
+
+.mock-site--c .mock-bg {
+  background:
+    radial-gradient(ellipse 60% 50% at 90% 10%, rgba(244, 114, 182, 0.08), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 10% 30%, rgba(94, 234, 212, 0.1), transparent 50%),
+    linear-gradient(180deg, #060608, #0a0a0e);
+}
+
+.mock-site--c .mock-title,
+.mock-site--c .mock-kicker,
+.mock-site--c .mock-role {
+  color: var(--text);
+}
+
+.mock-site--c .mock-kicker,
+.mock-site--c .mock-role {
+  color: var(--muted);
+}
