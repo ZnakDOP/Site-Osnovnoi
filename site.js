@@ -120,6 +120,8 @@
     w_vert_12players_hint: "CSKA & Beeline",
     w_vert_si_name: "Si",
     w_vert_si_hint: "Giorgio Armani",
+    w_vert_ggate_name: "GGATE MERCH",
+    w_vert_ggate_hint: "1WIN",
     w_vert_1_name: "Night floor",
     w_vert_1_hint: "Shorts",
     w_vert_2_name: "Light in the hall",
