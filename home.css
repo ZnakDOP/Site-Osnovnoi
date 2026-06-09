@@ -1096,11 +1096,6 @@ button.work-tile {
   background-position: center top;
 }
 
-.work-tile--vert-1winclub::before {
-  background-image: url("images/work-vert-1winclub.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
-  background-position: center top;
-}
-
 .work-tile--vert-1winclub-tennis::before {
   background-image: url("images/work-vert-1winclub-tennis.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;

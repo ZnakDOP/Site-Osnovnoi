@@ -132,8 +132,6 @@
     w_vert_tochka_team_hint: "Tochka Bank",
     w_vert_artfruit_name: "Made by nature",
     w_vert_artfruit_hint: "Artfruit",
-    w_vert_1winclub_name: "1win Club",
-    w_vert_1winclub_hint: "1WIN",
     w_vert_1winclub_tennis_name: "1win Club Tennis",
     w_vert_1winclub_tennis_hint: "1WIN",
     w_vert_baltika_ipa0_name: "Baltika IPA 0",
