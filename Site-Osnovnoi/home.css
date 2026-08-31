@@ -964,6 +964,11 @@ body.site-nav-open {
   background-image: url("images/work-4.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
 }
 
+.work-tile--music-dragonflower::before {
+  background-image: url("images/work-music-dragonflower.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center center;
+}
+
 .work-tile__tag {
   position: relative;
   z-index: 1;

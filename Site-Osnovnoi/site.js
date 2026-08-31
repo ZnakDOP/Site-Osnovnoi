@@ -113,6 +113,8 @@
     w_tag_commercial: "Commercial",
     cat_music: "Music videos",
     w_tag_music: "Music video",
+    w_music_dragonflower_name: "Dragon Flower",
+    w_music_dragonflower_hint: "Valdman",
     cat_vertical: "Vertical content",
     w_tag_show: "Show",
     w_tag_vertical: "Vertical",
