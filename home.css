@@ -3083,3 +3083,141 @@ body.scroll-down .reveal {
     aspect-ratio: 16 / 10;
   }
 }
+
+/* ——— Вкладка «Кино»: плитка + описание, слева/справа поочерёдно ——— */
+.film-note {
+  display: none;
+}
+
+.work-board[data-filter="narrative"] .work-grid--main {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: auto;
+  gap: clamp(28px, 4vw, 56px) clamp(24px, 4vw, 56px);
+  align-items: center;
+}
+
+.work-board[data-filter="narrative"] .work-grid--main .work-tile[data-film] {
+  aspect-ratio: 16 / 10;
+  min-height: 0;
+}
+
+.work-board[data-filter="narrative"] .film-note {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.work-board[data-filter="narrative"] [data-film="1"].work-tile,
+.work-board[data-filter="narrative"] [data-film="3"].work-tile,
+.work-board[data-filter="narrative"] [data-film="2"].film-note,
+.work-board[data-filter="narrative"] [data-film="4"].film-note {
+  grid-column: 1;
+}
+
+.work-board[data-filter="narrative"] [data-film="1"].film-note,
+.work-board[data-filter="narrative"] [data-film="3"].film-note,
+.work-board[data-filter="narrative"] [data-film="2"].work-tile,
+.work-board[data-filter="narrative"] [data-film="4"].work-tile {
+  grid-column: 2;
+}
+
+.work-board[data-filter="narrative"] [data-film="1"] { grid-row: 1; }
+.work-board[data-filter="narrative"] [data-film="2"] { grid-row: 2; }
+.work-board[data-filter="narrative"] [data-film="3"] { grid-row: 3; }
+.work-board[data-filter="narrative"] [data-film="4"] { grid-row: 4; }
+
+.film-note__label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.film-note__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.film-note__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  margin: 0;
+}
+
+.film-note__facts div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.film-note__facts dt {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.film-note__facts dd {
+  margin: 0;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.film-note__text {
+  margin: 0;
+  max-width: 46ch;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.film-note__btn {
+  min-height: 44px;
+  padding: 0 20px;
+  border: 1px solid var(--stroke2);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.film-note__btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.film-note__btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .work-board[data-filter="narrative"] .work-grid--main {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .work-board[data-filter="narrative"] .work-grid--main .work-tile[data-film],
+  .work-board[data-filter="narrative"] .film-note[data-film] {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+
+  .work-board[data-filter="narrative"] .film-note {
+    margin-bottom: 18px;
+  }
+}

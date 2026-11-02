@@ -359,7 +359,7 @@
         t.hidden = !(key === "all" || t.getAttribute("data-cat") === key)
         t.style.gridColumn = ""
       })
-      if (key !== "all" && key !== "vertical") layoutMosaic(Array.from(tiles).filter((t) => !t.hidden))
+      if (key !== "all" && key !== "vertical" && key !== "narrative") layoutMosaic(Array.from(tiles).filter((t) => !t.hidden))
       const vertical = board.querySelector("#work-vertical")
       if (vertical) vertical.hidden = !(key === "all" || key === "vertical")
       const main = board.querySelector("#work-main")
@@ -367,6 +367,13 @@
       const vp = vertical?.querySelector(".work-carousel__viewport")
       if (vp) vp.scrollLeft = 0
     }
+
+    // «Смотреть фильм» в описании открывает то же видео, что и плитка
+    board.querySelectorAll("[data-film-open]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        board.querySelector('#work-main .work-tile[data-film="' + btn.getAttribute("data-film-open") + '"]')?.click()
+      })
+    })
 
     buttons.forEach((b) => b.addEventListener("click", () => setFilter(b.getAttribute("data-work-filter"))))
 

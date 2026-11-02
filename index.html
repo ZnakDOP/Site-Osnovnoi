@@ -41,8 +41,8 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600&family=Syne:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="home.css?v=110" />
-    <script src="site.js?v=32" defer></script>
+    <link rel="stylesheet" href="home.css?v=113" />
+    <script src="site.js?v=33" defer></script>
   </head>
   <body>
     <div id="site-loader" class="site-loader" aria-live="polite" aria-busy="true">
@@ -332,7 +332,7 @@
             <h3 class="work-subhead work-subhead--all" data-i18n="work_all">Все работы</h3>
             <button
               type="button"
-              class="work-tile work-tile--cinema-8woman js-open-kinescope" data-cat="narrative" data-featured="1"
+              class="work-tile work-tile--cinema-8woman js-open-kinescope" data-cat="narrative" data-film="1" data-featured="1"
               data-kinescope-src="https://kinescope.io/embed/oAkpDXygo6WAXB1KPT7xPs"
               data-kinescope-title="8 Woman"
             >
@@ -341,9 +341,20 @@
               <span class="work-tile__hint" data-i18n="w_8w_hint">Никита Белых</span>
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
+            <div class="film-note" data-film="1">
+              <span class="film-note__label">О фильме</span>
+              <h3 class="film-note__title">8 Woman</h3>
+              <dl class="film-note__facts">
+                <div><dt>Режиссёр</dt><dd>Никита Белых</dd></div>
+                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
+                <div><dt>Год</dt><dd>2025</dd></div>
+              </dl>
+              <p class="film-note__text">Здесь будет описание фильма: о чём история, где и как снимали, какой визуальный подход выбрали. Пока это текст-заглушка, чтобы посмотреть, как выглядит блок рядом с плиткой.</p>
+              <button type="button" class="film-note__btn" data-film-open="1">Смотреть фильм <span aria-hidden="true">→</span></button>
+            </div>
             <button
               type="button"
-              class="work-tile work-tile--cinema-nesezon js-open-kinescope" data-cat="narrative" data-featured="4"
+              class="work-tile work-tile--cinema-nesezon js-open-kinescope" data-cat="narrative" data-film="2" data-featured="4"
               data-kinescope-src="https://kinescope.io/embed/8SK5n7UfUv5FhJ92c4wBoB"
               data-kinescope-title="Несезон"
             >
@@ -352,9 +363,20 @@
               <span class="work-tile__hint" data-i18n="w_nesezon_hint">Борис Резак</span>
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
+            <div class="film-note" data-film="2">
+              <span class="film-note__label">О фильме</span>
+              <h3 class="film-note__title">Несезон</h3>
+              <dl class="film-note__facts">
+                <div><dt>Режиссёр</dt><dd>Борис Резак</dd></div>
+                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
+                <div><dt>Год</dt><dd>2025</dd></div>
+              </dl>
+              <p class="film-note__text">Короткое описание проекта: жанр, настроение, главные визуальные решения и задачи оператора. Текст временный и будет заменён настоящим описанием.</p>
+              <button type="button" class="film-note__btn" data-film-open="2">Смотреть фильм <span aria-hidden="true">→</span></button>
+            </div>
             <button
               type="button"
-              class="work-tile work-tile--cinema-fillip js-open-kinescope" data-cat="narrative"
+              class="work-tile work-tile--cinema-fillip js-open-kinescope" data-cat="narrative" data-film="3"
               data-kinescope-src="https://kinescope.io/embed/gQoULMWJD8oBpeYmocW8Dr"
               data-kinescope-title="Филлип, я твой сын !"
               data-kinescope-aspect="41.89"
@@ -364,9 +386,20 @@
               <span class="work-tile__hint" data-i18n="w_fillip_hint">Сергей Штепс</span>
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
+            <div class="film-note" data-film="3">
+              <span class="film-note__label">О фильме</span>
+              <h3 class="film-note__title">Филлип, я твой сын !</h3>
+              <dl class="film-note__facts">
+                <div><dt>Режиссёр</dt><dd>Сергей Штепс</dd></div>
+                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
+                <div><dt>Год</dt><dd>2025</dd></div>
+              </dl>
+              <p class="film-note__text">Место для рассказа о съёмках: референсы, свет, камера и работа с пространством. Это пример текста, чтобы оценить ширину и ритм абзаца.</p>
+              <button type="button" class="film-note__btn" data-film-open="3">Смотреть фильм <span aria-hidden="true">→</span></button>
+            </div>
             <button
               type="button"
-              class="work-tile work-tile--cinema-pochemu js-open-kinescope" data-cat="narrative"
+              class="work-tile work-tile--cinema-pochemu js-open-kinescope" data-cat="narrative" data-film="4"
               data-kinescope-src="https://kinescope.io/embed/szLaAx6AtnjpspNpVbFNru"
               data-kinescope-title="Почему мужчины живут меньше"
               data-kinescope-aspect="41.89"
@@ -376,6 +409,17 @@
               <span class="work-tile__hint" data-i18n="w_pochemu_hint">Никита Белых</span>
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
+            <div class="film-note" data-film="4">
+              <span class="film-note__label">О фильме</span>
+              <h3 class="film-note__title">Почему мужчины живут меньше</h3>
+              <dl class="film-note__facts">
+                <div><dt>Режиссёр</dt><dd>Никита Белых</dd></div>
+                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
+                <div><dt>Год</dt><dd>2025</dd></div>
+              </dl>
+              <p class="film-note__text">Пример описания: пара предложений о сюжете и пара — о том, какое изображение искали вместе с режиссёром. Позже сюда попадёт финальный текст.</p>
+              <button type="button" class="film-note__btn" data-film-open="4">Смотреть фильм <span aria-hidden="true">→</span></button>
+            </div>
             <button
                 type="button"
                 class="work-tile work-tile--doc-12storeez js-open-kinescope" data-cat="doc" data-featured="5"
