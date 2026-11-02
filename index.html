@@ -41,8 +41,8 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600&family=Syne:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="home.css?v=101" />
-    <script src="site.js?v=25" defer></script>
+    <link rel="stylesheet" href="home.css?v=103" />
+    <script src="site.js?v=27" defer></script>
   </head>
   <body>
     <div id="site-loader" class="site-loader" aria-live="polite" aria-busy="true">
@@ -82,6 +82,7 @@
         <a href="#contact" data-i18n="nav_contact">Контакты</a>
         <a href="#rental" data-i18n="nav_rental">Рентал</a>
       </nav>
+      <a class="site-header__cta" href="#contact" data-i18n="nav_write">Написать</a>
       <button
         type="button"
         class="site-header__menu-btn"
@@ -228,14 +229,17 @@
         </div>
         <div class="showreel-box">
           <div class="showreel-embed">
-            <iframe
-              class="showreel-embed__iframe"
-              src="https://kinescope.io/embed/dUvdr7R5V9N9KHjHcVFpWx?autoplay=0"
-              title="Шоурил"
-              loading="lazy"
-              allow="fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;"
-              allowfullscreen
-            ></iframe>
+            <button
+              type="button"
+              class="showreel-poster"
+              data-showreel-src="https://kinescope.io/embed/dUvdr7R5V9N9KHjHcVFpWx?autoplay=1"
+              aria-label="Смотреть шоурил"
+              data-i18n-aria="showreel_play_aria"
+            >
+              <img class="showreel-poster__img" src="images/work-cinema-8woman.png" alt="" loading="lazy" />
+              <span class="showreel-poster__play" aria-hidden="true"></span>
+              <span class="showreel-poster__label" data-i18n="showreel_play">Смотреть шоурил</span>
+            </button>
           </div>
         </div>
       </section>
