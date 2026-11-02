@@ -7,6 +7,7 @@
     menu_open: "Открыть меню",
     hero_aria: "Введение",
     bio_media_aria: "Бэкстейдж",
+    showreel_play_aria: "Смотреть шоурил",
     carousel_prev: "Предыдущие работы",
     carousel_next: "Следующие работы",
     aria_telegram: "Telegram",
@@ -23,6 +24,7 @@
     menu_open: "Open menu",
     hero_aria: "Introduction",
     bio_media_aria: "Behind the scenes",
+    showreel_play_aria: "Play showreel",
     carousel_prev: "Previous projects",
     carousel_next: "Next projects",
     aria_telegram: "Telegram",
@@ -39,6 +41,8 @@
     nav_work: "Work",
     nav_links: "Links",
     nav_contact: "Contact",
+    nav_write: "Contact me",
+    showreel_play: "Play showreel",
     nav_rental: "Rental",
     hero_kicker: "Moscow · worldwide",
     hero_role: "Director of Photography",
@@ -268,6 +272,7 @@
 
     const srIframe = document.querySelector(".showreel-embed__iframe")
     if (srIframe) srIframe.setAttribute("title", isEn ? "Showreel" : "Шоурил")
+    document.documentElement.dataset.siteLang = isEn ? "en" : "ru"
 
     const langRoots = document.querySelectorAll(".site-header__lang")
     langRoots.forEach((langRoot) => langRoot.classList.toggle("site-header__lang--en", isEn))
@@ -300,6 +305,21 @@
     })
   }
 
+  function initShowreelPoster() {
+    const poster = document.querySelector(".showreel-poster")
+    if (!poster) return
+    poster.addEventListener("click", () => {
+      const iframe = document.createElement("iframe")
+      iframe.className = "showreel-embed__iframe"
+      iframe.src = poster.getAttribute("data-showreel-src") || ""
+      iframe.title = document.documentElement.dataset.siteLang === "en" ? "Showreel" : "Шоурил"
+      iframe.allow =
+        "autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;"
+      iframe.allowFullscreen = true
+      poster.replaceWith(iframe)
+    })
+  }
+
   const loader = document.getElementById("site-loader")
   if (loader && !prefersReduced) {
     const done = () => {
@@ -307,8 +327,8 @@
       loader.setAttribute("aria-hidden", "true")
       window.setTimeout(() => loader.remove(), 700)
     }
-    window.addEventListener("load", () => window.setTimeout(done, 480))
-    window.setTimeout(done, 3200)
+    window.addEventListener("load", () => window.setTimeout(done, 120))
+    window.setTimeout(done, 1200)
   } else if (loader) {
     loader.remove()
   }
@@ -401,7 +421,7 @@
 
       function isHorizontalMode() {
         if (narrowMq.matches) return isVertical
-        return isVertical
+        return true
       }
 
       /** Мобилка: только вертикальный блок листается; остальное — вся сетка на экране */
@@ -409,14 +429,12 @@
         if (narrowMq.matches && isVertical) {
           return Math.max(1, Math.round(viewport.clientWidth))
         }
-        if (isVertical) {
-          const tile = track.querySelector(".work-tile")
-          if (!tile) return Math.max(1, Math.round(viewport.clientWidth))
-          const tw = tile.getBoundingClientRect().width
-          const g = gapPx(track)
-          return Math.round(4 * tw + 3 * g)
-        }
-        return Math.max(1, Math.round(viewport.clientHeight))
+        const tile = track.querySelector(".work-tile")
+        if (!tile) return Math.max(1, Math.round(viewport.clientWidth))
+        const tw = tile.getBoundingClientRect().width
+        const g = gapPx(track)
+        const perPage = isVertical ? 4 : 3
+        return Math.round(perPage * tw + perPage * g)
       }
 
       function maxOffset() {
@@ -449,7 +467,7 @@
         const maxP = Math.max(0, Math.ceil(max / step - 1e-9))
         p = Math.max(0, Math.min(maxP, p))
         scrollToOffset(Math.min(p * step, max))
-        if (prefersReduced) return
+        if (prefersReduced || isHorizontalMode()) return
         window.setTimeout(() => {
           const snap = Math.min(Math.round(currentOffset() / step) * step, max)
           if (Math.abs(currentOffset() - snap) > 1.5) scrollToOffset(snap)
@@ -481,7 +499,7 @@
     work.addEventListener(
       "wheel",
       (e) => {
-        const vertVp = e.target.closest(".work-carousel--vertical .work-carousel__viewport")
+        const vertVp = e.target.closest(".work-carousel__viewport")
         const vert = Math.abs(e.deltaY) >= Math.abs(e.deltaX)
 
         if (vert && e.deltaY !== 0) {
@@ -583,6 +601,7 @@
   })
 
   initLang()
+  initShowreelPoster()
   initWorkCarousel()
   initWorkSectionWheel()
 })()
