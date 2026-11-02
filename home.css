@@ -2779,3 +2779,181 @@ body.scroll-down .reveal {
     gap: 12px;
   }
 }
+
+/* ——— Правки: названия всегда, подзаголовки, мозаика, подсказка листания ——— */
+.work-tile::after {
+  background: linear-gradient(180deg, transparent 62%, rgba(6, 6, 8, 0.78) 100%);
+}
+
+/* Название всегда видно, тип и клиент раскрываются при наведении */
+@media (hover: hover) and (pointer: fine) {
+  .work-tile .work-tile__name {
+    opacity: 1;
+    transform: none;
+  }
+
+  .work-tile .work-tile__tag,
+  .work-tile .work-tile__hint {
+    max-height: 0;
+    margin: 0;
+    overflow: hidden;
+    transition: opacity 0.25s ease, transform 0.25s ease, max-height 0.3s ease, margin 0.3s ease;
+  }
+
+  .work-tile:hover .work-tile__tag,
+  .work-tile:focus-visible .work-tile__tag {
+    max-height: 20px;
+    margin-bottom: 6px;
+  }
+
+  .work-tile:hover .work-tile__hint,
+  .work-tile:focus-visible .work-tile__hint {
+    max-height: 24px;
+    margin-top: 6px;
+  }
+
+  .work-tile:hover::after,
+  .work-tile:focus-visible::after {
+    background: linear-gradient(180deg, rgba(6, 6, 8, 0.05) 40%, rgba(6, 6, 8, 0.86) 100%);
+  }
+}
+
+.work-grid--main .work-tile {
+  padding: 1.1rem 1.2rem;
+}
+
+.work-grid--main .work-tile__name,
+.work-carousel--vertical .work-tile__name {
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+.work-board[data-filter="all"] [data-featured] .work-tile__name {
+  font-size: 1.4rem;
+}
+
+/* Подзаголовки «Избранное» / «Все работы» только во вкладке «Все» */
+.work-subhead {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--stroke);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.work-subhead--featured {
+  order: -5;
+}
+
+.work-subhead--all {
+  order: 0;
+  margin-top: 1.25rem;
+}
+
+.work-board:not([data-filter="all"]) .work-subhead {
+  display: none;
+}
+
+/* Мозаика во вкладках: общая высота ряда, плитки заполняют ячейки */
+.work-board:not([data-filter="all"]):not([data-filter="vertical"]) .work-grid--main {
+  grid-auto-rows: clamp(220px, 19vw, 290px);
+}
+
+.work-board:not([data-filter="all"]):not([data-filter="vertical"]) .work-grid--main .work-tile {
+  aspect-ratio: auto;
+  min-height: 0;
+}
+
+/* Подсказка «Листайте» + затухание у правого края */
+.cat__label--hint {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.swipe-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent);
+  letter-spacing: 0.16em;
+}
+
+.swipe-hint__arrows {
+  display: inline-block;
+  width: 22px;
+  height: 10px;
+  background:
+    linear-gradient(currentColor, currentColor) left center / 100% 1.5px no-repeat;
+  position: relative;
+  animation: swipe-nudge 1.6s ease-in-out infinite;
+}
+
+.swipe-hint__arrows::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+@keyframes swipe-nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .swipe-hint__arrows {
+    animation: none;
+  }
+}
+
+.work-board[data-filter="vertical"] .swipe-hint {
+  display: none;
+}
+
+.work-carousel--vertical .work-carousel__viewport {
+  position: relative;
+}
+
+.work-carousel--vertical .work-carousel__viewport::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 56px;
+  background: linear-gradient(90deg, transparent, var(--bg0));
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.work-carousel--vertical.work-carousel--end .work-carousel__viewport::after,
+.work-board[data-filter="vertical"] .work-carousel__viewport::after {
+  opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .work-grid--main {
+    grid-auto-rows: auto;
+  }
+
+  .work-board:not([data-filter="all"]):not([data-filter="vertical"]) .work-grid--main {
+    grid-auto-rows: auto;
+  }
+
+  .work-board:not([data-filter="all"]):not([data-filter="vertical"]) .work-grid--main .work-tile {
+    aspect-ratio: 16 / 10;
+  }
+}
