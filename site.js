@@ -8,6 +8,7 @@
     hero_aria: "Введение",
     bio_media_aria: "Бэкстейдж",
     showreel_play_aria: "Смотреть шоурил",
+    work_filter_aria: "Фильтр работ",
     carousel_prev: "Предыдущие работы",
     carousel_next: "Следующие работы",
     aria_telegram: "Telegram",
@@ -25,6 +26,7 @@
     hero_aria: "Introduction",
     bio_media_aria: "Behind the scenes",
     showreel_play_aria: "Play showreel",
+    work_filter_aria: "Filter projects",
     carousel_prev: "Previous projects",
     carousel_next: "Next projects",
     aria_telegram: "Telegram",
@@ -42,6 +44,12 @@
     nav_links: "Links",
     nav_contact: "Contact",
     nav_write: "Contact me",
+    filter_all: "All",
+    filter_narrative: "Film",
+    filter_music: "Music videos",
+    filter_commercial: "Commercial",
+    filter_doc: "Doc",
+    filter_vertical: "Vertical",
     showreel_play: "Play showreel",
     nav_rental: "Rental",
     hero_kicker: "Moscow · worldwide",
@@ -305,6 +313,51 @@
         if (lang === "en" || lang === "ru") applyLang(lang)
       })
     })
+  }
+
+  function initWorkFilters() {
+    const board = document.getElementById("work-board")
+    const bar = document.getElementById("work-filters")
+    if (!board || !bar) return
+    const buttons = bar.querySelectorAll("[data-work-filter]")
+    const tiles = board.querySelectorAll("#work-main .work-tile")
+    const known = new Set(Array.from(buttons, (b) => b.getAttribute("data-work-filter")))
+
+    function setFilter(key) {
+      if (!known.has(key)) key = "all"
+      board.setAttribute("data-filter", key)
+      buttons.forEach((b) => {
+        const on = b.getAttribute("data-work-filter") === key
+        b.classList.toggle("is-active", on)
+        b.setAttribute("aria-pressed", on ? "true" : "false")
+      })
+      tiles.forEach((t) => {
+        t.hidden = !(key === "all" || t.getAttribute("data-cat") === key)
+      })
+      const vertical = board.querySelector("#work-vertical")
+      if (vertical) vertical.hidden = !(key === "all" || key === "vertical")
+      const main = board.querySelector("#work-main")
+      if (main) main.hidden = key === "vertical"
+      const vp = vertical?.querySelector(".work-carousel__viewport")
+      if (vp) vp.scrollLeft = 0
+    }
+
+    buttons.forEach((b) => b.addEventListener("click", () => setFilter(b.getAttribute("data-work-filter"))))
+
+    // Ссылки вида #work-music (жанры в шапке) открывают нужную вкладку
+    document.querySelectorAll('a[href^="#work-"]').forEach((a) => {
+      const key = (a.getAttribute("href") || "").slice("#work-".length)
+      if (!known.has(key)) return
+      a.addEventListener("click", (e) => {
+        e.preventDefault()
+        setFilter(key)
+        document.getElementById("work-filters")?.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth", block: "start" })
+      })
+    })
+
+    const fromHash = (window.location.hash || "").slice("#work-".length)
+    if (window.location.hash.startsWith("#work-") && known.has(fromHash)) setFilter(fromHash)
+    else setFilter("all")
   }
 
   function initShowreelPoster() {
@@ -604,6 +657,7 @@
 
   initLang()
   initShowreelPoster()
+  initWorkFilters()
   initWorkCarousel()
   initWorkSectionWheel()
 })()

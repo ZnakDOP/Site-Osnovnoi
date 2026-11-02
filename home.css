@@ -2548,3 +2548,234 @@ body.scroll-down .reveal {
   width: 44px;
   height: 44px;
 }
+
+/* ——— Портфолио: вкладки, избранное, кадр на всю плитку ——— */
+.work-tile[hidden],
+.work-vertical-block[hidden],
+.work-grid--main[hidden] {
+  display: none !important;
+}
+
+.work-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 1.5rem;
+}
+
+.work-filter {
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--stroke2);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.work-filter:hover {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.work-filter.is-active {
+  background: linear-gradient(135deg, var(--accent), #3db8a8);
+  border-color: transparent;
+  color: var(--bg0);
+  font-weight: 600;
+}
+
+.work-filter:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.work-grid--main {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 2.5rem;
+}
+
+.work-grid--main .work-tile {
+  grid-column: span 2;
+  min-height: 0;
+  aspect-ratio: 16 / 10;
+  padding: 1.35rem 1.25rem;
+}
+
+/* Избранное — только во вкладке «Все»: две широкие и две узкие плитки в шахматном порядке */
+.work-board[data-filter="all"] .work-grid--main [data-featured] {
+  aspect-ratio: auto;
+  min-height: clamp(240px, 24vw, 340px);
+}
+
+.work-board[data-filter="all"] [data-featured="1"] { order: -4; grid-column: span 4; }
+.work-board[data-filter="all"] [data-featured="2"] { order: -3; grid-column: span 2; }
+.work-board[data-filter="all"] [data-featured="3"] { order: -2; grid-column: span 2; }
+.work-board[data-filter="all"] [data-featured="4"] { order: -1; grid-column: span 4; }
+
+.work-board[data-filter="all"] [data-featured] .work-tile__name {
+  font-size: 1.5rem;
+}
+
+/* Кадр вместо затемнения */
+.work-tile::before {
+  opacity: 0.92;
+}
+
+.work-tile::after {
+  background: linear-gradient(180deg, transparent 48%, rgba(6, 6, 8, 0.86) 100%);
+}
+
+.work-tile:hover::before {
+  opacity: 1;
+}
+
+.work-tile__play {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 46%;
+  width: 56px;
+  height: 56px;
+  transform: translate(-50%, -50%) scale(0.85);
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), #3db8a8);
+  box-shadow: 0 6px 28px rgba(94, 234, 212, 0.3);
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.work-tile__play::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-38%, -50%);
+  border-style: solid;
+  border-width: 9px 0 9px 15px;
+  border-color: transparent transparent transparent var(--bg0);
+}
+
+/* Подписи: на десктопе появляются при наведении, на телефоне видны всегда */
+@media (hover: hover) and (pointer: fine) {
+  .work-tile .work-tile__tag,
+  .work-tile .work-tile__name,
+  .work-tile .work-tile__hint {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .work-tile:hover .work-tile__tag,
+  .work-tile:hover .work-tile__name,
+  .work-tile:hover .work-tile__hint,
+  .work-tile:focus-visible .work-tile__tag,
+  .work-tile:focus-visible .work-tile__name,
+  .work-tile:focus-visible .work-tile__hint {
+    opacity: 1;
+    transform: none;
+  }
+
+  .work-tile:hover .work-tile__play,
+  .work-tile:focus-visible .work-tile__play {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .work-tile:hover::after,
+  .work-tile:focus-visible::after {
+    background: linear-gradient(180deg, rgba(6, 6, 8, 0.1) 30%, rgba(6, 6, 8, 0.9) 100%);
+  }
+}
+
+/* Вертикальный контент: лента как в Reels */
+.work-vertical-block {
+  margin-bottom: 0;
+}
+
+.work-board[data-filter="vertical"] .work-vertical-block > .cat__label {
+  display: none;
+}
+
+.work-board[data-filter="vertical"] .work-carousel--vertical {
+  display: block;
+}
+
+.work-board[data-filter="vertical"] .work-carousel--vertical .work-carousel__btn {
+  display: none;
+}
+
+.work-board[data-filter="vertical"] .work-carousel--vertical .work-carousel__viewport {
+  overflow: visible;
+  max-height: none;
+}
+
+.work-board[data-filter="vertical"] .work-carousel--vertical .work-carousel__track {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+  width: 100%;
+  padding: 0;
+}
+
+.work-board[data-filter="vertical"] .work-carousel--vertical .work-carousel__track .work-tile {
+  width: 100%;
+  max-width: none;
+}
+
+@media (max-width: 1024px) {
+  .work-board[data-filter="vertical"] .work-carousel--vertical .work-carousel__track {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .work-filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-left: calc(-1 * var(--space-floor, 1rem));
+    margin-right: calc(-1 * var(--space-floor, 1rem));
+    padding: 0 var(--space-floor, 1rem) 4px;
+    scrollbar-width: none;
+  }
+
+  .work-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .work-filter {
+    flex: 0 0 auto;
+  }
+
+  .work-grid--main {
+    grid-template-columns: 1fr;
+  }
+
+  .work-grid--main .work-tile,
+  .work-board[data-filter="all"] .work-grid--main [data-featured] {
+    grid-column: auto !important;
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+  }
+
+  .work-board[data-filter="all"] [data-featured="1"],
+  .work-board[data-filter="all"] [data-featured="2"],
+  .work-board[data-filter="all"] [data-featured="3"],
+  .work-board[data-filter="all"] [data-featured="4"] {
+    grid-column: auto;
+  }
+
+  .work-board[data-filter="vertical"] .work-carousel--vertical .work-carousel__track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
