@@ -41,8 +41,8 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600&family=Syne:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="home.css?v=103" />
-    <script src="site.js?v=27" defer></script>
+    <link rel="stylesheet" href="home.css?v=104" />
+    <script src="site.js?v=28" defer></script>
   </head>
   <body>
     <div id="site-loader" class="site-loader" aria-live="polite" aria-busy="true">
@@ -317,43 +317,42 @@
           <span class="section__meta" data-i18n="sec_work_meta">портфолио</span>
         </div>
 
-        <div class="cat" id="work-narrative">
-          <div class="cat__label" data-i18n="cat_narrative">Кино · нарратив</div>
-          <div class="work-carousel">
+        <div class="work-filters" id="work-filters" role="group" aria-label="Фильтр работ" data-i18n-aria="work_filter_aria">
+          <button type="button" class="work-filter is-active" data-work-filter="all" aria-pressed="true" data-i18n="filter_all">Все</button>
+          <button type="button" class="work-filter" data-work-filter="narrative" aria-pressed="false" data-i18n="filter_narrative">Кино</button>
+          <button type="button" class="work-filter" data-work-filter="music" aria-pressed="false" data-i18n="filter_music">Клипы</button>
+          <button type="button" class="work-filter" data-work-filter="commercial" aria-pressed="false" data-i18n="filter_commercial">Коммерция</button>
+          <button type="button" class="work-filter" data-work-filter="doc" aria-pressed="false" data-i18n="filter_doc">Док</button>
+          <button type="button" class="work-filter" data-work-filter="vertical" aria-pressed="false" data-i18n="filter_vertical">Вертикальное</button>
+        </div>
+
+        <div class="work-board" id="work-board" data-filter="all">
+          <div class="work-grid work-grid--main" id="work-main">
             <button
               type="button"
-              class="work-carousel__btn work-carousel__btn--prev"
-              data-carousel-prev
-              aria-label="Предыдущие работы"
-              data-i18n-aria="carousel_prev"
-            >
-              ‹
-            </button>
-            <div class="work-carousel__viewport">
-            <div class="work-carousel__track work-grid" data-carousel-track>
-            <button
-              type="button"
-              class="work-tile work-tile--4 work-tile--cinema-8woman js-open-kinescope"
+              class="work-tile work-tile--cinema-8woman js-open-kinescope" data-cat="narrative" data-featured="1"
               data-kinescope-src="https://kinescope.io/embed/oAkpDXygo6WAXB1KPT7xPs"
               data-kinescope-title="8 Woman"
             >
               <span class="work-tile__tag" data-i18n="w_tag_narrative">К/М фильм</span>
               <span class="work-tile__name">8 Woman</span>
               <span class="work-tile__hint" data-i18n="w_8w_hint">Никита Белых</span>
+              <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <button
               type="button"
-              class="work-tile work-tile--2 work-tile--cinema-nesezon js-open-kinescope"
+              class="work-tile work-tile--cinema-nesezon js-open-kinescope" data-cat="narrative" data-featured="4"
               data-kinescope-src="https://kinescope.io/embed/8SK5n7UfUv5FhJ92c4wBoB"
               data-kinescope-title="Несезон"
             >
               <span class="work-tile__tag" data-i18n="w_tag_narrative">К/М фильм</span>
               <span class="work-tile__name">Несезон</span>
               <span class="work-tile__hint" data-i18n="w_nesezon_hint">Борис Резак</span>
+              <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <button
               type="button"
-              class="work-tile work-tile--3 work-tile--cinema-fillip js-open-kinescope"
+              class="work-tile work-tile--cinema-fillip js-open-kinescope" data-cat="narrative"
               data-kinescope-src="https://kinescope.io/embed/gQoULMWJD8oBpeYmocW8Dr"
               data-kinescope-title="Филлип, я твой сын !"
               data-kinescope-aspect="41.89"
@@ -361,10 +360,11 @@
               <span class="work-tile__tag" data-i18n="w_tag_narrative">К/М фильм</span>
               <span class="work-tile__name">Филлип, я твой сын !</span>
               <span class="work-tile__hint" data-i18n="w_fillip_hint">Сергей Штепс</span>
+              <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <button
               type="button"
-              class="work-tile work-tile--1 work-tile--cinema-pochemu js-open-kinescope"
+              class="work-tile work-tile--cinema-pochemu js-open-kinescope" data-cat="narrative"
               data-kinescope-src="https://kinescope.io/embed/szLaAx6AtnjpspNpVbFNru"
               data-kinescope-title="Почему мужчины живут меньше"
               data-kinescope-aspect="41.89"
@@ -372,38 +372,11 @@
               <span class="work-tile__tag" data-i18n="w_tag_narrative">К/М фильм</span>
               <span class="work-tile__name">Почему мужчины живут меньше</span>
               <span class="work-tile__hint" data-i18n="w_pochemu_hint">Никита Белых</span>
+              <span class="work-tile__play" aria-hidden="true"></span>
             </button>
-            </div>
-            </div>
             <button
-              type="button"
-              class="work-carousel__btn work-carousel__btn--next"
-              data-carousel-next
-              aria-label="Следующие работы"
-              data-i18n-aria="carousel_next"
-            >
-              ›
-            </button>
-          </div>
-        </div>
-
-        <div class="cat" id="work-doc">
-          <div class="cat__label" data-i18n="cat_doc">Интервью · док</div>
-          <div class="work-carousel">
-            <button
-              type="button"
-              class="work-carousel__btn work-carousel__btn--prev"
-              data-carousel-prev
-              aria-label="Предыдущие работы"
-              data-i18n-aria="carousel_prev"
-            >
-              ‹
-            </button>
-            <div class="work-carousel__viewport">
-            <div class="work-carousel__track work-grid" data-carousel-track>
-              <button
                 type="button"
-                class="work-tile work-tile--2 work-tile--doc-simplevine js-open-kinescope"
+                class="work-tile work-tile--doc-simplevine js-open-kinescope" data-cat="doc"
                 data-kinescope-src="https://kinescope.io/embed/2idH44NoPmYsqzj4H7zHVF"
                 data-kinescope-title="Ирина Горбачева: о выборе вина"
                 data-kinescope-title-en="Irina Gorbacheva on choosing wine"
@@ -411,10 +384,11 @@
                 <span class="work-tile__tag" data-i18n="w_doc_sv_tag">Интервью</span>
                 <span class="work-tile__name" data-i18n="w_doc_sv_name">Ирина Горбачева: о выборе вина</span>
                 <span class="work-tile__hint" data-i18n="w_doc_sv_hint">Simple Vine</span>
-              </button>
-              <button
+              <span class="work-tile__play" aria-hidden="true"></span>
+            </button>
+            <button
                 type="button"
-                class="work-tile work-tile--4 work-tile--doc-vk-ingushetia js-open-kinescope"
+                class="work-tile work-tile--doc-vk-ingushetia js-open-kinescope" data-cat="doc" data-featured="2"
                 data-kinescope-src="https://kinescope.io/embed/tJfEqDx3jmUNa2Y2d7JoKx"
                 data-kinescope-title="VK Места Республика Ингушетия"
                 data-kinescope-title-en="VK Places · Republic of Ingushetia"
@@ -422,10 +396,11 @@
                 <span class="work-tile__tag" data-i18n="w_doc_ing_tag">Документальное</span>
                 <span class="work-tile__name" data-i18n="w_doc_ing_name">VK Места Республика Ингушетия</span>
                 <span class="work-tile__hint" data-i18n="w_doc_ing_hint">ВКонтакте</span>
-              </button>
-              <button
+              <span class="work-tile__play" aria-hidden="true"></span>
+            </button>
+            <button
                 type="button"
-                class="work-tile work-tile--1 work-tile--doc-avito js-open-kinescope"
+                class="work-tile work-tile--doc-avito js-open-kinescope" data-cat="doc"
                 data-kinescope-src="https://kinescope.io/embed/6hFpUjdmHRoQdKXQ8gTDuy"
                 data-kinescope-title="Тайник с серверами Авито"
                 data-kinescope-title-en="Avito server hideout"
@@ -433,10 +408,11 @@
                 <span class="work-tile__tag" data-i18n="w_doc_avito_tag">Документальное</span>
                 <span class="work-tile__name" data-i18n="w_doc_avito_name">Тайник с серверами Авито</span>
                 <span class="work-tile__hint" data-i18n="w_doc_avito_hint">Авито</span>
-              </button>
-              <button
+              <span class="work-tile__play" aria-hidden="true"></span>
+            </button>
+            <button
                 type="button"
-                class="work-tile work-tile--2 work-tile--doc-tochka js-open-kinescope"
+                class="work-tile work-tile--doc-tochka js-open-kinescope" data-cat="doc"
                 data-kinescope-src="https://kinescope.io/embed/qAD5CXzDLsW1HVcKXtR2BL"
                 data-kinescope-title="Четыре точки роста для бизнеса"
                 data-kinescope-title-en="Four growth levers for business"
@@ -444,10 +420,11 @@
                 <span class="work-tile__tag" data-i18n="w_doc_tochka_tag">Документальное</span>
                 <span class="work-tile__name" data-i18n="w_doc_tochka_name">Четыре точки роста для бизнеса</span>
                 <span class="work-tile__hint" data-i18n="w_doc_tochka_hint">Точка банк</span>
-              </button>
-              <button
+              <span class="work-tile__play" aria-hidden="true"></span>
+            </button>
+            <button
                 type="button"
-                class="work-tile work-tile--3 work-tile--doc-vk-hp js-open-kinescope"
+                class="work-tile work-tile--doc-vk-hp js-open-kinescope" data-cat="doc"
                 data-kinescope-src="https://kinescope.io/embed/vX99dgbqjY8rzNmh6grcs5"
                 data-kinescope-title="Проверяем HP сообщества"
                 data-kinescope-title-en="Testing HP communities"
@@ -455,20 +432,22 @@
                 <span class="work-tile__tag" data-i18n="w_doc_hp_tag">Интервью</span>
                 <span class="work-tile__name" data-i18n="w_doc_hp_name">Проверяем HP сообщества</span>
                 <span class="work-tile__hint" data-i18n="w_doc_hp_hint">ВКонтакте</span>
-              </button>
-              <button
+              <span class="work-tile__play" aria-hidden="true"></span>
+            </button>
+            <button
                 type="button"
-                class="work-tile work-tile--4 work-tile--doc-bft js-open-kinescope"
+                class="work-tile work-tile--doc-bft js-open-kinescope" data-cat="doc"
                 data-kinescope-src="https://kinescope.io/embed/w5CXg9mUWED3yotqM6rYNL"
                 data-kinescope-title="Business Fail Talks"
               >
                 <span class="work-tile__tag" data-i18n="w_doc_bft_tag">Мультикам</span>
                 <span class="work-tile__name" data-i18n="w_doc_bft_name">Business Fail Talks</span>
                 <span class="work-tile__hint" data-i18n="w_doc_bft_hint">BFT</span>
-              </button>
-              <button
+              <span class="work-tile__play" aria-hidden="true"></span>
+            </button>
+            <button
                 type="button"
-                class="work-tile work-tile--1 work-tile--doc-nto js-open-kinescope"
+                class="work-tile work-tile--doc-nto js-open-kinescope" data-cat="doc"
                 data-kinescope-src="https://kinescope.io/embed/knVD2H2oZa5VrVRBB5aBzH"
                 data-kinescope-title="Национальная тех. олимпиада"
                 data-kinescope-title-en="National Tech Olympiad"
@@ -477,37 +456,10 @@
                 <span class="work-tile__tag" data-i18n="w_doc_nto_tag">Документальное</span>
                 <span class="work-tile__name" data-i18n="w_doc_nto_name">Национальная тех. олимпиада</span>
                 <span class="work-tile__hint" data-i18n="w_doc_nto_hint">Сбер</span>
-              </button>
-            </div>
-            </div>
-            <button
-              type="button"
-              class="work-carousel__btn work-carousel__btn--next"
-              data-carousel-next
-              aria-label="Следующие работы"
-              data-i18n-aria="carousel_next"
-            >
-              ›
+              <span class="work-tile__play" aria-hidden="true"></span>
             </button>
-          </div>
-        </div>
-
-        <div class="cat" id="work-commercial">
-          <div class="cat__label" data-i18n="cat_commercial">Коммерция · реклама</div>
-          <div class="work-carousel">
-            <button
-              type="button"
-              class="work-carousel__btn work-carousel__btn--prev"
-              data-carousel-prev
-              aria-label="Предыдущие работы"
-              data-i18n-aria="carousel_prev"
-            >
-              ‹
-            </button>
-            <div class="work-carousel__viewport">
-            <div class="work-carousel__track work-grid" data-carousel-track>
             <a
-              class="work-tile work-tile--1"
+              class="work-tile work-tile--1" data-cat="commercial"
               href="https://gorushkindop.com"
               target="_blank"
               rel="noreferrer"
@@ -517,7 +469,7 @@
               <span class="work-tile__hint">Yota</span>
             </a>
             <a
-              class="work-tile work-tile--2"
+              class="work-tile work-tile--2" data-cat="commercial"
               href="https://gorushkindop.com"
               target="_blank"
               rel="noreferrer"
@@ -527,7 +479,7 @@
               <span class="work-tile__hint">Samokat</span>
             </a>
             <a
-              class="work-tile work-tile--3"
+              class="work-tile work-tile--3" data-cat="commercial"
               href="https://gorushkindop.com"
               target="_blank"
               rel="noreferrer"
@@ -536,37 +488,9 @@
               <span class="work-tile__name">Cold Start</span>
               <span class="work-tile__hint">Sber Devices</span>
             </a>
-            </div>
-            </div>
             <button
               type="button"
-              class="work-carousel__btn work-carousel__btn--next"
-              data-carousel-next
-              aria-label="Следующие работы"
-              data-i18n-aria="carousel_next"
-            >
-              ›
-            </button>
-          </div>
-        </div>
-
-        <div class="cat" id="work-music">
-          <div class="cat__label" data-i18n="cat_music">Клипы · музыка</div>
-          <div class="work-carousel">
-            <button
-              type="button"
-              class="work-carousel__btn work-carousel__btn--prev"
-              data-carousel-prev
-              aria-label="Предыдущие работы"
-              data-i18n-aria="carousel_prev"
-            >
-              ‹
-            </button>
-            <div class="work-carousel__viewport">
-            <div class="work-carousel__track work-grid" data-carousel-track>
-            <button
-              type="button"
-              class="work-tile work-tile--2 work-tile--music-tornado js-open-kinescope"
+              class="work-tile work-tile--music-tornado js-open-kinescope" data-cat="music"
               data-kinescope-src="https://kinescope.io/embed/fu616cP6i85me5um6NhvyU"
               data-kinescope-title="Tornado"
               data-kinescope-aspect="41.89"
@@ -574,10 +498,11 @@
               <span class="work-tile__tag" data-i18n="w_tag_music">Музыкальный клип</span>
               <span class="work-tile__name">Tornado</span>
               <span class="work-tile__hint">TSOY</span>
+              <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <button
               type="button"
-              class="work-tile work-tile--3 work-tile--music-dragonflower js-open-kinescope"
+              class="work-tile work-tile--music-dragonflower js-open-kinescope" data-cat="music" data-featured="3"
               data-kinescope-src="https://kinescope.io/embed/r1xRYvWxTr4zrMTRKPimGn"
               data-kinescope-title="Dragon Flower"
               data-kinescope-aspect="56.25"
@@ -585,9 +510,10 @@
               <span class="work-tile__tag" data-i18n="w_tag_music">Музыкальный клип</span>
               <span class="work-tile__name" data-i18n="w_music_dragonflower_name">Dragon Flower</span>
               <span class="work-tile__hint" data-i18n="w_music_dragonflower_hint">Valdman</span>
+              <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <a
-              class="work-tile work-tile--3"
+              class="work-tile work-tile--3" data-cat="music"
               href="https://gorushkindop.com"
               target="_blank"
               rel="noreferrer"
@@ -597,7 +523,7 @@
               <span class="work-tile__hint">Dose</span>
             </a>
             <a
-              class="work-tile work-tile--4"
+              class="work-tile work-tile--4" data-cat="music"
               href="https://gorushkindop.com"
               target="_blank"
               rel="noreferrer"
@@ -606,21 +532,9 @@
               <span class="work-tile__name">Тени на стекле</span>
               <span class="work-tile__hint">L'One</span>
             </a>
-            </div>
-            </div>
-            <button
-              type="button"
-              class="work-carousel__btn work-carousel__btn--next"
-              data-carousel-next
-              aria-label="Следующие работы"
-              data-i18n-aria="carousel_next"
-            >
-              ›
-            </button>
           </div>
-        </div>
 
-        <div class="cat" id="work-vertical">
+          <div class="cat work-vertical-block" id="work-vertical">
           <div class="cat__label" data-i18n="cat_vertical">Вертикальный контент</div>
           <div class="work-carousel work-carousel--vertical">
             <button
@@ -771,6 +685,7 @@
               ›
             </button>
           </div>
+        </div>
         </div>
       </section>
 
