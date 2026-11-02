@@ -41,8 +41,8 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600&family=Syne:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="home.css?v=109" />
-    <script src="site.js?v=33" defer></script>
+    <link rel="stylesheet" href="home.css?v=108" />
+    <script src="site.js?v=32" defer></script>
   </head>
   <body>
     <div id="site-loader" class="site-loader" aria-live="polite" aria-busy="true">
@@ -327,25 +327,6 @@
         </div>
 
         <div class="work-board" id="work-board" data-filter="all">
-          <div class="work-stage" id="work-stage" hidden>
-            <button type="button" class="work-stage__frame" aria-label="Смотреть работу" data-i18n-aria="work_open_aria">
-              <img class="work-stage__img" alt="" />
-              <span class="work-stage__count" aria-hidden="true"></span>
-              <span class="work-stage__play" aria-hidden="true"></span>
-              <span class="work-stage__caption">
-                <span class="work-stage__title"></span>
-                <span class="work-stage__meta"></span>
-              </span>
-            </button>
-            <div class="work-strip">
-              <button type="button" class="work-strip__btn" data-strip-prev aria-label="Предыдущая работа" data-i18n-aria="work_prev_aria">‹</button>
-              <div class="work-strip__viewport">
-                <div class="work-strip__track" role="list"></div>
-              </div>
-              <button type="button" class="work-strip__btn" data-strip-next aria-label="Следующая работа" data-i18n-aria="work_next_aria">›</button>
-            </div>
-          </div>
-
           <div class="work-grid work-grid--main" id="work-main">
             <h3 class="work-subhead work-subhead--featured" data-i18n="work_featured">Избранное</h3>
             <h3 class="work-subhead work-subhead--all" data-i18n="work_all">Все работы</h3>
@@ -354,7 +335,7 @@
               class="work-tile work-tile--cinema-8woman js-open-kinescope" data-cat="narrative" data-featured="1"
               data-kinescope-src="https://kinescope.io/embed/oAkpDXygo6WAXB1KPT7xPs"
               data-kinescope-title="8 Woman"
-             data-cover="images/work-cinema-8woman.png">
+            >
               <span class="work-tile__tag" data-i18n="w_tag_narrative">К/М фильм</span>
               <span class="work-tile__name">8 Woman</span>
               <span class="work-tile__hint" data-i18n="w_8w_hint">Никита Белых</span>
@@ -365,7 +346,7 @@
               class="work-tile work-tile--cinema-nesezon js-open-kinescope" data-cat="narrative" data-featured="4"
               data-kinescope-src="https://kinescope.io/embed/8SK5n7UfUv5FhJ92c4wBoB"
               data-kinescope-title="Несезон"
-             data-cover="images/work-cinema-nesezon.png?v=2">
+            >
               <span class="work-tile__tag" data-i18n="w_tag_narrative">К/М фильм</span>
               <span class="work-tile__name">Несезон</span>
               <span class="work-tile__hint" data-i18n="w_nesezon_hint">Борис Резак</span>
@@ -377,7 +358,7 @@
               data-kinescope-src="https://kinescope.io/embed/gQoULMWJD8oBpeYmocW8Dr"
               data-kinescope-title="Филлип, я твой сын !"
               data-kinescope-aspect="41.89"
-             data-cover="images/work-cinema-fillip.png">
+            >
               <span class="work-tile__tag" data-i18n="w_tag_narrative">К/М фильм</span>
               <span class="work-tile__name">Филлип, я твой сын !</span>
               <span class="work-tile__hint" data-i18n="w_fillip_hint">Сергей Штепс</span>
@@ -389,7 +370,7 @@
               data-kinescope-src="https://kinescope.io/embed/szLaAx6AtnjpspNpVbFNru"
               data-kinescope-title="Почему мужчины живут меньше"
               data-kinescope-aspect="41.89"
-             data-cover="images/work-cinema-pochemu.png?v=2">
+            >
               <span class="work-tile__tag" data-i18n="w_tag_narrative">К/М фильм</span>
               <span class="work-tile__name">Почему мужчины живут меньше</span>
               <span class="work-tile__hint" data-i18n="w_pochemu_hint">Никита Белых</span>
@@ -401,7 +382,7 @@
                 data-kinescope-src="https://kinescope.io/embed/f76eiSZrp4SDrErqVcFXsF"
                 data-kinescope-title="Что взять в отпуск?"
                 data-kinescope-title-en="What to pack for vacation?"
-               data-cover="images/work-doc-12storeez.jpg">
+              >
                 <span class="work-tile__tag" data-i18n="w_doc_12s_tag">Интервью</span>
                 <span class="work-tile__name" data-i18n="w_doc_12s_name">Что взять в отпуск?</span>
                 <span class="work-tile__hint" data-i18n="w_doc_12s_hint">12 STOREEZ</span>
@@ -413,7 +394,7 @@
                 data-kinescope-src="https://kinescope.io/embed/2idH44NoPmYsqzj4H7zHVF"
                 data-kinescope-title="Ирина Горбачева: о выборе вина"
                 data-kinescope-title-en="Irina Gorbacheva on choosing wine"
-               data-cover="images/work-doc-simplevine.png">
+              >
                 <span class="work-tile__tag" data-i18n="w_doc_sv_tag">Интервью</span>
                 <span class="work-tile__name" data-i18n="w_doc_sv_name">Ирина Горбачева: о выборе вина</span>
                 <span class="work-tile__hint" data-i18n="w_doc_sv_hint">Simple Vine</span>
@@ -425,7 +406,7 @@
                 data-kinescope-src="https://kinescope.io/embed/tJfEqDx3jmUNa2Y2d7JoKx"
                 data-kinescope-title="VK Места Республика Ингушетия"
                 data-kinescope-title-en="VK Places · Republic of Ingushetia"
-               data-cover="images/work-doc-vk-ingushetia.png">
+              >
                 <span class="work-tile__tag" data-i18n="w_doc_ing_tag">Документальное</span>
                 <span class="work-tile__name" data-i18n="w_doc_ing_name">VK Места Республика Ингушетия</span>
                 <span class="work-tile__hint" data-i18n="w_doc_ing_hint">ВКонтакте</span>
@@ -437,7 +418,7 @@
                 data-kinescope-src="https://kinescope.io/embed/6hFpUjdmHRoQdKXQ8gTDuy"
                 data-kinescope-title="Тайник с серверами Авито"
                 data-kinescope-title-en="Avito server hideout"
-               data-cover="images/work-doc-avito.png">
+              >
                 <span class="work-tile__tag" data-i18n="w_doc_avito_tag">Документальное</span>
                 <span class="work-tile__name" data-i18n="w_doc_avito_name">Тайник с серверами Авито</span>
                 <span class="work-tile__hint" data-i18n="w_doc_avito_hint">Авито</span>
@@ -449,7 +430,7 @@
                 data-kinescope-src="https://kinescope.io/embed/qAD5CXzDLsW1HVcKXtR2BL"
                 data-kinescope-title="Четыре точки роста для бизнеса"
                 data-kinescope-title-en="Four growth levers for business"
-               data-cover="images/work-doc-tochka.png">
+              >
                 <span class="work-tile__tag" data-i18n="w_doc_tochka_tag">Документальное</span>
                 <span class="work-tile__name" data-i18n="w_doc_tochka_name">Четыре точки роста для бизнеса</span>
                 <span class="work-tile__hint" data-i18n="w_doc_tochka_hint">Точка банк</span>
@@ -461,7 +442,7 @@
                 data-kinescope-src="https://kinescope.io/embed/vX99dgbqjY8rzNmh6grcs5"
                 data-kinescope-title="Проверяем HP сообщества"
                 data-kinescope-title-en="Testing HP communities"
-               data-cover="images/work-doc-vk-hp.png">
+              >
                 <span class="work-tile__tag" data-i18n="w_doc_hp_tag">Интервью</span>
                 <span class="work-tile__name" data-i18n="w_doc_hp_name">Проверяем HP сообщества</span>
                 <span class="work-tile__hint" data-i18n="w_doc_hp_hint">ВКонтакте</span>
@@ -472,7 +453,7 @@
                 class="work-tile work-tile--doc-bft js-open-kinescope" data-cat="doc"
                 data-kinescope-src="https://kinescope.io/embed/w5CXg9mUWED3yotqM6rYNL"
                 data-kinescope-title="Business Fail Talks"
-               data-cover="images/work-doc-bft.png">
+              >
                 <span class="work-tile__tag" data-i18n="w_doc_bft_tag">Мультикам</span>
                 <span class="work-tile__name" data-i18n="w_doc_bft_name">Business Fail Talks</span>
                 <span class="work-tile__hint" data-i18n="w_doc_bft_hint">BFT</span>
@@ -485,7 +466,7 @@
                 data-kinescope-title="Национальная тех. олимпиада"
                 data-kinescope-title-en="National Tech Olympiad"
                 data-kinescope-aspect="41.83"
-               data-cover="images/work-doc-nto.png">
+              >
                 <span class="work-tile__tag" data-i18n="w_doc_nto_tag">Документальное</span>
                 <span class="work-tile__name" data-i18n="w_doc_nto_name">Национальная тех. олимпиада</span>
                 <span class="work-tile__hint" data-i18n="w_doc_nto_hint">Сбер</span>
@@ -496,7 +477,7 @@
               href="https://gorushkindop.com"
               target="_blank"
               rel="noreferrer"
-             data-cover="images/work-1.jpg">
+            >
               <span class="work-tile__tag" data-i18n="w_tag_commercial">Реклама</span>
               <span class="work-tile__name">Pulse Zero</span>
               <span class="work-tile__hint">Yota</span>
@@ -506,7 +487,7 @@
               href="https://gorushkindop.com"
               target="_blank"
               rel="noreferrer"
-             data-cover="images/work-2.jpg">
+            >
               <span class="work-tile__tag" data-i18n="w_tag_commercial">Реклама</span>
               <span class="work-tile__name">Frame Delivery</span>
               <span class="work-tile__hint">Samokat</span>
@@ -516,7 +497,7 @@
               href="https://gorushkindop.com"
               target="_blank"
               rel="noreferrer"
-             data-cover="images/work-3.jpg">
+            >
               <span class="work-tile__tag" data-i18n="w_tag_commercial">Реклама</span>
               <span class="work-tile__name">Cold Start</span>
               <span class="work-tile__hint">Sber Devices</span>
@@ -527,7 +508,7 @@
               data-kinescope-src="https://kinescope.io/embed/fu616cP6i85me5um6NhvyU"
               data-kinescope-title="Tornado"
               data-kinescope-aspect="41.89"
-             data-cover="images/work-music-tornado.png">
+            >
               <span class="work-tile__tag" data-i18n="w_tag_music">Музыкальный клип</span>
               <span class="work-tile__name">Tornado</span>
               <span class="work-tile__hint">TSOY</span>
@@ -539,7 +520,7 @@
               data-kinescope-src="https://kinescope.io/embed/r1xRYvWxTr4zrMTRKPimGn"
               data-kinescope-title="Dragon Flower"
               data-kinescope-aspect="56.25"
-             data-cover="images/work-music-dragonflower.jpg">
+            >
               <span class="work-tile__tag" data-i18n="w_tag_music">Музыкальный клип</span>
               <span class="work-tile__name" data-i18n="w_music_dragonflower_name">Dragon Flower</span>
               <span class="work-tile__hint" data-i18n="w_music_dragonflower_hint">Valdman</span>
@@ -550,7 +531,7 @@
               href="https://gorushkindop.com"
               target="_blank"
               rel="noreferrer"
-             data-cover="images/work-3.jpg">
+            >
               <span class="work-tile__tag" data-i18n="w_tag_music">Музыкальный клип</span>
               <span class="work-tile__name">Близко к свету</span>
               <span class="work-tile__hint">Dose</span>
@@ -560,7 +541,7 @@
               href="https://gorushkindop.com"
               target="_blank"
               rel="noreferrer"
-             data-cover="images/work-4.jpg">
+            >
               <span class="work-tile__tag" data-i18n="w_tag_music">Музыкальный клип</span>
               <span class="work-tile__name">Тени на стекле</span>
               <span class="work-tile__hint">L'One</span>

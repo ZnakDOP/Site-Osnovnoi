@@ -1,5 +1,4 @@
 ;(function () {
-  let onLangChange = null
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
   const I18N_ARIA_RU = {
@@ -9,9 +8,6 @@
     hero_aria: "Введение",
     bio_media_aria: "Бэкстейдж",
     showreel_play_aria: "Смотреть шоурил",
-    work_open_aria: "Смотреть работу",
-    work_prev_aria: "Предыдущая работа",
-    work_next_aria: "Следующая работа",
     work_filter_aria: "Фильтр работ",
     carousel_prev: "Предыдущие работы",
     carousel_next: "Следующие работы",
@@ -30,9 +26,6 @@
     hero_aria: "Introduction",
     bio_media_aria: "Behind the scenes",
     showreel_play_aria: "Play showreel",
-    work_open_aria: "Watch project",
-    work_prev_aria: "Previous project",
-    work_next_aria: "Next project",
     work_filter_aria: "Filter projects",
     carousel_prev: "Previous projects",
     carousel_next: "Next projects",
@@ -296,7 +289,6 @@
     const srIframe = document.querySelector(".showreel-embed__iframe")
     if (srIframe) srIframe.setAttribute("title", isEn ? "Showreel" : "Шоурил")
     document.documentElement.dataset.siteLang = isEn ? "en" : "ru"
-    if (typeof onLangChange === "function") onLangChange()
 
     const langRoots = document.querySelectorAll(".site-header__lang")
     langRoots.forEach((langRoot) => langRoot.classList.toggle("site-header__lang--en", isEn))
@@ -337,99 +329,21 @@
     const tiles = board.querySelectorAll("#work-main .work-tile")
     const known = new Set(Array.from(buttons, (b) => b.getAttribute("data-work-filter")))
 
-    // ——— Витрина: большой кадр + лента миниатюр ———
-    const stage = document.getElementById("work-stage")
-    const frame = stage?.querySelector(".work-stage__frame")
-    const stageImg = stage?.querySelector(".work-stage__img")
-    const stageTitle = stage?.querySelector(".work-stage__title")
-    const stageMeta = stage?.querySelector(".work-stage__meta")
-    const stageCount = stage?.querySelector(".work-stage__count")
-    const strip = stage?.querySelector(".work-strip__track")
-    const stripPrev = stage?.querySelector("[data-strip-prev]")
-    const stripNext = stage?.querySelector("[data-strip-next]")
-    const state = { items: [], i: 0 }
-
-    function tileText(tile, cls) {
-      return (tile.querySelector(cls)?.textContent || "").trim()
-    }
-
-    function renderStage() {
-      const tile = state.items[state.i]
-      if (!stage || !tile) return
-      const name = tileText(tile, ".work-tile__name")
-      const hasVideo = !!tile.getAttribute("data-kinescope-src")
-      stageImg.classList.add("is-swapping")
-      window.setTimeout(() => {
-        stageImg.src = tile.getAttribute("data-cover") || ""
-        stageImg.alt = name
-        stageImg.classList.remove("is-swapping")
-      }, prefersReduced ? 0 : 140)
-      stageTitle.textContent = name
-      stageMeta.textContent = [tileText(tile, ".work-tile__tag"), tileText(tile, ".work-tile__hint")]
-        .filter(Boolean)
-        .join("  ·  ")
-      const pad = (n) => String(n).padStart(2, "0")
-      stageCount.textContent = pad(state.i + 1) + " / " + pad(state.items.length)
-      frame.classList.toggle("is-static", !hasVideo)
-      strip.querySelectorAll(".work-strip__thumb").forEach((th, k) => {
-        const on = k === state.i
-        th.classList.toggle("is-active", on)
-        th.setAttribute("aria-current", on ? "true" : "false")
-      })
-      stripPrev.disabled = state.i <= 0
-      stripNext.disabled = state.i >= state.items.length - 1
-    }
-
-    function select(i, scrollStrip = true) {
-      if (!state.items.length) return
-      state.i = Math.max(0, Math.min(state.items.length - 1, i))
-      renderStage()
-      const th = strip.children[state.i]
-      if (scrollStrip && th) {
-        const vp = strip.parentElement
-        const left = th.offsetLeft - (vp.clientWidth - th.offsetWidth) / 2
-        vp.scrollTo({ left: Math.max(0, left), behavior: prefersReduced ? "auto" : "smooth" })
-      }
-    }
-
-    function buildStage(list, key) {
-      state.items = list.slice()
-      if (key === "all") {
-        const rank = (t) => Number(t.getAttribute("data-featured")) || 99
-        state.items = list.map((t, k) => [t, k]).sort((a, b) => rank(a[0]) - rank(b[0]) || a[1] - b[1]).map((x) => x[0])
-      }
-      strip.textContent = ""
-      state.items.forEach((tile, k) => {
-        const b = document.createElement("button")
-        b.type = "button"
-        b.className = "work-strip__thumb"
-        b.setAttribute("role", "listitem")
-        const img = document.createElement("img")
-        img.src = tile.getAttribute("data-cover") || ""
-        img.alt = ""
-        img.loading = "lazy"
-        b.appendChild(img)
-        b.addEventListener("click", () => select(k))
-        strip.appendChild(b)
-      })
-      state.i = 0
-      renderStage()
-      strip.parentElement.scrollLeft = 0
-    }
-
-    if (stage) {
-      frame.addEventListener("click", () => {
-        const tile = state.items[state.i]
-        if (tile && tile.getAttribute("data-kinescope-src")) tile.click()
-      })
-      stripPrev.addEventListener("click", () => select(state.i - 1))
-      stripNext.addEventListener("click", () => select(state.i + 1))
-      stage.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowLeft") select(state.i - 1)
-        else if (e.key === "ArrowRight") select(state.i + 1)
-      })
-      onLangChange = () => {
-        if (!stage.hidden && state.items.length) renderStage()
+    // Мозаика: ряды 4+2, 2+4, 2+2+2 (шестиколоночная сетка); хвост добиваем до полной ширины
+    function layoutMosaic(list) {
+      const rows = [[4, 2], [2, 4], [2, 2, 2]]
+      let i = 0
+      let r = 0
+      while (i < list.length) {
+        const left = list.length - i
+        let row = rows[r % rows.length]
+        if (left < row.length) row = left === 1 ? [6] : [3, 3]
+        else if (left - row.length === 1) row = left === 3 ? [2, 2, 2] : [3, 3] // не оставляем одинокую плитку в хвосте
+        row.forEach((span, k) => {
+          list[i + k].style.gridColumn = "span " + span
+        })
+        i += row.length
+        r += 1
       }
     }
 
@@ -443,18 +357,13 @@
       })
       tiles.forEach((t) => {
         t.hidden = !(key === "all" || t.getAttribute("data-cat") === key)
+        t.style.gridColumn = ""
       })
+      if (key !== "all" && key !== "vertical") layoutMosaic(Array.from(tiles).filter((t) => !t.hidden))
       const vertical = board.querySelector("#work-vertical")
       if (vertical) vertical.hidden = !(key === "all" || key === "vertical")
       const main = board.querySelector("#work-main")
-      if (stage) {
-        board.classList.add("work-board--stage")
-        if (main) main.hidden = true
-        stage.hidden = key === "vertical"
-        if (key !== "vertical") buildStage(Array.from(tiles).filter((t) => !t.hidden), key)
-      } else if (main) {
-        main.hidden = key === "vertical"
-      }
+      if (main) main.hidden = key === "vertical"
       const vp = vertical?.querySelector(".work-carousel__viewport")
       if (vp) vp.scrollLeft = 0
     }
