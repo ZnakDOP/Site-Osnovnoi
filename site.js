@@ -44,6 +44,9 @@
     nav_links: "Links",
     nav_contact: "Contact",
     nav_write: "Contact me",
+    work_featured: "Featured",
+    work_all: "All projects",
+    vert_hint: "Swipe",
     filter_all: "All",
     filter_narrative: "Film",
     filter_music: "Music videos",
@@ -323,6 +326,23 @@
     const tiles = board.querySelectorAll("#work-main .work-tile")
     const known = new Set(Array.from(buttons, (b) => b.getAttribute("data-work-filter")))
 
+    // Мозаика: ряды 4+2, 2+4, 2+2+2 (шестиколоночная сетка); хвост добиваем до полной ширины
+    function layoutMosaic(list) {
+      const rows = [[4, 2], [2, 4], [2, 2, 2]]
+      let i = 0
+      let r = 0
+      while (i < list.length) {
+        const left = list.length - i
+        let row = rows[r % rows.length]
+        if (left < row.length) row = left === 1 ? [6] : [3, 3]
+        row.forEach((span, k) => {
+          list[i + k].style.gridColumn = "span " + span
+        })
+        i += row.length
+        r += 1
+      }
+    }
+
     function setFilter(key) {
       if (!known.has(key)) key = "all"
       board.setAttribute("data-filter", key)
@@ -333,7 +353,9 @@
       })
       tiles.forEach((t) => {
         t.hidden = !(key === "all" || t.getAttribute("data-cat") === key)
+        t.style.gridColumn = ""
       })
+      if (key !== "all" && key !== "vertical") layoutMosaic(Array.from(tiles).filter((t) => !t.hidden))
       const vertical = board.querySelector("#work-vertical")
       if (vertical) vertical.hidden = !(key === "all" || key === "vertical")
       const main = board.querySelector("#work-main")
@@ -534,6 +556,7 @@
         const cur = currentOffset()
         prev.disabled = cur <= 2
         next.disabled = cur >= max - 2
+        root.classList.toggle("work-carousel--end", next.disabled)
       }
 
       prev.addEventListener("click", () => scrollToPage(true))

@@ -41,8 +41,8 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600&family=Syne:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="home.css?v=104" />
-    <script src="site.js?v=28" defer></script>
+    <link rel="stylesheet" href="home.css?v=105" />
+    <script src="site.js?v=29" defer></script>
   </head>
   <body>
     <div id="site-loader" class="site-loader" aria-live="polite" aria-busy="true">
@@ -328,6 +328,8 @@
 
         <div class="work-board" id="work-board" data-filter="all">
           <div class="work-grid work-grid--main" id="work-main">
+            <h3 class="work-subhead work-subhead--featured" data-i18n="work_featured">Избранное</h3>
+            <h3 class="work-subhead work-subhead--all" data-i18n="work_all">Все работы</h3>
             <button
               type="button"
               class="work-tile work-tile--cinema-8woman js-open-kinescope" data-cat="narrative" data-featured="1"
@@ -535,7 +537,10 @@
           </div>
 
           <div class="cat work-vertical-block" id="work-vertical">
-          <div class="cat__label" data-i18n="cat_vertical">Вертикальный контент</div>
+          <div class="cat__label cat__label--hint">
+            <span data-i18n="cat_vertical">Вертикальный контент</span>
+            <span class="swipe-hint" aria-hidden="true"><span data-i18n="vert_hint">Листайте</span><i class="swipe-hint__arrows"></i></span>
+          </div>
           <div class="work-carousel work-carousel--vertical">
             <button
               type="button"
