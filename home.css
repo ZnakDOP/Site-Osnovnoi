@@ -3047,7 +3047,7 @@ body.scroll-down .reveal {
 
 /* ——— Видео «Что взять в отпуск?» ——— */
 .work-tile--doc-12storeez::before {
-  background-image: url("images/work-doc-12storeez.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/work-doc-12storeez-2.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
