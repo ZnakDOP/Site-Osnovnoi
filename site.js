@@ -121,6 +121,9 @@
     w_doc_bft_tag: "Multicam",
     w_doc_bft_name: "Business Fail Talks",
     w_doc_bft_hint: "BFT",
+    w_doc_12s_tag: "Interview",
+    w_doc_12s_name: "What to pack for vacation?",
+    w_doc_12s_hint: "12 STOREEZ",
     w_doc_sv_tag: "Interview",
     w_doc_sv_name: "Irina Gorbacheva on choosing wine",
     w_doc_sv_hint: "Simple Vine",
@@ -335,6 +338,7 @@
         const left = list.length - i
         let row = rows[r % rows.length]
         if (left < row.length) row = left === 1 ? [6] : [3, 3]
+        else if (left - row.length === 1) row = left === 3 ? [2, 2, 2] : [3, 3] // не оставляем одинокую плитку в хвосте
         row.forEach((span, k) => {
           list[i + k].style.gridColumn = "span " + span
         })
@@ -557,6 +561,7 @@
         prev.disabled = cur <= 2
         next.disabled = cur >= max - 2
         root.classList.toggle("work-carousel--end", next.disabled)
+        if (cur > 8) root.classList.add("work-carousel--touched")
       }
 
       prev.addEventListener("click", () => scrollToPage(true))

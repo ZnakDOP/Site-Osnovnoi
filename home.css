@@ -3009,3 +3009,77 @@ body.scroll-down .reveal {
 .work-tile::after {
   background: linear-gradient(180deg, transparent 50%, rgba(6, 6, 8, 0.82) 100%);
 }
+
+/* ——— Подсказка листания поверх ленты (телефон) ——— */
+.swipe-chip {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .swipe-chip {
+    position: absolute;
+    z-index: 5;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(6, 6, 8, 0.82);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .work-carousel--touched .swipe-chip,
+  .work-board[data-filter="vertical"] .swipe-chip {
+    opacity: 0;
+  }
+}
+
+/* ——— Видео «Что взять в отпуск?» ——— */
+.work-tile--doc-12storeez::before {
+  background-image: url("images/work-doc-12storeez.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center center;
+}
+
+/* Избранное из пяти: 4+2 сверху, три равные плитки 16:9 снизу */
+.work-subhead--featured { order: -6; }
+.work-board[data-filter="all"] [data-featured="1"] { order: -5; grid-column: span 4; }
+.work-board[data-filter="all"] [data-featured="2"] { order: -4; grid-column: span 2; }
+.work-board[data-filter="all"] [data-featured="3"] { order: -3; grid-column: span 2; }
+.work-board[data-filter="all"] [data-featured="4"] { order: -2; grid-column: span 2; }
+.work-board[data-filter="all"] [data-featured="5"] { order: -1; grid-column: span 2; }
+
+.work-board[data-filter="all"] .work-grid--main [data-featured="3"],
+.work-board[data-filter="all"] .work-grid--main [data-featured="4"],
+.work-board[data-filter="all"] .work-grid--main [data-featured="5"] {
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+}
+
+.work-board[data-filter="all"] [data-featured="3"] .work-tile__name,
+.work-board[data-filter="all"] [data-featured="4"] .work-tile__name,
+.work-board[data-filter="all"] [data-featured="5"] .work-tile__name {
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .work-board[data-filter="all"] [data-featured="5"] {
+    grid-column: auto;
+  }
+
+  .work-board[data-filter="all"] .work-grid--main [data-featured="3"],
+  .work-board[data-filter="all"] .work-grid--main [data-featured="4"],
+  .work-board[data-filter="all"] .work-grid--main [data-featured="5"] {
+    aspect-ratio: 16 / 10;
+  }
+}
