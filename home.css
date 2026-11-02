@@ -2957,3 +2957,55 @@ body.scroll-down .reveal {
     aspect-ratio: 16 / 10;
   }
 }
+
+/* ——— Подписи плиток: жанр, название и бренд видны всегда, но компактно ——— */
+@media (hover: hover) and (pointer: fine) {
+  .work-tile .work-tile__tag,
+  .work-tile .work-tile__name,
+  .work-tile .work-tile__hint {
+    opacity: 1;
+    transform: none;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .work-tile .work-tile__tag {
+    margin: 0 0 4px;
+  }
+
+  .work-tile .work-tile__hint {
+    margin: 4px 0 0;
+  }
+
+  .work-tile:hover .work-tile__tag,
+  .work-tile:focus-visible .work-tile__tag {
+    margin-bottom: 4px;
+  }
+
+  .work-tile:hover .work-tile__hint,
+  .work-tile:focus-visible .work-tile__hint {
+    margin-top: 4px;
+  }
+}
+
+.work-grid--main .work-tile,
+.work-carousel--vertical .work-tile {
+  padding: 1rem 1.1rem;
+}
+
+.work-grid--main .work-tile__tag,
+.work-carousel--vertical .work-tile__tag {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+
+.work-grid--main .work-tile__hint,
+.work-carousel--vertical .work-tile__hint {
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.work-tile::after {
+  background: linear-gradient(180deg, transparent 50%, rgba(6, 6, 8, 0.82) 100%);
+}
