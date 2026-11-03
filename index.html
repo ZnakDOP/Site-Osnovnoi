@@ -41,8 +41,8 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600&family=Syne:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="home.css?v=116" />
-    <script src="site.js?v=33" defer></script>
+    <link rel="stylesheet" href="home.css?v=117" />
+    <script src="site.js?v=34" defer></script>
   </head>
   <body>
     <div id="site-loader" class="site-loader" aria-live="polite" aria-busy="true">
@@ -320,9 +320,9 @@
         <div class="work-filters" id="work-filters" role="group" aria-label="Фильтр работ" data-i18n-aria="work_filter_aria">
           <button type="button" class="work-filter is-active" data-work-filter="all" aria-pressed="true" data-i18n="filter_all">Все</button>
           <button type="button" class="work-filter" data-work-filter="narrative" aria-pressed="false" data-i18n="filter_narrative">Кино</button>
+          <button type="button" class="work-filter" data-work-filter="doc" aria-pressed="false" data-i18n="filter_doc">Док</button>
           <button type="button" class="work-filter" data-work-filter="music" aria-pressed="false" data-i18n="filter_music">Клипы</button>
           <button type="button" class="work-filter" data-work-filter="commercial" aria-pressed="false" data-i18n="filter_commercial">Коммерция</button>
-          <button type="button" class="work-filter" data-work-filter="doc" aria-pressed="false" data-i18n="filter_doc">Док</button>
           <button type="button" class="work-filter" data-work-filter="vertical" aria-pressed="false" data-i18n="filter_vertical">Вертикальное</button>
         </div>
 
@@ -341,7 +341,7 @@
               <span class="work-tile__hint" data-i18n="w_8w_hint">Никита Белых</span>
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
-            <div class="film-note" data-film="1">
+            <div class="film-note" data-cat="narrative" data-film="1">
               <span class="film-note__label">О фильме</span>
               <h3 class="film-note__title">8 Woman</h3>
               <dl class="film-note__facts">
@@ -363,7 +363,7 @@
               <span class="work-tile__hint" data-i18n="w_nesezon_hint">Борис Резак</span>
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
-            <div class="film-note" data-film="2">
+            <div class="film-note" data-cat="narrative" data-film="2">
               <span class="film-note__label">О фильме</span>
               <h3 class="film-note__title">Несезон</h3>
               <dl class="film-note__facts">
@@ -386,7 +386,7 @@
               <span class="work-tile__hint" data-i18n="w_fillip_hint">Сергей Штепс</span>
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
-            <div class="film-note" data-film="3">
+            <div class="film-note" data-cat="narrative" data-film="3">
               <span class="film-note__label">О фильме</span>
               <h3 class="film-note__title">Филлип, я твой сын !</h3>
               <dl class="film-note__facts">
@@ -409,7 +409,7 @@
               <span class="work-tile__hint" data-i18n="w_pochemu_hint">Никита Белых</span>
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
-            <div class="film-note" data-film="4">
+            <div class="film-note" data-cat="narrative" data-film="4">
               <span class="film-note__label">О фильме</span>
               <h3 class="film-note__title">Почему мужчины живут меньше</h3>
               <dl class="film-note__facts">
@@ -422,7 +422,7 @@
             </div>
             <button
                 type="button"
-                class="work-tile work-tile--doc-12storeez js-open-kinescope" data-cat="doc" data-featured="5"
+                class="work-tile work-tile--doc-12storeez js-open-kinescope" data-cat="doc" data-film="1" data-featured="5"
                 data-kinescope-src="https://kinescope.io/embed/f76eiSZrp4SDrErqVcFXsF"
                 data-kinescope-title="Что взять в отпуск?"
                 data-kinescope-title-en="What to pack for vacation?"
@@ -432,9 +432,20 @@
                 <span class="work-tile__hint" data-i18n="w_doc_12s_hint">12 STOREEZ</span>
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
+            <div class="film-note" data-cat="doc" data-film="1">
+              <span class="film-note__label">О проекте</span>
+              <h3 class="film-note__title">Что взять в отпуск?</h3>
+              <dl class="film-note__facts">
+                <div><dt>Заказчик</dt><dd>12 STOREEZ</dd></div>
+                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
+                <div><dt>Год</dt><dd>2025</dd></div>
+              </dl>
+              <p class="film-note__text">Здесь будет описание проекта: о чём ролик, для кого он снят и какую задачу решали. Пока это текст-заглушка, чтобы посмотреть, как выглядит блок рядом с плиткой.</p>
+              <button type="button" class="film-note__btn" data-film-open="1">Смотреть видео <span aria-hidden="true">→</span></button>
+            </div>
             <button
                 type="button"
-                class="work-tile work-tile--doc-simplevine js-open-kinescope" data-cat="doc"
+                class="work-tile work-tile--doc-simplevine js-open-kinescope" data-cat="doc" data-film="2"
                 data-kinescope-src="https://kinescope.io/embed/2idH44NoPmYsqzj4H7zHVF"
                 data-kinescope-title="Ирина Горбачева: о выборе вина"
                 data-kinescope-title-en="Irina Gorbacheva on choosing wine"
@@ -444,9 +455,20 @@
                 <span class="work-tile__hint" data-i18n="w_doc_sv_hint">Simple Vine</span>
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
+            <div class="film-note" data-cat="doc" data-film="2">
+              <span class="film-note__label">О проекте</span>
+              <h3 class="film-note__title">Ирина Горбачева: о выборе вина</h3>
+              <dl class="film-note__facts">
+                <div><dt>Заказчик</dt><dd>Simple Vine</dd></div>
+                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
+                <div><dt>Год</dt><dd>2025</dd></div>
+              </dl>
+              <p class="film-note__text">Короткое описание: формат съёмки, особенности локации и света, как команда работала с героями в кадре. Текст временный и будет заменён настоящим.</p>
+              <button type="button" class="film-note__btn" data-film-open="2">Смотреть видео <span aria-hidden="true">→</span></button>
+            </div>
             <button
                 type="button"
-                class="work-tile work-tile--doc-vk-ingushetia js-open-kinescope" data-cat="doc" data-featured="2"
+                class="work-tile work-tile--doc-vk-ingushetia js-open-kinescope" data-cat="doc" data-film="3" data-featured="2"
                 data-kinescope-src="https://kinescope.io/embed/tJfEqDx3jmUNa2Y2d7JoKx"
                 data-kinescope-title="VK Места Республика Ингушетия"
                 data-kinescope-title-en="VK Places · Republic of Ingushetia"
@@ -456,9 +478,20 @@
                 <span class="work-tile__hint" data-i18n="w_doc_ing_hint">ВКонтакте</span>
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
+            <div class="film-note" data-cat="doc" data-film="3">
+              <span class="film-note__label">О проекте</span>
+              <h3 class="film-note__title">VK Места Республика Ингушетия</h3>
+              <dl class="film-note__facts">
+                <div><dt>Заказчик</dt><dd>ВКонтакте</dd></div>
+                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
+                <div><dt>Год</dt><dd>2025</dd></div>
+              </dl>
+              <p class="film-note__text">Место для рассказа о проекте: референсы, камера, работа с пространством. Это пример текста, чтобы оценить ширину и ритм абзаца.</p>
+              <button type="button" class="film-note__btn" data-film-open="3">Смотреть видео <span aria-hidden="true">→</span></button>
+            </div>
             <button
                 type="button"
-                class="work-tile work-tile--doc-avito js-open-kinescope" data-cat="doc"
+                class="work-tile work-tile--doc-avito js-open-kinescope" data-cat="doc" data-film="4"
                 data-kinescope-src="https://kinescope.io/embed/6hFpUjdmHRoQdKXQ8gTDuy"
                 data-kinescope-title="Тайник с серверами Авито"
                 data-kinescope-title-en="Avito server hideout"
@@ -468,9 +501,20 @@
                 <span class="work-tile__hint" data-i18n="w_doc_avito_hint">Авито</span>
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
+            <div class="film-note" data-cat="doc" data-film="4">
+              <span class="film-note__label">О проекте</span>
+              <h3 class="film-note__title">Тайник с серверами Авито</h3>
+              <dl class="film-note__facts">
+                <div><dt>Заказчик</dt><dd>Авито</dd></div>
+                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
+                <div><dt>Год</dt><dd>2025</dd></div>
+              </dl>
+              <p class="film-note__text">Пример описания: пара предложений о сюжете и пара — о том, какое изображение искали вместе с командой. Позже сюда попадёт финальный текст.</p>
+              <button type="button" class="film-note__btn" data-film-open="4">Смотреть видео <span aria-hidden="true">→</span></button>
+            </div>
             <button
                 type="button"
-                class="work-tile work-tile--doc-tochka js-open-kinescope" data-cat="doc"
+                class="work-tile work-tile--doc-tochka js-open-kinescope" data-cat="doc" data-film="5"
                 data-kinescope-src="https://kinescope.io/embed/qAD5CXzDLsW1HVcKXtR2BL"
                 data-kinescope-title="Четыре точки роста для бизнеса"
                 data-kinescope-title-en="Four growth levers for business"
@@ -480,9 +524,20 @@
                 <span class="work-tile__hint" data-i18n="w_doc_tochka_hint">Точка банк</span>
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
+            <div class="film-note" data-cat="doc" data-film="5">
+              <span class="film-note__label">О проекте</span>
+              <h3 class="film-note__title">Четыре точки роста для бизнеса</h3>
+              <dl class="film-note__facts">
+                <div><dt>Заказчик</dt><dd>Точка банк</dd></div>
+                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
+                <div><dt>Год</dt><dd>2025</dd></div>
+              </dl>
+              <p class="film-note__text">Здесь будет описание проекта: о чём ролик, для кого он снят и какую задачу решали. Пока это текст-заглушка, чтобы посмотреть, как выглядит блок рядом с плиткой.</p>
+              <button type="button" class="film-note__btn" data-film-open="5">Смотреть видео <span aria-hidden="true">→</span></button>
+            </div>
             <button
                 type="button"
-                class="work-tile work-tile--doc-vk-hp js-open-kinescope" data-cat="doc"
+                class="work-tile work-tile--doc-vk-hp js-open-kinescope" data-cat="doc" data-film="6"
                 data-kinescope-src="https://kinescope.io/embed/vX99dgbqjY8rzNmh6grcs5"
                 data-kinescope-title="Проверяем HP сообщества"
                 data-kinescope-title-en="Testing HP communities"
@@ -492,9 +547,20 @@
                 <span class="work-tile__hint" data-i18n="w_doc_hp_hint">ВКонтакте</span>
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
+            <div class="film-note" data-cat="doc" data-film="6">
+              <span class="film-note__label">О проекте</span>
+              <h3 class="film-note__title">Проверяем HP сообщества</h3>
+              <dl class="film-note__facts">
+                <div><dt>Заказчик</dt><dd>ВКонтакте</dd></div>
+                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
+                <div><dt>Год</dt><dd>2025</dd></div>
+              </dl>
+              <p class="film-note__text">Короткое описание: формат съёмки, особенности локации и света, как команда работала с героями в кадре. Текст временный и будет заменён настоящим.</p>
+              <button type="button" class="film-note__btn" data-film-open="6">Смотреть видео <span aria-hidden="true">→</span></button>
+            </div>
             <button
                 type="button"
-                class="work-tile work-tile--doc-bft js-open-kinescope" data-cat="doc"
+                class="work-tile work-tile--doc-bft js-open-kinescope" data-cat="doc" data-film="7"
                 data-kinescope-src="https://kinescope.io/embed/w5CXg9mUWED3yotqM6rYNL"
                 data-kinescope-title="Business Fail Talks"
               >
@@ -503,9 +569,20 @@
                 <span class="work-tile__hint" data-i18n="w_doc_bft_hint">BFT</span>
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
+            <div class="film-note" data-cat="doc" data-film="7">
+              <span class="film-note__label">О проекте</span>
+              <h3 class="film-note__title">Business Fail Talks</h3>
+              <dl class="film-note__facts">
+                <div><dt>Заказчик</dt><dd>BFT</dd></div>
+                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
+                <div><dt>Год</dt><dd>2025</dd></div>
+              </dl>
+              <p class="film-note__text">Место для рассказа о проекте: референсы, камера, работа с пространством. Это пример текста, чтобы оценить ширину и ритм абзаца.</p>
+              <button type="button" class="film-note__btn" data-film-open="7">Смотреть видео <span aria-hidden="true">→</span></button>
+            </div>
             <button
                 type="button"
-                class="work-tile work-tile--doc-nto js-open-kinescope" data-cat="doc"
+                class="work-tile work-tile--doc-nto js-open-kinescope" data-cat="doc" data-film="8"
                 data-kinescope-src="https://kinescope.io/embed/knVD2H2oZa5VrVRBB5aBzH"
                 data-kinescope-title="Национальная тех. олимпиада"
                 data-kinescope-title-en="National Tech Olympiad"
@@ -516,6 +593,17 @@
                 <span class="work-tile__hint" data-i18n="w_doc_nto_hint">Сбер</span>
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
+            <div class="film-note" data-cat="doc" data-film="8">
+              <span class="film-note__label">О проекте</span>
+              <h3 class="film-note__title">Национальная тех. олимпиада</h3>
+              <dl class="film-note__facts">
+                <div><dt>Заказчик</dt><dd>Сбер</dd></div>
+                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
+                <div><dt>Год</dt><dd>2025</dd></div>
+              </dl>
+              <p class="film-note__text">Пример описания: пара предложений о сюжете и пара — о том, какое изображение искали вместе с командой. Позже сюда попадёт финальный текст.</p>
+              <button type="button" class="film-note__btn" data-film-open="8">Смотреть видео <span aria-hidden="true">→</span></button>
+            </div>
             <a
               class="work-tile work-tile--1" data-cat="commercial"
               href="https://gorushkindop.com"

@@ -3090,43 +3090,25 @@ body.scroll-down .reveal {
 }
 
 /* #work-main — чтобы перебить общее правило высоты рядов для вкладок (иначе плитка заезжает на фильтры) */
-.work-board[data-filter="narrative"] #work-main.work-grid--main {
+.work-board:is([data-filter="narrative"], [data-filter="doc"]) #work-main.work-grid--main {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-auto-rows: auto;
   gap: clamp(28px, 4vw, 56px) clamp(24px, 4vw, 56px);
   align-items: center;
 }
 
-.work-board[data-filter="narrative"] .work-grid--main .work-tile[data-film] {
+.work-board:is([data-filter="narrative"], [data-filter="doc"]) .work-grid--main .work-tile[data-film] {
   aspect-ratio: 16 / 10;
   min-height: 0;
 }
 
-.work-board[data-filter="narrative"] .film-note {
+.work-board[data-filter="narrative"] .film-note[data-cat="narrative"],
+.work-board[data-filter="doc"] .film-note[data-cat="doc"] {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 14px;
 }
-
-.work-board[data-filter="narrative"] [data-film="1"].work-tile,
-.work-board[data-filter="narrative"] [data-film="3"].work-tile,
-.work-board[data-filter="narrative"] [data-film="2"].film-note,
-.work-board[data-filter="narrative"] [data-film="4"].film-note {
-  grid-column: 1;
-}
-
-.work-board[data-filter="narrative"] [data-film="1"].film-note,
-.work-board[data-filter="narrative"] [data-film="3"].film-note,
-.work-board[data-filter="narrative"] [data-film="2"].work-tile,
-.work-board[data-filter="narrative"] [data-film="4"].work-tile {
-  grid-column: 2;
-}
-
-.work-board[data-filter="narrative"] [data-film="1"] { grid-row: 1; }
-.work-board[data-filter="narrative"] [data-film="2"] { grid-row: 2; }
-.work-board[data-filter="narrative"] [data-film="3"] { grid-row: 3; }
-.work-board[data-filter="narrative"] [data-film="4"] { grid-row: 4; }
 
 .film-note__label {
   font-family: var(--font-mono);
@@ -3207,18 +3189,18 @@ body.scroll-down .reveal {
 }
 
 @media (max-width: 768px) {
-  .work-board[data-filter="narrative"] .work-grid--main {
+  .work-board:is([data-filter="narrative"], [data-filter="doc"]) #work-main.work-grid--main {
     grid-template-columns: 1fr;
     gap: 16px;
   }
 
-  .work-board[data-filter="narrative"] .work-grid--main .work-tile[data-film],
-  .work-board[data-filter="narrative"] .film-note[data-film] {
+  .work-board:is([data-filter="narrative"], [data-filter="doc"]) .work-grid--main .work-tile[data-film],
+  .work-board:is([data-filter="narrative"], [data-filter="doc"]) .film-note[data-film] {
     grid-column: 1 !important;
     grid-row: auto !important;
   }
 
-  .work-board[data-filter="narrative"] .film-note {
+  .work-board:is([data-filter="narrative"], [data-filter="doc"]) .film-note {
     margin-bottom: 18px;
   }
 }
