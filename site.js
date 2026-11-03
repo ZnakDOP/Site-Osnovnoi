@@ -355,11 +355,32 @@
         b.classList.toggle("is-active", on)
         b.setAttribute("aria-pressed", on ? "true" : "false")
       })
+      const filmMode = key === "narrative" || key === "doc"
+      board.querySelectorAll("#work-main .film-note").forEach((n) => {
+        n.style.gridColumn = ""
+        n.style.gridRow = ""
+      })
       tiles.forEach((t) => {
         t.hidden = !(key === "all" || t.getAttribute("data-cat") === key)
         t.style.gridColumn = ""
+        t.style.gridRow = ""
       })
-      if (key !== "all" && key !== "vertical" && key !== "narrative") layoutMosaic(Array.from(tiles).filter((t) => !t.hidden))
+      const visible = Array.from(tiles).filter((t) => !t.hidden)
+      if (filmMode) {
+        // плитка и описание поочерёдно: слева/справа, строка за строкой
+        visible.forEach((t, i) => {
+          const note = board.querySelector('#work-main .film-note[data-cat="' + key + '"][data-film="' + t.getAttribute("data-film") + '"]')
+          const tileLeft = i % 2 === 0
+          t.style.gridRow = String(i + 1)
+          t.style.gridColumn = tileLeft ? "1" : "2"
+          if (note) {
+            note.style.gridRow = String(i + 1)
+            note.style.gridColumn = tileLeft ? "2" : "1"
+          }
+        })
+      } else if (key !== "all" && key !== "vertical") {
+        layoutMosaic(visible)
+      }
       const vertical = board.querySelector("#work-vertical")
       if (vertical) vertical.hidden = !(key === "all" || key === "vertical")
       const main = board.querySelector("#work-main")
@@ -371,7 +392,9 @@
     // «Смотреть фильм» в описании открывает то же видео, что и плитка
     board.querySelectorAll("[data-film-open]").forEach((btn) => {
       btn.addEventListener("click", () => {
-        board.querySelector('#work-main .work-tile[data-film="' + btn.getAttribute("data-film-open") + '"]')?.click()
+        const note = btn.closest(".film-note")
+        const sel = '#work-main .work-tile[data-cat="' + note?.getAttribute("data-cat") + '"][data-film="' + btn.getAttribute("data-film-open") + '"]'
+        board.querySelector(sel)?.click()
       })
     })
 
