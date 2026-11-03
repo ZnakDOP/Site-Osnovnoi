@@ -2560,7 +2560,7 @@ body.scroll-down .reveal {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 0 0 1.5rem;
+  margin: 0 0 2rem;
 }
 
 .work-filter {
@@ -3089,7 +3089,8 @@ body.scroll-down .reveal {
   display: none;
 }
 
-.work-board[data-filter="narrative"] .work-grid--main {
+/* #work-main — чтобы перебить общее правило высоты рядов для вкладок (иначе плитка заезжает на фильтры) */
+.work-board[data-filter="narrative"] #work-main.work-grid--main {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-auto-rows: auto;
   gap: clamp(28px, 4vw, 56px) clamp(24px, 4vw, 56px);
