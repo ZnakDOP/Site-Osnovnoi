@@ -330,7 +330,7 @@
     const known = new Set(Array.from(buttons, (b) => b.getAttribute("data-work-filter")))
 
     // Мозаика: ряды 4+2, 2+4, 2+2+2 (шестиколоночная сетка); хвост добиваем до полной ширины
-    function layoutMosaic(list) {
+    function layoutMosaic(list, strict) {
       const rows = [[4, 2], [2, 4], [2, 2, 2]]
       let i = 0
       let r = 0
@@ -338,7 +338,7 @@
         const left = list.length - i
         let row = rows[r % rows.length]
         if (left < row.length) row = left === 1 ? [6] : [3, 3]
-        else if (left - row.length === 1) row = left === 3 ? [2, 2, 2] : [3, 3] // не оставляем одинокую плитку в хвосте
+        else if (!strict && left - row.length === 1) row = left === 3 ? [2, 2, 2] : [3, 3] // не оставляем одинокую плитку в хвосте
         row.forEach((span, k) => {
           list[i + k].style.gridColumn = "span " + span
         })
@@ -379,7 +379,7 @@
           }
         })
       } else if (key !== "all" && key !== "vertical") {
-        layoutMosaic(visible)
+        layoutMosaic(visible, key === "commercial") // «Коммерция» — тот же узор, что и «Клипы»
       }
       const vertical = board.querySelector("#work-vertical")
       if (vertical) vertical.hidden = !(key === "all" || key === "vertical")
