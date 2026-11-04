@@ -3204,3 +3204,14 @@ body.scroll-down .reveal {
     margin-bottom: 18px;
   }
 }
+
+/* ——— Ростелеком: «Дети знают» ——— */
+.work-tile--doc-rostelecom-games::before {
+  background-image: url("images/work-doc-rostelecom-games.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center center;
+}
+
+.work-tile--doc-rostelecom-yanger::before {
+  background-image: url("images/work-doc-rostelecom-yanger.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center center;
+}
