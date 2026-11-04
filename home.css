@@ -3288,3 +3288,19 @@ body.scroll-down .reveal {
   background-image: url("images/work-doc-rodkin.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
+
+/* «Компьютерные игры»: подпись справа, чтобы не сливалась с текстом на обложке */
+.work-tile--doc-rostelecom-games {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.work-tile--doc-rostelecom-games .work-tile__tag,
+.work-tile--doc-rostelecom-games .work-tile__name,
+.work-tile--doc-rostelecom-games .work-tile__hint {
+  max-width: 62%;
+}
+
+.work-tile--doc-rostelecom-games::after {
+  background: linear-gradient(180deg, transparent 45%, rgba(6, 6, 8, 0.85) 100%);
+}
