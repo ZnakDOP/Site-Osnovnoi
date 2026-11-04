@@ -47,6 +47,7 @@
     work_featured: "Featured",
     work_all: "All projects",
     vert_hint: "Swipe",
+    lb_copy: "Copy link",
     filter_all: "All",
     filter_narrative: "Film",
     filter_music: "Music videos",
@@ -422,6 +423,64 @@
     else setFilter("all")
   }
 
+  // ——— Ссылки на отдельные работы: /work/<slug>/ ———
+  function workUrl(slug) {
+    return window.location.origin + "/work/" + slug + "/"
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).catch(() => legacyCopy(text))
+    }
+    return Promise.resolve(legacyCopy(text))
+  }
+
+  function legacyCopy(text) {
+    const ta = document.createElement("textarea")
+    ta.value = text
+    ta.setAttribute("readonly", "")
+    ta.style.position = "fixed"
+    ta.style.opacity = "0"
+    document.body.appendChild(ta)
+    ta.select()
+    try {
+      document.execCommand("copy")
+    } catch (_) {}
+    ta.remove()
+  }
+
+  let toastTimer = 0
+  function showCopyToast() {
+    let el = document.getElementById("copy-toast")
+    if (!el) {
+      el = document.createElement("div")
+      el.id = "copy-toast"
+      el.className = "copy-toast"
+      el.setAttribute("role", "status")
+      document.body.appendChild(el)
+    }
+    el.textContent = document.documentElement.dataset.siteLang === "en" ? "Link copied" : "Ссылка скопирована"
+    el.classList.add("is-on")
+    window.clearTimeout(toastTimer)
+    toastTimer = window.setTimeout(() => el.classList.remove("is-on"), 2200)
+  }
+
+  function initCopyLinks() {
+    document.querySelectorAll("[data-copy-link]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        let slug = null
+        const note = btn.closest(".film-note")
+        if (note) {
+          const sel = '#work-main .work-tile[data-cat="' + note.getAttribute("data-cat") + '"][data-film="' + note.getAttribute("data-film") + '"]'
+          slug = document.querySelector(sel)?.getAttribute("data-slug")
+        } else {
+          slug = kinescopeSlug
+        }
+        if (slug) copyText(workUrl(slug)).then(showCopyToast)
+      })
+    })
+  }
+
   function initShowreelPoster() {
     const poster = document.querySelector(".showreel-poster")
     if (!poster) return
@@ -648,6 +707,7 @@
   const kinescopeIframe = kinescopeLb?.querySelector(".kinescope-lightbox__iframe")
   const kinescopeRatio = kinescopeLb?.querySelector(".kinescope-lightbox__ratio")
   let kinescopeFocusReturn = null
+  let kinescopeSlug = null
 
   function closeKinescope() {
     if (!kinescopeLb || !kinescopeIframe) return
@@ -664,6 +724,7 @@
       kinescopeFocusReturn.focus()
     }
     kinescopeFocusReturn = null
+    kinescopeSlug = null
   }
 
   function openKinescope(src, title, aspectAttr) {
@@ -685,6 +746,8 @@
         kinescopeRatio.style.removeProperty("padding-top")
       }
     }
+    const copyBtn = kinescopeLb.querySelector("[data-copy-link]")
+    if (copyBtn) copyBtn.hidden = !kinescopeSlug
     kinescopeIframe.src = src
     kinescopeIframe.title = title
     kinescopeLb.hidden = false
@@ -702,6 +765,7 @@
       const titleRu = btn.getAttribute("data-kinescope-title") || (isEn ? "Viewing" : "Просмотр")
       const title = isEn && titleEn ? titleEn : titleRu
       const aspect = btn.getAttribute("data-kinescope-aspect")
+      kinescopeSlug = btn.getAttribute("data-slug")
       if (src) openKinescope(src, title, aspect)
     })
   })
@@ -721,6 +785,7 @@
 
   initLang()
   initShowreelPoster()
+  initCopyLinks()
   initWorkFilters()
   initWorkCarousel()
   initWorkSectionWheel()
