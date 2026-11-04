@@ -49,7 +49,7 @@ def collect(index_html, rules):
                 slug=get("data-slug"),
                 src=get("data-kinescope-src"),
                 title=get("data-kinescope-title") or text_of(inner, "name"),
-                name=text_of(inner, "name"),
+                name=get("data-full-title") or text_of(inner, "name"),
                 tag=text_of(inner, "tag"),
                 brand=text_of(inner, "hint"),
                 aspect=float(aspect) if aspect else 56.25,
