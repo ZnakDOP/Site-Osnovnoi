@@ -3215,3 +3215,70 @@ body.scroll-down .reveal {
   background-image: url("images/work-doc-rostelecom-yanger.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
+
+/* ——— Ссылки на работы: кнопки копирования и уведомление ——— */
+.kinescope-lightbox__copy {
+  position: absolute;
+  z-index: 3;
+  top: max(12px, env(safe-area-inset-top, 0px));
+  left: max(12px, env(safe-area-inset-left, 0px));
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--stroke2);
+  border-radius: 999px;
+  background: rgba(6, 6, 8, 0.82);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.kinescope-lightbox__copy[hidden] {
+  display: none;
+}
+
+.kinescope-lightbox__copy:hover,
+.film-note__btn--ghost:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.kinescope-lightbox__copy:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.film-note__btn--ghost {
+  border-color: transparent;
+  color: var(--muted);
+  padding: 0 4px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.copy-toast {
+  position: fixed;
+  z-index: 10000;
+  left: 50%;
+  bottom: max(24px, env(safe-area-inset-bottom, 0px));
+  transform: translate(-50%, 12px);
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), #3db8a8);
+  color: var(--bg0);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.copy-toast.is-on {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
