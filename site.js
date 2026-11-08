@@ -48,6 +48,7 @@
     work_all: "All projects",
     vert_hint: "Swipe",
     lb_copy: "Copy link",
+    group_two_works: "2 works",
     filter_all: "All",
     filter_narrative: "Film",
     filter_music: "Music videos",
@@ -375,7 +376,10 @@
         t.style.gridColumn = ""
         t.style.gridRow = ""
       })
-      const visible = Array.from(tiles).filter((t) => !t.hidden)
+      board.querySelectorAll("#work-main .work-group").forEach((g) => {
+        g.hidden = !(key === "all" || g.getAttribute("data-cat") === key)
+      })
+      const visible = Array.from(tiles).filter((t) => !t.hidden && !t.closest(".work-group"))
       if (filmMode) {
         // плитка и описание поочерёдно: слева/справа, строка за строкой
         visible.forEach((t, i) => {
