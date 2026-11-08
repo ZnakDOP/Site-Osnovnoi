@@ -3471,3 +3471,14 @@ body.scroll-down .reveal {
 #work-filters {
   scroll-margin-top: calc(var(--header-offset) + 12px);
 }
+
+/* Боковые полоски поверх плеера — только когда запущено видео, не на заставке */
+.showreel-embed::before,
+.showreel-embed::after {
+  display: none;
+}
+
+.showreel-embed.is-playing::before,
+.showreel-embed.is-playing::after {
+  display: block;
+}
