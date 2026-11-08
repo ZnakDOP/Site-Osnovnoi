@@ -370,7 +370,7 @@
         b.setAttribute("aria-pressed", on ? "true" : "false")
       })
       const filmMode = key === "narrative" || key === "doc" || key === "music" || key === "commercial"
-      board.querySelectorAll("#work-main .film-note, #work-main .work-group__head").forEach((n) => {
+      board.querySelectorAll("#work-main .film-note, #work-main .work-group").forEach((n) => {
         n.style.gridColumn = ""
         n.style.gridRow = ""
       })
@@ -383,16 +383,16 @@
         g.hidden = !(key === "all" || g.getAttribute("data-cat") === key)
       })
       if (filmMode) {
-        // плитка и описание поочерёдно: слева/справа, строка за строкой; заголовок бренда (Silent) занимает свой ряд
+        // плитка и описание поочерёдно: слева/справа, строка за строкой; блок бренда (Silent) занимает первый ряд целиком
         let row = 1
-        const head = board.querySelector('#work-main .work-group[data-cat="' + key + '"] .work-group__head')
-        if (head) {
-          head.style.gridRow = "1"
-          head.style.gridColumn = "1 / -1"
+        const group = board.querySelector('#work-main .work-group[data-cat="' + key + '"]')
+        if (group) {
+          group.style.gridRow = "1"
+          group.style.gridColumn = "1 / -1"
           row = 2
         }
         Array.from(tiles)
-          .filter((t) => !t.hidden)
+          .filter((t) => !t.hidden && !t.closest(".work-group"))
           .forEach((t, i) => {
             const note = board.querySelector('#work-main .film-note[data-cat="' + key + '"][data-film="' + t.getAttribute("data-film") + '"]')
             const tileLeft = i % 2 === 0
