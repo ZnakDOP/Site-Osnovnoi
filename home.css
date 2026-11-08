@@ -10,7 +10,7 @@
   --stroke2: rgba(255, 255, 255, 0.16);
   --text: #f4f4f5;
   --muted: #a1a1aa;
-  --dim: #71717a;
+  --dim: #8d8d98;
   --accent: #5eead4;
   --accent2: #a78bfa;
   --hero-glow: rgba(94, 234, 212, 0.12);
@@ -952,25 +952,25 @@ body.site-nav-open {
 }
 
 .work-tile--1::before {
-  background-image: url("images/work-1.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-1.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
 }
 .work-tile--2::before {
-  background-image: url("images/work-2.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-2.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
 }
 .work-tile--3::before {
-  background-image: url("images/work-3.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-3.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
 }
 .work-tile--4::before {
-  background-image: url("images/work-4.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-4.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
 }
 
 .work-tile--music-tornado::before {
-  background-image: url("images/work-music-tornado-2.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-music-tornado-2.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
 .work-tile--music-dragonflower::before {
-  background-image: url("images/work-music-dragonflower.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-music-dragonflower.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
@@ -1012,172 +1012,172 @@ button.work-tile {
 }
 
 .work-tile--cinema-8woman::before {
-  background-image: url("images/work-cinema-8woman.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-cinema-8woman.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--cinema-nesezon::before {
-  background-image: url("images/work-cinema-nesezon.png?v=2"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-cinema-nesezon.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
 .work-tile--cinema-fillip::before {
-  background-image: url("images/work-cinema-fillip.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-cinema-fillip.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
 .work-tile--cinema-pochemu::before {
-  background-image: url("images/work-cinema-pochemu.png?v=2"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-cinema-pochemu.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
 .work-tile--doc-avito::before {
-  background-image: url("images/work-doc-avito.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-doc-avito.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
 .work-tile--doc-vk-ingushetia::before {
-  background-image: url("images/work-doc-vk-ingushetia.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-doc-vk-ingushetia.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
 .work-tile--doc-vk-hp::before {
-  background-image: url("images/work-doc-vk-hp.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-doc-vk-hp.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
 .work-tile--doc-nto::before {
-  background-image: url("images/work-doc-nto.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-doc-nto.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
 .work-tile--doc-tochka::before {
-  background-image: url("images/work-doc-tochka.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-doc-tochka.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
 .work-tile--doc-bft::before {
-  background-image: url("images/work-doc-bft.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-doc-bft.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
 .work-tile--doc-simplevine::before {
-  background-image: url("images/work-doc-simplevine.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-doc-simplevine.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
 .work-tile--vert-12players::before {
-  background-image: url("images/work-vert-12players.jpg?v=2"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-vert-12players.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-si::before {
-  background-image: url("images/work-vert-si.jpg?v=2"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-vert-si.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-ggate::before {
-  background-image: url("images/work-vert-ggate.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-vert-ggate.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-souvenir::before {
-  background-image: url("images/work-vert-souvenir.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-vert-souvenir.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-luckyclub::before {
-  background-image: url("images/work-vert-luckyclub.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-vert-luckyclub.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-hydrabio::before {
-  background-image: url("images/work-vert-hydrabio.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-vert-hydrabio.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-tochka-team::before {
-  background-image: url("images/work-vert-tochka-team.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-vert-tochka-team.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-artfruit::before {
-  background-image: url("images/work-vert-artfruit.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-vert-artfruit.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-1winclub-tennis::before {
-  background-image: url("images/work-vert-1winclub-tennis.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-vert-1winclub-tennis.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-baltika-ipa0::before {
-  background-image: url("images/work-vert-baltika-ipa0.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-vert-baltika-ipa0.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-valdman-live::before {
-  background-image: url("images/work-vert-valdman-live.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-vert-valdman-live.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-01::before {
-  background-image: url("images/work-1.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-1.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-02::before {
-  background-image: url("images/work-2.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-2.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-03::before {
-  background-image: url("images/work-doc-nto.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-doc-nto.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-04::before {
-  background-image: url("images/work-3.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-3.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-05::before {
-  background-image: url("images/work-doc-tochka.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-doc-tochka.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-06::before {
-  background-image: url("images/work-4.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-4.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-07::before {
-  background-image: url("images/work-cinema-8woman.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-cinema-8woman.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-08::before {
-  background-image: url("images/work-doc-avito.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-doc-avito.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-09::before {
-  background-image: url("images/work-doc-vk-hp.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-doc-vk-hp.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-10::before {
-  background-image: url("images/work-doc-simplevine.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-doc-simplevine.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-11::before {
-  background-image: url("images/work-doc-bft.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-doc-bft.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
 .work-tile--vert-12::before {
-  background-image: url("images/work-doc-vk-ingushetia.png"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-doc-vk-ingushetia.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center top;
 }
 
@@ -3048,7 +3048,7 @@ body.scroll-down .reveal {
 
 /* ——— Видео «Что взять в отпуск?» ——— */
 .work-tile--doc-12storeez::before {
-  background-image: url("images/work-doc-12storeez-2.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-doc-12storeez-2.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
@@ -3210,12 +3210,12 @@ body.scroll-down .reveal {
 
 /* ——— Ростелеком: «Дети знают» ——— */
 .work-tile--doc-rostelecom-games::before {
-  background-image: url("images/work-doc-rostelecom-games.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-doc-rostelecom-games.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
 .work-tile--doc-rostelecom-yanger::before {
-  background-image: url("images/work-doc-rostelecom-yanger.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-doc-rostelecom-yanger.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
@@ -3280,7 +3280,7 @@ body.scroll-down .reveal {
 
 /* ——— ХудРук Подкаст ——— */
 .work-tile--doc-rodkin::before {
-  background-image: url("images/work-doc-rodkin.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-doc-rodkin.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
@@ -3331,12 +3331,12 @@ body.scroll-down .reveal {
 
 /* ——— Silent: две работы одного бренда в одном блоке ——— */
 .work-tile--com-silent-allwhite::before {
-  background-image: url("images/work-com-silent-allwhite.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-com-silent-allwhite.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
 .work-tile--com-silent-rings::before {
-  background-image: url("images/work-com-silent-rings.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-com-silent-rings.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
@@ -3409,12 +3409,65 @@ body.scroll-down .reveal {
 
 /* ——— VK AdBlogger ——— */
 .work-tile--doc-vk-adblogger::before {
-  background-image: url("images/work-doc-vk-adblogger.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-doc-vk-adblogger.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
 
 /* ——— АБРИКОСА — «БАБУШКЕ» ——— */
 .work-tile--music-babushke::before {
-  background-image: url("images/work-music-babushke.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-image: url("images/thumbs/work-music-babushke.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
+}
+
+/* ——— Доступность: ссылка «к содержанию», уменьшенное движение, кнопка «Показать все» ——— */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -64px;
+  z-index: 10000;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--bg0);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 12px;
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+#top:focus {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.work-more {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 2.5rem;
+}
+
+.work-more[hidden] {
+  display: none;
+}
+
+#work-filters {
+  scroll-margin-top: calc(var(--header-offset) + 12px);
 }
