@@ -1767,27 +1767,6 @@ body.scroll-down .reveal {
   isolation: isolate;
 }
 
-/* Скрываем белые pillarbox-полосы Kinescope, не обрезая плеер */
-.showreel-embed::before,
-.showreel-embed::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: clamp(10px, 2.5%, 22px);
-  z-index: 1;
-  background: #060608;
-  pointer-events: none;
-}
-
-.showreel-embed::before {
-  left: 0;
-}
-
-.showreel-embed::after {
-  right: 0;
-}
-
 .showreel-embed__iframe {
   position: absolute;
   inset: 0;
@@ -3470,15 +3449,4 @@ body.scroll-down .reveal {
 
 #work-filters {
   scroll-margin-top: calc(var(--header-offset) + 12px);
-}
-
-/* Боковые полоски поверх плеера — только когда запущено видео, не на заставке */
-.showreel-embed::before,
-.showreel-embed::after {
-  display: none;
-}
-
-.showreel-embed.is-playing::before,
-.showreel-embed.is-playing::after {
-  display: block;
 }
