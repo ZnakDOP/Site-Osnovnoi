@@ -569,6 +569,8 @@
       iframe.allow =
         "autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;"
       iframe.allowFullscreen = true
+      // чёрные боковые полоски нужны только вокруг плеера (прячут белые края), на заставке их быть не должно
+      poster.closest(".showreel-embed")?.classList.add("is-playing")
       poster.replaceWith(iframe)
     })
   }
