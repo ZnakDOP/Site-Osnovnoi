@@ -3434,3 +3434,26 @@ body.scroll-down .reveal {
 .work-board[data-filter="commercial"] #work-main .work-group .work-tile {
   aspect-ratio: 16 / 10;
 }
+
+/* ——— Описания: несколько абзацев и ссылки на сайт фильма / Кинопоиск ——— */
+.film-note__text {
+  max-width: 54ch;
+}
+
+a.film-note__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+a.film-note__btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .film-note__actions.film-note__actions--wrap {
+    flex-wrap: wrap;
+  }
+}
