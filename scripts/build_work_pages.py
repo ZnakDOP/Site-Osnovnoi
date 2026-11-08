@@ -93,7 +93,7 @@ PAGE = """<!doctype html>
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600&family=Syne:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/work/work-page.css?v=2" />
+    <link rel="stylesheet" href="/work/work-page.css?v=3" />
     <script src="/work/work-page.js?v=1" defer></script>
   </head>
   <body>
@@ -115,7 +115,7 @@ PAGE = """<!doctype html>
         <h1 class="wp-title">{name}</h1>
         <p class="wp-brand-line">{brand}</p>
         <div class="wp-actions">
-          <button type="button" class="wp-btn wp-btn--primary" data-copy>Скопировать ссылку</button>
+          <button type="button" class="wp-btn" data-copy>Скопировать ссылку</button>
           <a class="wp-btn" href="/#work">Смотреть все работы</a>
           <a class="wp-btn" href="mailto:a@gorushkindop.ru">Написать</a>
         </div>
