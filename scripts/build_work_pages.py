@@ -97,7 +97,7 @@ PAGE = """<!doctype html>
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; frame-src https://kinescope.io; connect-src 'self'; form-action 'self' mailto: tel:; upgrade-insecure-requests"
+      content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https:; frame-src https://kinescope.io; connect-src 'self'; form-action 'self' mailto: tel:; upgrade-insecure-requests"
     />
     <link rel="icon" href="/favicon.ico?v=3" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/dp-32.png?v=3" />
@@ -116,12 +116,9 @@ PAGE = """<!doctype html>
     <meta name="twitter:title" content="{title_full}" />
     <meta name="twitter:description" content="{desc}" />
     <meta name="twitter:image" content="{og_image}" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600&family=Syne:wght@600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preload" href="/fonts/syne-var-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/outfit-var-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/fonts/fonts.css?v=1" />
     <link rel="stylesheet" href="/work/work-page.css?v=4" />
     <script type="application/ld+json">{jsonld}</script>
     <script src="/work/work-page.js?v=1" defer></script>
