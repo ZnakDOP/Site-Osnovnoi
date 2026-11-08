@@ -369,8 +369,8 @@
         b.classList.toggle("is-active", on)
         b.setAttribute("aria-pressed", on ? "true" : "false")
       })
-      const filmMode = key === "narrative" || key === "doc"
-      board.querySelectorAll("#work-main .film-note").forEach((n) => {
+      const filmMode = key === "narrative" || key === "doc" || key === "music" || key === "commercial"
+      board.querySelectorAll("#work-main .film-note, #work-main .work-group__head").forEach((n) => {
         n.style.gridColumn = ""
         n.style.gridRow = ""
       })
@@ -382,21 +382,27 @@
       board.querySelectorAll("#work-main .work-group").forEach((g) => {
         g.hidden = !(key === "all" || g.getAttribute("data-cat") === key)
       })
-      const visible = Array.from(tiles).filter((t) => !t.hidden && !t.closest(".work-group"))
       if (filmMode) {
-        // плитка и описание поочерёдно: слева/справа, строка за строкой
-        visible.forEach((t, i) => {
-          const note = board.querySelector('#work-main .film-note[data-cat="' + key + '"][data-film="' + t.getAttribute("data-film") + '"]')
-          const tileLeft = i % 2 === 0
-          t.style.gridRow = String(i + 1)
-          t.style.gridColumn = tileLeft ? "1" : "2"
-          if (note) {
-            note.style.gridRow = String(i + 1)
-            note.style.gridColumn = tileLeft ? "2" : "1"
-          }
-        })
-      } else if (key !== "all" && key !== "vertical") {
-        layoutMosaic(visible, key === "commercial") // «Коммерция» — тот же узор, что и «Клипы»
+        // плитка и описание поочерёдно: слева/справа, строка за строкой; заголовок бренда (Silent) занимает свой ряд
+        let row = 1
+        const head = board.querySelector('#work-main .work-group[data-cat="' + key + '"] .work-group__head')
+        if (head) {
+          head.style.gridRow = "1"
+          head.style.gridColumn = "1 / -1"
+          row = 2
+        }
+        Array.from(tiles)
+          .filter((t) => !t.hidden)
+          .forEach((t, i) => {
+            const note = board.querySelector('#work-main .film-note[data-cat="' + key + '"][data-film="' + t.getAttribute("data-film") + '"]')
+            const tileLeft = i % 2 === 0
+            t.style.gridRow = String(row + i)
+            t.style.gridColumn = tileLeft ? "1" : "2"
+            if (note) {
+              note.style.gridRow = String(row + i)
+              note.style.gridColumn = tileLeft ? "2" : "1"
+            }
+          })
       }
       const vertical = board.querySelector("#work-vertical")
       if (vertical) vertical.hidden = !(key === "all" || key === "vertical")

@@ -3091,20 +3091,22 @@ body.scroll-down .reveal {
 }
 
 /* #work-main — чтобы перебить общее правило высоты рядов для вкладок (иначе плитка заезжает на фильтры) */
-.work-board:is([data-filter="narrative"], [data-filter="doc"]) #work-main.work-grid--main {
+.work-board:is([data-filter="narrative"], [data-filter="doc"], [data-filter="music"], [data-filter="commercial"]) #work-main.work-grid--main {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-auto-rows: auto;
   gap: clamp(28px, 4vw, 56px) clamp(24px, 4vw, 56px);
   align-items: center;
 }
 
-.work-board:is([data-filter="narrative"], [data-filter="doc"]) .work-grid--main .work-tile[data-film] {
+.work-board:is([data-filter="narrative"], [data-filter="doc"], [data-filter="music"], [data-filter="commercial"]) .work-grid--main .work-tile[data-film] {
   aspect-ratio: 16 / 10;
   min-height: 0;
 }
 
 .work-board[data-filter="narrative"] .film-note[data-cat="narrative"],
-.work-board[data-filter="doc"] .film-note[data-cat="doc"] {
+.work-board[data-filter="doc"] .film-note[data-cat="doc"],
+.work-board[data-filter="music"] .film-note[data-cat="music"],
+.work-board[data-filter="commercial"] .film-note[data-cat="commercial"] {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -3190,18 +3192,18 @@ body.scroll-down .reveal {
 }
 
 @media (max-width: 768px) {
-  .work-board:is([data-filter="narrative"], [data-filter="doc"]) #work-main.work-grid--main {
+  .work-board:is([data-filter="narrative"], [data-filter="doc"], [data-filter="music"], [data-filter="commercial"]) #work-main.work-grid--main {
     grid-template-columns: 1fr;
     gap: 16px;
   }
 
-  .work-board:is([data-filter="narrative"], [data-filter="doc"]) .work-grid--main .work-tile[data-film],
-  .work-board:is([data-filter="narrative"], [data-filter="doc"]) .film-note[data-film] {
+  .work-board:is([data-filter="narrative"], [data-filter="doc"], [data-filter="music"], [data-filter="commercial"]) .work-grid--main .work-tile[data-film],
+  .work-board:is([data-filter="narrative"], [data-filter="doc"], [data-filter="music"], [data-filter="commercial"]) .film-note[data-film] {
     grid-column: 1 !important;
     grid-row: auto !important;
   }
 
-  .work-board:is([data-filter="narrative"], [data-filter="doc"]) .film-note {
+  .work-board:is([data-filter="narrative"], [data-filter="doc"], [data-filter="music"], [data-filter="commercial"]) .film-note {
     margin-bottom: 18px;
   }
 }
@@ -3415,4 +3417,20 @@ body.scroll-down .reveal {
 .work-tile--music-babushke::before {
   background-image: url("images/work-music-babushke.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
+}
+
+/* «Коммерция»: блок бренда Silent раскладывается в общий ряд «плитка + текст» */
+.work-board[data-filter="commercial"] .work-group,
+.work-board[data-filter="commercial"] .work-group__grid {
+  display: contents;
+}
+
+.work-board[data-filter="commercial"] .work-group__head {
+  margin: 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--stroke);
+}
+
+.work-board[data-filter="commercial"] #work-main .work-group .work-tile {
+  aspect-ratio: 16 / 10;
 }
