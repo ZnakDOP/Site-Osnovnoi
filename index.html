@@ -10,7 +10,7 @@
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; frame-src https://kinescope.io; connect-src 'self'; form-action 'self' mailto: tel:; frame-ancestors 'self'; upgrade-insecure-requests"
+      content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: https:; frame-src https://kinescope.io; connect-src 'self'; form-action 'self' mailto: tel:; frame-ancestors 'self'; upgrade-insecure-requests"
     />
     <meta
       http-equiv="Permissions-Policy"
@@ -38,13 +38,11 @@
     <meta id="meta-tw-desc" name="twitter:description" content="Арсений Горушкин — оператор-постановщик (DOP). Реклама, клипы, документальные и игровые проекты. Москва, съёмки по России и worldwide. Шоурил, работы, рентал техники ZNAK RENT." />
     <meta name="twitter:image" content="https://gorushkindop.com/images/og-home.jpg?v=1" />
     <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://gorushkindop.com/#person", "name": "Arsenii Gorushkin", "alternateName": "Арсений Горушкин", "jobTitle": "Director of Photography", "description": "Оператор-постановщик (DOP): реклама, клипы, документальные и игровые проекты.", "url": "https://gorushkindop.com/", "image": "https://gorushkindop.com/images/og-home.jpg", "email": "mailto:a@gorushkindop.ru", "address": {"@type": "PostalAddress", "addressLocality": "Москва", "addressCountry": "RU"}, "knowsAbout": ["Кинооператор", "Оператор-постановщик", "Реклама", "Музыкальные клипы", "Документальное кино"], "alumniOf": {"@type": "CollegeOrUniversity", "name": "ГИТР"}, "sameAs": ["https://t.me/znak_dop", "https://www.instagram.com/znak_dop", "https://t.me/gorushkin_ars"]}, {"@type": "WebSite", "@id": "https://gorushkindop.com/#website", "url": "https://gorushkindop.com/", "name": "Arsenii Gorushkin DOP", "inLanguage": ["ru", "en"], "publisher": {"@id": "https://gorushkindop.com/#person"}}]}</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600&family=Syne:wght@600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="home.css?v=139" />
+    <link rel="preload" href="fonts/syne-var-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/outfit-var-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/ibm-plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="fonts/fonts.css?v=1" />
+    <link rel="stylesheet" href="home.css?v=140" />
     <script src="site.js?v=48" defer></script>
   </head>
   <body>
