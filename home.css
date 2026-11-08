@@ -3404,3 +3404,9 @@ body.scroll-down .reveal {
     grid-template-columns: 1fr;
   }
 }
+
+/* ——— VK AdBlogger ——— */
+.work-tile--doc-vk-adblogger::before {
+  background-image: url("images/work-doc-vk-adblogger.jpg"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center center;
+}
