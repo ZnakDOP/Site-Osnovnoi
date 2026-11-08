@@ -3304,3 +3304,39 @@ body.scroll-down .reveal {
 .work-tile--doc-rostelecom-games::after {
   background: linear-gradient(180deg, transparent 45%, rgba(6, 6, 8, 0.85) 100%);
 }
+
+/* Кнопки «Смотреть» и «Скопировать ссылку» — в одном ряду */
+.film-note__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+}
+
+.film-note__actions .film-note__btn--ghost {
+  min-height: 44px;
+  padding: 0 4px;
+}
+
+@media (max-width: 768px) {
+  .film-note__actions {
+    gap: 6px 10px;
+    flex-wrap: nowrap;
+  }
+
+  .film-note__actions .film-note__btn {
+    padding: 0 14px;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+
+  .film-note__actions .film-note__btn--ghost {
+    padding: 0 2px;
+  }
+}
+
+@media (max-width: 359px) {
+  .film-note__actions {
+    flex-wrap: wrap;
+  }
+}
