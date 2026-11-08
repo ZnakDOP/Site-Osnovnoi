@@ -37,16 +37,18 @@
     <meta id="meta-tw-title" name="twitter:title" content="Arsenii Gorushkin — оператор-постановщик (DOP), Москва" />
     <meta id="meta-tw-desc" name="twitter:description" content="Арсений Горушкин — оператор-постановщик (DOP). Реклама, клипы, документальные и игровые проекты. Москва, съёмки по России и worldwide. Шоурил, работы, рентал техники ZNAK RENT." />
     <meta name="twitter:image" content="https://gorushkindop.com/images/og-home.jpg?v=1" />
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "@id": "https://gorushkindop.com/#person", "name": "Arsenii Gorushkin", "alternateName": "Арсений Горушкин", "jobTitle": "Director of Photography", "description": "Оператор-постановщик (DOP): реклама, клипы, документальные и игровые проекты.", "url": "https://gorushkindop.com/", "image": "https://gorushkindop.com/images/og-home.jpg", "email": "mailto:a@gorushkindop.ru", "address": {"@type": "PostalAddress", "addressLocality": "Москва", "addressCountry": "RU"}, "knowsAbout": ["Кинооператор", "Оператор-постановщик", "Реклама", "Музыкальные клипы", "Документальное кино"], "alumniOf": {"@type": "CollegeOrUniversity", "name": "ГИТР"}, "sameAs": ["https://t.me/znak_dop", "https://www.instagram.com/znak_dop", "https://t.me/gorushkin_ars"]}, {"@type": "WebSite", "@id": "https://gorushkindop.com/#website", "url": "https://gorushkindop.com/", "name": "Arsenii Gorushkin DOP", "inLanguage": ["ru", "en"], "publisher": {"@id": "https://gorushkindop.com/#person"}}]}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600&family=Syne:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="home.css?v=135" />
-    <script src="site.js?v=45" defer></script>
+    <link rel="stylesheet" href="home.css?v=139" />
+    <script src="site.js?v=48" defer></script>
   </head>
   <body>
+    <a class="skip-link" href="#top" data-i18n="skip_link">Перейти к содержанию</a>
     <div id="site-loader" class="site-loader" aria-live="polite" aria-busy="true">
       <span class="site-loader__mark">gorushkindop.com</span>
       <div class="site-loader__bar" aria-hidden="true"></div>
@@ -97,7 +99,7 @@
       </button>
     </header>
 
-    <main class="site-main" id="top">
+    <main class="site-main" id="top" tabindex="-1">
       <section class="hero wrap" aria-label="Введение" data-i18n-aria="hero_aria">
         <div class="hero__grid">
           <div>
@@ -281,10 +283,10 @@
             </p>
           </div>
           <aside class="bio-media" aria-label="Бэкстейдж" data-i18n-aria="bio_media_aria">
-            <img class="bio-media__photo" src="images/bio-1.png" alt="Арсений на съемочной площадке" loading="lazy" data-i18n-alt="bio_alt1" />
-            <img class="bio-media__photo" src="images/bio-2.png" alt="Арсений с камерой на локации" loading="lazy" data-i18n-alt="bio_alt2" />
-            <img class="bio-media__photo" src="images/bio-3.png" alt="Съёмка в библиотеке, за кадром" loading="lazy" data-i18n-alt="bio_alt3" />
-            <img class="bio-media__photo" src="images/bio-4.png" alt="Работа с кинокамерой на площадке" loading="lazy" data-i18n-alt="bio_alt4" />
+            <img class="bio-media__photo" src="images/bio-1.webp" alt="Арсений на съемочной площадке" loading="lazy" data-i18n-alt="bio_alt1" />
+            <img class="bio-media__photo" src="images/bio-2.webp" alt="Арсений с камерой на локации" loading="lazy" data-i18n-alt="bio_alt2" />
+            <img class="bio-media__photo" src="images/bio-3.webp" alt="Съёмка в библиотеке, за кадром" loading="lazy" data-i18n-alt="bio_alt3" />
+            <img class="bio-media__photo" src="images/bio-4.webp" alt="Работа с кинокамерой на площадке" loading="lazy" data-i18n-alt="bio_alt4" />
           </aside>
         </div>
       </section>
@@ -344,16 +346,16 @@
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <div class="film-note" data-cat="narrative" data-film="1">
-              <span class="film-note__label">О фильме</span>
+              <span class="film-note__label" data-i18n="n_lbl_film">О фильме</span>
               <h3 class="film-note__title">8 Woman</h3>
               <dl class="film-note__facts">
-                <div><dt>Режиссёр</dt><dd>Никита Белых</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_director">Режиссёр</dt><dd data-i18n="w_8w_hint">Никита Белых</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
-              <p class="film-note__text">Здесь будет описание фильма: о чём история, где и как снимали, какой визуальный подход выбрали. Пока это текст-заглушка, чтобы посмотреть, как выглядит блок рядом с плиткой.</p>
+              <p class="film-note__text" data-i18n="np_1">Здесь будет описание фильма: о чём история, где и как снимали, какой визуальный подход выбрали. Пока это текст-заглушка, чтобы посмотреть, как выглядит блок рядом с плиткой.</p>
               <div class="film-note__actions">
-                <button type="button" class="film-note__btn" data-film-open="1">Смотреть фильм <span aria-hidden="true">→</span></button>
+                <button type="button" class="film-note__btn" data-film-open="1" data-i18n="b_watch_film">Смотреть фильм <span aria-hidden="true">→</span></button>
                 <button type="button" class="film-note__btn film-note__btn--ghost" data-copy-link data-i18n="lb_copy">Скопировать ссылку</button>
               </div>
             </div>
@@ -369,19 +371,19 @@
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <div class="film-note" data-cat="narrative" data-film="2">
-              <span class="film-note__label">О фильме</span>
+              <span class="film-note__label" data-i18n="n_lbl_film">О фильме</span>
               <h3 class="film-note__title">Несезон</h3>
               <dl class="film-note__facts">
-                <div><dt>Режиссёр</dt><dd>Борис Резак</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_director">Режиссёр</dt><dd data-i18n="w_nesezon_hint">Борис Резак</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
-              <p class="film-note__text">Короткометражный фильм «Несезон» снят по мотивам пьесы А.В. Вампилова «Утиная охота». В основе сюжета положена история «маленького человека эпохи застоя», переживающего — экзистенциальный кризис.</p>
-              <p class="film-note__text">Из-за ощущения безысходности он много пьёт, заводит романы с женщинами, ведёт себя как циник и нигилист. Единственным занятием, которое вызывает у него подлинный и неугасающий интерес, является утиная охота.</p>
+              <p class="film-note__text" data-i18n="np_2">Короткометражный фильм «Несезон» снят по мотивам пьесы А.В. Вампилова «Утиная охота». В основе сюжета положена история «маленького человека эпохи застоя», переживающего — экзистенциальный кризис.</p>
+              <p class="film-note__text" data-i18n="np_3">Из-за ощущения безысходности он много пьёт, заводит романы с женщинами, ведёт себя как циник и нигилист. Единственным занятием, которое вызывает у него подлинный и неугасающий интерес, является утиная охота.</p>
 <div class="film-note__actions film-note__actions--wrap">
-                <button type="button" class="film-note__btn" data-film-open="2">Смотреть фильм <span aria-hidden="true">→</span></button>
+                <button type="button" class="film-note__btn" data-film-open="2" data-i18n="b_watch_film">Смотреть фильм <span aria-hidden="true">→</span></button>
                 <button type="button" class="film-note__btn film-note__btn--ghost" data-copy-link data-i18n="lb_copy">Скопировать ссылку</button>
-                              <a class="film-note__btn film-note__link" href="https://offseason.tilda.ws/" target="_blank" rel="noopener noreferrer">Сайт фильма <span aria-hidden="true">↗</span></a>
+                              <a class="film-note__btn film-note__link" href="https://offseason.tilda.ws/" target="_blank" rel="noopener noreferrer" data-i18n="b_site">Сайт фильма <span aria-hidden="true">↗</span></a>
               </div>
             </div>
             <button
@@ -397,16 +399,16 @@
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <div class="film-note" data-cat="narrative" data-film="3">
-              <span class="film-note__label">О фильме</span>
+              <span class="film-note__label" data-i18n="n_lbl_film">О фильме</span>
               <h3 class="film-note__title">Филлип, я твой сын !</h3>
               <dl class="film-note__facts">
-                <div><dt>Режиссёр</dt><dd>Сергей Штепс</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_director">Режиссёр</dt><dd data-i18n="w_fillip_hint">Сергей Штепс</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
-              <p class="film-note__text">Алексей знакомится с родителями свой девушки. Ужин проходит напряженно, отец с матерью начинают допрашивать парня, и, запаниковав, он говорит, что является сыном Филиппа Киркорова. Всё бы ничего, но требуются доказательства, и теперь Лёша отправляется на поиски звёздного певца.</p>
+              <p class="film-note__text" data-i18n="np_4">Алексей знакомится с родителями своей девушки. Ужин проходит напряженно, отец с матерью начинают допрашивать парня, и, запаниковав, он говорит, что является сыном Филиппа Киркорова. Всё бы ничего, но требуются доказательства, и теперь Лёша отправляется на поиски звёздного певца.</p>
 <div class="film-note__actions film-note__actions--wrap">
-                <button type="button" class="film-note__btn" data-film-open="3">Смотреть фильм <span aria-hidden="true">→</span></button>
+                <button type="button" class="film-note__btn" data-film-open="3" data-i18n="b_watch_film">Смотреть фильм <span aria-hidden="true">→</span></button>
                 <button type="button" class="film-note__btn film-note__btn--ghost" data-copy-link data-i18n="lb_copy">Скопировать ссылку</button>
                               <a class="film-note__btn film-note__link" href="https://www.kinopoisk.ru/film/4464604/" target="_blank" rel="noopener noreferrer">Кинопоиск <span aria-hidden="true">↗</span></a>
               </div>
@@ -424,16 +426,16 @@
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <div class="film-note" data-cat="narrative" data-film="4">
-              <span class="film-note__label">О фильме</span>
+              <span class="film-note__label" data-i18n="n_lbl_film">О фильме</span>
               <h3 class="film-note__title">Почему мужчины живут меньше</h3>
               <dl class="film-note__facts">
-                <div><dt>Режиссёр</dt><dd>Никита Белых</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_director">Режиссёр</dt><dd data-i18n="w_pochemu_hint">Никита Белых</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
-              <p class="film-note__text">Это короткометражная работа, в которой в художественной или иронично-философской форме исследуется феномен разницы продолжительности жизни мужчин и женщин, а также социальные и поведенческие стереотипы, связанные с мужским образом жизни.</p>
+              <p class="film-note__text" data-i18n="np_5">Это короткометражная работа, в которой в художественной или иронично-философской форме исследуется феномен разницы продолжительности жизни мужчин и женщин, а также социальные и поведенческие стереотипы, связанные с мужским образом жизни.</p>
 <div class="film-note__actions">
-                <button type="button" class="film-note__btn" data-film-open="4">Смотреть фильм <span aria-hidden="true">→</span></button>
+                <button type="button" class="film-note__btn" data-film-open="4" data-i18n="b_watch_film">Смотреть фильм <span aria-hidden="true">→</span></button>
                 <button type="button" class="film-note__btn film-note__btn--ghost" data-copy-link data-i18n="lb_copy">Скопировать ссылку</button>
               </div>
             </div>
@@ -450,18 +452,18 @@
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <div class="film-note" data-cat="doc" data-film="1">
-              <span class="film-note__label">О проекте</span>
-              <h3 class="film-note__title">Что взять в отпуск?</h3>
+              <span class="film-note__label" data-i18n="n_lbl_project">О проекте</span>
+              <h3 class="film-note__title" data-i18n="w_doc_12s_name">Что взять в отпуск?</h3>
               <dl class="film-note__facts">
-                <div><dt>Заказчик</dt><dd>12 STOREEZ</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_client">Заказчик</dt><dd data-i18n="w_doc_12s_hint">12 STOREEZ</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
-              <p class="film-note__text">Как собрать вещи так, чтобы пройти 20 тысяч шагов по Парижу, вечером оказаться на красивой террасе, пережить 12-часовой перелёт, не растеряться во влажном климате Бали и быть готовой к погоде в горах, которая меняется за минуту?</p>
-              <p class="film-note__text">В этом выпуске Валерия Дергилева делится личными тревел-лайфхаками: как выбирать маршруты и места в новом городе, что брать в ручную кладь, как подготовиться к съёмке в путешествии, какие вещи спасают в тропиках, почему важно заранее тестировать обувь для хайкинга и как аксессуары помогают менять образы, не перегружая сумку.</p>
-              <p class="film-note__text">Героиня выпуска — Валерия Дергилева</p>
+              <p class="film-note__text" data-i18n="np_6">Как собрать вещи так, чтобы пройти 20 тысяч шагов по Парижу, вечером оказаться на красивой террасе, пережить 12-часовой перелёт, не растеряться во влажном климате Бали и быть готовой к погоде в горах, которая меняется за минуту?</p>
+              <p class="film-note__text" data-i18n="np_7">В этом выпуске Валерия Дергилева делится личными тревел-лайфхаками: как выбирать маршруты и места в новом городе, что брать в ручную кладь, как подготовиться к съёмке в путешествии, какие вещи спасают в тропиках, почему важно заранее тестировать обувь для хайкинга и как аксессуары помогают менять образы, не перегружая сумку.</p>
+              <p class="film-note__text" data-i18n="np_8">Героиня выпуска — Валерия Дергилева</p>
 <div class="film-note__actions">
-                <button type="button" class="film-note__btn" data-film-open="1">Смотреть видео <span aria-hidden="true">→</span></button>
+                <button type="button" class="film-note__btn" data-film-open="1" data-i18n="b_watch_video">Смотреть видео <span aria-hidden="true">→</span></button>
                 <button type="button" class="film-note__btn film-note__btn--ghost" data-copy-link data-i18n="lb_copy">Скопировать ссылку</button>
               </div>
             </div>
@@ -478,17 +480,17 @@
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <div class="film-note" data-cat="doc" data-film="2">
-              <span class="film-note__label">О проекте</span>
-              <h3 class="film-note__title">Ирина Горбачева: о выборе вина</h3>
+              <span class="film-note__label" data-i18n="n_lbl_project">О проекте</span>
+              <h3 class="film-note__title" data-i18n="w_doc_sv_name">Ирина Горбачева: о выборе вина</h3>
               <dl class="film-note__facts">
-                <div><dt>Заказчик</dt><dd>Simple Vine</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_client">Заказчик</dt><dd data-i18n="w_doc_sv_hint">Simple Vine</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
-              <p class="film-note__text">Подкаст «С точки зрения вина» продолжается, и во втором выпуске актриса Ира Горбачева и ведущий Влад Аганов поговорят о вине, актерской карьере и постельных сценах.</p>
-              <p class="film-note__text">Вы узнаете, сколько стоит хорошее вино, стоит ли дарить вино в подарок и как за последние несколько лет российское вино выросло по качеству и вкусу.</p>
+              <p class="film-note__text" data-i18n="np_9">Подкаст «С точки зрения вина» продолжается, и во втором выпуске актриса Ира Горбачева и ведущий Влад Аганов поговорят о вине, актерской карьере и постельных сценах.</p>
+              <p class="film-note__text" data-i18n="np_10">Вы узнаете, сколько стоит хорошее вино, стоит ли дарить вино в подарок и как за последние несколько лет российское вино выросло по качеству и вкусу.</p>
 <div class="film-note__actions">
-                <button type="button" class="film-note__btn" data-film-open="2">Смотреть видео <span aria-hidden="true">→</span></button>
+                <button type="button" class="film-note__btn" data-film-open="2" data-i18n="b_watch_video">Смотреть видео <span aria-hidden="true">→</span></button>
                 <button type="button" class="film-note__btn film-note__btn--ghost" data-copy-link data-i18n="lb_copy">Скопировать ссылку</button>
               </div>
             </div>
@@ -505,18 +507,18 @@
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <div class="film-note" data-cat="doc" data-film="3">
-              <span class="film-note__label">О проекте</span>
-              <h3 class="film-note__title">VK Места Республика Ингушетия</h3>
+              <span class="film-note__label" data-i18n="n_lbl_project">О проекте</span>
+              <h3 class="film-note__title" data-i18n="w_doc_ing_name">VK Места Республика Ингушетия</h3>
               <dl class="film-note__facts">
-                <div><dt>Заказчик</dt><dd>ВКонтакте</dd></div>
-                <div><dt>Роль</dt><dd>Оператор</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_client">Заказчик</dt><dd data-i18n="w_doc_ing_hint">ВКонтакте</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_op">Оператор</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
-              <p class="film-note__text">Давай познакомимся с Республикой Ингушетия!</p>
-              <p class="film-note__text">В новой экспедиции вместе с блогерами Хаслом и AVI VUNI мы покорили удивительные маршруты нерушимого Кавказа. Душевные чайные церемонии, яркие ингушские танцы и заповедные высокогорные курорты — путешествие по стране крепостей и башен подарило нам фантастические эмоции!</p>
-              <p class="film-note__text">Регион поразительных пейзажей и впечатляющих сооружений. Смотри фильм и вдохновляйся колоритной Ингушетией!</p>
+              <p class="film-note__text" data-i18n="np_11">Давай познакомимся с Республикой Ингушетия!</p>
+              <p class="film-note__text" data-i18n="np_12">В новой экспедиции вместе с блогерами Хаслом и AVI VUNI мы покорили удивительные маршруты нерушимого Кавказа. Душевные чайные церемонии, яркие ингушские танцы и заповедные высокогорные курорты — путешествие по стране крепостей и башен подарило нам фантастические эмоции!</p>
+              <p class="film-note__text" data-i18n="np_13">Регион поразительных пейзажей и впечатляющих сооружений. Смотри фильм и вдохновляйся колоритной Ингушетией!</p>
 <div class="film-note__actions">
-                <button type="button" class="film-note__btn" data-film-open="3">Смотреть видео <span aria-hidden="true">→</span></button>
+                <button type="button" class="film-note__btn" data-film-open="3" data-i18n="b_watch_video">Смотреть видео <span aria-hidden="true">→</span></button>
                 <button type="button" class="film-note__btn film-note__btn--ghost" data-copy-link data-i18n="lb_copy">Скопировать ссылку</button>
               </div>
             </div>
@@ -533,17 +535,17 @@
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <div class="film-note" data-cat="doc" data-film="4">
-              <span class="film-note__label">О проекте</span>
-              <h3 class="film-note__title">Тайник с серверами Авито</h3>
+              <span class="film-note__label" data-i18n="n_lbl_project">О проекте</span>
+              <h3 class="film-note__title" data-i18n="w_doc_avito_name">Тайник с серверами Авито</h3>
               <dl class="film-note__facts">
-                <div><dt>Заказчик</dt><dd>Авито</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_client">Заказчик</dt><dd data-i18n="w_doc_avito_hint">Авито</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
-              <p class="film-note__text">Обслуживанием серверов и дата-центров в Авито занимается команда инженеров DC Crew. Они работают с сервером на всех этапах: от подбора под конкретные задачи до его монтажа в дата-центре. После установки в дата-центре инженеры занимаются технической поддержкой сервера, чтобы он мог работать 24/7/365.</p>
-              <p class="film-note__text">В видео Григорий Толокольников, тимлид подразделения эксплуатации дата-центра, и инженер Константин Лукьянов расскажут про работу с серверами, а ещё ответят на распространённые вопросы о дата-центрах.</p>
+              <p class="film-note__text" data-i18n="np_14">Обслуживанием серверов и дата-центров в Авито занимается команда инженеров DC Crew. Они работают с сервером на всех этапах: от подбора под конкретные задачи до его монтажа в дата-центре. После установки в дата-центре инженеры занимаются технической поддержкой сервера, чтобы он мог работать 24/7/365.</p>
+              <p class="film-note__text" data-i18n="np_15">В видео Григорий Толокольников, тимлид подразделения эксплуатации дата-центра, и инженер Константин Лукьянов расскажут про работу с серверами, а ещё ответят на распространённые вопросы о дата-центрах.</p>
 <div class="film-note__actions">
-                <button type="button" class="film-note__btn" data-film-open="4">Смотреть видео <span aria-hidden="true">→</span></button>
+                <button type="button" class="film-note__btn" data-film-open="4" data-i18n="b_watch_video">Смотреть видео <span aria-hidden="true">→</span></button>
                 <button type="button" class="film-note__btn film-note__btn--ghost" data-copy-link data-i18n="lb_copy">Скопировать ссылку</button>
               </div>
             </div>
@@ -560,16 +562,16 @@
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <div class="film-note" data-cat="doc" data-film="5">
-              <span class="film-note__label">О проекте</span>
-              <h3 class="film-note__title">Четыре точки роста для бизнеса</h3>
+              <span class="film-note__label" data-i18n="n_lbl_project">О проекте</span>
+              <h3 class="film-note__title" data-i18n="w_doc_tochka_name">Четыре точки роста для бизнеса</h3>
               <dl class="film-note__facts">
-                <div><dt>Заказчик</dt><dd>Точка банк</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_client">Заказчик</dt><dd data-i18n="w_doc_tochka_hint">Точка банк</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
-              <p class="film-note__text">Здесь будет описание проекта: о чём ролик, для кого он снят и какую задачу решали. Пока это текст-заглушка, чтобы посмотреть, как выглядит блок рядом с плиткой.</p>
+              <p class="film-note__text" data-i18n="np_16">Здесь будет описание проекта: о чём ролик, для кого он снят и какую задачу решали. Пока это текст-заглушка, чтобы посмотреть, как выглядит блок рядом с плиткой.</p>
               <div class="film-note__actions">
-                <button type="button" class="film-note__btn" data-film-open="5">Смотреть видео <span aria-hidden="true">→</span></button>
+                <button type="button" class="film-note__btn" data-film-open="5" data-i18n="b_watch_video">Смотреть видео <span aria-hidden="true">→</span></button>
                 <button type="button" class="film-note__btn film-note__btn--ghost" data-copy-link data-i18n="lb_copy">Скопировать ссылку</button>
               </div>
             </div>
@@ -586,16 +588,16 @@
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <div class="film-note" data-cat="doc" data-film="6">
-              <span class="film-note__label">О проекте</span>
-              <h3 class="film-note__title">Быть премьером Большого Театра</h3>
+              <span class="film-note__label" data-i18n="n_lbl_project">О проекте</span>
+              <h3 class="film-note__title" data-i18n="w_doc_rod_name">Быть премьером Большого Театра</h3>
               <dl class="film-note__facts">
-                <div><dt>Заказчик</dt><dd>ХудРук Подкаст</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_client">Заказчик</dt><dd data-i18n="w_doc_rod_hint">ХудРук Подкаст</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
-              <p class="film-note__text">Денис Родькин — премьер Большого Театра. Дягилев, Ромео, Спартак, Базиль, Онегин, Принц Зигфрид, Щелкунчик, Солор, Артынов, Петр, Ферхад, Граф Альберт, Воланд, Люсьен, Князь Курбский, Вронский и др.</p>
+              <p class="film-note__text" data-i18n="np_17">Денис Родькин — премьер Большого Театра. Дягилев, Ромео, Спартак, Базиль, Онегин, Принц Зигфрид, Щелкунчик, Солор, Артынов, Петр, Ферхад, Граф Альберт, Воланд, Люсьен, Князь Курбский, Вронский и др.</p>
 <div class="film-note__actions">
-                <button type="button" class="film-note__btn" data-film-open="6">Смотреть видео <span aria-hidden="true">→</span></button>
+                <button type="button" class="film-note__btn" data-film-open="6" data-i18n="b_watch_video">Смотреть видео <span aria-hidden="true">→</span></button>
                 <button type="button" class="film-note__btn film-note__btn--ghost" data-copy-link data-i18n="lb_copy">Скопировать ссылку</button>
               </div>
             </div>
@@ -612,16 +614,16 @@
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <div class="film-note" data-cat="doc" data-film="7">
-              <span class="film-note__label">О проекте</span>
-              <h3 class="film-note__title">Проверяем HP сообщества</h3>
+              <span class="film-note__label" data-i18n="n_lbl_project">О проекте</span>
+              <h3 class="film-note__title" data-i18n="w_doc_hp_name">Проверяем HP сообщества</h3>
               <dl class="film-note__facts">
-                <div><dt>Заказчик</dt><dd>ВКонтакте</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_client">Заказчик</dt><dd data-i18n="w_doc_hp_hint">ВКонтакте</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
-              <p class="film-note__text">Короткое описание: формат съёмки, особенности локации и света, как команда работала с героями в кадре. Текст временный и будет заменён настоящим.</p>
+              <p class="film-note__text" data-i18n="np_18">Короткое описание: формат съёмки, особенности локации и света, как команда работала с героями в кадре. Текст временный и будет заменён настоящим.</p>
               <div class="film-note__actions">
-                <button type="button" class="film-note__btn" data-film-open="7">Смотреть видео <span aria-hidden="true">→</span></button>
+                <button type="button" class="film-note__btn" data-film-open="7" data-i18n="b_watch_video">Смотреть видео <span aria-hidden="true">→</span></button>
                 <button type="button" class="film-note__btn film-note__btn--ghost" data-copy-link data-i18n="lb_copy">Скопировать ссылку</button>
               </div>
             </div>
@@ -637,16 +639,16 @@
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <div class="film-note" data-cat="doc" data-film="8">
-              <span class="film-note__label">О проекте</span>
-              <h3 class="film-note__title">VK AdBlogger</h3>
+              <span class="film-note__label" data-i18n="n_lbl_project">О проекте</span>
+              <h3 class="film-note__title" data-i18n="w_doc_vkab_name">VK AdBlogger</h3>
               <dl class="film-note__facts">
-                <div><dt>Заказчик</dt><dd>ВКонтакте</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_client">Заказчик</dt><dd data-i18n="w_doc_vkab_hint">ВКонтакте</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
-              <p class="film-note__text">Здесь будет описание проекта: о чём ролик, для кого он снят и какую задачу решали. Пока это текст-заглушка, чтобы посмотреть, как выглядит блок рядом с плиткой.</p>
+              <p class="film-note__text" data-i18n="np_16">Здесь будет описание проекта: о чём ролик, для кого он снят и какую задачу решали. Пока это текст-заглушка, чтобы посмотреть, как выглядит блок рядом с плиткой.</p>
               <div class="film-note__actions">
-                <button type="button" class="film-note__btn" data-film-open="8">Смотреть видео <span aria-hidden="true">→</span></button>
+                <button type="button" class="film-note__btn" data-film-open="8" data-i18n="b_watch_video">Смотреть видео <span aria-hidden="true">→</span></button>
                 <button type="button" class="film-note__btn film-note__btn--ghost" data-copy-link data-i18n="lb_copy">Скопировать ссылку</button>
               </div>
             </div>
@@ -662,19 +664,19 @@
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <div class="film-note" data-cat="doc" data-film="9">
-              <span class="film-note__label">О проекте</span>
-              <h3 class="film-note__title">Business Fail Talks</h3>
+              <span class="film-note__label" data-i18n="n_lbl_project">О проекте</span>
+              <h3 class="film-note__title" data-i18n="w_doc_bft_name">Business Fail Talks</h3>
               <dl class="film-note__facts">
-                <div><dt>Заказчик</dt><dd>BFT</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_client">Заказчик</dt><dd data-i18n="w_doc_bft_hint">BFT</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
-              <p class="film-note__text">Business Fail Talks это встречи, где люди делятся историями своих неудач и провалов в профессиональной сфере - это альтернатива бизнес-форумам и конференциям</p>
-              <p class="film-note__text">Главная сила Business Fail Talks в том, что серьезный бизнес-опыт можно получить не только на конференциях и тренингах, но и в расслабленной обстановке.</p>
-              <p class="film-note__text">Слушатели и выступающие абсолютно равноценны, это формат дружеского коучинга.</p>
-              <p class="film-note__text">И, конечно же, это отличный нетворкинг!</p>
+              <p class="film-note__text" data-i18n="np_19">Business Fail Talks это встречи, где люди делятся историями своих неудач и провалов в профессиональной сфере - это альтернатива бизнес-форумам и конференциям</p>
+              <p class="film-note__text" data-i18n="np_20">Главная сила Business Fail Talks в том, что серьезный бизнес-опыт можно получить не только на конференциях и тренингах, но и в расслабленной обстановке.</p>
+              <p class="film-note__text" data-i18n="np_21">Слушатели и выступающие абсолютно равноценны, это формат дружеского коучинга.</p>
+              <p class="film-note__text" data-i18n="np_22">И, конечно же, это отличный нетворкинг!</p>
 <div class="film-note__actions">
-                <button type="button" class="film-note__btn" data-film-open="9">Смотреть видео <span aria-hidden="true">→</span></button>
+                <button type="button" class="film-note__btn" data-film-open="9" data-i18n="b_watch_video">Смотреть видео <span aria-hidden="true">→</span></button>
                 <button type="button" class="film-note__btn film-note__btn--ghost" data-copy-link data-i18n="lb_copy">Скопировать ссылку</button>
               </div>
             </div>
@@ -691,16 +693,16 @@
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <div class="film-note" data-cat="doc" data-film="10">
-              <span class="film-note__label">О проекте</span>
-              <h3 class="film-note__title">Компьютерные игры. Старшие классы</h3>
+              <span class="film-note__label" data-i18n="n_lbl_project">О проекте</span>
+              <h3 class="film-note__title" data-i18n="w_doc_rt1_name">Компьютерные игры. Старшие классы</h3>
               <dl class="film-note__facts">
-                <div><dt>Заказчик</dt><dd>Ростелеком</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_client">Заказчик</dt><dd data-i18n="w_doc_rt1_hint">Ростелеком</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
-              <p class="film-note__text">Здесь будет описание проекта: о чём ролик, для кого он снят и какую задачу решали. Пока это текст-заглушка, чтобы посмотреть, как выглядит блок рядом с плиткой.</p>
+              <p class="film-note__text" data-i18n="np_16">Здесь будет описание проекта: о чём ролик, для кого он снят и какую задачу решали. Пока это текст-заглушка, чтобы посмотреть, как выглядит блок рядом с плиткой.</p>
               <div class="film-note__actions">
-                <button type="button" class="film-note__btn" data-film-open="10">Смотреть видео <span aria-hidden="true">→</span></button>
+                <button type="button" class="film-note__btn" data-film-open="10" data-i18n="b_watch_video">Смотреть видео <span aria-hidden="true">→</span></button>
                 <button type="button" class="film-note__btn film-note__btn--ghost" data-copy-link data-i18n="lb_copy">Скопировать ссылку</button>
               </div>
             </div>
@@ -717,16 +719,16 @@
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <div class="film-note" data-cat="doc" data-film="11">
-              <span class="film-note__label">О проекте</span>
-              <h3 class="film-note__title">Леша Янгер. Кибербезопасность</h3>
+              <span class="film-note__label" data-i18n="n_lbl_project">О проекте</span>
+              <h3 class="film-note__title" data-i18n="w_doc_rt2_name">Леша Янгер. Кибербезопасность</h3>
               <dl class="film-note__facts">
-                <div><dt>Заказчик</dt><dd>Ростелеком</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_client">Заказчик</dt><dd data-i18n="w_doc_rt2_hint">Ростелеком</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
-              <p class="film-note__text">Короткое описание: формат съёмки, особенности локации и света, как команда работала с героем в кадре. Текст временный и будет заменён настоящим.</p>
+              <p class="film-note__text" data-i18n="np_23">Короткое описание: формат съёмки, особенности локации и света, как команда работала с героем в кадре. Текст временный и будет заменён настоящим.</p>
               <div class="film-note__actions">
-                <button type="button" class="film-note__btn" data-film-open="11">Смотреть видео <span aria-hidden="true">→</span></button>
+                <button type="button" class="film-note__btn" data-film-open="11" data-i18n="b_watch_video">Смотреть видео <span aria-hidden="true">→</span></button>
                 <button type="button" class="film-note__btn film-note__btn--ghost" data-copy-link data-i18n="lb_copy">Скопировать ссылку</button>
               </div>
             </div>
@@ -744,16 +746,16 @@
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <div class="film-note" data-cat="doc" data-film="12">
-              <span class="film-note__label">О проекте</span>
-              <h3 class="film-note__title">Национальная тех. олимпиада</h3>
+              <span class="film-note__label" data-i18n="n_lbl_project">О проекте</span>
+              <h3 class="film-note__title" data-i18n="w_doc_nto_name">Национальная тех. олимпиада</h3>
               <dl class="film-note__facts">
-                <div><dt>Заказчик</dt><dd>Сбер</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_client">Заказчик</dt><dd data-i18n="w_doc_nto_hint">Сбер</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
-              <p class="film-note__text">Пример описания: пара предложений о сюжете и пара — о том, какое изображение искали вместе с командой. Позже сюда попадёт финальный текст.</p>
+              <p class="film-note__text" data-i18n="np_24">Пример описания: пара предложений о сюжете и пара — о том, какое изображение искали вместе с командой. Позже сюда попадёт финальный текст.</p>
               <div class="film-note__actions">
-                <button type="button" class="film-note__btn" data-film-open="12">Смотреть видео <span aria-hidden="true">→</span></button>
+                <button type="button" class="film-note__btn" data-film-open="12" data-i18n="b_watch_video">Смотреть видео <span aria-hidden="true">→</span></button>
                 <button type="button" class="film-note__btn film-note__btn--ghost" data-copy-link data-i18n="lb_copy">Скопировать ссылку</button>
               </div>
             </div>
@@ -801,12 +803,12 @@
               <span class="work-tile__hint">Yota</span>
             </a>
             <div class="film-note" data-cat="commercial" data-film="3">
-              <span class="film-note__label">О проекте</span>
+              <span class="film-note__label" data-i18n="n_lbl_project">О проекте</span>
               <h3 class="film-note__title">Pulse Zero</h3>
               <dl class="film-note__facts">
-                <div><dt>Бренд</dt><dd>Yota</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_brand">Бренд</dt><dd>Yota</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
 </div>
             <a
@@ -820,12 +822,12 @@
               <span class="work-tile__hint">Samokat</span>
             </a>
             <div class="film-note" data-cat="commercial" data-film="4">
-              <span class="film-note__label">О проекте</span>
+              <span class="film-note__label" data-i18n="n_lbl_project">О проекте</span>
               <h3 class="film-note__title">Frame Delivery</h3>
               <dl class="film-note__facts">
-                <div><dt>Бренд</dt><dd>Samokat</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_brand">Бренд</dt><dd>Samokat</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
 </div>
             <a
@@ -839,12 +841,12 @@
               <span class="work-tile__hint">Sber Devices</span>
             </a>
             <div class="film-note" data-cat="commercial" data-film="5">
-              <span class="film-note__label">О проекте</span>
+              <span class="film-note__label" data-i18n="n_lbl_project">О проекте</span>
               <h3 class="film-note__title">Cold Start</h3>
               <dl class="film-note__facts">
-                <div><dt>Бренд</dt><dd>Sber Devices</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_brand">Бренд</dt><dd>Sber Devices</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
 </div>
             <button
@@ -860,15 +862,15 @@
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <div class="film-note" data-cat="music" data-film="1">
-              <span class="film-note__label">О клипе</span>
+              <span class="film-note__label" data-i18n="n_lbl_clip">О клипе</span>
               <h3 class="film-note__title">Tornado</h3>
               <dl class="film-note__facts">
-                <div><dt>Артист</dt><dd>TSOY</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_artist">Артист</dt><dd>TSOY</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
 <div class="film-note__actions">
-                <button type="button" class="film-note__btn" data-film-open="1">Смотреть видео <span aria-hidden="true">→</span></button>
+                <button type="button" class="film-note__btn" data-film-open="1" data-i18n="b_watch_video">Смотреть видео <span aria-hidden="true">→</span></button>
                 <button type="button" class="film-note__btn film-note__btn--ghost" data-copy-link data-i18n="lb_copy">Скопировать ссылку</button>
               </div>
             </div>
@@ -885,15 +887,15 @@
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <div class="film-note" data-cat="music" data-film="2">
-              <span class="film-note__label">О клипе</span>
-              <h3 class="film-note__title">Dragon Flower</h3>
+              <span class="film-note__label" data-i18n="n_lbl_clip">О клипе</span>
+              <h3 class="film-note__title" data-i18n="w_music_dragonflower_name">Dragon Flower</h3>
               <dl class="film-note__facts">
-                <div><dt>Артист</dt><dd>Valdman</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_artist">Артист</dt><dd data-i18n="w_music_dragonflower_hint">Valdman</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
 <div class="film-note__actions">
-                <button type="button" class="film-note__btn" data-film-open="2">Смотреть видео <span aria-hidden="true">→</span></button>
+                <button type="button" class="film-note__btn" data-film-open="2" data-i18n="b_watch_video">Смотреть видео <span aria-hidden="true">→</span></button>
                 <button type="button" class="film-note__btn film-note__btn--ghost" data-copy-link data-i18n="lb_copy">Скопировать ссылку</button>
               </div>
             </div>
@@ -909,15 +911,15 @@
               <span class="work-tile__play" aria-hidden="true"></span>
             </button>
             <div class="film-note" data-cat="music" data-film="3">
-              <span class="film-note__label">О клипе</span>
+              <span class="film-note__label" data-i18n="n_lbl_clip">О клипе</span>
               <h3 class="film-note__title">БАБУШКЕ</h3>
               <dl class="film-note__facts">
-                <div><dt>Артист</dt><dd>АБРИКОСА</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_artist">Артист</dt><dd>АБРИКОСА</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
 <div class="film-note__actions">
-                <button type="button" class="film-note__btn" data-film-open="3">Смотреть видео <span aria-hidden="true">→</span></button>
+                <button type="button" class="film-note__btn" data-film-open="3" data-i18n="b_watch_video">Смотреть видео <span aria-hidden="true">→</span></button>
                 <button type="button" class="film-note__btn film-note__btn--ghost" data-copy-link data-i18n="lb_copy">Скопировать ссылку</button>
               </div>
             </div>
@@ -932,12 +934,12 @@
               <span class="work-tile__hint">Dose</span>
             </a>
             <div class="film-note" data-cat="music" data-film="4">
-              <span class="film-note__label">О клипе</span>
+              <span class="film-note__label" data-i18n="n_lbl_clip">О клипе</span>
               <h3 class="film-note__title">Близко к свету</h3>
               <dl class="film-note__facts">
-                <div><dt>Артист</dt><dd>Dose</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_artist">Артист</dt><dd>Dose</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
 </div>
             <a
@@ -951,14 +953,18 @@
               <span class="work-tile__hint">L'One</span>
             </a>
             <div class="film-note" data-cat="music" data-film="5">
-              <span class="film-note__label">О клипе</span>
+              <span class="film-note__label" data-i18n="n_lbl_clip">О клипе</span>
               <h3 class="film-note__title">Тени на стекле</h3>
               <dl class="film-note__facts">
-                <div><dt>Артист</dt><dd>L'One</dd></div>
-                <div><dt>Роль</dt><dd>Оператор-постановщик</dd></div>
-                <div><dt>Год</dt><dd>2025</dd></div>
+                <div><dt data-i18n="f_artist">Артист</dt><dd>L'One</dd></div>
+                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
+                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
               </dl>
 </div>
+          </div>
+
+          <div class="work-more" id="work-more" hidden>
+            <button type="button" class="film-note__btn work-more__btn" data-i18n="work_more">Показать все работы</button>
           </div>
 
           <div class="cat work-vertical-block" id="work-vertical">

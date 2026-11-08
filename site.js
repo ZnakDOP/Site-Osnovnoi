@@ -48,6 +48,46 @@
     work_all: "All projects",
     vert_hint: "Swipe",
     lb_copy: "Copy link",
+    n_lbl_film: "About the film",
+    f_director: "Director",
+    f_role: "Role",
+    r_dop: "Director of Photography",
+    f_year: "Year",
+    np_1: "A project description will appear here. This is placeholder text to preview how the block looks next to the tile.",
+    b_watch_film: "Watch film <span aria-hidden=\"true\">→</span>",
+    np_2: "The short film “Nesezon” (“Offseason”) is based on A.V. Vampilov's play “Duck Hunting”. The plot centers on the story of a “little man of the stagnation era” going through an existential crisis.",
+    np_3: "Out of a sense of hopelessness he drinks a lot, has affairs with women, and behaves like a cynic and nihilist. The only thing that arouses genuine, never-fading interest in him is duck hunting.",
+    b_site: "Film website <span aria-hidden=\"true\">↗</span>",
+    np_4: "Alexey meets his girlfriend's parents. The dinner is tense, her father and mother start interrogating him, and, panicking, he says he is the son of Philipp Kirkorov. That would be fine, but proof is required, and now Lyosha sets off to find the star singer.",
+    np_5: "A short work that explores, in an artistic or ironically philosophical form, the phenomenon of the difference in life expectancy between men and women, as well as the social and behavioral stereotypes associated with the male way of life.",
+    n_lbl_project: "About the project",
+    f_client: "Client",
+    np_6: "How do you pack so you can walk 20,000 steps through Paris, end up on a beautiful terrace in the evening, survive a 12-hour flight, not get lost in Bali's humid climate, and be ready for mountain weather that changes in a minute?",
+    np_7: "In this episode Valeria Dergileva shares her personal travel life hacks: how to choose routes and places in a new city, what to take in your carry-on, how to prepare for shooting while traveling, which items save you in the tropics, why it's important to test hiking shoes in advance, and how accessories help change looks without overloading your bag.",
+    np_8: "The guest of the episode — Valeria Dergileva",
+    b_watch_video: "Watch video <span aria-hidden=\"true\">→</span>",
+    np_9: "The podcast “С точки зрения вина” (“From the Point of View of Wine”) continues, and in the second episode actress Ira Gorbacheva and host Vlad Aganov talk about wine, an acting career and love scenes.",
+    np_10: "You will learn how much good wine costs, whether wine makes a good gift, and how Russian wine has improved in quality and taste over the past few years.",
+    r_op: "Camera operator",
+    np_11: "Let's get to know the Republic of Ingushetia!",
+    np_12: "On our new expedition, together with bloggers Khasl and AVI VUNI, we explored the amazing routes of the unshakable Caucasus. Heartfelt tea ceremonies, vivid Ingush dances and secluded high-mountain resorts — a journey through the land of fortresses and towers gave us fantastic emotions!",
+    np_13: "A region of striking landscapes and impressive structures. Watch the film and get inspired by colorful Ingushetia!",
+    np_14: "Avito's servers and data centers are maintained by the DC Crew engineering team. They work with a server at every stage: from selecting it for specific tasks to installing it in the data center. After installation, the engineers provide technical support so that the server can run 24/7/365.",
+    np_15: "In the video, Grigory Tolokolnikov, team lead of the data center operations unit, and engineer Konstantin Lukyanov talk about working with servers and answer common questions about data centers.",
+    np_16: "A project description will appear here. This is placeholder text to preview how the block looks next to the tile.",
+    np_17: "Denis Rodkin is a principal dancer of the Bolshoi Theatre. Diaghilev, Romeo, Spartacus, Basil, Onegin, Prince Siegfried, the Nutcracker, Solor, Artynov, Peter, Ferhad, Count Albrecht, Woland, Lucien, Prince Kurbsky, Vronsky and others.",
+    np_18: "A project description will appear here. This is placeholder text to preview how the block looks next to the tile.",
+    np_19: "Business Fail Talks are meetups where people share stories of their failures in professional life — an alternative to business forums and conferences",
+    np_20: "The main strength of Business Fail Talks is that serious business experience can be gained not only at conferences and trainings, but also in a relaxed setting.",
+    np_21: "Listeners and speakers are completely equal; it's a format of friendly coaching.",
+    np_22: "And, of course, it's great networking!",
+    np_23: "A project description will appear here. This is placeholder text to preview how the block looks next to the tile.",
+    np_24: "A project description will appear here. This is placeholder text to preview how the block looks next to the tile.",
+    n_lbl_clip: "About the music video",
+    f_brand: "Brand",
+    f_artist: "Artist",
+    work_more: "Show all projects",
+    skip_link: "Skip to content",
     group_two_works: "2 works",
     filter_all: "All",
     filter_narrative: "Film",
@@ -350,8 +390,13 @@
       }
     }
 
-    function setFilter(key) {
+    const LIMIT_ALL = 6 // во вкладке «Все» сначала показываем избранное и столько остальных работ
+    const more = document.getElementById("work-more")
+    let expanded = false
+
+    function setFilter(key, fromUser) {
       if (!known.has(key)) key = "all"
+      if (key !== "all") expanded = false
       board.setAttribute("data-filter", key)
       buttons.forEach((b) => {
         const on = b.getAttribute("data-work-filter") === key
@@ -368,9 +413,23 @@
         t.style.gridColumn = ""
         t.style.gridRow = ""
       })
+      let collapsed = false
+      if (key === "all" && !expanded) {
+        // «Все»: избранное + первые LIMIT_ALL работ, остальное по кнопке
+        let shown = 0
+        tiles.forEach((t) => {
+          if (t.hasAttribute("data-featured") || t.closest(".work-group")) return
+          shown += 1
+          if (shown > LIMIT_ALL) {
+            t.hidden = true
+            collapsed = true
+          }
+        })
+      }
       board.querySelectorAll("#work-main .work-group").forEach((g) => {
-        g.hidden = !(key === "all" || g.getAttribute("data-cat") === key)
+        g.hidden = !(key === "all" || g.getAttribute("data-cat") === key) || collapsed
       })
+      if (more) more.hidden = !collapsed
       if (filmMode) {
         // плитка и описание поочерёдно: слева/справа, строка за строкой; блок бренда (Silent) занимает первый ряд целиком
         let row = 1
@@ -399,6 +458,12 @@
       if (main) main.hidden = key === "vertical"
       const vp = vertical?.querySelector(".work-carousel__viewport")
       if (vp) vp.scrollLeft = 0
+      if (fromUser) {
+        // адрес вкладки: можно отправить ссылку на «Док», «Клипы» и т.д. (без прокрутки страницы)
+        try {
+          window.history.replaceState(null, "", key === "all" ? "#work" : "#work-" + key)
+        } catch (_) {}
+      }
     }
 
     // «Смотреть фильм» в описании открывает то же видео, что и плитка
@@ -410,7 +475,11 @@
       })
     })
 
-    buttons.forEach((b) => b.addEventListener("click", () => setFilter(b.getAttribute("data-work-filter"))))
+    buttons.forEach((b) => b.addEventListener("click", () => setFilter(b.getAttribute("data-work-filter"), true)))
+    more?.querySelector("button")?.addEventListener("click", () => {
+      expanded = true
+      setFilter("all")
+    })
 
     // Ссылки вида #work-music (жанры в шапке) открывают нужную вкладку
     document.querySelectorAll('a[href^="#work-"]').forEach((a) => {
@@ -418,14 +487,17 @@
       if (!known.has(key)) return
       a.addEventListener("click", (e) => {
         e.preventDefault()
-        setFilter(key)
+        setFilter(key, true)
         document.getElementById("work-filters")?.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth", block: "start" })
       })
     })
 
     const fromHash = (window.location.hash || "").slice("#work-".length)
-    if (window.location.hash.startsWith("#work-") && known.has(fromHash)) setFilter(fromHash)
-    else setFilter("all")
+    if (window.location.hash.startsWith("#work-") && known.has(fromHash)) {
+      setFilter(fromHash)
+      // ссылка вида /#work-doc открывает вкладку и прокручивает к списку работ
+      window.setTimeout(() => document.getElementById("work-filters")?.scrollIntoView({ block: "start" }), 450)
+    } else setFilter("all")
   }
 
   // ——— Ссылки на отдельные работы: /work/<slug>/ ———
@@ -508,8 +580,12 @@
       loader.setAttribute("aria-hidden", "true")
       window.setTimeout(() => loader.remove(), 700)
     }
-    window.addEventListener("load", () => window.setTimeout(done, 120))
-    window.setTimeout(done, 1200)
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", () => window.setTimeout(done, 80))
+    } else {
+      window.setTimeout(done, 80)
+    }
+    window.setTimeout(done, 700)
   } else if (loader) {
     loader.remove()
   }

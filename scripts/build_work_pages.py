@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Собирает отдельные страницы работ: work/<slug>/index.html + превью work/og/<slug>.jpg.
+"""Собирает страницы работ (work/<slug>/index.html), превью для соцсетей (work/og/<slug>.jpg) и sitemap.xml.
 
 Данные берутся из index.html (плитки с data-slug) и home.css (обложки).
 Запуск из корня репозитория:  python3 scripts/build_work_pages.py
 Нужен ffmpeg (для лёгких превью под соцсети и мессенджеры).
 """
+import datetime
 import html
+import json
 import re
 import shutil
 import subprocess
@@ -22,16 +24,42 @@ def text_of(fragment, cls):
     return re.sub(r"<[^>]+>", "", m.group(1)).strip() if m else ""
 
 
+def original_of(path):
+    """Лёгкое превью images/thumbs/x.webp -> оригинал images/x.(jpg|png), он нужен для превью в соцсетях."""
+    if path.startswith("images/thumbs/"):
+        stem = Path(path).stem
+        for ext in ("jpg", "jpeg", "png"):
+            cand = "images/%s.%s" % (stem, ext)
+            if (ROOT / cand).exists():
+                return cand
+    return path
+
+
 def cover_rules(css):
     rules = {}
     for m in re.finditer(r"\.(work-tile--[\w-]+)::before\s*\{([^}]*)\}", css):
         u = re.search(r'url\("([^"]+)"\)', m.group(2))
         if u:
-            rules[m.group(1)] = u.group(1).split("?")[0]
+            rules[m.group(1)] = original_of(u.group(1).split("?")[0])
     return rules
 
 
+PLACEHOLDER_STARTS = ("Здесь будет описание", "Короткое описание", "Место для рассказа", "Пример описания")
+
+
+def collect_notes(index_html):
+    """(категория, номер) -> абзацы описания; заглушки пропускаем."""
+    notes = {}
+    for m in re.finditer(r'<div class="film-note" data-cat="(\w+)" data-film="(\d+)">(.*?)\n            </div>', index_html, re.S):
+        paras = [re.sub(r"<[^>]+>", "", p).strip() for p in re.findall(r'<p class="film-note__text">(.*?)</p>', m.group(3), re.S)]
+        paras = [html.unescape(p) for p in paras if p and not p.startswith(PLACEHOLDER_STARTS)]
+        if paras:
+            notes[(m.group(1), m.group(2))] = paras
+    return notes
+
+
 def collect(index_html, rules):
+    notes = collect_notes(index_html)
     works = []
     for m in re.finditer(r"<(button|a)\b([^>]*data-slug=[^>]*)>(.*?)</\1>", index_html, re.S):
         attrs, inner = m.group(2), m.group(3)
@@ -54,6 +82,7 @@ def collect(index_html, rules):
                 brand=text_of(inner, "hint"),
                 aspect=float(aspect) if aspect else 56.25,
                 cover=cover,
+                paras=notes.get((get("data-cat"), get("data-film")), []),
             )
         )
     return works
@@ -93,7 +122,8 @@ PAGE = """<!doctype html>
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600&family=Syne:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/work/work-page.css?v=3" />
+    <link rel="stylesheet" href="/work/work-page.css?v=4" />
+    <script type="application/ld+json">{jsonld}</script>
     <script src="/work/work-page.js?v=1" defer></script>
   </head>
   <body>
@@ -114,7 +144,7 @@ PAGE = """<!doctype html>
         <p class="wp-tag">{tag}</p>
         <h1 class="wp-title">{name}</h1>
         <p class="wp-brand-line">{brand}</p>
-        <div class="wp-actions">
+{desc_html}        <div class="wp-actions">
           <button type="button" class="wp-btn" data-copy>Скопировать ссылку</button>
           <a class="wp-btn" href="/#work">Смотреть все работы</a>
           <a class="wp-btn" href="mailto:a@gorushkindop.ru">Написать</a>
@@ -125,6 +155,20 @@ PAGE = """<!doctype html>
   </body>
 </html>
 """
+
+
+def url_for(slug):
+    return "%s/work/%s/" % (SITE, slug)
+
+
+def write_sitemap(works):
+    today = datetime.date.today().isoformat()
+    urls = [(SITE + "/", "1.0")] + [(url_for(w["slug"]), "0.7") for w in works]
+    lines = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for loc, prio in urls:
+        lines.append("  <url><loc>%s</loc><lastmod>%s</lastmod><priority>%s</priority></url>" % (loc, today, prio))
+    lines.append("</urlset>")
+    (ROOT / "sitemap.xml").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def main():
@@ -144,10 +188,29 @@ def main():
                 ["ffmpeg", "-loglevel", "error", "-y", "-i", str(src_img), "-vf", "scale=1200:-2", "-q:v", "4", str(og_path)],
                 check=True,
             )
-        url = "%s/work/%s/" % (SITE, w["slug"])
+        url = url_for(w["slug"])
         title_full = "%s — %s | Arsenii Gorushkin DOP" % (w["name"], w["brand"])
         name_end = w["name"] if w["name"][-1] in ".!?" else w["name"] + "."
-        desc = "%s %s. Оператор-постановщик %s." % (name_end, w["brand"], OWNER)
+        if w["paras"]:
+            first = w["paras"][0]
+            if len(first) > 190:
+                first = first[:190].rsplit(" ", 1)[0].rstrip(",;:—-") + "…"
+            desc = "%s — %s. %s" % (w["name"], w["brand"], first)
+        else:
+            desc = "%s %s. Оператор-постановщик %s." % (name_end, w["brand"], OWNER)
+        desc_html = "".join('        <p class="wp-desc">%s</p>\n' % e(t) for t in w["paras"])
+        ld = {
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            "name": w["name"],
+            "description": desc,
+            "thumbnailUrl": "%s/work/og/%s.jpg" % (SITE, w["slug"]),
+            "embedUrl": w["src"],
+            "url": url_for(w["slug"]),
+            "creator": {"@type": "Person", "name": "Arsenii Gorushkin", "alternateName": OWNER, "url": SITE + "/"},
+            "publisher": {"@type": "Organization", "name": w["brand"]},
+        }
+        jsonld = json.dumps(ld, ensure_ascii=False).replace("</", "<\\/")
         portrait = w["aspect"] > 100
         page = PAGE.format(
             title_full=e(title_full),
@@ -160,10 +223,13 @@ def main():
             brand=e(w["brand"]),
             portrait=" wp-player--portrait" if portrait else "",
             ratio="100 / %s" % w["aspect"],
+            desc_html=desc_html,
+            jsonld=jsonld,
         )
         out = ROOT / "work" / w["slug"] / "index.html"
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(page, encoding="utf-8")
+    write_sitemap(works)
     print("Собрано страниц:", len(works))
 
 
