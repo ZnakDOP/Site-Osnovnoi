@@ -273,32 +273,21 @@
 
     applyAriaLang(lang)
 
+    const metaTitle = isEn ? "Arsenii Gorushkin — Director of Photography, Moscow" : "Arsenii Gorushkin — оператор-постановщик (DOP), Москва"
+    const metaDesc = isEn
+      ? "Arsenii Gorushkin is a director of photography (DOP) based in Moscow. Commercials, music videos, documentary and narrative work. Showreel, projects, ZNAK RENT camera rental."
+      : "Арсений Горушкин — оператор-постановщик (DOP). Реклама, клипы, документальные и игровые проекты. Москва, съёмки по России и worldwide. Шоурил, работы, рентал техники ZNAK RENT."
     const titleEl = document.getElementById("meta-page-title")
-    if (titleEl) {
-      titleEl.textContent = isEn ? "Arsenii Gorushkin · Cinematographer" : "Arsenii Gorushkin DOP"
+    if (titleEl) titleEl.textContent = metaTitle
+    const setMeta = (id, value) => {
+      const el = document.getElementById(id)
+      if (el) el.setAttribute("content", value)
     }
-    const descEl = document.getElementById("meta-description")
-    if (descEl) {
-      descEl.setAttribute(
-        "content",
-        isEn
-          ? "Cinematographer: commercial, music videos, documentary. Based in Moscow, shooting across Russia and worldwide. Showreel, CV, ZNAK RENT."
-          : "Director of Photography: реклама, клипы, документалистика. База в Москве, съёмки по России и worldwide. Шоурил, CV, рентал ZNAK RENT."
-      )
-    }
-    const ogT = document.getElementById("meta-og-title")
-    if (ogT) {
-      ogT.setAttribute("content", isEn ? "Arsenii Gorushkin · Cinematographer" : "Arsenii Gorushkin DOP")
-    }
-    const ogD = document.getElementById("meta-og-desc")
-    if (ogD) {
-      ogD.setAttribute(
-        "content",
-        isEn
-          ? "DP / cinematographer. Moscow · worldwide — commercial, music videos, documentary."
-          : "DP / оператор-постановщик. Moscow · worldwide — коммерция, клипы, документалистика."
-      )
-    }
+    setMeta("meta-description", metaDesc)
+    setMeta("meta-og-title", metaTitle)
+    setMeta("meta-og-desc", metaDesc)
+    setMeta("meta-tw-title", metaTitle)
+    setMeta("meta-tw-desc", metaDesc)
 
     const srIframe = document.querySelector(".showreel-embed__iframe")
     if (srIframe) srIframe.setAttribute("title", isEn ? "Showreel" : "Шоурил")
