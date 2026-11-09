@@ -3473,3 +3473,9 @@ body.scroll-down .reveal {
 #work-filters {
   scroll-margin-top: calc(var(--header-offset) + 12px);
 }
+
+/* ——— Valdman: Big Live with Orchestra ——— */
+.work-tile--music-valdman-orchestra::before {
+  background-image: url("images/thumbs/work-music-valdman-orchestra.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center center;
+}
