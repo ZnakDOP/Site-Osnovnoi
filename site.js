@@ -131,11 +131,6 @@
     bio_alt2: "Arsenii with a camera on location",
     bio_alt3: "Library shoot, behind the scenes",
     bio_alt4: "Working with a cinema camera on set",
-    sec_cv_title: "CV",
-    sec_cv_meta: "filmography",
-    cv_p1:
-      "Full credits, roles, and technical details are available on request. Email or Telegram me and I will send a PDF and links to selected work.",
-    cv_btn: "Request CV",
     sec_work_title: "Selected work",
     sec_work_meta: "portfolio",
     cat_narrative: "Narrative · cinema",
