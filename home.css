@@ -3479,3 +3479,9 @@ body.scroll-down .reveal {
   background-image: url("images/thumbs/work-music-valdman-orchestra.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
+
+/* ——— ZAUR & MEIRINKITO: Вокруг ——— */
+.work-tile--music-vokrug::before {
+  background-image: url("images/thumbs/work-music-vokrug.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center center;
+}
