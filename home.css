@@ -3485,3 +3485,9 @@ body.scroll-down .reveal {
   background-image: url("images/thumbs/work-music-vokrug.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
+
+/* ——— TOMA POLAK: Souvenir ——— */
+.work-tile--music-souvenir::before {
+  background-image: url("images/thumbs/work-music-souvenir.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center center;
+}
