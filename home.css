@@ -3491,3 +3491,9 @@ body.scroll-down .reveal {
   background-image: url("images/thumbs/work-music-souvenir.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
+
+/* ——— ice Lo: Простить ——— */
+.work-tile--music-prostit::before {
+  background-image: url("images/thumbs/work-music-prostit.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
+  background-position: center center;
+}
