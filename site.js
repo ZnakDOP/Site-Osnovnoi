@@ -248,13 +248,6 @@
     contact_briefs: "Briefs: <strong>a@gorushkindop.ru</strong>",
     sec_rental_title: "Equipment rental",
     rental_sheet_btn: "Equipment list",
-    rental_cameras: "Cameras",
-    rental_lenses: "Lenses & filters",
-    rental_light: "Lighting",
-    rental_octopus: "DZOFilm Octopus: PL → Sony E adapter",
-    rental_nd: "K&amp;F Nano-X variable ND, 82 mm",
-    rental_softbox: "90 cm softbox (Bowens)",
-    rental_more: "Also: DJI RS 3 Pro gimbal, Accsoon monitors, DJI Mic 2 wireless, V-Mount power, tripods and accessories.",
     footer_ip: "Sole proprietor Arsenii Viacheslavovich Gorushkin",
     footer_top: "Back to top",
   }
