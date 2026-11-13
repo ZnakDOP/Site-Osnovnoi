@@ -2460,6 +2460,37 @@ body.scroll-down .reveal:not(.reveal--visible) {
   text-transform: uppercase;
 }
 
+/* Телефон: компактный Play в левом нижнем углу, чтобы не закрывать кадр */
+@media (max-width: 768px) {
+  .showreel-poster__play {
+    left: 14px;
+    top: auto;
+    bottom: 14px;
+    width: 46px;
+    height: 46px;
+    transform: none;
+    box-shadow: 0 4px 18px rgba(94, 234, 212, 0.28);
+  }
+
+  .showreel-poster__play::before {
+    transform: translate(-36%, -50%);
+    border-width: 8px 0 8px 13px;
+  }
+
+  .showreel-poster__label {
+    left: 70px;
+    right: 14px;
+    bottom: 14px;
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+  }
+}
+
 /* ——— Header CTA ——— */
 .site-header__cta {
   flex-shrink: 0;
