@@ -3616,3 +3616,57 @@ html:not(.is-ready) :is(.hero__kicker, .hero__logo-svg text, .hero__role, .hero_
     opacity: 0.8;
   }
 }
+
+/* ——— Прокрутка: заголовки разделов и параллакс обложек ——— */
+@keyframes title-reveal {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(0.5em);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(-0.2em -0.1em -0.3em -0.1em);
+    transform: none;
+  }
+}
+
+/* backwards: после показа элемент возвращается к обычным стилям */
+.section.reveal--visible .section__title {
+  animation: title-reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s backwards;
+}
+
+.section.reveal--visible .section__idx {
+  animation: hero-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.section.reveal--visible .section__meta {
+  animation: hero-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s backwards;
+}
+
+/* Параллакс обложек: только там, где браузер умеет scroll-driven animations (иначе плитки остаются как были) */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes tile-parallax {
+      from {
+        translate: 0 -5.5%;
+      }
+      to {
+        translate: 0 5.5%;
+      }
+    }
+
+    /* плитка сама overflow:hidden, поэтому шкалу задаём именованной у плитки, а не view() у обложки */
+    .work-tile {
+      view-timeline-name: --tile;
+      view-timeline-axis: block;
+    }
+
+    .work-tile::before {
+      inset: -8% 0;
+      animation: tile-parallax linear both;
+      animation-timeline: --tile;
+      animation-range: cover 0% cover 100%;
+    }
+  }
+}
