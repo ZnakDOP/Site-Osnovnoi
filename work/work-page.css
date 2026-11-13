@@ -25,6 +25,7 @@ body {
   display: flex;
   flex-direction: column;
   background:
+    linear-gradient(180deg, var(--bg0) 0, var(--bg0) 24px, rgba(6, 6, 8, 0) clamp(120px, 30vw, 200px)),
     radial-gradient(ellipse 80% 50% at 50% -10%, rgba(94, 234, 212, 0.12), transparent 60%),
     var(--bg0);
   color: var(--text);

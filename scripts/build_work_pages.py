@@ -119,7 +119,7 @@ PAGE = """<!doctype html>
     <link rel="preload" href="/fonts/syne-var-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/outfit-var-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/fonts/fonts.css?v=1" />
-    <link rel="stylesheet" href="/work/work-page.css?v=4" />
+    <link rel="stylesheet" href="/work/work-page.css?v=5" />
     <script type="application/ld+json">{jsonld}</script>
     <script src="/work/work-page.js?v=1" defer></script>
   </head>
