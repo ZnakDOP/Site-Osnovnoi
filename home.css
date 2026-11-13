@@ -3757,14 +3757,11 @@ html:not(.is-ready) :is(.hero__kicker, .hero__logo-svg text, .hero__role, .hero_
   }
 }
 
-/* ——— Рентал: фон из линейных иллюстраций техники (объектив, камера, свет) ——— */
+/* ——— Рентал: фон из линейных иллюстраций техники (объектив, камера, свет) ———
+   Высота блока прежняя (заголовок + кнопка); рисунки выходят за его границы и растворяются маской. */
 #rental {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
-  min-height: clamp(400px, 44vw, 560px);
-  display: flex;
-  flex-direction: column;
 }
 
 #rental .section__head,
@@ -3773,76 +3770,69 @@ html:not(.is-ready) :is(.hero__kicker, .hero__logo-svg text, .hero__role, .hero_
   z-index: 1;
 }
 
-#rental .rental-actions {
-  margin-top: auto;
-  padding-bottom: clamp(8px, 3vw, 40px);
-}
-
 .rental-art {
   position: absolute;
-  inset: 0;
+  inset: -64px 0;
   z-index: -1;
+  overflow: hidden;
   pointer-events: none;
-  -webkit-mask-image: radial-gradient(ellipse 80% 85% at 50% 50%, #000 45%, transparent 100%);
-  mask-image: radial-gradient(ellipse 80% 85% at 50% 50%, #000 45%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 78% 62% at 50% 50%, #000 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 78% 62% at 50% 50%, #000 40%, transparent 100%);
 }
 
 .rental-art img {
   position: absolute;
-  height: auto;
+  width: auto;
   user-select: none;
   -webkit-user-drag: none;
 }
 
 .rental-art__camera {
   left: -3%;
-  bottom: -6%;
-  width: 46%;
+  bottom: -10%;
+  height: 60%;
   opacity: 0.55;
 }
 
 .rental-art__light {
   right: 40%;
-  top: -2%;
-  width: 15%;
+  top: 2%;
+  height: 92%;
   opacity: 0.5;
 }
 
 .rental-art__lens {
-  right: 1%;
-  top: 9%;
-  width: 34%;
+  right: 2%;
+  top: 4%;
+  height: 92%;
   opacity: 0.55;
 }
 
 @media (max-width: 719px) {
-  #rental {
-    min-height: 460px;
-  }
-
   .rental-art {
-    -webkit-mask-image: radial-gradient(ellipse 95% 90% at 50% 50%, #000 40%, transparent 100%);
-    mask-image: radial-gradient(ellipse 95% 90% at 50% 50%, #000 40%, transparent 100%);
+    inset: -48px 0;
+    -webkit-mask-image: radial-gradient(ellipse 100% 70% at 50% 50%, #000 40%, transparent 100%);
+    mask-image: radial-gradient(ellipse 100% 70% at 50% 50%, #000 40%, transparent 100%);
   }
 
   .rental-art__camera {
-    left: -22%;
-    bottom: 8%;
-    width: 112%;
-    opacity: 0.32;
-  }
-
-  .rental-art__light {
-    right: 2%;
-    top: 4%;
-    width: 30%;
+    left: -14%;
+    bottom: 1%;
+    height: 46%;
     opacity: 0.3;
   }
 
+  .rental-art__light {
+    right: 28%;
+    top: 4%;
+    height: 78%;
+    opacity: 0.28;
+  }
+
   .rental-art__lens {
-    right: -28%;
-    top: 14%;
-    width: 84%;
+    right: -22%;
+    top: 12%;
+    height: 82%;
     opacity: 0.34;
   }
 }
