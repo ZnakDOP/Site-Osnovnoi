@@ -42,8 +42,8 @@
     <link rel="preload" href="fonts/outfit-var-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/ibm-plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="fonts/fonts.css?v=1" />
-    <link rel="stylesheet" href="home.css?v=150" />
-    <script src="site.js?v=51" defer></script>
+    <link rel="stylesheet" href="home.css?v=151" />
+    <script src="site.js?v=52" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#top" data-i18n="skip_link">Перейти к содержанию</a>
@@ -187,8 +187,6 @@
                   ><span class="stat-board__item-text" data-i18n="stat_narrative">Игровое кино</span></a>
                 <a class="stat-board__item" href="#work-music"
                   ><span class="stat-board__item-text" data-i18n="stat_music">Музыкальные клипы</span></a>
-                <a class="stat-board__item" href="#work-commercial"
-                  ><span class="stat-board__item-text" data-i18n="stat_commercial">Коммерция</span></a>
                 <a class="stat-board__item" href="#work-doc"
                   ><span class="stat-board__item-text" data-i18n="stat_doc">Документалистика</span></a>
                 <a class="stat-board__item" href="#work-vertical"
@@ -300,7 +298,6 @@
           <button type="button" class="work-filter" data-work-filter="narrative" aria-pressed="false" data-i18n="filter_narrative">Кино</button>
           <button type="button" class="work-filter" data-work-filter="doc" aria-pressed="false" data-i18n="filter_doc">Док</button>
           <button type="button" class="work-filter" data-work-filter="music" aria-pressed="false" data-i18n="filter_music">Клипы</button>
-          <button type="button" class="work-filter" data-work-filter="commercial" aria-pressed="false" data-i18n="filter_commercial">Коммерция</button>
           <button type="button" class="work-filter" data-work-filter="vertical" aria-pressed="false" data-i18n="filter_vertical">Вертикальное</button>
         </div>
 
@@ -733,96 +730,6 @@
                 <button type="button" class="film-note__btn film-note__btn--ghost" data-copy-link data-i18n="lb_copy">Скопировать ссылку</button>
               </div>
             </div>
-            <div class="work-group" data-cat="commercial">
-              <div class="work-group__head">
-                <div>
-                  <span class="work-group__label" data-i18n="w_tag_commercial">Реклама</span>
-                  <h3 class="work-group__title">Silent</h3>
-                </div>
-                <span class="work-group__count" data-i18n="group_two_works">2 работы</span>
-              </div>
-              <div class="work-group__grid">
-                <button
-                  type="button"
-                  class="work-tile work-tile--com-silent-allwhite js-open-kinescope" data-cat="commercial"
-                  data-slug="silent-all-white" data-kinescope-src="https://kinescope.io/embed/gBL4z2FfrHtPvsnH2DaakK"
-                  data-kinescope-title="All white"
-                >
-                  <span class="work-tile__tag" data-i18n="w_tag_commercial">Реклама</span>
-                  <span class="work-tile__name">All white</span>
-                  <span class="work-tile__hint">Silent</span>
-                  <span class="work-tile__play" aria-hidden="true"></span>
-                </button>
-                <button
-                  type="button"
-                  class="work-tile work-tile--com-silent-rings js-open-kinescope" data-cat="commercial"
-                  data-slug="silent-rings" data-kinescope-src="https://kinescope.io/embed/v8i8NaeGqESt2fBziPwSDa"
-                  data-kinescope-title="Rings"
-                >
-                  <span class="work-tile__tag" data-i18n="w_tag_commercial">Реклама</span>
-                  <span class="work-tile__name">Rings</span>
-                  <span class="work-tile__hint">Silent</span>
-                  <span class="work-tile__play" aria-hidden="true"></span>
-                </button>
-              </div>
-            </div>
-            <a
-              class="work-tile work-tile--1" data-cat="commercial" data-film="3"
-              href="https://gorushkindop.com"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span class="work-tile__tag" data-i18n="w_tag_commercial">Реклама</span>
-              <span class="work-tile__name">Pulse Zero</span>
-              <span class="work-tile__hint">Yota</span>
-            </a>
-            <div class="film-note" data-cat="commercial" data-film="3">
-              <span class="film-note__label" data-i18n="n_lbl_project">О проекте</span>
-              <h3 class="film-note__title">Pulse Zero</h3>
-              <dl class="film-note__facts">
-                <div><dt data-i18n="f_brand">Бренд</dt><dd>Yota</dd></div>
-                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
-                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
-              </dl>
-</div>
-            <a
-              class="work-tile work-tile--2" data-cat="commercial" data-film="4"
-              href="https://gorushkindop.com"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span class="work-tile__tag" data-i18n="w_tag_commercial">Реклама</span>
-              <span class="work-tile__name">Frame Delivery</span>
-              <span class="work-tile__hint">Samokat</span>
-            </a>
-            <div class="film-note" data-cat="commercial" data-film="4">
-              <span class="film-note__label" data-i18n="n_lbl_project">О проекте</span>
-              <h3 class="film-note__title">Frame Delivery</h3>
-              <dl class="film-note__facts">
-                <div><dt data-i18n="f_brand">Бренд</dt><dd>Samokat</dd></div>
-                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
-                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
-              </dl>
-</div>
-            <a
-              class="work-tile work-tile--3" data-cat="commercial" data-film="5"
-              href="https://gorushkindop.com"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span class="work-tile__tag" data-i18n="w_tag_commercial">Реклама</span>
-              <span class="work-tile__name">Cold Start</span>
-              <span class="work-tile__hint">Sber Devices</span>
-            </a>
-            <div class="film-note" data-cat="commercial" data-film="5">
-              <span class="film-note__label" data-i18n="n_lbl_project">О проекте</span>
-              <h3 class="film-note__title">Cold Start</h3>
-              <dl class="film-note__facts">
-                <div><dt data-i18n="f_brand">Бренд</dt><dd>Sber Devices</dd></div>
-                <div><dt data-i18n="f_role">Роль</dt><dd data-i18n="r_dop">Оператор-постановщик</dd></div>
-                <div><dt data-i18n="f_year">Год</dt><dd>2025</dd></div>
-              </dl>
-</div>
             <button
               type="button"
               class="work-tile work-tile--music-valdman-orchestra js-open-kinescope" data-cat="music" data-film="1"

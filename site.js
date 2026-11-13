@@ -88,11 +88,9 @@
     f_artist: "Artist",
     work_more: "Show all projects",
     skip_link: "Skip to content",
-    group_two_works: "2 works",
     filter_all: "All",
     filter_narrative: "Film",
     filter_music: "Music videos",
-    filter_commercial: "Commercial",
     filter_doc: "Doc",
     filter_vertical: "Vertical",
     showreel_play: "Play showreel",
@@ -101,7 +99,6 @@
     hero_role: "Director of Photography",
     hero_rental: "Equipment rental",
     hero_showreel_btn: "Showreel",
-    strip_commercial: "Commercial",
     strip_music: "Music video",
     strip_doc: "Documentary",
     strip_interview: "Interview",
@@ -110,7 +107,6 @@
     stat_genres: "Genres",
     stat_narrative: "Narrative film",
     stat_music: "Music videos",
-    stat_commercial: "Commercial",
     stat_doc: "Documentary",
     stat_vertical: "Vertical content",
     sec_showreel_title: "Showreel",
@@ -398,7 +394,7 @@
         b.classList.toggle("is-active", on)
         b.setAttribute("aria-pressed", on ? "true" : "false")
       })
-      const filmMode = key === "narrative" || key === "doc" || key === "music" || key === "commercial"
+      const filmMode = key === "narrative" || key === "doc" || key === "music"
       board.querySelectorAll("#work-main .film-note, #work-main .work-group").forEach((n) => {
         n.style.gridColumn = ""
         n.style.gridRow = ""
