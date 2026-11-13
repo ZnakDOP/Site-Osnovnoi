@@ -215,3 +215,40 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+
+/* Переключатель языка в шапке страницы работы */
+.wp-head__right {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 12px;
+}
+
+.wp-head__right .wp-back {
+  white-space: nowrap;
+}
+
+.wp-brand {
+  min-width: 0;
+}
+
+.wp-lang {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--stroke2);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.wp-lang:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}

@@ -1,11 +1,24 @@
 ;(function () {
+  // Язык страницы работы становится языком сайта (главная подхватит его из localStorage)
+  try {
+    window.localStorage.setItem("siteLang", document.documentElement.lang === "en" ? "en" : "ru")
+  } catch (_) {}
+  document.querySelectorAll("[data-set-lang]").forEach((a) => {
+    a.addEventListener("click", () => {
+      try {
+        window.localStorage.setItem("siteLang", a.getAttribute("data-set-lang") || "ru")
+      } catch (_) {}
+    })
+  })
+
   const btn = document.querySelector("[data-copy]")
   if (!btn) return
   const label = btn.textContent
+  const copiedLabel = btn.getAttribute("data-copied") || "Ссылка скопирована ✓"
   let timer = 0
 
   function done() {
-    btn.textContent = "Ссылка скопирована ✓"
+    btn.textContent = copiedLabel
     window.clearTimeout(timer)
     timer = window.setTimeout(() => {
       btn.textContent = label
