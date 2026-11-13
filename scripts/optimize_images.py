@@ -8,6 +8,7 @@
 import re
 import shutil
 import subprocess
+from PIL import Image
 import sys
 from pathlib import Path
 
@@ -17,8 +18,10 @@ THUMBS = ROOT / "images" / "thumbs"
 RULE = re.compile(r"(\.work-tile--[\w-]+::before\s*\{[^}]*?url\(\")(images/[^\"?]+)(?:\?[^\"]*)?(\"\))")
 
 
-def width_for(stem):
-    return 560 if stem.startswith("work-vert-") else 960
+def width_for(stem, src_width):
+    """Ширина превью: не больше исходника (без апскейла) и не больше 1280 (вертикальные — 640)."""
+    cap = 640 if stem.startswith("work-vert-") else 1280
+    return min(src_width, cap)
 
 
 def main():
@@ -37,8 +40,10 @@ def main():
         stem = src.stem
         out = THUMBS / (stem + ".webp")
         if not out.exists() or out.stat().st_mtime < src.stat().st_mtime:
+            with Image.open(src) as im:
+                src_w = im.size[0]
             subprocess.run(
-                ["cwebp", "-quiet", "-q", "76", "-m", "5", "-resize", str(width_for(stem)), "0", str(src), "-o", str(out)],
+                ["cwebp", "-quiet", "-q", "88", "-m", "6", "-sharp_yuv", "-resize", str(width_for(stem, src_w)), "0", str(src), "-o", str(out)],
                 check=True,
             )
             made += 1
