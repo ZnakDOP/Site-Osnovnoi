@@ -63,7 +63,10 @@
     f_role: "Role",
     r_dop: "Director of Photography",
     f_year: "Year",
-    np_1: "A project description will appear here. This is placeholder text to preview how the block looks next to the tile.",
+    np_1:
+      "“8 Woman” is a musical about a big family: eight women and their beloved head of the household. His birthday is coming, and the house fills with bustle, music and the anticipation of a celebration.",
+    np_1b:
+      "The film itself is the birthday gift. But the finale of these preparations turns out to be nothing like what you might expect, and it is truly shocking.",
     b_watch_film: "Watch film <span aria-hidden=\"true\">→</span>",
     np_2: "The short film “Nesezon” (“Offseason”) is based on A.V. Vampilov's play “Duck Hunting”. The plot centers on the story of a “little man of the stagnation era” going through an existential crisis.",
     np_3: "Out of a sense of hopelessness he drinks a lot, has affairs with women, and behaves like a cynic and nihilist. The only thing that arouses genuine, never-fading interest in him is duck hunting.",
