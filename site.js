@@ -5,6 +5,7 @@
     lang_group_aria: "Язык",
     nav_aria: "Разделы сайта",
     menu_open: "Открыть меню",
+    to_top: "Наверх",
     hero_aria: "Введение",
     bio_media_aria: "Бэкстейдж",
     showreel_play_aria: "Смотреть шоурил",
@@ -23,6 +24,7 @@
     lang_group_aria: "Language",
     nav_aria: "Site sections",
     menu_open: "Open menu",
+    to_top: "Back to top",
     hero_aria: "Introduction",
     bio_media_aria: "Behind the scenes",
     showreel_play_aria: "Play showreel",
@@ -38,6 +40,7 @@
   }
 
   const I18N_EN = {
+    nav_home: "Home",
     nav_showreel: "Showreel",
     nav_bio: "Bio",
     nav_work: "Work",
@@ -591,6 +594,17 @@
   } else {
     if (loader) loader.remove()
     document.documentElement.classList.add("is-ready")
+  }
+
+  // Кнопка «наверх» (телефон/планшет): появляется после прокрутки, возвращает к началу страницы
+  const toTop = document.querySelector(".to-top")
+  if (toTop) {
+    const updateToTop = () => toTop.classList.toggle("is-visible", (window.scrollY || 0) > 600)
+    window.addEventListener("scroll", updateToTop, { passive: true })
+    updateToTop()
+    toTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" })
+    })
   }
 
   const nav = document.querySelector(".site-header__nav")

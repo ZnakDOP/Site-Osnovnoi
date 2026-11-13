@@ -42,8 +42,8 @@
     <link rel="preload" href="fonts/outfit-var-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/ibm-plex-mono-400-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="fonts/fonts.css?v=1" />
-    <link rel="stylesheet" href="home.css?v=161" />
-    <script src="site.js?v=54" defer></script>
+    <link rel="stylesheet" href="home.css?v=162" />
+    <script src="site.js?v=56" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#top" data-i18n="skip_link">Перейти к содержанию</a>
@@ -76,6 +76,7 @@
           <button type="button" class="site-header__lang-btn" data-set-lang="ru" aria-pressed="true">RU</button>
           <button type="button" class="site-header__lang-btn" data-set-lang="en" aria-pressed="false">EN</button>
         </div>
+        <a class="site-header__home" href="#top" data-i18n="nav_home">Главная</a>
         <a href="#showreel" data-i18n="nav_showreel">Шоурил</a>
         <a href="#bio" data-i18n="nav_bio">Био</a>
         <a href="#work" data-i18n="nav_work">Работы</a>
@@ -95,6 +96,10 @@
         <span></span>
       </button>
     </header>
+
+    <button type="button" class="to-top" aria-label="Наверх" data-i18n-aria="to_top">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5" /><path d="M5 12l7-7 7 7" /></svg>
+    </button>
 
     <main class="site-main" id="top" tabindex="-1">
       <section class="hero wrap" aria-label="Введение" data-i18n-aria="hero_aria">
