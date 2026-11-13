@@ -3168,8 +3168,13 @@ body.scroll-down .reveal:not(.reveal--visible) {
 }
 
 .film-note__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
   min-height: 44px;
   padding: 0 20px;
+  text-decoration: none;
   border: 1px solid var(--stroke2);
   border-radius: 999px;
   background: transparent;
