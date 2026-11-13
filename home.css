@@ -3788,10 +3788,10 @@ html:not(.is-ready) :is(.hero__kicker, .hero__logo-svg text, .hero__role, .hero_
 }
 
 .rental-art__camera {
-  left: -3%;
-  bottom: -10%;
-  height: 60%;
-  opacity: 0.55;
+  left: -2%;
+  bottom: -11%;
+  height: 66%;
+  opacity: 0.6;
 }
 
 .rental-art__light {
@@ -3816,10 +3816,10 @@ html:not(.is-ready) :is(.hero__kicker, .hero__logo-svg text, .hero__role, .hero_
   }
 
   .rental-art__camera {
-    left: -14%;
-    bottom: 1%;
-    height: 46%;
-    opacity: 0.3;
+    left: -12%;
+    bottom: -2%;
+    height: 52%;
+    opacity: 0.34;
   }
 
   .rental-art__light {

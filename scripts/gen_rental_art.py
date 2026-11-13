@@ -12,8 +12,7 @@ OUT.mkdir(parents=True, exist_ok=True)
 def f(x): return ('%.2f'%x).rstrip('0').rstrip('.')
 HEAD=lambda w,h,extra='': f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" fill="none" stroke-linecap="round" stroke-linejoin="round">
 <defs>
-<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5eead4"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
-<linearGradient id="gv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5eead4"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+<linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="{w}" y2="{h}"><stop offset="0" stop-color="#5eead4"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
 <radialGradient id="glass" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#5eead4" stop-opacity=".16"/><stop offset=".7" stop-color="#a78bfa" stop-opacity=".05"/><stop offset="1" stop-color="#a78bfa" stop-opacity="0"/></radialGradient>
 <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5eead4" stop-opacity=".28"/><stop offset="1" stop-color="#5eead4" stop-opacity="0"/></linearGradient>
 {extra}</defs>
@@ -67,59 +66,84 @@ def lens():
 
 open(OUT/'lens.svg','w').write(lens())
 
-# ---------- CAMERA (side view) ----------
+# ---------- CAMERA: ARRI Alexa Mini (side view) ----------
 def camera():
     W,H=900,520
     o=[HEAD(W,H)]
     G='url(#g)'
-    def rect(x,y,w,h,rx=0,st=G,w_=1.3,op=1,fill='none'):
-        o.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{rx}" stroke="{st}" stroke-width="{w_}" opacity="{op}" fill="{fill}"/>')
+    def rect(x,y,w,h,rx=0,st=G,w_=1.3,op=1,fill=None):
+        fl=f' fill="#5eead4" fill-opacity="{fill}"' if fill else ' fill="none"'
+        o.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{rx}" stroke="{st}" stroke-width="{w_}" opacity="{op}"{fl}/>')
     def line(x1,y1,x2,y2,st=G,w_=1,op=1,dash=None):
         d=f' stroke-dasharray="{dash}"' if dash else ''
-        o.append(f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{st}" stroke-width="{w_}" opacity="{op}"{d}/>')
-    def circ(cx,cy,r,st=G,w_=1.2,op=1,fill='none'):
-        o.append(f'<circle cx="{cx}" cy="{cy}" r="{r}" stroke="{st}" stroke-width="{w_}" opacity="{op}" fill="{fill}"/>')
-    cy=255
-    # body
-    rect(330,150,310,210,20,G,1.6,1,'#5eead4'); o[-1]=o[-1].replace('fill="#5eead4"','fill="#5eead4" fill-opacity=".05"')
-    rect(346,166,278,178,12,'#fff',.6,.2)
-    # mount + lens
-    rect(298,190,34,130,6,G,1.4)
-    rect(192,178,108,154,10,G,1.4); line(192,214,300,214,'#fff',.6,.25); line(192,296,300,296,'#fff',.6,.25)
-    rect(128,168,66,174,9,G,1.6)                     # focus ring
-    for x in range(136,190,6): line(x,176,x,334,G,.8,.45)
-    rect(94,186,36,138,6,G,1.4)
-    o.append(f'<path d="M94 192 L40 148 L40 362 L94 318" stroke="{G}" stroke-width="1.4" fill="none"/>')   # hood
-    line(40,148,40,362,G,1.4)
-    for y in range(160,356,14): line(52,y,86,y,G,.6,.3)
-    for x in range(204,290,10): line(x,184,x,190,'#fff',.8,.5)    # scale ticks
-    circ(110,255,52,G,.9,.55); circ(110,255,34,'#fff',.7,.25); circ(110,255,16,G,.9,.6)  # front element hint
-    # top handle
-    rect(392,98,190,22,11,G,1.4); line(424,120,424,150,G,1.2); line(552,120,552,150,G,1.2)
-    for x in range(416,566,10): line(x,104,x,114,G,.7,.4)
-    # EVF
-    rect(594,108,86,54,10,G,1.4); rect(680,118,22,34,6,G,1.2); line(604,126,670,126,'#fff',.6,.25)
-    # sensor-plane mark
-    circ(470,136,7,'#fff',1,.55); line(460,136,480,136,'#fff',1,.55); line(470,150,470,372,'#fff',.6,.25,'2 6')
-    # controls
-    circ(592,212,15,G,1.3); circ(592,212,8,'#fff',.8,.4); 
-    for a in range(0,360,45):
-        import math as m
-        line(592+15*m.cos(m.radians(a)),212+15*m.sin(m.radians(a)),592+19*m.cos(m.radians(a)),212+19*m.sin(m.radians(a)),G,.8,.6)
-    circ(556,190,6,'#5eead4',1.2,.9,'#5eead4'); o[-1]=o[-1].replace('fill="#5eead4"','fill="#5eead4" fill-opacity=".35"')
-    circ(520,196,4,G,1,.6)
-    for y in range(284,336,8): line(372,y,492,y,G,.8,.4)
-    # rear battery plate
-    rect(640,176,66,158,10,G,1.4); line(640,205,706,205,'#fff',.6,.25); line(640,305,706,305,'#fff',.6,.25)
-    o.append(f'<path d="M656 240 L673 262 L690 240" stroke="{G}" stroke-width="1.2"/>')
-    # cage rails
-    line(250,392,724,392,G,1.3); line(250,404,724,404,G,1.3)
-    for x in (330,640): line(x,360,x,412,G,1.2)
-    for x in (250,724):
-        circ(x,392,3,G,1,.8); circ(x,404,3,G,1,.8)
-    # dimension line
-    line(40,452,706,452,'#fff',.7,.3); line(40,444,40,460,'#fff',.7,.35); line(706,444,706,460,'#fff',.7,.35)
-    line(330,444,330,460,'#fff',.7,.25); line(640,444,640,460,'#fff',.7,.25)
+        o.append(f'<line x1="{f(x1)}" y1="{f(y1)}" x2="{f(x2)}" y2="{f(y2)}" stroke="{st}" stroke-width="{w_}" opacity="{op}"{d}/>')
+    def circ(cx,cy,r,st=G,w_=1.2,op=1,fill=None):
+        fl=f' fill="#5eead4" fill-opacity="{fill}"' if fill else ' fill="none"'
+        o.append(f'<circle cx="{f(cx)}" cy="{f(cy)}" r="{f(r)}" stroke="{st}" stroke-width="{w_}" opacity="{op}"{fl}/>')
+    def path(d,st=G,w_=1.3,op=1,fill=None):
+        fl=f' fill="#5eead4" fill-opacity="{fill}"' if fill else ' fill="none"'
+        o.append(f'<path d="{d}" stroke="{st}" stroke-width="{w_}" opacity="{op}"{fl}/>')
+    AX=257  # optical axis
+    # ---- body (Alexa Mini: compact slab with chamfered shoulders)
+    path('M404 172 H628 Q642 172 642 186 V328 Q642 342 628 342 H404 Q390 342 390 328 V186 Q390 172 404 172 Z',G,1.7,1,.05)
+    path('M412 184 H620 Q630 184 630 194 V320 Q630 330 620 330 H412 Q402 330 402 320 V194 Q402 184 412 184 Z','#fff',.6,.2)
+    # top plate: threaded holes
+    for x in range(424,624,22): circ(x,178,2.4,'#fff',.8,.45)
+    # front plate + PL mount
+    rect(376,192,16,130,3,G,1.4)
+    rect(350,215,28,84,5,G,1.5)
+    for dy in (-6,6):
+        line(354,AX+dy*0+ (-34 if dy<0 else 34),374,AX+(-34 if dy<0 else 34),'#fff',.8,.4)
+    circ(364,AX,26,G,.9,.5)
+    # film plane mark
+    circ(470,226,7,'#fff',1,.6); line(459,226,481,226,'#fff',1,.6); line(470,172,470,342,'#fff',.6,.22,'2 6')
+    # side display + buttons
+    rect(552,196,64,38,6,G,1.3,1,.07); line(560,208,606,208,'#fff',.7,.35); line(560,218,590,218,'#fff',.7,.25)
+    for x in (566,588,610): circ(x,252,4.5,G,1.1,.8)
+    circ(610,252,2,'#5eead4',1,.9,.6)
+    # vents
+    for i in range(7): line(418+i*11,288,432+i*11,322,G,.9,.38)
+    # connectors (rear lower)
+    for cx in (584,614): circ(cx,300,10,G,1.3); circ(cx,300,4.5,'#fff',.8,.45)
+    # ---- rear: battery plate + EVF
+    rect(642,190,52,138,8,G,1.5)
+    path('M656 232 L668 252 L680 232','#fff',1.2,.5)
+    line(642,218,694,218,'#fff',.6,.25); line(642,300,694,300,'#fff',.6,.25)
+    line(668,190,684,150,G,1.4); line(668,196,690,160,G,1.1)         # EVF arm
+    rect(676,112,82,50,9,G,1.5,1,.05); rect(758,122,26,30,6,G,1.3); line(686,128,748,128,'#fff',.6,.3)
+    # ---- top handle
+    rect(430,114,180,20,10,G,1.5); line(462,134,462,172,G,1.3); line(578,134,578,172,G,1.3)
+    for x in range(446,596,10): line(x,119,x,129,G,.7,.38)
+    # ---- lens (cine prime): rear barrel -> iris ring -> focus ring -> front
+    rect(290,205,62,104,6,G,1.4)
+    rect(246,198,46,118,7,G,1.5)                                   # iris ring with gears
+    for x in range(250,290,5): line(x,200,x,314,G,.7,.4)
+    rect(204,204,44,106,6,G,1.3)
+    rect(138,194,68,126,9,G,1.6)                                   # focus ring with gears
+    for x in range(143,203,5): line(x,197,x,317,G,.8,.42)
+    rect(108,203,32,108,6,G,1.4)
+    rect(98,208,12,98,4,G,1.3)
+    for x in range(214,244,6): line(x,206,x,214,'#fff',.8,.55)     # distance scale ticks
+    line(212,214,244,214,'#fff',.7,.35)
+    circ(104,AX,38,G,1,.45); circ(104,AX,22,'#fff',.7,.25)
+    # ---- matte box
+    path('M98 212 L66 188 L66 326 L98 302','' if False else G,1.4,1,.04)
+    rect(34,166,34,182,5,G,1.5)
+    line(34,166,20,146,G,1.2); line(68,166,82,146,G,1.2); line(20,146,82,146,G,1.3)     # top flag
+    line(34,348,20,368,G,1.2); line(68,348,82,368,G,1.2); line(20,368,82,368,G,1.3)     # bottom flag
+    for y in range(180,336,12): line(42,y,60,y,G,.6,.3)
+    # ---- rods + lens support + follow focus
+    for y in (370,380): line(120,y,520,y,G,1.3)
+    rect(304,306,22,76,4,G,1.4); circ(315,344,5,'#fff',.8,.5)       # lens support
+    rect(222,348,44,40,7,G,1.4); circ(244,368,12,G,1.2); circ(244,368,4,'#fff',.8,.4)  # follow focus
+    for i in range(12):
+        a=math.radians(i*30); line(244+14*math.cos(a),368+14*math.sin(a),244+18*math.cos(a),368+18*math.sin(a),G,.8,.55)
+    # ---- baseplate / bridge plate
+    rect(372,342,240,22,5,G,1.5,1,.05); rect(404,364,150,14,4,G,1.3)
+    rect(520,364,22,22,4,G,1.2); line(520,375,542,375,'#fff',.6,.3)
+    # ---- dimension line
+    line(20,446,798,446,'#fff',.7,.3)
+    for x in (20,98,390,642,798): line(x,438,x,454,'#fff',.7,.35)
     o.append('</svg>')
     return '\n'.join(o)
 
