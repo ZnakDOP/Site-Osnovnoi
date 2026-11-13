@@ -139,6 +139,8 @@ body.site-nav-open {
   pointer-events: none;
   overflow: hidden;
   background:
+    /* Верхний край страницы = цвет строки браузера, чтобы не было резкой границы */
+    linear-gradient(180deg, var(--bg0) 0, var(--bg0) 24px, rgba(6, 6, 8, 0) clamp(120px, 30vw, 200px)),
     radial-gradient(ellipse 80% 60% at 20% -10%, var(--hero-glow), transparent 55%),
     radial-gradient(ellipse 60% 50% at 95% 30%, rgba(167, 139, 250, 0.09), transparent 50%),
     radial-gradient(ellipse 50% 40% at 50% 100%, rgba(94, 234, 212, 0.06), transparent 45%),
