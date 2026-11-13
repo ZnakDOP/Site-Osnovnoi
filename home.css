@@ -3503,3 +3503,111 @@ body.scroll-down .reveal:not(.reveal--visible) {
   background-image: url("images/thumbs/work-music-prostit.webp"), linear-gradient(135deg, #1a1a24, #0c0c10);
   background-position: center center;
 }
+
+/* ——— Анимации: смена вкладки работ и вход главного экрана ——— */
+@keyframes work-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* fill-mode backwards: после показа элементы возвращаются к обычным стилям (наведение и т.д.) */
+.work-board--enter #work-main > :not([hidden]),
+.work-board--enter #work-vertical:not([hidden]) {
+  animation: work-enter 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.work-board--enter #work-main > :nth-child(2) { animation-delay: 0.04s; }
+.work-board--enter #work-main > :nth-child(3) { animation-delay: 0.08s; }
+.work-board--enter #work-main > :nth-child(4) { animation-delay: 0.12s; }
+.work-board--enter #work-main > :nth-child(5) { animation-delay: 0.16s; }
+.work-board--enter #work-main > :nth-child(6) { animation-delay: 0.2s; }
+.work-board--enter #work-main > :nth-child(n + 7) { animation-delay: 0.24s; }
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-line {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Анимация стартует, когда экран загрузки уходит (класс is-ready ставит site.js) */
+html:not(.is-ready) :is(.hero__kicker, .hero__logo-svg text, .hero__role, .hero__actions) {
+  animation-play-state: paused;
+}
+
+.hero__kicker {
+  animation: hero-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s backwards;
+}
+
+.hero__logo-svg text {
+  animation: hero-line 1s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+.hero__logo-svg text:nth-of-type(1) {
+  animation-delay: 0.25s;
+}
+
+.hero__logo-svg text:nth-of-type(2) {
+  animation-delay: 0.43s;
+}
+
+.hero__role {
+  animation: hero-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.7s backwards;
+}
+
+.hero__actions {
+  animation: hero-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.85s backwards;
+}
+
+/* Свечение за заголовком медленно «дышит» (только opacity/transform — дёшево для телефона) */
+@keyframes glow-breathe {
+  from {
+    opacity: 0.55;
+    transform: translate3d(-3%, 0, 0) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(4%, 5%, 0) scale(1.08);
+  }
+}
+
+.site-bg::before {
+  content: "";
+  position: absolute;
+  top: clamp(70px, 18vw, 150px);
+  left: -12%;
+  width: min(120vw, 900px);
+  height: min(80vw, 560px);
+  background: radial-gradient(closest-side, rgba(94, 234, 212, 0.14), rgba(94, 234, 212, 0.04) 55%, transparent 100%);
+  pointer-events: none;
+  will-change: transform, opacity;
+  animation: glow-breathe 12s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-bg::before {
+    animation: none;
+    opacity: 0.8;
+  }
+}
