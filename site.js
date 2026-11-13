@@ -385,8 +385,10 @@
     const more = document.getElementById("work-more")
     let expanded = false
 
+    let enterTimer = 0
     function setFilter(key, fromUser) {
       if (!known.has(key)) key = "all"
+      const prevKey = board.getAttribute("data-filter")
       if (key !== "all") expanded = false
       board.setAttribute("data-filter", key)
       buttons.forEach((b) => {
@@ -449,6 +451,14 @@
       if (main) main.hidden = key === "vertical"
       const vp = vertical?.querySelector(".work-carousel__viewport")
       if (vp) vp.scrollLeft = 0
+      if (fromUser && prevKey !== key && !prefersReduced) {
+        // мягкое появление работ при смене вкладки
+        board.classList.remove("work-board--enter")
+        void board.offsetWidth
+        board.classList.add("work-board--enter")
+        window.clearTimeout(enterTimer)
+        enterTimer = window.setTimeout(() => board.classList.remove("work-board--enter"), 1100)
+      }
       if (fromUser) {
         // адрес вкладки: можно отправить ссылку на «Док», «Клипы» и т.д. (без прокрутки страницы)
         try {
@@ -567,6 +577,7 @@
   const loader = document.getElementById("site-loader")
   if (loader && !prefersReduced) {
     const done = () => {
+      document.documentElement.classList.add("is-ready")
       loader.classList.add("site-loader--done")
       loader.setAttribute("aria-hidden", "true")
       window.setTimeout(() => loader.remove(), 700)
@@ -577,8 +588,9 @@
       window.setTimeout(done, 80)
     }
     window.setTimeout(done, 700)
-  } else if (loader) {
-    loader.remove()
+  } else {
+    if (loader) loader.remove()
+    document.documentElement.classList.add("is-ready")
   }
 
   const nav = document.querySelector(".site-header__nav")
