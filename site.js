@@ -456,6 +456,16 @@
       }
       const vertical = board.querySelector("#work-vertical")
       if (vertical) vertical.hidden = !(key === "all" || key === "vertical")
+      // обложки: сначала то, что видно сейчас (остальные догрузятся в фоне)
+      tiles.forEach((t) => {
+        if (!t.hidden && !t.closest("[hidden]")) t.classList.add("cover-on")
+      })
+      if (vertical && !vertical.hidden) {
+        const vt = vertical.querySelectorAll(".work-tile")
+        vt.forEach((t, i) => {
+          if (key === "vertical" || i < 4) t.classList.add("cover-on")
+        })
+      }
       const main = board.querySelector("#work-main")
       if (main) main.hidden = key === "vertical"
       const vp = vertical?.querySelector(".work-carousel__viewport")
@@ -484,6 +494,20 @@
         board.querySelector(sel)?.click()
       })
     })
+
+    // после загрузки страницы подтягиваем обложки остальных вкладок, чтобы переключение было мгновенным
+    const warmCovers = () => {
+      const all = Array.from(board.querySelectorAll(".work-tile:not(.cover-on)"))
+      const step = () => {
+        const batch = all.splice(0, 4)
+        batch.forEach((t) => t.classList.add("cover-on"))
+        if (all.length) window.setTimeout(step, 250)
+      }
+      step()
+    }
+    const scheduleWarm = () => window.setTimeout(() => ("requestIdleCallback" in window ? window.requestIdleCallback(warmCovers, { timeout: 4000 }) : warmCovers()), 800)
+    if (document.readyState === "complete") scheduleWarm()
+    else window.addEventListener("load", scheduleWarm, { once: true })
 
     buttons.forEach((b) => b.addEventListener("click", () => setFilter(b.getAttribute("data-work-filter"), true)))
     more?.querySelector("button")?.addEventListener("click", () => {
@@ -670,8 +694,8 @@
         })
       },
       {
-        rootMargin: narrow ? "0px 0px -4% 0px" : "0px 0px -8% 0px",
-        threshold: narrow ? 0.04 : 0.08,
+        rootMargin: narrow ? "0px 0px 6% 0px" : "0px 0px 10% 0px",
+        threshold: 0,
       }
     )
     document.querySelectorAll(".reveal").forEach((el) => io.observe(el))
@@ -831,6 +855,10 @@
     kinescopeSlug = null
   }
 
+  kinescopeIframe?.addEventListener("load", () => {
+    if (kinescopeIframe.getAttribute("src")) kinescopeLb.classList.add("is-loaded")
+  })
+
   function openKinescope(src, title, aspectAttr) {
     if (!kinescopeLb || !kinescopeIframe) return
     kinescopeFocusReturn = document.activeElement
@@ -852,6 +880,7 @@
     }
     const copyBtn = kinescopeLb.querySelector("[data-copy-link]")
     if (copyBtn) copyBtn.hidden = !kinescopeSlug
+    kinescopeLb.classList.remove("is-loaded")
     kinescopeIframe.src = src
     kinescopeIframe.title = title
     kinescopeLb.hidden = false

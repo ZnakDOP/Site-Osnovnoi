@@ -1707,8 +1707,8 @@ html.kinescope-open body {
   opacity: 0;
   transform: translateY(18px);
   transition:
-    opacity 0.7s ease,
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.45s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 body.scroll-up .reveal:not(.reveal--visible) {
@@ -3544,15 +3544,15 @@ body.scroll-down .reveal:not(.reveal--visible) {
 /* fill-mode backwards: после показа элементы возвращаются к обычным стилям (наведение и т.д.) */
 .work-board--enter #work-main > :not([hidden]),
 .work-board--enter #work-vertical:not([hidden]) {
-  animation: work-enter 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation: work-enter 0.3s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 
-.work-board--enter #work-main > :nth-child(2) { animation-delay: 0.04s; }
-.work-board--enter #work-main > :nth-child(3) { animation-delay: 0.08s; }
-.work-board--enter #work-main > :nth-child(4) { animation-delay: 0.12s; }
-.work-board--enter #work-main > :nth-child(5) { animation-delay: 0.16s; }
-.work-board--enter #work-main > :nth-child(6) { animation-delay: 0.2s; }
-.work-board--enter #work-main > :nth-child(n + 7) { animation-delay: 0.24s; }
+.work-board--enter #work-main > :nth-child(2) { animation-delay: 0.03s; }
+.work-board--enter #work-main > :nth-child(3) { animation-delay: 0.06s; }
+.work-board--enter #work-main > :nth-child(4) { animation-delay: 0.09s; }
+.work-board--enter #work-main > :nth-child(5) { animation-delay: 0.12s; }
+.work-board--enter #work-main > :nth-child(6) { animation-delay: 0.15s; }
+.work-board--enter #work-main > :nth-child(n + 7) { animation-delay: 0.18s; }
 
 @keyframes hero-rise {
   from {
@@ -3582,27 +3582,27 @@ html:not(.is-ready) :is(.hero__kicker, .hero__logo-svg text, .hero__role, .hero_
 }
 
 .hero__kicker {
-  animation: hero-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s backwards;
+  animation: hero-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.05s backwards;
 }
 
 .hero__logo-svg text {
-  animation: hero-line 1s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation: hero-line 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 
 .hero__logo-svg text:nth-of-type(1) {
-  animation-delay: 0.25s;
+  animation-delay: 0.1s;
 }
 
 .hero__logo-svg text:nth-of-type(2) {
-  animation-delay: 0.43s;
+  animation-delay: 0.2s;
 }
 
 .hero__role {
-  animation: hero-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.7s backwards;
+  animation: hero-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.35s backwards;
 }
 
 .hero__actions {
-  animation: hero-rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.85s backwards;
+  animation: hero-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.45s backwards;
 }
 
 /* Свечение за заголовком медленно «дышит» (только opacity/transform — дёшево для телефона) */
@@ -3653,15 +3653,15 @@ html:not(.is-ready) :is(.hero__kicker, .hero__logo-svg text, .hero__role, .hero_
 
 /* backwards: после показа элемент возвращается к обычным стилям */
 .section.reveal--visible .section__title {
-  animation: title-reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s backwards;
+  animation: title-reveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.05s backwards;
 }
 
 .section.reveal--visible .section__idx {
-  animation: hero-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation: hero-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 
 .section.reveal--visible .section__meta {
-  animation: hero-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s backwards;
+  animation: hero-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s backwards;
 }
 
 /* Параллакс обложек: только там, где браузер умеет scroll-driven animations (иначе плитки остаются как были) */
@@ -3834,5 +3834,36 @@ html:not(.is-ready) :is(.hero__kicker, .hero__logo-svg text, .hero__role, .hero_
     top: 12%;
     height: 82%;
     opacity: 0.34;
+  }
+}
+
+/* ——— Скорость: обложки грузятся по мере надобности ———
+   Сначала видимые плитки, остальные — в фоне после загрузки страницы (класс cover-on ставит site.js). */
+.work-tile:not(.cover-on)::before {
+  background-image: none !important;
+}
+
+/* ——— Окно видео: индикатор, пока грузится плеер Kinescope ——— */
+.kinescope-lightbox__spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 2px solid rgba(255, 255, 255, 0.14);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: lb-spin 0.8s linear infinite;
+  pointer-events: none;
+}
+
+.kinescope-lightbox.is-loaded .kinescope-lightbox__spinner {
+  display: none;
+}
+
+@keyframes lb-spin {
+  to {
+    transform: rotate(360deg);
   }
 }
